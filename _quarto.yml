@@ -18,7 +18,6 @@ website:
     right: 
       - icon: github
         href: https://github.com/betopark97
-        
 
   # sidebar
   sidebar:
@@ -60,7 +59,7 @@ format:
   html:
     theme:
       light: cosmos
-      dark: slate
+      dark: darkly
     toc: true
 
 editor: visual
