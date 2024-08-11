@@ -5,11 +5,14 @@ toc: false
 about:
   template: trestles
   links:
-    - text: Github
+    - icon: github
+      text: Github
       href: https://github.com/betopark97
-    - text: LinkedIn
+    - icon: linkedin
+      text: LinkedIn
       href: https://www.linkedin.com/in/keon-ung-park-077605270/
-    - text: Email
+    - icon: envelope-at-fill
+      text: Email
       href: mailto:betopark97@gmail.com
 ---
 
@@ -27,37 +30,37 @@ about:
 
 # Education
 
-2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track (Bootcamp)
+<img height=25px src='./img/logos/codeit.svg' />
+2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track  
 
-2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University
+<img height=25px src='./img/logos/skku.svg' />
+2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University  
 
 
 # Tech Stack
+### Languages:  
+<img height=25px src='./img/logos/python.svg'/> Python | 
+<img height=25px src='./img/logos/sql.svg' /> SQL  
 
-Pandas, Numpy, Scikit-learn, Tensorflow, Tableau,
+### Software:  
+<img height=25px src='./img/logos/tableau.svg' /> Tableau |
+<img height=25px src='./img/logos/postgresql.svg' /> PostgreSQL |
+<img height=25px src='./img/logos/mysql.svg' /> MySQL |
+<img height=25px src='./img/logos/excel.svg' /> Excel 
 
-<img height=25px src='https://img.shields.io/badge/Python-white?style=flat&logo=Python'>
+### Framework:  
+<img height=25px src='./img/logos/tensorflow.svg' /> Tensorflow |
+MLFlow |
+<img height=25px src='./img/logos/flask.svg' /> Flask |
+Streamlit |
 
-<img height=25px src='https://img.shields.io/badge/NumPy-black?style=flat&logo=NumPy'>
+### Version Control:  
+<img height=25px src='./img/logos/git.svg' /> Git |
+<img height=25px src='./img/logos/dvc.svg' /> DVC
 
-<img height=25px src='https://img.shields.io/badge/Pandas-black?style=flat&logo=Pandas'>
-
-<img height=25px src='https://img.shields.io/badge/Jupyter-white?logo=Jupyter'>
-
-<img height=25px src='./img/logos/python.svg' />
-
-
-언어
-Python, SQL
-
-소프트웨어
-Excel, Powerpoint, Word, Tableau, PostgreSQL, MySQL
-
-툴
-Github, Notion, Slack, Discord, DagsHub
-
-프레임워크
-Flask, Streamlit, MLFlow, Tensorflow
-
-Version Control
-git, dvc
+### Tools:  
+<img height=25px src='./img/logos/github.svg' /> GitHub |
+<img height=25px src='./img/logos/notion.svg' /> Notion |
+<img height=25px src='./img/logos/slack.svg' /> Slack |
+<img height=25px src='./img/logos/discord.svg' /> Discord
+<!-- <img height=25px src='./img/logos/mysql.svg' /> Dagshub -->
