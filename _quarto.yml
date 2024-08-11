@@ -1,10 +1,26 @@
 project:
   type: website
   output-dir: docs
+  render:
+    - "*.qmd"
 
 website:
+  # meta data
   title: "Roberto Park"
-  page-navigation: true
+
+  # navigation
+  page-navigation: true # this is for the navigation in the bottom
+  back-to-top-navigation: true
+  
+  # footer
+  page-footer: 
+    left: "Copyright 2024, Roberto Park" 
+    right: 
+      - icon: github
+        href: https://github.com/betopark97
+        
+
+  # sidebar
   sidebar:
     style: "docked"
     search: true
@@ -12,9 +28,16 @@ website:
     tools: 
       - icon: github
         href: https://github.com/betopark97
+
+    # sidebar layout    
     contents:
+
+      # main page
       - text: Portfolio
         href: index.qmd
+      - text: "---"
+
+      # manual book
       - section: "Data Analysis Manual"
         contents: 
           - text: Preface
@@ -23,8 +46,15 @@ website:
             href: manual/chapter1.qmd
           - text: Chapter 2
             href: manual/chapter2.qmd
+      - text: "---"
+
+      # my projects
       - section: "Projects"
+      - text: "---"
+
+      # my blog
       - section: "Blog"
+      - text: "---"
 
 format:
   html:
