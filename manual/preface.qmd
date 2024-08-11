@@ -1,0 +1,21 @@
+---
+title: "Data Analysis Manual"
+---
+
+About this site
+
+Preface  
+
+[Introduction]  
+
+[Who is this for?]  
+
+[Where to start?]  
+
+[Welcome]  
+
+[Acknowledgements]  
+
+[References]  
+
+[Misc.]  

@@ -1,0 +1,63 @@
+---
+title: "Roberto Park"
+image: img/my/background.jpeg
+toc: false
+about:
+  template: trestles
+  links:
+    - text: Github
+      href: https://github.com/betopark97
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/keon-ung-park-077605270/
+    - text: Email
+      href: mailto:betopark97@gmail.com
+---
+
+# Data Analyst {.unnumbered}
+
+> "You can have data without information, but you cannot have information without data." - Daniel Keys Moran
+
+# Bio
+
+- 메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.
+- 데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.
+- Tableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.
+- 웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.
+- Front-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.
+
+# Education
+
+2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track (Bootcamp)
+
+2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University
+
+
+# Tech Stack
+
+Pandas, Numpy, Scikit-learn, Tensorflow, Tableau,
+
+<img height=25px src='https://img.shields.io/badge/Python-white?style=flat&logo=Python'>
+
+<img height=25px src='https://img.shields.io/badge/NumPy-black?style=flat&logo=NumPy'>
+
+<img height=25px src='https://img.shields.io/badge/Pandas-black?style=flat&logo=Pandas'>
+
+<img height=25px src='https://img.shields.io/badge/Jupyter-white?logo=Jupyter'>
+
+<img height=25px src='./img/logos/python.svg' />
+
+
+언어
+Python, SQL
+
+소프트웨어
+Excel, Powerpoint, Word, Tableau, PostgreSQL, MySQL
+
+툴
+Github, Notion, Slack, Discord, DagsHub
+
+프레임워크
+Flask, Streamlit, MLFlow, Tensorflow
+
+Version Control
+git, dvc

@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Roberto Park"
+  page-navigation: true
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    tools: 
+      - icon: github
+        href: https://github.com/betopark97
+    contents:
+      - text: Portfolio
+        href: index.qmd
+      - section: "Data Analysis Manual"
+        contents: 
+          - text: Preface
+            href: manual/preface.qmd
+          - text: Chapter 1
+            href: manual/chapter1.qmd
+          - text: Chapter 2
+            href: manual/chapter2.qmd
+      - section: "Projects"
+      - section: "Blog"
+
+format:
+  html:
+    theme:
+      light: cosmos
+      dark: slate
+    toc: true
+
+editor: visual
