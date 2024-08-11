@@ -51,7 +51,7 @@ about:
 ### Framework:  
 <img height=25px src='./img/logos/tensorflow.svg' /> Tensorflow |
 MLFlow |
-<img height=25px src='./img/logos/flask.svg' /> Flask |
+<img height=25px src='./img/logos/Flask.svg' /> Flask |
 Streamlit |
 
 ### Version Control:  
