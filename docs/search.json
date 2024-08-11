@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "Data Analyst\n\n“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\nBio\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\nEducation\n2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track (Bootcamp)\n2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University\n\n\nTech Stack\nPandas, Numpy, Scikit-learn, Tensorflow, Tableau,\n\n\n\n\n\n언어 Python, SQL\n소프트웨어 Excel, Powerpoint, Word, Tableau, PostgreSQL, MySQL\n툴 Github, Notion, Slack, Discord, DagsHub\n프레임워크 Flask, Streamlit, MLFlow, Tensorflow\nVersion Control git, dvc",
+    "text": "Data Analyst\n\n“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\nBio\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\nEducation\n2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track (Bootcamp)\n2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University\n\n\nTech Stack\nLanguages:\n Python |  SQL\nSoftware:\n Excel |  Tableau |  PostgreSQL |  MySQL\nTools:\n GitHub |  MySQL  MySQL  MySQL  MySQL Github, Notion, Slack, Discord, DagsHub\n프레임워크 Flask, Streamlit, MLFlow, Tensorflow\nVersion Control git, dvc\n\n\n\n Back to top",
     "crumbs": [
       "Portfolio"
     ]
@@ -74,25 +74,18 @@
     "href": "manual/chapter1.html",
     "title": "Project Setup",
     "section": "",
-    "text": "this is chapter 1",
+    "text": "this is chapter 1\n\n\n\n Back to top",
     "crumbs": [
       "Data Analysis Manual",
       "Chapter 1"
     ]
   },
   {
-    "objectID": "personal/notes.html",
-    "href": "personal/notes.html",
-    "title": "Roberto Park",
-    "section": "",
-    "text": "learn how to make icons\nlearn how to make different chapters\nlearn how to make project cards"
-  },
-  {
     "objectID": "manual/preface.html",
     "href": "manual/preface.html",
     "title": "Data Analysis Manual",
     "section": "",
-    "text": "About this site\nPreface\n[Introduction]\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]",
+    "text": "About this site\nPreface\n[Introduction]\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]\n\n\n\n Back to top",
     "crumbs": [
       "Data Analysis Manual",
       "Preface"
