@@ -23,7 +23,7 @@ website:
   sidebar:
     style: "docked"
     search: true
-    collapse-level: 1
+    collapse-level: 2
     tools: 
       - icon: github
         href: https://github.com/betopark97
@@ -33,18 +33,18 @@ website:
 
       # main page
       - text: Portfolio
-        href: index.qmd
+        href: src/index.qmd
       - text: "---"
 
       # manual book
       - section: "Data Analysis Manual"
         contents: 
           - text: Preface
-            href: manual/preface.qmd
-          - text: Chapter 1
-            href: manual/chapter1.qmd
-          - text: Chapter 2
-            href: manual/chapter2.qmd
+            href: src/manual/preface.qmd
+          - text: Project Setup
+            href: src/manual/chapter1.qmd
+          - text: Problem & Ideas
+            href: src/manual/chapter2.qmd
       - text: "---"
 
       # my projects
@@ -53,6 +53,10 @@ website:
 
       # my blog
       - section: "Blog"
+      - text: "---"
+
+      # my learning
+      - section: Study
       - text: "---"
 
 format:
