@@ -1,0 +1,71 @@
+---
+title: Roberto Park
+image: ../img/my/background.jpeg
+toc: false
+about:
+  template: trestles
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/betopark97
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/keon-ung-park-077605270/
+    - icon: envelope-at-fill
+      text: Email
+      href: mailto:betopark97@gmail.com
+---
+
+# Data Analyst {.unnumbered}
+
+> "You can have data without information, but you cannot have information without data." - Daniel Keys Moran
+
+## Bio
+
+- 메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.
+- 데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.
+- Tableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.
+- 웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.
+- Front-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.
+
+## Education
+
+<img height="35px" src="../img/logos/codeit.svg" />
+2024.07 ~ 2025.02 | 
+Codeit Sprint | 
+Data Analyst Track  
+
+<img height="45px" src="../img/logos/skku.png" />
+2016.03 ~ 2021.08 | 
+BA, Psychology | 
+Sungkyunkwan University  
+
+
+## Tech Stack
+### Languages:  
+<img height="25px" src="../img/logos/python.svg" /> Python | 
+<img height="25px" src="../img/logos/sql.svg" /> SQL  
+
+### Software:  
+<img height="25px" src="../img/logos/tableau.svg" /> Tableau | 
+<img height="25px" src="../img/logos/postgresql.svg" /> PostgreSQL | 
+<img height="25px" src="../img/logos/mysql.svg" /> MySQL | 
+<img height="25px" src="../img/logos/excel.svg" /> Excel 
+
+### Framework:  
+<img height="25px" src="../img/logos/tensorflow.svg" /> Tensorflow | 
+MLFlow | 
+<img height="25px" src="../img/logos/fastapi.svg" /> Fastapi |  
+<img height="25px" src="../img/logos/Flask.svg" /> Flask | 
+Streamlit |
+
+### Version Control:  
+<img height="25px" src="../img/logos/git.svg" /> Git |
+<img height="25px" src="../img/logos/dvc.svg" /> DVC
+
+### Tools:  
+<img height="25px" src="../img/logos/github.svg" /> GitHub |
+<img height="25px" src="../img/logos/notion.svg" /> Notion |
+<img height="25px" src="../img/logos/slack.svg" /> Slack |
+<img height="25px" src="../img/logos/discord.svg" /> Discord | 
+Dagshub
