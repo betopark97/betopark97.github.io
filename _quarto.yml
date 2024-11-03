@@ -67,5 +67,6 @@ format:
       light: cosmos
       dark: darkly
     toc: true
+    html-math-method: katex
 
 editor: visual
