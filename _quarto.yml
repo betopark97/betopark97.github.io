@@ -37,7 +37,7 @@ website:
       - text: "---"
 
       # manual book
-      - section: "Data Analysis Manual"
+      - section: Data Analysis Manual
         contents: 
           - text: Preface
             href: src/manual/preface.qmd
@@ -48,11 +48,13 @@ website:
       - text: "---"
 
       # my projects
-      - section: "Projects"
+      - section: Projects
+        contents:
+          - text: Charon Analysis
       - text: "---"
 
       # my blog
-      - section: "Blog"
+      - section: Blog
       - text: "---"
 
       # my learning
