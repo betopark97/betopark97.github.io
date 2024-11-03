@@ -1,61 +1,23 @@
 [
   {
+    "objectID": "manual/preface.html",
+    "href": "manual/preface.html",
+    "title": "Data Analysis Manual",
+    "section": "",
+    "text": "About this site\nPreface\n[Introduction]\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "Data Analyst\n\n“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\nBio\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\nEducation\n 2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track\n 2016.03 ~ 2021. 08 | BA, Psychology Sungkyunkwan University\n\n\nTech Stack\n\nLanguages:\n Python |  SQL\n\n\nSoftware:\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\nFramework:\n Tensorflow | MLFlow |  Flask | Streamlit |\n\n\nVersion Control:\n Git |  DVC\n\n\nTools:\n GitHub |  Notion |  Slack |  Discord \n\n\n\n\n Back to top",
+    "text": "Data Analyst\n\n“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\nBio\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\nEducation\n 2024.07 ~ 2025.02 | Codeit Sprint, Data Analyst Track\n 2016.03 ~ 2021.08 | BA, Psychology Sungkyunkwan University\n\n\nTech Stack\n\nLanguages:\n Python |  SQL\n\n\nSoftware:\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\nFramework:\n Tensorflow | MLFlow |  Flask | Streamlit |\n\n\nVersion Control:\n Git |  DVC\n\n\nTools:\n GitHub |  Notion |  Slack |  Discord | Dagshub\n\n\n\n\n Back to top",
     "crumbs": [
       "Portfolio"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Data Analysis Manual",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "book.html",
-    "href": "book.html",
-    "title": "Data Analysis Manual",
-    "section": "",
-    "text": "About this site\nPreface\n[Introduction]\n\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]",
-    "crumbs": [
-      "Data Analysis Manual"
-    ]
-  },
-  {
-    "objectID": "chapter1.html",
-    "href": "chapter1.html",
-    "title": "Roberto Park",
-    "section": "",
-    "text": "this is chapter 1",
-    "crumbs": [
-      "Data Analysis Manual",
-      "Chapter 1"
-    ]
-  },
-  {
-    "objectID": "chapter2.html",
-    "href": "chapter2.html",
-    "title": "Roberto Park",
-    "section": "",
-    "text": "this is chapter 2",
-    "crumbs": [
-      "Data Analysis Manual",
-      "Chapter 2"
-    ]
-  },
-  {
-    "objectID": "manual/book.html",
-    "href": "manual/book.html",
-    "title": "Data Analysis Manual",
-    "section": "",
-    "text": "About this site\nPreface\n[Introduction]\n\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]",
-    "crumbs": [
-      "Data Analysis Manual"
     ]
   },
   {
@@ -63,7 +25,7 @@
     "href": "manual/chapter2.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "this is chapter 2",
+    "text": "this is chapter 2\n\n\n\n Back to top",
     "crumbs": [
       "Data Analysis Manual",
       "Chapter 2"
@@ -81,14 +43,186 @@
     ]
   },
   {
-    "objectID": "manual/preface.html",
-    "href": "manual/preface.html",
-    "title": "Data Analysis Manual",
+    "objectID": "src/manual/preface.html",
+    "href": "src/manual/preface.html",
+    "title": "Preface",
     "section": "",
-    "text": "About this site\nPreface\n[Introduction]\n[Who is this for?]\n[Where to start?]\n[Welcome]\n[Acknowledgements]\n[References]\n[Misc.]\n\n\n\n Back to top",
+    "text": "The reason I decided to create this Data Analysis Manual is due to the sheer volume of information sources available today. While “data is the new oil,” the quality of this new oil can vary greatly, making it essential to discern credible methods from the noise. With so many perspectives on what constitutes the “industry standard” in data analysis, I took it upon myself to explore, study, and curate information from diverse sources. My goal is to build a customized framework for data analysis that aligns with my journey to becoming a data analyst—and, hopefully one day, an MLOps Engineer.",
     "crumbs": [
       "Data Analysis Manual",
       "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter2.html",
+    "href": "src/manual/chapter2.html",
+    "title": "Problems & Ideas",
+    "section": "",
+    "text": "Assess the problem\n\nsearch for trends\n\nthe market\ninterest of the majority\nconsider the colloquial wording\n\nis it aligned with the business objective?\n\ngoals of the project\nstakeholders and their requirements\noutline the scope and limitations\n\nunderstanding metrics\n\nwhat metrics do we care about?\n\ndefine north star metric & dimensions\n\ndefine and calculate each key metric\nidentify associated key dimensions\n\n\nwhat are their values and trends?\n\nreport, visualize, slice\n\nslice by time (seasonality)\nslice by dimensions (segmentation)\n\n\nwhat drives their movement?\n\nuncover drivers & relationships\n\ntranslate trends to observations\nreport values and findings\n\n\nwhat should we do about it?\n\nrecommend & communicate\n\ncraft a digestible narrative\ncommunicate and present results\n\n\n\nhow and what type of abstract data types will the model production handle?\n\nis the data from inside or from outside?\n\nwhat method to use?\n\nalgorithms\nstatistical methods\n\nhow should performance be measured?\n\ndependent variable\nindependent variables\n\nethics\n\nmake sure the AI or analysis is not discriminating\npreserve people’s security, privacy\nbe transparent as to the why’s\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Problem & Ideas"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html",
+    "href": "src/manual/chapter1.html",
+    "title": "Project Setup",
+    "section": "",
+    "text": "setup folder structure\n\ndata\nstatic / src\ntests\nmain.py\n\nconnect to github remote repository\n\nadd a readme.md\n\ntitle of the project\nexplanation\ninstallation guide\n\n\nsetup Docker\nmake a virtual environment\n\npython3 -m venv .venv\npip3 freeze &gt; requirements.txt pip3 install -r /path/to/requirements.txt\npip3 install\n\ndata management\n\ndvc\nos\ndotenv\n\npip3 install python-dotenv\nfrom dotenv import load_dotenv  load_dotenv()\n\n\nml workflow\n\nmlflow\n\ndata analysis\n\nnumpy, pandas, matplotlib, seaborn\nconsider ydata-profiling, adix, polars\n\nmachine learning\n\nsklearn, scipy, tensorflow, pytorch\n\nautomation of data mining\n\napache airflow\n\ndatabases\n\npsycopg2-binary\nsqlite3\n\n\n\npre-EDA configurations\n\ncode snippet\n# for korean plots\nimport koreanize_matplotlib\n\n# for plotting style\nplt.style.use('seaborn-v0_8-whitegrid')\n\n# to show all columns\npd.set_option('display.max_columns', None)\n\n# display the float format rounded to the seconds decimal place\npd.options.display.float_format = '{:,.2f}'.format\n\n# ignore all warnings\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# ignore specific warnings\nimport warnings\nwarnings.filterwarnings('ignore', category=DeprecationWarning)\n\n# ignore temporary warnings\nimport warnings\nwith warnings.catch_warnings():\n    # Code that may produce warnings\n    warnings.filterwarnings('ignore')\n\n\n%matplotlib inline\n!pip install --target=$my_path koreanize_matplotlib import koreanize_matplotlib → for Korean\nplt.style.use(['seaborn-whitegrid'])\npd.set_option('display.max_columns', None) → to show all columns\nencoding='EUC-KR / cp949'\npd.options.display.float_format = '{:,.2f}'.format\nto ignore warnings\n# ignore all warnings\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# ignore specific warnings\nimport warnings\nwarnings.filterwarnings('ignore', category=DeprecationWarning)\n\n# ignore temporary warnings\nimport warnings\nwith warnings.catch_warnings():\n    warnings.filterwarnings('ignore')\n    # Code that may produce warnings\n\ncreate a database\n\npsql -U postgres  CREATE DATABASE &lt;db_name&gt;;\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/index.html",
+    "href": "src/index.html",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\n\n 2024.07 ~ 2025.02 | Codeit Sprint | Data Analyst Track\n 2016.03 ~ 2021.08 | BA, Psychology | Sungkyunkwan University\n\n\n\n\n\n Python |  SQL\n\n\n\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\n\n Tensorflow | MLFlow |  Flask | Streamlit |\n\n\n\n Git |  DVC\n\n\n\n GitHub |  Notion |  Slack |  Discord | Dagshub",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#about-this-site",
+    "href": "src/manual/preface.html#about-this-site",
+    "title": "Data Analysis Manual",
+    "section": "",
+    "text": "The For the preface of a data analysis documentation book, here are some key elements to consider:\n\nPurpose and Motivation\n• Start with the “why.” Explain why you embarked on this project and what motivated you to write a documentation book specifically for data analysis. • Set the scope. Mention the importance of data analysis in today’s data-driven world, and describe how this book aims to empower readers to make sense of complex data for actionable insights.\nIntended Audience\n• Define your audience. Clarify who this book is for. You might want to cover a range of readers, from beginners to advanced data analysts or even decision-makers who need a high-level understanding. • Value for diverse backgrounds. If your book aims to be accessible to both technical and non-technical readers, mention how you’ve structured it to bridge different levels of experience.\nOverview of Content\n• Chapter breakdown. Briefly outline what each chapter or section covers, without going into too much detail. • Methodological approach. Describe the methodologies and tools covered in the book, highlighting any unique approaches, techniques, or frameworks you’ll be presenting.\nWhy This Book is Unique\n• What makes it special. Talk about what differentiates this book from others on data analysis. This could include a focus on practical applications, clarity of explanations, or the inclusion of cutting-edge data analysis techniques. • Real-world examples. If you’re incorporating case studies or real-world data sets, mention how these examples add value and relevancy to the reader’s learning experience.\nAcknowledgments and Inspirations\n• Credit and thank. Acknowledge any mentors, colleagues, or organizations that have inspired or contributed to the book’s development. • Inspirational touch. If appropriate, share personal insights or experiences that underline your journey in data analysis and the lessons you hope readers will take away.\n\nSample Opening Lines for Your Preface\n“Data is the new oil, they say. But like oil, data is only valuable when it’s refined, understood, and put to good use. This book is a guide to doing just that—helping you turn raw data into actionable insights and meaningful stories.”\n\n“In today’s world, understanding data is no longer an option—it’s a necessity. This book was born from the realization that many individuals, whether aspiring data scientists or seasoned professionals, struggle with transforming vast data into something clear and useful.”\nWould you like help expanding on any of these points, or assistance with another specific section?",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter2.html#assess-the-problem",
+    "href": "src/manual/chapter2.html#assess-the-problem",
+    "title": "Problems & Ideas",
+    "section": "",
+    "text": "Assess the problem\n\nsearch for trends\n\nthe market\ninterest of the majority\nconsider the colloquial wording\n\nis it aligned with the business objective?\n\ngoals of the project\nstakeholders and their requirements\noutline the scope and limitations\n\nunderstanding metrics\n\nwhat metrics do we care about?\n\ndefine north star metric & dimensions\n\ndefine and calculate each key metric\nidentify associated key dimensions\n\n\nwhat are their values and trends?\n\nreport, visualize, slice\n\nslice by time (seasonality)\nslice by dimensions (segmentation)\n\n\nwhat drives their movement?\n\nuncover drivers & relationships\n\ntranslate trends to observations\nreport values and findings\n\n\nwhat should we do about it?\n\nrecommend & communicate\n\ncraft a digestible narrative\ncommunicate and present results\n\n\n\nhow and what type of abstract data types will the model production handle?\n\nis the data from inside or from outside?\n\nwhat method to use?\n\nalgorithms\nstatistical methods\n\nhow should performance be measured?\n\ndependent variable\nindependent variables\n\nethics\n\nmake sure the AI or analysis is not discriminating\npreserve people’s security, privacy\nbe transparent as to the why’s",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Problem & Ideas"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#preface",
+    "href": "src/manual/preface.html#preface",
+    "title": "Data Analysis Manual",
+    "section": "",
+    "text": "The reason why I decided to make this Data Analysis Manual is because of the overload of information and data sources nowadays. In today’s data-driven world, data analysis is a useful tool. The problem that I encountered is that there are so many things that you can do with this data and people argue about the “industry standard” method of performing analysis. That is why I decided to study and collect information from different sources and create my own hyper tailored framework for performing data analysis.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nPurpose and Motivation\n• Start with the “why.” Explain why you embarked on this project and what motivated you to write a documentation book specifically for data analysis. • Set the scope. Mention the importance of data analysis in today’s data-driven world, and describe how this book aims to empower readers to make sense of complex data for actionable insights.\nIntended Audience\n• Define your audience. Clarify who this book is for. You might want to cover a range of readers, from beginners to advanced data analysts or even decision-makers who need a high-level understanding. • Value for diverse backgrounds. If your book aims to be accessible to both technical and non-technical readers, mention how you’ve structured it to bridge different levels of experience.\nOverview of Content\n• Chapter breakdown. Briefly outline what each chapter or section covers, without going into too much detail. • Methodological approach. Describe the methodologies and tools covered in the book, highlighting any unique approaches, techniques, or frameworks you’ll be presenting.\nWhy This Book is Unique\n• What makes it special. Talk about what differentiates this book from others on data analysis. This could include a focus on practical applications, clarity of explanations, or the inclusion of cutting-edge data analysis techniques. • Real-world examples. If you’re incorporating case studies or real-world data sets, mention how these examples add value and relevancy to the reader’s learning experience.\nAcknowledgments and Inspirations\n• Credit and thank. Acknowledge any mentors, colleagues, or organizations that have inspired or contributed to the book’s development. • Inspirational touch. If appropriate, share personal insights or experiences that underline your journey in data analysis and the lessons you hope readers will take away.\n\nSample Opening Lines for Your Preface\n“Data is the new oil, they say. But like oil, data is only valuable when it’s refined, understood, and put to good use. This book is a guide to doing just that—helping you turn raw data into actionable insights and meaningful stories.”\n\n“In today’s world, understanding data is no longer an option—it’s a necessity. This book was born from the realization that many individuals, whether aspiring data scientists or seasoned professionals, struggle with transforming vast data into something clear and useful.”\nWould you like help expanding on any of these points, or assistance with another specific section?",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#introduction",
+    "href": "src/manual/preface.html#introduction",
+    "title": "Preface",
+    "section": "",
+    "text": "The reason I decided to create this Data Analysis Manual is due to the sheer volume of information sources available today. While “data is the new oil,” the quality of this new oil can vary greatly, making it essential to discern credible methods from the noise. With so many perspectives on what constitutes the “industry standard” in data analysis, I took it upon myself to explore, study, and curate information from diverse sources. My goal is to build a customized framework for data analysis that aligns with my journey to becoming a data analyst—and, hopefully one day, an MLOps Engineer.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#who-is-this-for",
+    "href": "src/manual/preface.html#who-is-this-for",
+    "title": "Preface",
+    "section": "Who is this for?",
+    "text": "Who is this for?\nThis Data Analysis Manual is designed for anyone with a foundational knowledge of Python, statistics, marketing, or basic machine learning. Whether you’re a beginner stepping into data analysis, a marketer seeking data-driven insights, or someone with a tech background exploring analytical techniques, this guide provides a structured approach to build upon your existing skills. My goal is to offer a clear, practical resource that helps you cut through the noise, focus on quality methodologies, and develop a deeper understanding of the analytical process in a way that’s actionable and relevant to your work.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#where-to-start",
+    "href": "src/manual/preface.html#where-to-start",
+    "title": "Preface",
+    "section": "Where to start?",
+    "text": "Where to start?\nThis manual is designed to be flexible, allowing you to jump to sections that address your immediate needs. Each part is crafted with concise explanations, making it easy to get a quick grasp of specific topics. However, to fully understand the bigger picture of data analysis, I recommend going through all sections at least once. Doing so will provide a cohesive view of the framework, tying together concepts and methods that build upon each other. Feel free to start with the topics that resonate most, but keep in mind that every part contributes to the comprehensive understanding you’ll need to master the use of this manual.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#welcome",
+    "href": "src/manual/preface.html#welcome",
+    "title": "Preface",
+    "section": "Welcome",
+    "text": "Welcome\nI’m thrilled to share this Data Analysis Manual with you. My hope is that this guide not only serves as a valuable resource on your journey but also sparks inspiration to create your own tailored manual, one that reflects the unique insights and methods you find most essential. Feel free to adapt, extract, and build upon the knowledge here to make it truly yours. Together, let’s navigate the world of data analysis with clarity, curiosity, and a commitment to quality.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#acknowledgements",
+    "href": "src/manual/preface.html#acknowledgements",
+    "title": "Preface",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThere are some people I consider mentors along my journey who have shaped much of what I know today. It is not like they know me personally however, I hold deep respect for them and wish to share their contributions with you:\nDr. Angela Yu: Python\nDr. David J. Malan: Computer Science\nDr. Andrew Ng: Machine Learning\nKrista King: Math (Algebra, Linear Algebra, Calculus, Statistics)\nSal Khan: Math (Statistics)\nGrant Sanderson: Math (Statistics, Linear Algebra, Calculus)\nThese mentors have not only provided knowledge but have also instilled in me the confidence to pursue my goals in data analysis. I’m grateful for their guidance and hope to carry forward the lessons I’ve learned from each of them.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#references",
+    "href": "src/manual/preface.html#references",
+    "title": "Preface",
+    "section": "[References]",
+    "text": "[References]",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/manual/preface.html#misc.",
+    "href": "src/manual/preface.html#misc.",
+    "title": "Preface",
+    "section": "Misc.",
+    "text": "Misc.\nThe contents on this manual will be updated frequently so tune in.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "src/index.html#bio",
+    "href": "src/index.html#bio",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "src/index.html#education",
+    "href": "src/index.html#education",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "2024.07 ~ 2025.02 | Codeit Sprint | Data Analyst Track\n 2016.03 ~ 2021.08 | BA, Psychology | Sungkyunkwan University",
+    "crumbs": [
+      "Portfolio"
+    ]
+  },
+  {
+    "objectID": "src/index.html#tech-stack",
+    "href": "src/index.html#tech-stack",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "Python |  SQL\n\n\n\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\n\n Tensorflow | MLFlow |  Flask | Streamlit |\n\n\n\n Git |  DVC\n\n\n\n GitHub |  Notion |  Slack |  Discord | Dagshub",
+    "crumbs": [
+      "Portfolio"
     ]
   }
 ]
