@@ -41,16 +41,19 @@ website:
         contents: 
           - text: Preface
             href: src/manual/preface.qmd
-          - text: Project Setup
+          - text: 1. Project Setup
             href: src/manual/chapter1.qmd
-          - text: Problem & Ideas
+          - text: 2. Problem & Ideas
             href: src/manual/chapter2.qmd
       - text: "---"
 
       # my projects
       - section: Projects
         contents:
-          - text: Charon Analysis
+          - text: Gallery
+            href: src/projects/projects.qmd
+          - text: 1. Charon Analysis
+            href: src/projects/charon-analysis/final_deliverable.qmd
       - text: "---"
 
       # my blog
@@ -68,5 +71,7 @@ format:
       dark: darkly
     toc: true
     html-math-method: katex
+    grid:
+      body-width: 1000px
 
 editor: visual
