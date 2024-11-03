@@ -2,6 +2,7 @@
 title: Roberto Park
 image: ../img/my/background.jpeg
 toc: false
+page-layout: full
 about:
   template: trestles
   links:
