@@ -1,0 +1,97 @@
+---
+title: "Project Setup"
+---
+1. setup folder structure
+    1. data
+    2. static / src
+    3. tests
+    4. `main.py`
+2. connect to github remote repository
+    1. add a readme.md
+        1. title of the project
+        2. explanation
+        3. installation guide
+3. setup Docker
+4. make a virtual environment
+    1. `python3 -m venv .venv`
+    2. `pip3 freeze > requirements.txt`
+    `pip3 install -r /path/to/requirements.txt`
+    3. pip3 install 
+        1. data management
+            1. `dvc`
+            2. `os`
+            3. `dotenv`
+                1. `pip3 install python-dotenv`
+                2. `from dotenv import load_dotenv
+                load_dotenv()`
+        2. ml workflow
+            1. `mlflow`
+        3. data analysis
+            1. `numpy`, `pandas`, `matplotlib`, `seaborn`
+            2. consider `ydata-profiling`, `adix`, `polars`
+        4. machine learning
+            1. `sklearn`, `scipy`, `tensorflow`, `pytorch`
+        5. automation of data mining
+            1. `apache airflow`
+        6. databases
+            1. `psycopg2-binary`
+            2. `sqlite3`
+5. pre-EDA configurations
+    - code snippet
+        
+        ```python
+        # for korean plots
+        import koreanize_matplotlib
+        
+        # for plotting style
+        plt.style.use('seaborn-v0_8-whitegrid')
+        
+        # to show all columns
+        pd.set_option('display.max_columns', None)
+        
+        # display the float format rounded to the seconds decimal place
+        pd.options.display.float_format = '{:,.2f}'.format
+        
+        # ignore all warnings
+        import warnings
+        warnings.filterwarnings('ignore')
+        
+        # ignore specific warnings
+        import warnings
+        warnings.filterwarnings('ignore', category=DeprecationWarning)
+        
+        # ignore temporary warnings
+        import warnings
+        with warnings.catch_warnings():
+            # Code that may produce warnings
+            warnings.filterwarnings('ignore')
+        ```
+        
+    1. `%matplotlib inline`
+    2. `!pip install --target=$my_path koreanize_matplotlib`
+    `import koreanize_matplotlib` → for Korean
+    3. `plt.style.use(['seaborn-whitegrid'])`
+    4. `pd.set_option('display.max_columns', None)` → to show all columns
+    5. `encoding='EUC-KR / cp949'`
+    6. `pd.options.display.float_format = '{:,.2f}'.format`
+    7. to ignore warnings
+        
+        ```python
+        # ignore all warnings
+        import warnings
+        warnings.filterwarnings('ignore')
+        
+        # ignore specific warnings
+        import warnings
+        warnings.filterwarnings('ignore', category=DeprecationWarning)
+        
+        # ignore temporary warnings
+        import warnings
+        with warnings.catch_warnings():
+            warnings.filterwarnings('ignore')
+            # Code that may produce warnings
+        ```
+        
+6. create a database
+    1. `psql -U postgres
+    CREATE DATABASE <db_name>;`
