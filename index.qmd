@@ -36,7 +36,7 @@ about:
 Codeit Sprint | 
 Data Analyst Track  
 
-<img height="45px" src="./img/logos/skku.png" />
+<img height="35px" src="./img/logos/skku.svg" />
 2016.03 ~ 2021.08 | 
 BA, Psychology | 
 Sungkyunkwan University  
@@ -55,10 +55,10 @@ Sungkyunkwan University
 
 ### Framework:  
 <img height="25px" src="./img/logos/tensorflow.svg" /> Tensorflow | 
-MLFlow | 
+<img height="25px" src="./img/logos/mlflow.svg" /> MLFlow | 
 <img height="25px" src="./img/logos/fastapi.svg" /> Fastapi |  
 <img height="25px" src="./img/logos/Flask.svg" /> Flask | 
-Streamlit |
+<img width="25px" height="25px" src="./img/logos/streamlit.svg" /> Streamlit 
 
 ### Version Control:  
 <img height="25px" src="./img/logos/git.svg" /> Git |
@@ -69,4 +69,4 @@ Streamlit |
 <img height="25px" src="./img/logos/notion.svg" /> Notion |
 <img height="25px" src="./img/logos/slack.svg" /> Slack |
 <img height="25px" src="./img/logos/discord.svg" /> Discord | 
-Dagshub
+<img height="25px" src="./img/logos/dagshub.svg" /> Dagshub
