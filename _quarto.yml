@@ -4,6 +4,19 @@ project:
   render:
     - "*.qmd"
 
+format:
+  html:
+    theme:
+      light: cosmos
+      dark: darkly
+    toc: true
+    html-math-method: katex
+    # grid:
+    #   body-width: 1000px
+
+# visual studio code 
+editor: visual
+
 website:
   # meta data
   title: "Roberto Park"
@@ -11,17 +24,20 @@ website:
   # navigation
   page-navigation: true # this is for the navigation in the bottom
   back-to-top-navigation: true
-  
-  # footer
-  page-footer: 
-    left: "Copyright 2024, Roberto Park" 
-    right: 
-      - icon: github
-        href: https://github.com/betopark97
+
+  # # navbar
+  # navbar: 
+  #   background: light
+  #   search: true
+  #   left:
+  #     - text: "Home"
+  #       href: index.qmd
+  #     - talks.qmd
+  #     - about.qmd 
 
   # sidebar
   sidebar:
-    style: "docked"
+    # style: "docked"
     search: true
     collapse-level: 2
     tools: 
@@ -63,15 +79,10 @@ website:
       # my learning
       - section: Study
       - text: "---"
-
-format:
-  html:
-    theme:
-      light: cosmos
-      dark: darkly
-    toc: true
-    html-math-method: katex
-    # grid:
-      # body-width: 1000px
-
-editor: visual
+  
+  # footer
+  page-footer: 
+    left: "Copyright 2024, Roberto Park" 
+    right: 
+      - icon: github
+        href: https://github.com/betopark97
