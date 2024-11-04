@@ -33,7 +33,7 @@ website:
 
       # main page
       - text: Portfolio
-        href: src/index.qmd
+        href: index.qmd
       - text: "---"
 
       # manual book
@@ -71,7 +71,7 @@ format:
       dark: darkly
     toc: true
     html-math-method: katex
-    grid:
-      body-width: 1000px
+    # grid:
+      # body-width: 1000px
 
 editor: visual
