@@ -92,7 +92,7 @@
     "href": "src/manual/chapter1.html",
     "title": "Project Setup",
     "section": "",
-    "text": "setup folder structure\n\ndata\nstatic / src\ntests\nmain.py\n\nconnect to github remote repository\n\nadd a readme.md\n\ntitle of the project\nexplanation\ninstallation guide\n\n\nsetup Docker\nmake a virtual environment\n\npython3 -m venv .venv\npip3 freeze &gt; requirements.txt pip3 install -r /path/to/requirements.txt\npip3 install\n\ndata management\n\ndvc\nos\ndotenv\n\npip3 install python-dotenv\nfrom dotenv import load_dotenv  load_dotenv()\n\n\nml workflow\n\nmlflow\n\ndata analysis\n\nnumpy, pandas, matplotlib, seaborn\nconsider ydata-profiling, adix, polars\n\nmachine learning\n\nsklearn, scipy, tensorflow, pytorch\n\nautomation of data mining\n\napache airflow\n\ndatabases\n\npsycopg2-binary\nsqlite3\n\n\n\npre-EDA configurations\n\ncode snippet\n# for korean plots\nimport koreanize_matplotlib\n\n# for plotting style\nplt.style.use('seaborn-v0_8-whitegrid')\n\n# to show all columns\npd.set_option('display.max_columns', None)\n\n# display the float format rounded to the seconds decimal place\npd.options.display.float_format = '{:,.2f}'.format\n\n# ignore all warnings\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# ignore specific warnings\nimport warnings\nwarnings.filterwarnings('ignore', category=DeprecationWarning)\n\n# ignore temporary warnings\nimport warnings\nwith warnings.catch_warnings():\n    # Code that may produce warnings\n    warnings.filterwarnings('ignore')\n\n\n%matplotlib inline\n!pip install --target=$my_path koreanize_matplotlib import koreanize_matplotlib → for Korean\nplt.style.use(['seaborn-whitegrid'])\npd.set_option('display.max_columns', None) → to show all columns\nencoding='EUC-KR / cp949'\npd.options.display.float_format = '{:,.2f}'.format\nto ignore warnings\n# ignore all warnings\nimport warnings\nwarnings.filterwarnings('ignore')\n\n# ignore specific warnings\nimport warnings\nwarnings.filterwarnings('ignore', category=DeprecationWarning)\n\n# ignore temporary warnings\nimport warnings\nwith warnings.catch_warnings():\n    warnings.filterwarnings('ignore')\n    # Code that may produce warnings\n\ncreate a database\n\npsql -U postgres  CREATE DATABASE &lt;db_name&gt;;\n\n\n\n\n\n Back to top",
+    "text": "My own standardized project structure for data science projects.\n\nThis is personalized to my own comfort and may not be the best practice for organizing a project structure.\n\n\n\nStep 1: Clone the repository to your local environment.\ngit clone https://github.com/betopark97/cookiecutter-data-science.git\nStep 2: Check for existing remotes, if not initialize git or connect to your own repository in the next step.\ngit remote -v\nStep 3: Replace the existing origin (remote) with the following command (&lt;new_url&gt; is a placeholder for the repository where you want to push with this cookiecutter).\ngit remote set-url origin &lt;new_url&gt;\nStep 3-1 (optional): This step is instead of the previous step. It will remove an existing origin and add a new one.\ngit remote remove origin\ngit remote add origin &lt;new_url&gt;\nStep 4 (optional): This step is to erase the .gitkeep files in the empty directories. You may choose to keep them if you want to and skip this step.\npython remove_gitkeep.py\n\n\n\nAfter cloning this repository, the structure of the data science project should look like the following:\n\nThe tree below comes with an explanation of the use case of each of the subdirectories and files.\n\n├── LICENSE                 -&gt; MIT License (mine)\n├── README.md               -&gt; Explanation of Project\n├── data                    -&gt; Data for Project\n│   ├── external            -&gt; Data from third party sources\n│   ├── interim             -&gt; Intermediate data that has been transformed\n│   ├── processed           -&gt; Final dataset for modeling\n│   └── raw                 -&gt; Original, immutable dataset\n├── databases               -&gt; Connection to databases, or store databases\n├── misc                    -&gt; Any miscellaneous files\n├── models                  -&gt; Trained, serialized models\n├── notebooks               -&gt; Jupyter notebooks\n├── references              -&gt; Data catalogue, manuals or materials\n├── remove_gitkeep.py       -&gt; Python file to remove .gitkeep files from directory\n├── reports                 -&gt; Final deliverable of the project\n│   └── figures             -&gt; Visual aids (plots, graphs) for the final deliverable\n├── requirements.txt        -&gt; Requirements to reproduce the packages necessary for the project\n├── src                     -&gt; Source code for the project\n│   └── utils               -&gt; Utilities for project source code\n└── tests                   -&gt; Tests for different features of the project\n\n\n\nYou can check this repository at Roberto’s Cookiecutter Data Science.\nIt will be frequently updated.",
     "crumbs": [
       "Data Analysis Manual",
       "1. Project Setup"
@@ -223,6 +223,237 @@
     "text": "Python |  SQL\n\n\n\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\n\n Tensorflow |  MLFlow |  Fastapi |\n Flask |  Streamlit\n\n\n\n Git |  DVC\n\n\n\n GitHub |  Notion |  Slack |  Discord |  Dagshub",
     "crumbs": [
       "Portfolio"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#setting-up-the-project-directory-structure",
+    "href": "src/manual/chapter1.html#setting-up-the-project-directory-structure",
+    "title": "Project Setup",
+    "section": "",
+    "text": "The project directory that I tailored for myself looks like:\n├── LICENSE                 -&gt; MIT License (mine)\n├── README.md               -&gt; Explanation of Project\n├── data                    -&gt; Data for Project\n│   ├── external            -&gt; Data from third party sources\n│   ├── interim             -&gt; Intermediate data that has been transformed\n│   ├── processed           -&gt; Final dataset for modeling\n│   └── raw                 -&gt; Original, immutable dataset\n├── databases               -&gt; Connection to databases, or store databases\n├── misc                    -&gt; Any miscellaneous files\n├── models                  -&gt; Trained, serialized models\n├── notebooks               -&gt; Jupyter notebooks\n├── references              -&gt; Data catalogue, manuals or materials\n├── remove_gitkeep.py       -&gt; Python file to remove .gitkeep files from directory\n├── reports                 -&gt; Final deliverable of the project\n│   └── figures             -&gt; Visual aids (plots, graphs) for the final deliverable\n├── requirements.txt        -&gt; Requirements to reproduce the packages necessary for the project\n├── src                     -&gt; Source code for the project\n│   └── utils               -&gt; Utilities for project source code\n└── tests                   -&gt; Tests for different features of the project\nThe above data science project directory structure cookiecutter is in my github repo at:\nhttps://github.com/betopark97/cookiecutter-data-science\nRead the README.md file of the repository to get the same project directory structure. 1. data 2. static / src 3. tests 4. main.py 2. connect to github remote repository 1. add a readme.md 1. title of the project 2. explanation 3. installation guide 3. setup Docker 4. make a virtual environment 1. python3 -m venv .venv 2. pip3 freeze &gt; requirements.txt pip3 install -r /path/to/requirements.txt 3. pip3 install 1. data management 1. dvc 2. os 3. dotenv 1. pip3 install python-dotenv 2. from dotenv import load_dotenv                 load_dotenv() 2. ml workflow 1. mlflow 3. data analysis 1. numpy, pandas, matplotlib, seaborn 2. consider ydata-profiling, adix, polars 4. machine learning 1. sklearn, scipy, tensorflow, pytorch 5. automation of data mining 1. apache airflow 6. databases 1. psycopg2-binary 2. sqlite3 5. pre-EDA configurations - code snippet\n    ```python\n    # for korean plots\n    import koreanize_matplotlib\n    \n    # for plotting style\n    plt.style.use('seaborn-v0_8-whitegrid')\n    \n    # to show all columns\n    pd.set_option('display.max_columns', None)\n    \n    # display the float format rounded to the seconds decimal place\n    pd.options.display.float_format = '{:,.2f}'.format\n    \n    # ignore all warnings\n    import warnings\n    warnings.filterwarnings('ignore')\n    \n    # ignore specific warnings\n    import warnings\n    warnings.filterwarnings('ignore', category=DeprecationWarning)\n    \n    # ignore temporary warnings\n    import warnings\n    with warnings.catch_warnings():\n        # Code that may produce warnings\n        warnings.filterwarnings('ignore')\n    ```\n    \n1. `%matplotlib inline`\n2. `!pip install --target=$my_path koreanize_matplotlib`\n`import koreanize_matplotlib` → for Korean\n3. `plt.style.use(['seaborn-whitegrid'])`\n4. `pd.set_option('display.max_columns', None)` → to show all columns\n5. `encoding='EUC-KR / cp949'`\n6. `pd.options.display.float_format = '{:,.2f}'.format`\n7. to ignore warnings\n    \n    ```python\n    # ignore all warnings\n    import warnings\n    warnings.filterwarnings('ignore')\n    \n    # ignore specific warnings\n    import warnings\n    warnings.filterwarnings('ignore', category=DeprecationWarning)\n    \n    # ignore temporary warnings\n    import warnings\n    with warnings.catch_warnings():\n        warnings.filterwarnings('ignore')\n        # Code that may produce warnings\n    ```\n    \n\ncreate a database\n\npsql -U postgres  CREATE DATABASE &lt;db_name&gt;;",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#installation-setup",
+    "href": "src/manual/chapter1.html#installation-setup",
+    "title": "Project Setup",
+    "section": "",
+    "text": "Step 1: Clone the repository to your local environment.\ngit clone https://github.com/betopark97/cookiecutter-data-science.git\nStep 2: Check for existing remotes, if not initialize git or connect to your own repository in the next step.\ngit remote -v\nStep 3: Replace the existing origin (remote) with the following command (&lt;new_url&gt; is a placeholder for the repository where you want to push with this cookiecutter).\ngit remote set-url origin &lt;new_url&gt;\nStep 3-1 (optional): This step is instead of the previous step. It will remove an existing origin and add a new one.\ngit remote remove origin\ngit remote add origin &lt;new_url&gt;\nStep 4 (optional): This step is to erase the .gitkeep files in the empty directories. You may choose to keep them if you want to and skip this step.\npython remove_gitkeep.py",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#project-structure",
+    "href": "src/manual/chapter1.html#project-structure",
+    "title": "Project Setup",
+    "section": "",
+    "text": "After cloning this repository, the structure of the data science project should look like the following:\n\nThe tree below comes with an explanation of the use case of each of the subdirectories and files.\n\n├── LICENSE                 -&gt; MIT License (mine)\n├── README.md               -&gt; Explanation of Project\n├── data                    -&gt; Data for Project\n│   ├── external            -&gt; Data from third party sources\n│   ├── interim             -&gt; Intermediate data that has been transformed\n│   ├── processed           -&gt; Final dataset for modeling\n│   └── raw                 -&gt; Original, immutable dataset\n├── databases               -&gt; Connection to databases, or store databases\n├── misc                    -&gt; Any miscellaneous files\n├── models                  -&gt; Trained, serialized models\n├── notebooks               -&gt; Jupyter notebooks\n├── references              -&gt; Data catalogue, manuals or materials\n├── remove_gitkeep.py       -&gt; Python file to remove .gitkeep files from directory\n├── reports                 -&gt; Final deliverable of the project\n│   └── figures             -&gt; Visual aids (plots, graphs) for the final deliverable\n├── requirements.txt        -&gt; Requirements to reproduce the packages necessary for the project\n├── src                     -&gt; Source code for the project\n│   └── utils               -&gt; Utilities for project source code\n└── tests                   -&gt; Tests for different features of the project",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#final-words",
+    "href": "src/manual/chapter1.html#final-words",
+    "title": "Project Setup",
+    "section": "Final Words",
+    "text": "Final Words\nThis project will be updated frequently. The structure in this cookiecutter is mostly for static projects, so keep that in mind and use it accordingly.\nFuture updates: 1. Apply CRISP-DM structure to notebooks. 2. Apply a framework for the src (source) code. 3. Apply specific tools to be used along with the cookiecutter. 4. Apply a Workflow example with the tools used for a data science project. 5. Update the usage instructions for better productivity.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#misc.",
+    "href": "src/manual/chapter1.html#misc.",
+    "title": "Project Setup",
+    "section": "",
+    "text": "You can check this repository at Roberto’s Cookiecutter Data Science.\nIt will be frequently updated.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#title-of-the-project",
+    "href": "src/manual/chapter1.html#title-of-the-project",
+    "title": "Project Setup",
+    "section": "Title of the Project",
+    "text": "Title of the Project\n\nPurpose: clearly state the project name\nTips: Use a large heading (# Project Name) so it stands out. Consider including a short tagline that summarizes the project in one line.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#brief-description",
+    "href": "src/manual/chapter1.html#brief-description",
+    "title": "Project Setup",
+    "section": "Brief description",
+    "text": "Brief description\n\nPurpose: Provide a concise summary of what the project does, its purpose (the why), and the problem it solves.\nTips:\n\nUse 1-3 sentences to capture attention and set context.\nOptionally, include a badge section right below with things like build status, license type, or coverage.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#table-of-contents",
+    "href": "src/manual/chapter1.html#table-of-contents",
+    "title": "Project Setup",
+    "section": "Table of Contents",
+    "text": "Table of Contents\n\nPurpose: Helps users navigate the README easily, especially in larger documents.\nTips:\n\nList each main section as a link (using markdown [Section] (#section) format).\nPlace it right after the description for quick access.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#installation-guide",
+    "href": "src/manual/chapter1.html#installation-guide",
+    "title": "Project Setup",
+    "section": "Installation guide",
+    "text": "Installation guide\n\nPurpose: Guide users through the steps required to install and set up the project.\nTips:\n\nBreak down instructions for different environments (Linux, macOS, Windows).\nInclude any prerequisites (e.g., Python version, libraries).\nUse code blocks to show command-line instructions.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#usage-instructions",
+    "href": "src/manual/chapter1.html#usage-instructions",
+    "title": "Project Setup",
+    "section": "Usage Instructions",
+    "text": "Usage Instructions\n\nPurpose: Explain how to use the project, including common commands or steps.\nTips:\n\nProvide example commands, sample inputs, and expected outputs.\nInclude any configuration options or environment variables.\nIf it’s a web application, describe how to start the server and access it.\nOptionally, add code snippets that demonstrate functionality.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#license-information",
+    "href": "src/manual/chapter1.html#license-information",
+    "title": "Project Setup",
+    "section": "License Information",
+    "text": "License Information\n\nPurpose: Clearly specify the licensing terms.\nTips:\n\nIndicate the type of license (e.g., MIT, Apache 2.0) and add a link to the full license file (e.g., LICENSE).",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#acknowledgements",
+    "href": "src/manual/chapter1.html#acknowledgements",
+    "title": "Project Setup",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\n\nPurpose: Credit people, organizations, or libraries that contributed to or inspired the project.\nTips:\n\nAcknowledge any collaborators, mentors, or open-source libraries used.\nMention specific contributors if they’re significant.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#example-screenshots",
+    "href": "src/manual/chapter1.html#example-screenshots",
+    "title": "Project Setup",
+    "section": "Example Screenshots",
+    "text": "Example Screenshots\n\nPurpose: Visually demonstrate the project in action.\nTips:\n\nInclude images or GIFs showing the main features and user interface.\nUse descriptive captions for each screenshot.\nMarkdown for images:\n\n\n# markdown\n![Screenshot of feature](images/feature-screenshot.png)\n\n# html\n&lt;img height=200px src=\"images/feature-screenshot.png\" /&gt;",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#references",
+    "href": "src/manual/chapter1.html#references",
+    "title": "Project Setup",
+    "section": "References",
+    "text": "References\n\nPurpose: List any resources, articles, or documentation that influenced or supported the project.\nTips:\n\nInclude relevant links to documentation, tutorials, or other related projects.\nUse bullet points to list each reference.",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#contact",
+    "href": "src/manual/chapter1.html#contact",
+    "title": "Project Setup",
+    "section": "Contact",
+    "text": "Contact\n\nPurpose: Provide ways to reach out for questions, issues, or feedback.\nTIps:\n\nInclude a professional email or link to your social media/LinkedIn profile.\nYou might add a note encouraging users to submit GitHub issues for bugs or feature requests.\n\nMaintained by [Roberto Park](mailto:betopark97@gmail.com).",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#first-make-an-environment",
+    "href": "src/manual/chapter1.html#first-make-an-environment",
+    "title": "Project Setup",
+    "section": "First make an environment",
+    "text": "First make an environment\npython3 -m venv .venv\nsource .venv/bin/activate",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#install-libraries",
+    "href": "src/manual/chapter1.html#install-libraries",
+    "title": "Project Setup",
+    "section": "Install Libraries",
+    "text": "Install Libraries\n\nData Management\n\npip3 install python-dotenv dvc\n\nData Analysis\n\npip3 install numpy pandas matplotlib seaborn\n\nMachine Learning\n\npip3 install mlflow sklearn tensorflow pytorch\n\nDatabases\n\npip3 install psycopg2-binay sqlalchemy duckdb",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#import-libraries",
+    "href": "src/manual/chapter1.html#import-libraries",
+    "title": "Project Setup",
+    "section": "Import Libraries",
+    "text": "Import Libraries\n# Operation System\nimport os\nimport pathlib\nfrom dotenv import load_dotenv\n\n# Database\nimport duckdb\nimport psycopg2\nimport sqlalchemy\n\n# Data Analysis\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\n# Statistics (inferential)\nimport scipy\n\n# Machine Learning\nimport mlflow\nimport sklearn\nimport tensorflow\nimport pytorch\n\n# Load .env variables\nload_dotenv()",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#document-dependencies",
+    "href": "src/manual/chapter1.html#document-dependencies",
+    "title": "Project Setup",
+    "section": "Document Dependencies",
+    "text": "Document Dependencies\n\nMake requirements file\n\npip3 freeze &gt; requirements.txt\npip3 install -r requirements.txt\n\nManage a configuration file (RYE, UV, Poetry) # Misc.\nCheck environment\n\nwhich pip3\nwhich python3\npip3 show\n\nManaging configurations with .ini or .cfg files\n\n# ini\n[Database]\nhost = localhost\nport = 5432\nuser = admin\n\n# json\n{\n    \"Database\": {\n        \"host\": \"localhost\",\n        \"port\": 5432,\n        \"user\": \"admin\"\n    }\n}\n\n# yaml\nDatabase:\n  host: localhost\n  port: 5432\n  user: admin\n\n# \n\nIn python parsing\n\n# INI\nimport configparser\n\ndef load_config(file_path):\n    config = configparser.ConfigParser()\n    config.read(file_path)\n    return config\n\n# JSON\nimport json\n\ndef load_config(file_path):\n    with open(file_path, 'r') as f:\n        config = json.load(f)\n    return config\n\n# YAML\npip install pyyaml\n\nimport yaml\n\ndef load_config(file_path):\n    with open(file_path, 'r') as f:\n        config = yaml.safe_load(f)\n    return config\n\n\n# Example usage\nconfig = load_config('config.cfg')\nhost = config['Database']['host']\nport = config['Database']['port']\nuser = config['Database']['user']\n\nprint(f\"Host: {host}, Port: {port}, User: {user}\")",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#change-upstream-repository",
+    "href": "src/manual/chapter1.html#change-upstream-repository",
+    "title": "Project Setup",
+    "section": "Change Upstream Repository",
+    "text": "Change Upstream Repository\n\nCheck your current remote:\n\ngit remote -v\n\nRemove the current remote:\n\ngit remote remove origin\n\nAdd a new remote:\n\ngit remote add origin &lt;new_repository_url&gt;\n\nVerify the new remote:\n\ngit remote -v\n\nPush your changes to the new remote\n\ngit push -u origin main",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
+    ]
+  },
+  {
+    "objectID": "src/manual/chapter1.html#connect-to-postgresql",
+    "href": "src/manual/chapter1.html#connect-to-postgresql",
+    "title": "Project Setup",
+    "section": "Connect to PostgreSQL",
+    "text": "Connect to PostgreSQL\n\nMake connection\n\npsql -U postgres\n\nCheck for Databases\n\n\\l\n\nCreate a Database\n\nCREATE DATABASE &lt;db_name&gt;;\n\nConnect to a Database\n\n\\c &lt;db_name&gt;\n\nList all tables\n\n\\dt\n\nCheck a table schema\n\n\\d &lt;table_name&gt;",
+    "crumbs": [
+      "Data Analysis Manual",
+      "1. Project Setup"
     ]
   }
 ]

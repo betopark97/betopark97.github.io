@@ -222,8 +222,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#robertos-cookiecutter-data-science" id="toc-robertos-cookiecutter-data-science" class="nav-link active" data-scroll-target="#robertos-cookiecutter-data-science">Roberto’s Cookiecutter Data Science</a>
+  <ul class="collapse">
+  <li><a href="#installation-setup" id="toc-installation-setup" class="nav-link" data-scroll-target="#installation-setup">Installation &amp; Setup</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project Structure</a></li>
+  <li><a href="#misc." id="toc-misc." class="nav-link" data-scroll-target="#misc.">Misc.</a></li>
+  </ul></li>
+  <li><a href="#connect-a-github-repository" id="toc-connect-a-github-repository" class="nav-link" data-scroll-target="#connect-a-github-repository">Connect a Github Repository</a>
+  <ul class="collapse">
+  <li><a href="#change-upstream-repository" id="toc-change-upstream-repository" class="nav-link" data-scroll-target="#change-upstream-repository">Change Upstream Repository</a></li>
+  </ul></li>
+  <li><a href="#add-a-readme.md-file" id="toc-add-a-readme.md-file" class="nav-link" data-scroll-target="#add-a-readme.md-file">Add a README.md File</a>
+  <ul class="collapse">
+  <li><a href="#title-of-the-project" id="toc-title-of-the-project" class="nav-link" data-scroll-target="#title-of-the-project">Title of the Project</a></li>
+  <li><a href="#brief-description" id="toc-brief-description" class="nav-link" data-scroll-target="#brief-description">Brief description</a></li>
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#installation-guide" id="toc-installation-guide" class="nav-link" data-scroll-target="#installation-guide">Installation guide</a></li>
+  <li><a href="#usage-instructions" id="toc-usage-instructions" class="nav-link" data-scroll-target="#usage-instructions">Usage Instructions</a></li>
+  <li><a href="#license-information" id="toc-license-information" class="nav-link" data-scroll-target="#license-information">License Information</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#example-screenshots" id="toc-example-screenshots" class="nav-link" data-scroll-target="#example-screenshots">Example Screenshots</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
+  </ul></li>
+  <li><a href="#virtual-environment" id="toc-virtual-environment" class="nav-link" data-scroll-target="#virtual-environment">Virtual Environment</a>
+  <ul class="collapse">
+  <li><a href="#first-make-an-environment" id="toc-first-make-an-environment" class="nav-link" data-scroll-target="#first-make-an-environment">First make an environment</a></li>
+  <li><a href="#install-libraries" id="toc-install-libraries" class="nav-link" data-scroll-target="#install-libraries">Install Libraries</a></li>
+  <li><a href="#import-libraries" id="toc-import-libraries" class="nav-link" data-scroll-target="#import-libraries">Import Libraries</a></li>
+  <li><a href="#document-dependencies" id="toc-document-dependencies" class="nav-link" data-scroll-target="#document-dependencies">Document Dependencies</a></li>
+  </ul></li>
+  <li><a href="#postgresql-via-psql" id="toc-postgresql-via-psql" class="nav-link" data-scroll-target="#postgresql-via-psql">PostgreSQL via psql</a>
+  <ul class="collapse">
+  <li><a href="#connect-to-postgresql" id="toc-connect-to-postgresql" class="nav-link" data-scroll-target="#connect-to-postgresql">Connect to PostgreSQL</a></li>
+  </ul></li>
+  <li><a href="#setup-docker-optional" id="toc-setup-docker-optional" class="nav-link" data-scroll-target="#setup-docker-optional">Setup Docker (Optional)</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -247,122 +287,378 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="robertos-cookiecutter-data-science" class="level1">
+<h1>Roberto’s Cookiecutter Data Science</h1>
+<p><em>My own standardized project structure for data science projects.</em></p>
+<blockquote class="blockquote">
+<p>This is personalized to my own comfort and may not be the best practice for organizing a project structure.</p>
+</blockquote>
+<section id="installation-setup" class="level2">
+<h2 class="anchored" data-anchor-id="installation-setup">Installation &amp; Setup</h2>
+<p><strong>Step 1</strong>: Clone the repository to your local environment.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/betopark97/cookiecutter-data-science.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 2</strong>: Check for existing remotes, if not initialize git or connect to your own repository in the next step.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 3</strong>: Replace the existing origin (remote) with the following command (<code>&lt;new_url&gt;</code> is a placeholder for the repository where you want to push with this cookiecutter).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote set-url origin <span class="op">&lt;</span>new_url<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 3-1 (optional)</strong>: This step is instead of the previous step. It will remove an existing origin and add a new one.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote remove origin</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin <span class="op">&lt;</span>new_url<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Step 4 (optional)</strong>: This step is to erase the .gitkeep files in the empty directories. You may choose to keep them if you want to and skip this step.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> remove_gitkeep.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project Structure</h2>
+<p>After cloning this repository, the structure of the data science project should look like the following:</p>
+<blockquote class="blockquote">
+<p>The tree below comes with an explanation of the use case of each of the subdirectories and files.</p>
+</blockquote>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> LICENSE                 <span class="at">-</span><span class="op">&gt;</span> MIT License <span class="er">(</span><span class="ex">mine</span><span class="kw">)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md               <span class="at">-</span><span class="op">&gt;</span> Explanation of Project</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data                    <span class="at">-</span><span class="op">&gt;</span> Data for Project</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── external            <span class="at">-</span><span class="op">&gt;</span> Data from third party sources</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── interim             <span class="at">-</span><span class="op">&gt;</span> Intermediate data that has been transformed</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── processed           <span class="at">-</span><span class="op">&gt;</span> Final dataset for modeling</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── raw                 <span class="at">-</span><span class="op">&gt;</span> Original, immutable dataset</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> databases               <span class="at">-</span><span class="op">&gt;</span> Connection to databases, or store databases</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> misc                    <span class="at">-</span><span class="op">&gt;</span> Any miscellaneous files</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> models                  <span class="at">-</span><span class="op">&gt;</span> Trained, serialized models</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> notebooks               <span class="at">-</span><span class="op">&gt;</span> Jupyter notebooks</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> references              <span class="at">-</span><span class="op">&gt;</span> Data catalogue, manuals or materials</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> remove_gitkeep.py       <span class="at">-</span><span class="op">&gt;</span> Python file to remove .gitkeep files from directory</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> reports                 <span class="at">-</span><span class="op">&gt;</span> Final deliverable of the project</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── figures             <span class="at">-</span><span class="op">&gt;</span> Visual aids <span class="er">(</span><span class="ex">plots,</span> graphs<span class="kw">)</span> <span class="cf">for</span> the <span class="ex">final</span> deliverable</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> requirements.txt        <span class="at">-</span><span class="op">&gt;</span> Requirements to reproduce the packages necessary for the project</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> src                     <span class="at">-</span><span class="op">&gt;</span> Source code for the project</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── utils               <span class="at">-</span><span class="op">&gt;</span> Utilities for project source code</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> tests                   <span class="at">-</span><span class="op">&gt;</span> Tests for different features of the project</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="misc." class="level2">
+<h2 class="anchored" data-anchor-id="misc.">Misc.</h2>
+<p>You can check this repository at <a href="https://github.com/betopark97/cookiecutter-data-science">Roberto’s Cookiecutter Data Science</a>.</p>
+<p>It will be frequently updated.</p>
+<hr>
+</section>
+</section>
+<section id="connect-a-github-repository" class="level1">
+<h1>Connect a Github Repository</h1>
+<section id="change-upstream-repository" class="level2">
+<h2 class="anchored" data-anchor-id="change-upstream-repository">Change Upstream Repository</h2>
 <ol type="1">
-<li>setup folder structure
-<ol type="1">
-<li>data</li>
-<li>static / src</li>
-<li>tests</li>
-<li><code>main.py</code></li>
-</ol></li>
-<li>connect to github remote repository
-<ol type="1">
-<li>add a readme.md
-<ol type="1">
-<li>title of the project</li>
-<li>explanation</li>
-<li>installation guide</li>
-</ol></li>
-</ol></li>
-<li>setup Docker</li>
-<li>make a virtual environment
-<ol type="1">
-<li><code>python3 -m venv .venv</code></li>
-<li><code>pip3 freeze &gt; requirements.txt</code> <code>pip3 install -r /path/to/requirements.txt</code></li>
-<li>pip3 install
-<ol type="1">
-<li>data management
-<ol type="1">
-<li><code>dvc</code></li>
-<li><code>os</code></li>
-<li><code>dotenv</code>
-<ol type="1">
-<li><code>pip3 install python-dotenv</code></li>
-<li><code>from dotenv import load_dotenv  load_dotenv()</code></li>
-</ol></li>
-</ol></li>
-<li>ml workflow
-<ol type="1">
-<li><code>mlflow</code></li>
-</ol></li>
-<li>data analysis
-<ol type="1">
-<li><code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>seaborn</code></li>
-<li>consider <code>ydata-profiling</code>, <code>adix</code>, <code>polars</code></li>
-</ol></li>
-<li>machine learning
-<ol type="1">
-<li><code>sklearn</code>, <code>scipy</code>, <code>tensorflow</code>, <code>pytorch</code></li>
-</ol></li>
-<li>automation of data mining
-<ol type="1">
-<li><code>apache airflow</code></li>
-</ol></li>
-<li>databases
-<ol type="1">
-<li><code>psycopg2-binary</code></li>
-<li><code>sqlite3</code></li>
-</ol></li>
-</ol></li>
-</ol></li>
-<li>pre-EDA configurations
-<ul>
-<li><p>code snippet</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># for korean plots</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> koreanize_matplotlib</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># for plotting style</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>plt.style.use(<span class="st">'seaborn-v0_8-whitegrid'</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># to show all columns</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>pd.set_option(<span class="st">'display.max_columns'</span>, <span class="va">None</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># display the float format rounded to the seconds decimal place</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>pd.options.display.float_format <span class="op">=</span> <span class="st">'</span><span class="sc">{:,.2f}</span><span class="st">'</span>.<span class="bu">format</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore all warnings</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore specific warnings</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">DeprecationWarning</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore temporary warnings</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code that may produce warnings</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ul>
-<ol type="1">
-<li><p><code>%matplotlib inline</code></p></li>
-<li><p><code>!pip install --target=$my_path koreanize_matplotlib</code> <code>import koreanize_matplotlib</code> → for Korean</p></li>
-<li><p><code>plt.style.use(['seaborn-whitegrid'])</code></p></li>
-<li><p><code>pd.set_option('display.max_columns', None)</code> → to show all columns</p></li>
-<li><p><code>encoding='EUC-KR / cp949'</code></p></li>
-<li><p><code>pd.options.display.float_format = '{:,.2f}'.format</code></p></li>
-<li><p>to ignore warnings</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore all warnings</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore specific warnings</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">DeprecationWarning</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ignore temporary warnings</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> warnings.catch_warnings():</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Code that may produce warnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
-</ol></li>
-<li>create a database
-<ol type="1">
-<li><code>psql -U postgres  CREATE DATABASE &lt;db_name&gt;;</code></li>
-</ol></li>
+<li>Check your current remote:</li>
 </ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Remove the current remote:</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote remove origin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Add a new remote:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin <span class="op">&lt;</span>new_repository_url<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Verify the new remote:</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote <span class="at">-v</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Push your changes to the new remote</li>
+</ol>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="add-a-readme.md-file" class="level1">
+<h1>Add a README.md File</h1>
+<blockquote class="blockquote">
+<p>The information below is not in specific order and some sections may be optional.</p>
+</blockquote>
+<section id="title-of-the-project" class="level2">
+<h2 class="anchored" data-anchor-id="title-of-the-project">Title of the Project</h2>
+<ul>
+<li>Purpose: clearly state the project name</li>
+<li>Tips: Use a large heading (# Project Name) so it stands out. Consider including a short tagline that summarizes the project in one line.</li>
+</ul>
+</section>
+<section id="brief-description" class="level2">
+<h2 class="anchored" data-anchor-id="brief-description">Brief description</h2>
+<ul>
+<li>Purpose: Provide a concise summary of what the project does, its purpose (the why), and the problem it solves.</li>
+<li>Tips:
+<ul>
+<li>Use 1-3 sentences to capture attention and set context.</li>
+<li>Optionally, include a badge section right below with things like build status, license type, or coverage.</li>
+</ul></li>
+</ul>
+</section>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ul>
+<li>Purpose: Helps users navigate the README easily, especially in larger documents.</li>
+<li>Tips:
+<ul>
+<li>List each main section as a link (using markdown [Section] (#section) format).</li>
+<li>Place it right after the description for quick access.</li>
+</ul></li>
+</ul>
+</section>
+<section id="installation-guide" class="level2">
+<h2 class="anchored" data-anchor-id="installation-guide">Installation guide</h2>
+<ul>
+<li>Purpose: Guide users through the steps required to install and set up the project.</li>
+<li>Tips:
+<ul>
+<li>Break down instructions for different environments (Linux, macOS, Windows).</li>
+<li>Include any prerequisites (e.g., Python version, libraries).</li>
+<li>Use code blocks to show command-line instructions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="usage-instructions" class="level2">
+<h2 class="anchored" data-anchor-id="usage-instructions">Usage Instructions</h2>
+<ul>
+<li>Purpose: Explain how to use the project, including common commands or steps.</li>
+<li>Tips:
+<ul>
+<li>Provide example commands, sample inputs, and expected outputs.</li>
+<li>Include any configuration options or environment variables.</li>
+<li>If it’s a web application, describe how to start the server and access it.</li>
+<li>Optionally, add code snippets that demonstrate functionality.</li>
+</ul></li>
+</ul>
+</section>
+<section id="license-information" class="level2">
+<h2 class="anchored" data-anchor-id="license-information">License Information</h2>
+<ul>
+<li>Purpose: Clearly specify the licensing terms.</li>
+<li>Tips:
+<ul>
+<li>Indicate the type of license (e.g., MIT, Apache 2.0) and add a link to the full license file (e.g., LICENSE).</li>
+</ul></li>
+</ul>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<ul>
+<li>Purpose: Credit people, organizations, or libraries that contributed to or inspired the project.</li>
+<li>Tips:
+<ul>
+<li>Acknowledge any collaborators, mentors, or open-source libraries used.</li>
+<li>Mention specific contributors if they’re significant.</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-screenshots" class="level2">
+<h2 class="anchored" data-anchor-id="example-screenshots">Example Screenshots</h2>
+<ul>
+<li>Purpose: Visually demonstrate the project in action.</li>
+<li>Tips:
+<ul>
+<li>Include images or GIFs showing the main features and user interface.</li>
+<li>Use descriptive captions for each screenshot.</li>
+<li>Markdown for images:</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># markdown</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="al">![Screenshot of feature](images/feature-screenshot.png)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># html</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>&lt;img height=200px src="images/feature-screenshot.png" /&gt;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Purpose: List any resources, articles, or documentation that influenced or supported the project.</li>
+<li>Tips:
+<ul>
+<li>Include relevant links to documentation, tutorials, or other related projects.</li>
+<li>Use bullet points to list each reference.</li>
+</ul></li>
+</ul>
+</section>
+<section id="contact" class="level2">
+<h2 class="anchored" data-anchor-id="contact">Contact</h2>
+<ul>
+<li>Purpose: Provide ways to reach out for questions, issues, or feedback.</li>
+<li>TIps:
+<ul>
+<li>Include a professional email or link to your social media/LinkedIn profile.</li>
+<li>You might add a note encouraging users to submit GitHub issues for bugs or feature requests.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Maintained by <span class="co">[</span><span class="ot">Roberto Park</span><span class="co">](mailto:betopark97@gmail.com)</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="virtual-environment" class="level1">
+<h1>Virtual Environment</h1>
+<section id="first-make-an-environment" class="level2">
+<h2 class="anchored" data-anchor-id="first-make-an-environment">First make an environment</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .venv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="install-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="install-libraries">Install Libraries</h2>
+<ul>
+<li>Data Management</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install python-dotenv dvc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Data Analysis</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install numpy pandas matplotlib seaborn</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Machine Learning</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install mlflow sklearn tensorflow pytorch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Databases</li>
+</ul>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install psycopg2-binay sqlalchemy duckdb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="import-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="import-libraries">Import Libraries</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Operation System</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dotenv <span class="im">import</span> load_dotenv</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Database</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> duckdb</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> psycopg2</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlalchemy</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Analysis</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Statistics (inferential)</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Machine Learning</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mlflow</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sklearn</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow</span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pytorch</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Load .env variables</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>load_dotenv()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="document-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="document-dependencies">Document Dependencies</h2>
+<ol type="1">
+<li>Make requirements file</li>
+</ol>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> freeze <span class="op">&gt;</span> requirements.txt</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Manage a configuration file (RYE, UV, Poetry) # Misc.</li>
+<li>Check environment</li>
+</ol>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> pip3</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span> python3</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> show</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Managing configurations with .ini or .cfg files</li>
+</ol>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ini</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[Database]</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="ex">host</span> = localhost</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="ex">port</span> = 5432</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="ex">user</span> = admin</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># json</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="kw">{</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Database"</span><span class="ex">:</span> {</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"host"</span><span class="ex">:</span> <span class="st">"localhost"</span>,</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"port"</span><span class="ex">:</span> 5432,</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"user"</span><span class="ex">:</span> <span class="st">"admin"</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">}</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># yaml</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="ex">Database:</span></span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a>  <span class="ex">host:</span> localhost</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">port:</span> 5432</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a>  <span class="ex">user:</span> admin</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>In python parsing</li>
+</ol>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># INI</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> configparser</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_config(file_path):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    config <span class="op">=</span> configparser.ConfigParser()</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    config.read(file_path)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> config</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># JSON</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_config(file_path):</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'r'</span>) <span class="im">as</span> f:</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        config <span class="op">=</span> json.load(f)</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> config</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="co"># YAML</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>pip install pyyaml</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> yaml</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_config(file_path):</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(file_path, <span class="st">'r'</span>) <span class="im">as</span> f:</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        config <span class="op">=</span> yaml.safe_load(f)</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> config</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> load_config(<span class="st">'config.cfg'</span>)</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>host <span class="op">=</span> config[<span class="st">'Database'</span>][<span class="st">'host'</span>]</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>port <span class="op">=</span> config[<span class="st">'Database'</span>][<span class="st">'port'</span>]</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>user <span class="op">=</span> config[<span class="st">'Database'</span>][<span class="st">'user'</span>]</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Host: </span><span class="sc">{</span>host<span class="sc">}</span><span class="ss">, Port: </span><span class="sc">{</span>port<span class="sc">}</span><span class="ss">, User: </span><span class="sc">{</span>user<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="postgresql-via-psql" class="level1">
+<h1>PostgreSQL via psql</h1>
+<section id="connect-to-postgresql" class="level2">
+<h2 class="anchored" data-anchor-id="connect-to-postgresql">Connect to PostgreSQL</h2>
+<ol type="1">
+<li>Make connection</li>
+</ol>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">psql</span> <span class="at">-U</span> postgres</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Check for Databases</li>
+</ol>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Create a Database</li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">CREATE</span> DATABASE <span class="op">&lt;</span>db_name<span class="op">&gt;</span><span class="kw">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li>Connect to a Database</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\c</span> <span class="op">&lt;</span>db_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>List all tables</li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\dt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li>Check a table schema</li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">\d</span> <span class="op">&lt;</span>table_name<span class="op">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+</section>
+<section id="setup-docker-optional" class="level1">
+<h1>Setup Docker (Optional)</h1>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
