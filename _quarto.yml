@@ -11,6 +11,7 @@ format:
       dark: darkly
     toc: true
     html-math-method: katex
+    include-in-header: custom_header.html # include html code in the header section of all HTML rendering
     # grid:
     #   body-width: 1000px
 
