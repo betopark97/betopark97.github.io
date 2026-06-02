@@ -376,8 +376,8 @@
     "objectID": "src/projects/charon-analysis/final_deliverable.html#slide-1",
     "href": "src/projects/charon-analysis/final_deliverable.html#slide-1",
     "title": "My Quarto Presentation",
-    "section": "Slide 1",
-    "text": "Slide 1\nWelcome to my presentation!",
+    "section": "",
+    "text": "Welcome to my presentation!",
     "crumbs": [
       "Projects",
       "1. Charon Analysis"
@@ -389,6 +389,17 @@
     "title": "My Quarto Presentation",
     "section": "Slide 2",
     "text": "Slide 2\nHere’s another slide.",
+    "crumbs": [
+      "Projects",
+      "1. Charon Analysis"
+    ]
+  },
+  {
+    "objectID": "src/projects/charon-analysis/final_deliverable.html",
+    "href": "src/projects/charon-analysis/final_deliverable.html",
+    "title": "My Quarto Presentation",
+    "section": "",
+    "text": "Welcome to my presentation!",
     "crumbs": [
       "Projects",
       "1. Charon Analysis"

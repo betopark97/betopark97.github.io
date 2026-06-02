@@ -16,9 +16,6 @@ format:
     # grid:
     #   body-width: 1000px
 
-# visual studio code 
-editor: visual
-
 website:
   # meta data
   title: "Roberto Park"
