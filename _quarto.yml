@@ -11,77 +11,64 @@ format:
       dark: darkly
     toc: true
     html-math-method: katex
-    include-in-header: custom_header.html # include html code in the header section of all HTML rendering
-    include-after-body: custom_body.html # include html code at the end of the body section of all HTML rendering
-    # grid:
-    #   body-width: 1000px
+    include-in-header: custom_header.html
+    include-after-body: custom_body.html
 
 website:
-  # meta data
   title: "Roberto Park"
 
-  # navigation
-  page-navigation: true # this is for the navigation in the bottom
+  page-navigation: true
   back-to-top-navigation: true
 
-  # # navbar
-  # navbar: 
-  #   background: light
-  #   search: true
-  #   left:
-  #     - text: "Home"
-  #       href: index.qmd
-  #     - talks.qmd
-  #     - about.qmd 
-
-  # sidebar
-  sidebar:
-    # style: "docked"
+  navbar:
+    background: light
     search: true
-    collapse-level: 1
-    tools: 
+    left:
+      - href: index.qmd
+        text: Portfolio
+      - href: manual/preface.qmd
+        text: Data Analysis Manual
+      - href: projects/projects.qmd
+        text: Projects
+      - href: blog/index.qmd
+        text: Blog
+      - href: study/index.qmd
+        text: Study
+    right:
       - icon: github
         href: https://github.com/betopark97
 
-    # sidebar layout    
-    contents:
+  sidebar:
+    - id: manual
+      title: "Data Analysis Manual"
+      collapse-level: 1
+      contents:
+        - text: Preface
+          href: manual/preface.qmd
+        - text: 1. Project Setup
+          href: manual/chapter1.qmd
+        - text: 2. Problem & Ideas
+          href: manual/chapter2.qmd
 
-      # main page
-      - text: Portfolio
-        href: index.qmd
-      - text: "---"
+    - id: projects
+      title: "Projects"
+      collapse-level: 1
+      contents:
+        - text: Gallery
+          href: projects/projects.qmd
+        - text: 1. Charon Analysis
+          href: projects/charon-analysis/final_deliverable.qmd
 
-      # manual book
-      - section: Data Analysis Manual
-        contents: 
-          - text: Preface
-            href: manual/preface.qmd
-          - text: 1. Project Setup
-            href: manual/chapter1.qmd
-          - text: 2. Problem & Ideas
-            href: manual/chapter2.qmd
-      - text: "---"
+    - id: blog
+      title: "Blog"
+      contents: blog/
 
-      # my projects
-      - section: Projects
-        contents:
-          - text: Gallery
-            href: projects/projects.qmd
-          - text: 1. Charon Analysis
-            href: projects/charon-analysis/final_deliverable.qmd
-      - text: "---"
+    - id: study
+      title: "Study"
+      contents: study/
 
-      # my blog
-      - section: Blog
-      - text: "---"
-
-      # my learning
-      - section: Study
-      - text: "---"
-  
-  # footer
-  page-footer: 
-    left: "Copyright 2024, Roberto Park" 
-    right: 
+  page-footer:
+    left: "Copyright 2024, Roberto Park"
+    right:
       - icon: github
         href: https://github.com/betopark97
