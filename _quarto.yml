@@ -55,20 +55,20 @@ website:
       - section: Data Analysis Manual
         contents: 
           - text: Preface
-            href: src/manual/preface.qmd
+            href: manual/preface.qmd
           - text: 1. Project Setup
-            href: src/manual/chapter1.qmd
+            href: manual/chapter1.qmd
           - text: 2. Problem & Ideas
-            href: src/manual/chapter2.qmd
+            href: manual/chapter2.qmd
       - text: "---"
 
       # my projects
       - section: Projects
         contents:
           - text: Gallery
-            href: src/projects/projects.qmd
+            href: projects/projects.qmd
           - text: 1. Charon Analysis
-            href: src/projects/charon-analysis/final_deliverable.qmd
+            href: projects/charon-analysis/final_deliverable.qmd
       - text: "---"
 
       # my blog
