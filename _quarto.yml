@@ -40,7 +40,6 @@ website:
   sidebar:
     - id: manual
       title: "Data Analysis Manual"
-      style: docked
       collapse-level: 1
       contents:
         - text: Preface
@@ -52,7 +51,6 @@ website:
 
     - id: projects
       title: "Projects"
-      style: docked
       collapse-level: 1
       contents:
         - text: Gallery
@@ -62,12 +60,10 @@ website:
 
     - id: blog
       title: "Blog"
-      style: docked
       contents: blog/
 
     - id: study
       title: "Study"
-      style: docked
       contents: study/
 
   page-footer:
