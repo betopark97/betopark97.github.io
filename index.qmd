@@ -17,56 +17,68 @@ about:
       href: mailto:betopark97@gmail.com
 ---
 
-# Data Analyst {.unnumbered}
+# Data Engineer {.unnumbered}
 
-> "You can have data without information, but you cannot have information without data." - Daniel Keys Moran
+*Data Engineer who'd rather use the boring tool that works than the shiny one that might.*
 
-## Bio
+## Experience
 
-- 메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.
-- 데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.
-- Tableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.
-- 웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.
-- Front-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.
+::: {.resume-entry}
+::: {.resume-left}
+**The Pinkfong Company**\
+*Data Analyst*
+:::
+
+::: {.resume-right}
+Seoul, South Korea\
+2025.02 – Present <span class="time-since" data-start="2025-02"></span>
+:::
+:::
+
+- Built the Snowflake data warehouse from scratch for IPTV, Music, YouTube, OTT, FAST, and Merchandise data.
+- Automated ETL with Python for raw data ingestion to Snowflake.
+- Automated ELT with DBT for data modeling and data quality tests in Snowflake.
+- Built Streamlit/Tableau dashboards tracking KPIs and time series analysis.
+- Orchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.
+- Modeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams.
+
 
 ## Education
 
-<img height="35px" src="./img/logos/codeit.svg" />
-2024.07 ~ 2025.02 | 
-Codeit Sprint | 
-Data Analyst Track  
+::: {.resume-entry}
+::: {.resume-left}
+**Sungkyunkwan University**\
+*BA, Psychology*
+:::
 
-<img height="35px" src="./img/logos/skku.svg" />
-2016.03 ~ 2021.08 | 
-BA, Psychology | 
-Sungkyunkwan University  
+::: {.resume-right}
+Seoul, South Korea\
+2016.03 – 2021.08
+:::
+:::
+
+- Academic Excellence Scholarship _(Fall 2021, Spring 2022)_
+- Class Representative, Freshman Year _(2016)_
+<!-- Optional extras below the entry — Thesis, Coursework, GPA, Awards, etc. -->
 
 
 ## Tech Stack
-### Languages:  
-<img height="25px" src="./img/logos/python.svg" /> Python | 
-<img height="25px" src="./img/logos/sql.svg" /> SQL  
 
-### Software:  
-<img height="25px" src="./img/logos/tableau.svg" /> Tableau | 
-<img height="25px" src="./img/logos/postgresql.svg" /> PostgreSQL | 
-<img height="25px" src="./img/logos/mysql.svg" /> MySQL | 
-<img height="25px" src="./img/logos/excel.svg" /> Excel 
+**Languages:** Python, SQL\
+**Data:** PostgreSQL, Snowflake, DuckDB, DBT\
+**Orchestration:** Airflow, Prefect, Docker\
+**BI:** Streamlit, Tableau\
+**Tools:** Git & GitHub, Notion, Slack, Discord, Obsidian\
+**AI:** Claude Code, Gemini CLI, Pi
 
-### Framework:  
-<img height="25px" src="./img/logos/tensorflow.svg" /> Tensorflow | 
-<img height="25px" src="./img/logos/mlflow.svg" /> MLFlow | 
-<img height="25px" src="./img/logos/fastapi.svg" /> Fastapi |  
-<img height="25px" src="./img/logos/Flask.svg" /> Flask | 
-<img width="25px" height="25px" src="./img/logos/streamlit.svg" /> Streamlit 
+## Misc.
 
-### Version Control:  
-<img height="25px" src="./img/logos/git.svg" /> Git |
-<img height="25px" src="./img/logos/dvc.svg" /> DVC
+At university...
 
-### Tools:  
-<img height="25px" src="./img/logos/github.svg" /> GitHub |
-<img height="25px" src="./img/logos/notion.svg" /> Notion |
-<img height="25px" src="./img/logos/slack.svg" /> Slack |
-<img height="25px" src="./img/logos/discord.svg" /> Discord | 
-<img height="25px" src="./img/logos/dagshub.svg" /> Dagshub
+- 🎤 African Music Club
+- 🤝 Community Service Club
+
+In my free time...
+
+- 💻 coding, customizing my tools
+- 🧶 crochet
