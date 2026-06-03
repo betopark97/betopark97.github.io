@@ -47,7 +47,7 @@ $link-hover-color: $ctp-mauve;
 $border-color: $ctp-surface1;
 
 $code-color: $ctp-red;
-$code-bg:    $ctp-mantle;
+$code-bg:    $ctp-surface0;
 
 /*-- scss:rules --*/
 
@@ -88,13 +88,19 @@ $code-bg:    $ctp-mantle;
   font-weight: 600;
 }
 
-pre, code {
-  background-color: $ctp-mantle;
-  color: $ctp-text;
+pre, pre.sourceCode {
+  background-color: $ctp-surface0 !important;
+  color: $ctp-text !important;
+  border: 1px solid $ctp-surface1 !important;
+}
+
+div.sourceCode {
+  background-color: $ctp-surface0 !important;
+  border: 1px solid $ctp-surface1 !important;
 }
 
 pre code {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 :not(pre) > code {
