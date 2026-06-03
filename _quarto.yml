@@ -6,9 +6,7 @@ project:
 
 format:
   html:
-    theme:
-      dark: theme/catppuccin-mocha.scss
-      light: theme/catppuccin-latte.scss
+    theme: theme/catppuccin-mocha.scss
     toc: true
     html-math-method: katex
     include-in-header: custom_header.html
@@ -23,6 +21,9 @@ website:
   navbar:
     background: light
     search: true
+    left:
+      - icon: github
+        href: https://github.com/betopark97
     right:
       - href: index.qmd
         text: Portfolio
@@ -34,8 +35,6 @@ website:
         text: Blog
       - href: study/index.qmd
         text: Study
-      - icon: github
-        href: https://github.com/betopark97
 
   sidebar:
     - id: manual
