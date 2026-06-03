@@ -23,7 +23,7 @@ website:
   navbar:
     background: light
     search: true
-    left:
+    right:
       - href: index.qmd
         text: Portfolio
       - href: manual/preface.qmd
@@ -34,7 +34,6 @@ website:
         text: Blog
       - href: study/index.qmd
         text: Study
-    right:
       - icon: github
         href: https://github.com/betopark97
 
