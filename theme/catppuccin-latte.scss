@@ -1,0 +1,136 @@
+/*-- scss:defaults --*/
+
+// Catppuccin Latte palette
+$ctp-rosewater: #dc8a78;
+$ctp-flamingo:  #dd7878;
+$ctp-pink:      #ea76cb;
+$ctp-mauve:     #8839ef;
+$ctp-red:       #d20f39;
+$ctp-maroon:    #e64553;
+$ctp-peach:     #fe640b;
+$ctp-yellow:    #df8e1d;
+$ctp-green:     #40a02b;
+$ctp-teal:      #179299;
+$ctp-sky:       #04a5e5;
+$ctp-sapphire:  #209fb5;
+$ctp-blue:      #1e66f5;
+$ctp-lavender:  #7287fd;
+$ctp-text:      #4c4f69;
+$ctp-subtext1:  #5c5f77;
+$ctp-subtext0:  #6c6f85;
+$ctp-overlay2:  #7c7f93;
+$ctp-overlay1:  #8c8fa1;
+$ctp-overlay0:  #9ca0b0;
+$ctp-surface2:  #acb0be;
+$ctp-surface1:  #bcc0cc;
+$ctp-surface0:  #ccd0da;
+$ctp-base:      #eff1f5;
+$ctp-mantle:    #e6e9ef;
+$ctp-crust:     #dce0e8;
+
+// Bootstrap variable overrides
+$body-bg:    $ctp-base;
+$body-color: $ctp-text;
+
+$primary:   $ctp-blue;
+$secondary: $ctp-mauve;
+$success:   $ctp-green;
+$info:      $ctp-sapphire;
+$warning:   $ctp-yellow;
+$danger:    $ctp-red;
+$light:     $ctp-mantle;
+$dark:      $ctp-text;
+
+$link-color:       $ctp-blue;
+$link-hover-color: $ctp-mauve;
+
+$border-color: $ctp-surface1;
+
+$code-color: $ctp-red;
+$code-bg:    $ctp-mantle;
+
+/*-- scss:rules --*/
+
+.navbar {
+  background-color: $ctp-mantle !important;
+  border-bottom: 1px solid $ctp-surface0;
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: $ctp-text !important;
+}
+
+.navbar .nav-link:hover {
+  color: $ctp-blue !important;
+}
+
+.navbar .nav-link.active {
+  color: $ctp-blue !important;
+  font-weight: 600;
+}
+
+.sidebar {
+  background-color: $ctp-mantle;
+  border-right: 1px solid $ctp-surface0;
+}
+
+.sidebar-item-text {
+  color: $ctp-text;
+}
+
+.sidebar-item-text:hover {
+  color: $ctp-blue;
+}
+
+.sidebar-item-text.active {
+  color: $ctp-blue;
+  font-weight: 600;
+}
+
+pre, code {
+  background-color: $ctp-mantle;
+  color: $ctp-text;
+}
+
+pre code {
+  background-color: transparent;
+}
+
+:not(pre) > code {
+  color: $ctp-red;
+  background-color: $ctp-mantle;
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $ctp-text;
+}
+
+.page-footer {
+  background-color: $ctp-mantle;
+  color: $ctp-subtext0;
+  border-top: 1px solid $ctp-surface0;
+}
+
+::selection {
+  background-color: $ctp-surface1;
+  color: $ctp-text;
+}
+
+blockquote {
+  border-left: 4px solid $ctp-mauve;
+  background-color: $ctp-mantle;
+  color: $ctp-subtext1;
+  padding: 0.5em 1em;
+}
+
+table thead {
+  background-color: $ctp-surface0;
+  color: $ctp-text;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: $ctp-mantle;
+}

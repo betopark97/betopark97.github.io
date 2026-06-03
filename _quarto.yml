@@ -7,8 +7,8 @@ project:
 format:
   html:
     theme:
-      light: cosmos
-      dark: darkly
+      light: theme/catppuccin-latte.scss
+      dark: theme/catppuccin-mocha.scss
     toc: true
     html-math-method: katex
     include-in-header: custom_header.html
