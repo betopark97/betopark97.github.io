@@ -54,28 +54,35 @@
     "href": "index.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "“You can have data without information, but you cannot have information without data.” - Daniel Keys Moran\n\n\n\n\n메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용.\n\n\n\n\n 2024.07 ~ 2025.02 | Codeit Sprint | Data Analyst Track\n 2016.03 ~ 2021.08 | BA, Psychology | Sungkyunkwan University\n\n\n\n\n\n Python |  SQL\n\n\n\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\n\n Tensorflow |  MLFlow |  Fastapi |\n Flask |  Streamlit\n\n\n\n Git |  DVC\n\n\n\n GitHub |  Notion |  Slack |  Discord |  Dagshub"
+    "text": "Data Engineer who’d rather use the boring tool that works than the shiny one that might.\n\n\n\n\nThe Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nBuilt the Snowflake data warehouse from scratch for IPTV, Music, YouTube, OTT, FAST, and Merchandise data.\nAutomated ETL with Python for raw data ingestion to Snowflake.\nAutomated ELT with DBT for data modeling and data quality tests in Snowflake.\nBuilt Streamlit/Tableau dashboards tracking KPIs and time series analysis.\nOrchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.\nModeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams.\n\n\n\n\n\n\nSungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016) \n\n\n\n\nLanguages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi\n\n\n\nAt university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
   },
   {
-    "objectID": "index.html#bio",
-    "href": "index.html#bio",
+    "objectID": "index.html#experience",
+    "href": "index.html#experience",
     "title": "Roberto Park",
     "section": "",
-    "text": "메인 언어 Python으로 데이터분석 및 머신러닝 코드 이해와 작성 경험.\n데이터분석을 위한 SQL 쿼리 생성의 이해와 작성 경험 - MySQL, PostgreSQL 사용.\nTableau 그래프와 대시보드를 프로젝트 기반으로 생성한 경험.\n웹개발의 필요한 HTML, CSS, JAVASCRIPT의 기본적인 이해.\nFront-end, Back-end의 교육 경험은 없지만 개인 포트폴리오 웹사이트 구성을 위해 독학 - Flask, PostgreSQL 사용."
+    "text": "The Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nBuilt the Snowflake data warehouse from scratch for IPTV, Music, YouTube, OTT, FAST, and Merchandise data.\nAutomated ETL with Python for raw data ingestion to Snowflake.\nAutomated ELT with DBT for data modeling and data quality tests in Snowflake.\nBuilt Streamlit/Tableau dashboards tracking KPIs and time series analysis.\nOrchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.\nModeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams."
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Roberto Park",
     "section": "",
-    "text": "2024.07 ~ 2025.02 | Codeit Sprint | Data Analyst Track\n 2016.03 ~ 2021.08 | BA, Psychology | Sungkyunkwan University"
+    "text": "Sungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)"
   },
   {
     "objectID": "index.html#tech-stack",
     "href": "index.html#tech-stack",
     "title": "Roberto Park",
     "section": "",
-    "text": "Python |  SQL\n\n\n\n Tableau |  PostgreSQL |  MySQL |  Excel\n\n\n\n Tensorflow |  MLFlow |  Fastapi |\n Flask |  Streamlit\n\n\n\n Git |  DVC\n\n\n\n GitHub |  Notion |  Slack |  Discord |  Dagshub"
+    "text": "Languages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi"
+  },
+  {
+    "objectID": "index.html#misc.",
+    "href": "index.html#misc.",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "At university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
   },
   {
     "objectID": "blog/index.html",
