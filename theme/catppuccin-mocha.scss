@@ -120,6 +120,26 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 1px solid $ctp-surface0;
 }
 
+// Resume-style entry: organization/title on the left, location/dates on the right.
+.resume-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0 0.5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.resume-right {
+  text-align: right;
+  color: $ctp-subtext1;
+  font-size: 0.95em;
+}
+
 ::selection {
   background-color: $ctp-surface2;
   color: $ctp-text;
