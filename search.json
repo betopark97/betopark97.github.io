@@ -11,6 +11,13 @@
     ]
   },
   {
+    "objectID": "src/projects/charon-analysis/info.html",
+    "href": "src/projects/charon-analysis/info.html",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
     "objectID": "src/manual/preface.html",
     "href": "src/manual/preface.html",
     "title": "Preface",
@@ -308,20 +315,6 @@
     ]
   },
   {
-    "objectID": "src/projects/layout.html",
-    "href": "src/projects/layout.html",
-    "title": "Title",
-    "section": "",
-    "text": "Title\n\n\nSources\n\n\nEtc.\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "src/projects/charon-analysis/info.html",
-    "href": "src/projects/charon-analysis/info.html",
-    "title": "Roberto Park",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Roberto Park",
@@ -393,5 +386,12 @@
       "Projects",
       "1. Charon Analysis"
     ]
+  },
+  {
+    "objectID": "src/projects/layout.html",
+    "href": "src/projects/layout.html",
+    "title": "Title",
+    "section": "",
+    "text": "Title\n\n\nSources\n\n\nEtc.\n\n\n\n\n Back to top"
   }
 ]
