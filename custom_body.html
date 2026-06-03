@@ -17,3 +17,29 @@
     }
   });
 </script>
+
+<!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
+<script>
+  (function () {
+    function parseYM(s) {
+      if (!s) return null;
+      var parts = s.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, 1);
+    }
+    function fmt(years, months) {
+      if (years === 0 && months === 0) return '(<1mo)';
+      if (years === 0) return '(' + months + 'mo)';
+      if (months === 0) return '(' + years + 'y)';
+      return '(' + years + 'y ' + months + 'mo)';
+    }
+    document.querySelectorAll('.time-since').forEach(function (el) {
+      var start = parseYM(el.dataset.start);
+      if (!start) return;
+      var end = parseYM(el.dataset.end) || new Date();
+      var months = (end.getFullYear() - start.getFullYear()) * 12
+                 + (end.getMonth() - start.getMonth());
+      if (months < 0) months = 0;
+      el.textContent = fmt(Math.floor(months / 12), months % 12);
+    });
+  })();
+</script>
