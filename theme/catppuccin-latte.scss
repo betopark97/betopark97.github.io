@@ -134,3 +134,41 @@ table thead {
 table tbody tr:nth-child(even) {
   background-color: $ctp-mantle;
 }
+
+// Syntax highlighting — Catppuccin Latte mapping.
+// !important is required because Quarto's syntax CSS loads after our compiled CSS.
+pre > code.sourceCode > span,
+code.sourceCode > span,
+code span {
+  color: $ctp-text !important;
+}
+
+code span.kw { color: $ctp-mauve !important; font-weight: bold; }   // keyword
+code span.cf { color: $ctp-mauve !important; font-weight: bold; }   // control flow
+code span.im { color: $ctp-mauve !important; }                      // import
+code span.fu { color: $ctp-blue !important; }                       // function
+code span.bu { color: $ctp-red !important; }                        // builtin
+code span.st { color: $ctp-green !important; }                      // string
+code span.ch { color: $ctp-green !important; }                      // char
+code span.vs { color: $ctp-green !important; }                      // verbatim string
+code span.sc { color: $ctp-pink !important; }                       // special char
+code span.ss { color: $ctp-pink !important; }                       // special string
+code span.co { color: $ctp-overlay0 !important; font-style: italic; } // comment
+code span.do { color: $ctp-overlay0 !important; font-style: italic; } // documentation
+code span.an { color: $ctp-overlay1 !important; }                   // annotation
+code span.dv { color: $ctp-peach !important; }                      // decimal value
+code span.bn { color: $ctp-peach !important; }                      // binary number
+code span.fl { color: $ctp-peach !important; }                      // float
+code span.cn { color: $ctp-peach !important; }                      // constant
+code span.cv { color: $ctp-peach !important; }                      // comment var
+code span.va { color: $ctp-text !important; }                       // variable
+code span.at { color: $ctp-yellow !important; }                     // attribute
+code span.dt { color: $ctp-yellow !important; }                     // data type
+code span.op { color: $ctp-sky !important; }                        // operator
+code span.ot { color: $ctp-sky !important; }                        // other
+code span.ex { color: $ctp-pink !important; }                       // extension
+code span.pp { color: $ctp-pink !important; }                       // preprocessor
+code span.al { color: $ctp-red !important; font-weight: bold; }     // alert
+code span.er { color: $ctp-red !important; text-decoration: underline; } // error
+code span.wa { color: $ctp-yellow !important; }                     // warning
+code span.re { color: $ctp-sky !important; background-color: transparent !important; } // regex
