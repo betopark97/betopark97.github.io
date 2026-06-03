@@ -2,3 +2,18 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J63Z9M7" height="0" width="0"
     style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+
+<!-- Cmd/Ctrl + Shift + F to open Quarto search -->
+<script>
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+      var btn = document.querySelector('#quarto-search .aa-DetachedSearchButton')
+             || document.querySelector('#quarto-search button')
+             || document.querySelector('#quarto-search');
+      if (btn) {
+        e.preventDefault();
+        btn.click();
+      }
+    }
+  });
+</script>
