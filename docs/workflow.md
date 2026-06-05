@@ -55,17 +55,64 @@ Or just visit https://betopark97.github.io/ and hard-refresh.
 
 ## Adding content
 
+`_quarto.yml` only defines the **hierarchy** (which sections exist and in what order). Files and labels inside each section come from the folder.
+
+### Add a new page to an existing section under Notes
+
+Drop a file into the section's folder. The numeric prefix controls order; the frontmatter `title:` controls the sidebar label.
+
+```
+notes/data-analysis/03-modeling.qmd
+---
+title: "Modeling"
+---
+```
+
+No `_quarto.yml` edit needed.
+
+### Add a new section under Notes
+
+1. Create a folder under `notes/` with a kebab-case name (e.g. `notes/time-series/`).
+2. Drop files in with numeric prefixes (`00-intro.qmd`, `01-...`).
+3. In `_quarto.yml`, add one line under `sidebar.id: notes` → `contents:`:
+
+   ```yaml
+   - auto: "notes/time-series"
+   ```
+
+The section title is auto-derived from the folder name (`time-series` → "Time Series"). To override (e.g. "Time Series Analysis"), add `_metadata.yml` inside the folder:
+
+```yaml
+title: "Time Series Analysis"
+```
+
+### Other sections
+
 | Where | What |
 |---|---|
-| `manual/chapterN.qmd` | New chapter. Add a `- text: ... / href: ...` entry under `sidebar.id: manual` in `_quarto.yml`. |
 | `projects/<slug>/index.qmd` | New project. Add an entry under `sidebar.id: projects`. |
 | `blog/<post-name>.qmd` | New blog post. **No `_quarto.yml` edit needed** — the blog sidebar uses `contents: blog/` and auto-includes every `.qmd`. |
-| `study/<page>.qmd` | Same auto-include behavior as `blog/`. |
+
+### File-naming conventions
+
+- **Order**: numeric prefix (`00-`, `01-`, ...). Alphabetic sort = intended order.
+- **Label**: each file's frontmatter `title:` — independent of filename.
+- **URL slug**: the filename (minus extension), so use kebab-case, no `&`, no spaces.
+
+## Styling
+
+Theme is split across two SCSS files in `_quarto.yml` → `format.html.theme`:
+
+- **`theme/catppuccin-mocha.scss`** — palette ($ctp-* variables), Bootstrap variable overrides, and color/typography skin for framework-provided elements (navbar, sidebar, code, tables, headings).
+- **`theme/styles.scss`** — structural rules (borders, padding, layout) and custom components (e.g. `.resume-entry`).
+
+Quarto merges `scss:defaults` across both files, so `styles.scss` can reference `$ctp-*` palette variables without re-declaring them.
+
+When adding styles: reach for plain markdown first (italic, bold, lists, blockquote). Only introduce SCSS classes when markdown can't express what you need. New custom-component rules go in `styles.scss`, not the theme file.
 
 ## Common tweaks
 
-- **Theme**: `_quarto.yml` → `format.html.theme` (currently `cosmos` light / `darkly` dark).
-- **Navbar items / order**: `website.navbar.left`.
+- **Navbar items / order**: `website.navbar.right`.
 - **Footer**: `website.page-footer`.
 - **Analytics / meta tags**: `custom_header.html`.
 
