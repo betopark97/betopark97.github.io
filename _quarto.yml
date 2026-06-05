@@ -6,7 +6,9 @@ project:
 
 format:
   html:
-    theme: theme/catppuccin-mocha.scss
+    theme:
+      - theme/catppuccin-mocha.scss
+      - theme/styles.scss
     toc: true
     html-math-method: katex
     include-in-header: custom_header.html

@@ -51,9 +51,11 @@ $code-bg:    $ctp-surface0;
 
 /*-- scss:rules --*/
 
+// Color/typography skin for framework-provided elements.
+// Structural rules (borders, padding, layout) live in styles.scss.
+
 .navbar {
   background-color: $ctp-mantle !important;
-  border-bottom: 1px solid $ctp-surface0;
 }
 
 .navbar .navbar-brand,
@@ -72,7 +74,6 @@ $code-bg:    $ctp-surface0;
 
 .sidebar {
   background-color: $ctp-mantle;
-  border-right: 1px solid $ctp-surface0;
 }
 
 .sidebar-item-text {
@@ -91,12 +92,10 @@ $code-bg:    $ctp-surface0;
 pre, pre.sourceCode {
   background-color: $ctp-surface0 !important;
   color: $ctp-text !important;
-  border: 1px solid $ctp-surface1 !important;
 }
 
 div.sourceCode {
   background-color: $ctp-surface0 !important;
-  border: 1px solid $ctp-surface1 !important;
 }
 
 pre code {
@@ -106,8 +105,6 @@ pre code {
 :not(pre) > code {
   color: $ctp-red;
   background-color: $ctp-mantle;
-  padding: 0.15em 0.3em;
-  border-radius: 3px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,27 +114,6 @@ h1, h2, h3, h4, h5, h6 {
 .page-footer {
   background-color: $ctp-mantle;
   color: $ctp-subtext0;
-  border-top: 1px solid $ctp-surface0;
-}
-
-// Resume-style entry: organization/title on the left, location/dates on the right.
-.resume-entry {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin: 1rem 0 0.5rem;
-
-  p {
-    margin: 0;
-  }
-}
-
-.resume-right {
-  text-align: right;
-  color: $ctp-subtext1;
-  font-size: 0.95em;
 }
 
 ::selection {
@@ -146,10 +122,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 blockquote {
-  border-left: 4px solid $ctp-mauve;
   background-color: $ctp-mantle;
   color: $ctp-subtext1;
-  padding: 0.5em 1em;
+}
+
+.resume-right {
+  color: $ctp-subtext1;
 }
 
 table {

@@ -1,0 +1,60 @@
+/*-- scss:rules --*/
+
+// Structural / layout rules. Palette variables come from catppuccin-mocha.scss
+// (Quarto merges scss:defaults across theme files).
+
+.navbar {
+  border-bottom: 1px solid $ctp-surface0;
+}
+
+.sidebar {
+  border-right: 1px solid $ctp-surface0;
+}
+
+pre, pre.sourceCode {
+  border: 1px solid $ctp-surface1 !important;
+}
+
+div.sourceCode {
+  border: 1px solid $ctp-surface1 !important;
+}
+
+:not(pre) > code {
+  padding: 0.15em 0.3em;
+  border-radius: 3px;
+}
+
+.page-footer {
+  border-top: 1px solid $ctp-surface0;
+}
+
+blockquote {
+  border-left: 4px solid $ctp-mauve;
+  padding: 0.5em 1em;
+}
+
+// Resume-style entry: organization/title on the left, location/dates on the right.
+// On narrow screens, collapse to a single left-aligned column.
+.resume-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 1rem 0 0.5rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.resume-right {
+  text-align: right;
+  font-size: 0.95em;
+}
+
+@media (max-width: 576px) {
+  .resume-right {
+    text-align: left;
+  }
+}
