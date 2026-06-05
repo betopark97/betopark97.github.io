@@ -29,27 +29,14 @@ website:
     right:
       - href: index.qmd
         text: Portfolio
-      - href: manual/preface.qmd
-        text: Data Analysis Manual
       - href: projects/projects.qmd
         text: Projects
+      - href: notes/index.qmd
+        text: Notes
       - href: blog/index.qmd
         text: Blog
-      - href: study/index.qmd
-        text: Study
 
   sidebar:
-    - id: manual
-      title: "Data Analysis Manual"
-      collapse-level: 1
-      contents:
-        - text: Preface
-          href: manual/preface.qmd
-        - text: 1. Project Setup
-          href: manual/chapter1.qmd
-        - text: 2. Problem & Ideas
-          href: manual/chapter2.qmd
-
     - id: projects
       title: "Projects"
       collapse-level: 1
@@ -63,9 +50,12 @@ website:
       title: "Blog"
       contents: blog/
 
-    - id: study
-      title: "Study"
-      contents: study/
+    - id: notes
+      title: "Notes"
+      collapse-level: 1
+      contents:
+        - notes/index.qmd
+        - auto: "notes/data-analysis"
 
   page-footer:
     left: "Copyright 2024, Roberto Park"
