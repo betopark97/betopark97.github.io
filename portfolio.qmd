@@ -1,8 +1,9 @@
 ---
 title: Roberto Park
-image: ./img/my/background.jpeg
-toc: false
-page-layout: full
+image: ./assets/img/my/background.jpeg
+description: |
+  📍 Seoul, South Korea\
+  💼 Data Engineer\
 about:
   template: trestles
   links:
@@ -15,13 +16,17 @@ about:
     - icon: envelope-at-fill
       text: Email
       href: mailto:betopark97@gmail.com
+toc: false
+page-layout: full
 ---
 
-# Data Engineer {.unnumbered}
+# Résumé {.unnumbered}
 
 *Data Engineer who'd rather use the boring tool that works than the shiny one that might.*
 
 ## Experience
+
+---
 
 ::: {.resume-entry}
 ::: {.resume-left}
@@ -42,8 +47,9 @@ Seoul, South Korea\
 - Orchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.
 - Modeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams.
 
-
 ## Education
+
+---
 
 ::: {.resume-entry}
 ::: {.resume-left}
@@ -61,8 +67,9 @@ Seoul, South Korea\
 - Class Representative, Freshman Year _(2016)_
 <!-- Optional extras below the entry — Thesis, Coursework, GPA, Awards, etc. -->
 
-
 ## Tech Stack
+
+---
 
 **Languages:** Python, SQL\
 **Data:** PostgreSQL, Snowflake, DuckDB, DBT\
@@ -72,6 +79,8 @@ Seoul, South Korea\
 **AI:** Claude Code, Gemini CLI, Pi
 
 ## Misc.
+
+---
 
 At university...
 
