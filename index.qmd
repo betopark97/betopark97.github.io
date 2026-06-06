@@ -1,0 +1,40 @@
+---
+title: "Roberto Park"
+toc: false
+page-layout: full
+listing:
+  - id: latest-notes
+    contents:
+      - "notes/**/*.qmd"
+      - "!notes/index.qmd"
+    type: default
+    fields: [title]
+    max-items: 5
+    sort: false
+  - id: latest-blog
+    contents:
+      - "blog/*.qmd"
+      - "!blog/index.qmd"
+    type: default
+    fields: [title]
+    max-items: 5
+---
+
+{{< include assets/_aboutme.md >}}
+
+## Explore
+
+- **[Portfolio](portfolio.qmd)** — résumé, experience, tech stack
+- **[Projects](projects/projects.qmd)** — case studies and code
+- **[Notes](notes/index.qmd)** — technical notes across the data stack
+- **[Blog](blog/index.qmd)** — long-form posts
+
+## Recent notes
+
+::: {#latest-notes}
+:::
+
+## Recent posts
+
+::: {#latest-blog}
+:::

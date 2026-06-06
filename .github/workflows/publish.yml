@@ -17,6 +17,9 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Fetch about-me README
+        run: ./scripts/fetch-aboutme.sh
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:

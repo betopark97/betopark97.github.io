@@ -7,12 +7,12 @@ project:
 format:
   html:
     theme:
-      - theme/catppuccin-mocha.scss
-      - theme/styles.scss
+      - assets/scss/catppuccin-mocha.scss
+      - assets/scss/styles.scss
     toc: true
     html-math-method: katex
-    include-in-header: custom_header.html
-    include-after-body: custom_body.html
+    include-in-header: assets/html/custom_header.html
+    include-after-body: assets/html/custom_body.html
 
 website:
   title: "Roberto Park"
@@ -28,6 +28,8 @@ website:
         href: https://github.com/betopark97
     right:
       - href: index.qmd
+        text: Home
+      - href: portfolio.qmd
         text: Portfolio
       - href: projects/projects.qmd
         text: Projects
@@ -55,7 +57,19 @@ website:
       collapse-level: 1
       contents:
         - notes/index.qmd
+        - section: "Terminal"
+          contents: []
+        - section: "DevOps"
+          contents: []
+        - section: "Data Engineering"
+          contents: []
         - auto: "notes/data-analysis"
+        - section: "Business Intelligence"
+          contents: []
+        - section: "Machine Learning"
+          contents: []
+        - section: "AI Engineering"
+          contents: []
 
   page-footer:
     left: "Copyright 2024, Roberto Park"
