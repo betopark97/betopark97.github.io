@@ -3,6 +3,9 @@ name: Quarto Publish
 on:
   push:
     branches: [main]
+  schedule:
+    # 00:00 UTC = 09:00 KST (UTC+9). Refreshes the about-me block daily.
+    - cron: '0 0 * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,15 +17,68 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Fetch previously-deployed about-me
+        if: github.event_name == 'schedule'
+        run: |
+          curl -fsSL https://betopark97.github.io/assets/_aboutme.md -o previous.md 2>/dev/null \
+            || : > previous.md
 
       - name: Fetch about-me README
+        env:
+          STRICT: '1'
         run: ./scripts/fetch-aboutme.sh
 
+      - name: Detect about-me change
+        id: diff
+        if: github.event_name == 'schedule'
+        run: |
+          if diff -q previous.md assets/_aboutme.md >/dev/null 2>&1; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "about-me unchanged; skipping render and publish"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "about-me changed; proceeding with render and publish"
+          fi
+
+      - name: Set up Quarto
+        if: github.event_name != 'schedule' || steps.diff.outputs.changed == 'true'
+        uses: quarto-dev/quarto-actions/setup@v2
+
       - name: Render and Publish
+        if: github.event_name != 'schedule' || steps.diff.outputs.changed == 'true'
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify Discord on deploy
+        if: success() && (github.event_name != 'schedule' || steps.diff.outputs.changed == 'true')
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT: ${{ github.event_name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -z "${DISCORD_WEBHOOK_URL:-}" ] && { echo "No DISCORD_WEBHOOK_URL set; skipping"; exit 0; }
+          case "$EVENT" in
+            push)              MSG="Site deployed — main branch pushed";;
+            workflow_dispatch) MSG="Site deployed — manual run";;
+            schedule)          MSG="Site deployed — about-me changed";;
+            *)                 MSG="Site deployed";;
+          esac
+          curl -fsSL -X POST "$DISCORD_WEBHOOK_URL" \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -nc --arg c "$MSG"$'\n'"$RUN_URL" '{content: $c}')"
+
+      - name: Notify Discord on failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          EVENT: ${{ github.event_name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          [ -z "${DISCORD_WEBHOOK_URL:-}" ] && { echo "No DISCORD_WEBHOOK_URL set; skipping"; exit 0; }
+          MSG="Workflow failed (event: $EVENT)"
+          curl -fsSL -X POST "$DISCORD_WEBHOOK_URL" \
+            -H 'Content-Type: application/json' \
+            -d "$(jq -nc --arg c "$MSG"$'\n'"$RUN_URL" '{content: $c}')"
