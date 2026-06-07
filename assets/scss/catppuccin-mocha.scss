@@ -130,6 +130,21 @@ blockquote {
   color: $ctp-subtext1;
 }
 
+.explore-card {
+  background-color: $ctp-mantle;
+
+  .explore-card-title { color: $ctp-text; }
+  p                   { color: $ctp-subtext0; }
+  i                   { color: $ctp-mauve; }
+
+  &:hover {
+    border-color: $ctp-mauve;
+    background-color: $ctp-surface0;
+
+    .explore-card-title { color: $ctp-mauve; }
+  }
+}
+
 table {
   color: $ctp-text;
 }

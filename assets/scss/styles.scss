@@ -58,3 +58,313 @@ blockquote {
     text-align: left;
   }
 }
+
+// ---- Hero demo gallery (temporary — pick one and remove the rest) ----
+
+.hero-demo {
+  margin: 2rem 0;
+}
+
+.hero-demo-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $ctp-overlay1;
+  margin-bottom: 0.5rem;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 12px;
+  padding: 3rem 1.5rem;
+
+  // Firefly: soft glow that follows the cursor on hover.
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      280px circle at var(--mouse-x, -200px) var(--mouse-y, -200px),
+      rgba(203, 166, 247, 0.45) 0%,
+      rgba(203, 166, 247, 0.18) 12%,
+      rgba(137, 180, 250, 0.08) 32%,
+      transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+// Shared gradient text effect
+.hero-name-gradient {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(90deg, $ctp-mauve, $ctp-blue, $ctp-pink, $ctp-mauve);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: hero-gradient-shift 6s linear infinite;
+}
+
+.hero-name-gradient-slow {
+  animation-duration: 14s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes hero-gradient-shift {
+  0%   { background-position:   0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+@keyframes hero-blink {
+  50% { opacity: 0; }
+}
+
+// Option 1: typewriter
+.hero-typewriter {
+  text-align: center;
+  background: linear-gradient(180deg, $ctp-mantle 0%, transparent 100%);
+
+  .hero-name-gradient,
+  .hero-role {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-role {
+    margin-top: 0.8rem;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: $ctp-subtext1;
+  }
+
+  .typed-cursor {
+    color: $ctp-mauve;
+    margin-left: 2px;
+    animation: hero-blink 1s steps(1) infinite;
+  }
+}
+
+// Option 2: animated mesh blobs
+.hero-mesh {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  background: $ctp-mantle;
+  border: 1px solid $ctp-surface1;
+  min-height: 18rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .mesh-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.55;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .mesh-blob-1 {
+    width: 320px; height: 320px;
+    background: $ctp-mauve;
+    top: -60px; left: -60px;
+    animation: hero-blob-1 14s ease-in-out infinite;
+  }
+  .mesh-blob-2 {
+    width: 280px; height: 280px;
+    background: $ctp-blue;
+    bottom: -80px; right: -40px;
+    animation: hero-blob-2 18s ease-in-out infinite;
+  }
+  .mesh-blob-3 {
+    width: 220px; height: 220px;
+    background: $ctp-pink;
+    top: 40%; left: 55%;
+    animation: hero-blob-3 16s ease-in-out infinite;
+  }
+
+  .hero-mesh-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    color: $ctp-text;
+    line-height: 1.1;
+  }
+
+  .hero-tagline {
+    margin-top: 0.6rem;
+    color: $ctp-subtext1;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    letter-spacing: 0.05em;
+  }
+}
+
+@keyframes hero-blob-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(80px, 60px) scale(1.15); }
+}
+@keyframes hero-blob-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-60px, -40px) scale(1.1); }
+}
+@keyframes hero-blob-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-50px, 30px) scale(0.9); }
+  66%      { transform: translate(40px, -30px) scale(1.1); }
+}
+
+// Option 3: terminal
+.hero-terminal {
+  background: $ctp-crust;
+  border: 1px solid $ctp-surface1;
+  padding: 0;
+  font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+
+  .terminal-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    background: $ctp-mantle;
+    border-bottom: 1px solid $ctp-surface1;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .terminal-title {
+    margin-left: 0.5rem;
+    color: $ctp-subtext0;
+    font-size: 0.85em;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .dot.red    { background: $ctp-red; }
+  .dot.yellow { background: $ctp-yellow; }
+  .dot.green  { background: $ctp-green; }
+
+  .terminal-body {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 1.2rem 1.4rem;
+    background: $ctp-crust;
+    color: $ctp-text;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    min-height: 9rem;
+    white-space: pre-wrap;
+    border: none !important;
+  }
+
+  .term-prompt { color: $ctp-green; }
+  .term-cmd    { color: $ctp-text; }
+  .term-out    { color: $ctp-subtext1; }
+  .term-cursor {
+    color: $ctp-mauve;
+    animation: hero-blink 1s steps(1) infinite;
+  }
+}
+
+// Option 5: pixel-art lifeline (baby → adult, Guatemala → South Korea)
+.hero-pixelart {
+  background: $ctp-crust;
+  padding: 0;
+  border: 1px solid $ctp-surface1;
+  overflow: hidden;
+
+  .pa-canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    // Lift above the firefly glow so the pixel art stays crisp.
+    position: relative;
+    z-index: 2;
+  }
+
+  .pa-flag {
+    transition: opacity 0.6s ease;
+  }
+}
+
+// Option 4: subtle gradient only
+.hero-subtle {
+  text-align: center;
+
+  .hero-name-gradient,
+  .hero-tagline {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tagline {
+    margin-top: 0.8rem;
+    color: $ctp-subtext1;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    letter-spacing: 0.05em;
+  }
+}
+
+// Landing-page Explore cards: 2x2 grid on tablet+, single column on mobile.
+.explore-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem 0 2rem;
+
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.explore-card {
+  display: block;
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  border: 1px solid $ctp-surface1;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+  .explore-card-title {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95em;
+  }
+
+  i {
+    margin-right: 0.45rem;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
