@@ -171,3 +171,8 @@ _book
 # My Files
 TODOs.md
 
+# Local AI assistant scratch
+.claude/
+.agents/
+.pi/
+
