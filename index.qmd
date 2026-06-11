@@ -1,173 +1,26 @@
 ---
-title: "Roberto Park"
 toc: false
 page-layout: full
 ---
 
 ```{=html}
-<div class="hero-demo">
-  <div class="hero-demo-label">Option 1 — Gradient + typewriter</div>
-  <div class="hero hero-typewriter">
-    <div class="hero-name-gradient">Roberto Park</div>
+<div class="hero">
+  <div class="mesh-blob mesh-blob-1"></div>
+  <div class="mesh-blob mesh-blob-2"></div>
+  <div class="mesh-blob mesh-blob-3"></div>
+  <div class="mesh-blob mesh-blob-4"></div>
+  <div class="mesh-blob mesh-blob-5"></div>
+  <div class="hero-content">
+    <h1 class="hero-name">Roberto Park</h1>
     <div class="hero-role">
-      I'm a <span id="typed-role"></span><span class="typed-cursor">|</span>
+      I <span id="typed-role"></span><span class="typed-cursor">|</span>
     </div>
-  </div>
-</div>
-
-<div class="hero-demo">
-  <div class="hero-demo-label">Option 2 — Animated mesh backdrop</div>
-  <div class="hero hero-mesh">
-    <div class="mesh-blob mesh-blob-1"></div>
-    <div class="mesh-blob mesh-blob-2"></div>
-    <div class="mesh-blob mesh-blob-3"></div>
-    <div class="hero-mesh-content">
-      <div class="hero-name">Roberto Park</div>
-      <div class="hero-tagline">Data · AI · Tools</div>
-    </div>
-  </div>
-</div>
-
-<div class="hero-demo">
-  <div class="hero-demo-label">Option 3 — Terminal prompt</div>
-  <div class="hero hero-terminal">
-    <div class="terminal-header">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
-      <span class="terminal-title">roberto@portfolio ~ </span>
-    </div>
-    <pre class="terminal-body" id="terminal-body"></pre>
-  </div>
-</div>
-
-<div class="hero-demo">
-  <div class="hero-demo-label">Option 4 — Subtle gradient only</div>
-  <div class="hero hero-subtle">
-    <div class="hero-name-gradient hero-name-gradient-slow">Roberto Park</div>
-    <div class="hero-tagline">Data Scientist &amp; AI Engineer</div>
-  </div>
-</div>
-
-<div class="hero-demo">
-  <div class="hero-demo-label">Option 5 — Pixel-art lifeline</div>
-  <div class="hero hero-pixelart">
-    <svg class="pa-canvas" viewBox="0 0 160 40" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
-      <!-- Neutral sky for ages 0–4 -->
-      <rect class="pa-sky" width="160" height="33" fill="#1e1e2e"/>
-
-      <!-- Guatemala flag backdrop (ages 4–18) -->
-      <g class="pa-flag pa-flag-guate" opacity="0">
-        <rect x="0"   y="0" width="53" height="33" fill="#4997D0"/>
-        <rect x="53"  y="0" width="54" height="33" fill="#ffffff"/>
-        <rect x="107" y="0" width="53" height="33" fill="#4997D0"/>
-        <!-- Tiny center emblem -->
-        <circle cx="80" cy="16.5" r="3" fill="none" stroke="#3a7e2a" stroke-width="0.6"/>
-        <rect x="79" y="14" width="2" height="5" fill="#3a7e2a"/>
-      </g>
-
-      <!-- South Korea flag backdrop (ages 18–29) -->
-      <g class="pa-flag pa-flag-korea" opacity="0">
-        <rect x="0" y="0" width="160" height="33" fill="#ffffff"/>
-        <!-- Taegeuk: red top / blue bottom split by S-curve -->
-        <g transform="translate(80, 16.5)">
-          <path d="M -6,0 A 6,6 0 0,1 6,0 A 3,3 0 0,1 0,0 A 3,3 0 0,0 -6,0 Z" fill="#CD2E3A"/>
-          <path d="M -6,0 A 6,6 0 0,0 6,0 A 3,3 0 0,0 0,0 A 3,3 0 0,1 -6,0 Z" fill="#0047A0"/>
-        </g>
-        <!-- Four trigrams (simplified) -->
-        <g fill="#0b0b14">
-          <!-- top-left ☰ -->
-          <rect x="15" y="9"  width="10" height="1"/>
-          <rect x="15" y="11" width="10" height="1"/>
-          <rect x="15" y="13" width="10" height="1"/>
-          <!-- top-right ☵ -->
-          <rect x="135" y="9"  width="10" height="1"/>
-          <rect x="135" y="11" width="4"  height="1"/>
-          <rect x="141" y="11" width="4"  height="1"/>
-          <rect x="135" y="13" width="10" height="1"/>
-          <!-- bottom-left ☲ -->
-          <rect x="15" y="20" width="4"  height="1"/>
-          <rect x="21" y="20" width="4"  height="1"/>
-          <rect x="15" y="22" width="10" height="1"/>
-          <rect x="15" y="24" width="4"  height="1"/>
-          <rect x="21" y="24" width="4"  height="1"/>
-          <!-- bottom-right ☷ -->
-          <rect x="135" y="20" width="4"  height="1"/>
-          <rect x="141" y="20" width="4"  height="1"/>
-          <rect x="135" y="22" width="4"  height="1"/>
-          <rect x="141" y="22" width="4"  height="1"/>
-          <rect x="135" y="24" width="4"  height="1"/>
-          <rect x="141" y="24" width="4"  height="1"/>
-        </g>
-      </g>
-
-      <!-- Ground -->
-      <rect x="0" y="33" width="160" height="7" fill="#313244"/>
-      <rect x="0" y="33" width="160" height="1" fill="#45475a"/>
-
-      <!-- Character group (positioned by JS each frame) -->
-      <g class="pa-char" transform="translate(0, 28)">
-        <!-- Baby crawling (used 0–3) -->
-        <g class="pa-sprite pa-baby">
-          <rect x="4" y="0" width="2" height="1" fill="#2a2a2a"/>
-          <rect x="3" y="1" width="3" height="1" fill="#f5c2a7"/>
-          <rect x="0" y="2" width="6" height="1" fill="#74c7ec"/>
-          <rect x="0" y="3" width="1" height="2" fill="#45475a"/>
-          <rect x="3" y="3" width="1" height="2" fill="#45475a"/>
-          <rect x="5" y="3" width="1" height="2" fill="#f5c2a7"/>
-        </g>
-        <!-- Toddler (used 3–4) -->
-        <g class="pa-sprite pa-toddler" style="display:none">
-          <rect x="0" y="0" width="3" height="1" fill="#2a2a2a"/>
-          <rect x="0" y="1" width="3" height="2" fill="#f5c2a7"/>
-          <rect x="0" y="3" width="3" height="3" fill="#f38ba8"/>
-          <rect x="0" y="6" width="1" height="2" fill="#45475a"/>
-          <rect x="2" y="6" width="1" height="2" fill="#45475a"/>
-        </g>
-        <!-- Kid (used 4–12) -->
-        <g class="pa-sprite pa-kid" style="display:none">
-          <rect x="1" y="0" width="3" height="1" fill="#2a2a2a"/>
-          <rect x="1" y="1" width="3" height="2" fill="#f5c2a7"/>
-          <rect x="1" y="3" width="3" height="4" fill="#a6e3a1"/>
-          <rect x="0" y="4" width="1" height="3" fill="#f5c2a7"/>
-          <rect x="4" y="4" width="1" height="3" fill="#f5c2a7"/>
-          <rect x="1" y="7" width="1" height="4" fill="#45475a"/>
-          <rect x="3" y="7" width="1" height="4" fill="#45475a"/>
-        </g>
-        <!-- Teen (used 12–18) -->
-        <g class="pa-sprite pa-teen" style="display:none">
-          <rect x="1" y="0" width="3" height="1" fill="#2a2a2a"/>
-          <rect x="1" y="1" width="3" height="3" fill="#f5c2a7"/>
-          <rect x="1" y="4" width="3" height="5" fill="#cba6f7"/>
-          <rect x="0" y="5" width="1" height="4" fill="#f5c2a7"/>
-          <rect x="4" y="5" width="1" height="4" fill="#f5c2a7"/>
-          <rect x="1" y="9" width="1" height="5" fill="#45475a"/>
-          <rect x="3" y="9" width="1" height="5" fill="#45475a"/>
-        </g>
-        <!-- Adult (used 18+) -->
-        <g class="pa-sprite pa-adult" style="display:none">
-          <rect x="1" y="0" width="3" height="1" fill="#2a2a2a"/>
-          <rect x="1" y="1" width="3" height="3" fill="#f5c2a7"/>
-          <rect x="1" y="4" width="3" height="6" fill="#89b4fa"/>
-          <rect x="0" y="5" width="1" height="5" fill="#f5c2a7"/>
-          <rect x="4" y="5" width="1" height="5" fill="#f5c2a7"/>
-          <rect x="1" y="10" width="1" height="7" fill="#1e1e2e"/>
-          <rect x="3" y="10" width="1" height="7" fill="#1e1e2e"/>
-        </g>
-      </g>
-
-      <!-- Age display (top-right corner) -->
-      <g class="pa-age">
-        <rect x="138" y="3" width="18" height="9" fill="#11111b" stroke="#45475a" stroke-width="0.5"/>
-        <text class="pa-age-text" x="147" y="9.5" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="6" font-weight="700" fill="#cdd6f4">00</text>
-      </g>
-    </svg>
   </div>
 </div>
 
 <script>
 (function() {
-  // Firefly: update --mouse-x / --mouse-y on each hero as the cursor moves over it.
+  // Firefly: cursor-tracking radial glow inside the hero.
   document.querySelectorAll('.hero').forEach(function(hero) {
     hero.addEventListener('mousemove', function(e) {
       var rect = hero.getBoundingClientRect();
@@ -176,10 +29,13 @@ page-layout: full
     });
   });
 
-  // Option 1: typewriter cycle
+  // Typewriter: cycle through roles.
   var typedEl = document.getElementById('typed-role');
   if (typedEl) {
-    var roles = ['Data Scientist', 'AI Engineer', 'Data Engineer', 'Builder'];
+    var roles = [
+      'am a Data Engineer', 'love automation', 'use the Kitty Terminal', 
+      'like the Catppuccin Theme', 'read New Courier'
+    ];
     var i = 0, j = 0, deleting = false;
     function tickType() {
       var word = roles[i];
@@ -195,137 +51,6 @@ page-layout: full
       setTimeout(tickType, deleting ? 45 : 90);
     }
     tickType();
-  }
-
-  // Option 3: sequential terminal typing
-  var termEl = document.getElementById('terminal-body');
-  if (termEl) {
-    var script = [
-      { type: 'prompt' },
-      { type: 'cmd', text: 'whoami' },
-      { type: 'newline' },
-      { type: 'out', text: 'Roberto Park' },
-      { type: 'newline' },
-      { type: 'prompt' },
-      { type: 'cmd', text: 'cat role.txt' },
-      { type: 'newline' },
-      { type: 'out', text: 'Data Scientist & AI Engineer' },
-      { type: 'newline' },
-      { type: 'prompt' },
-      { type: 'cursor' }
-    ];
-    var idx = 0;
-    function append(html) { termEl.insertAdjacentHTML('beforeend', html); }
-    function runStep() {
-      if (idx >= script.length) return;
-      var step = script[idx++];
-      if (step.type === 'prompt') {
-        append('<span class="term-prompt">~/roberto $ </span>');
-        setTimeout(runStep, 250);
-      } else if (step.type === 'cmd') {
-        var w = step.text, k = 0;
-        var span = document.createElement('span');
-        span.className = 'term-cmd';
-        termEl.appendChild(span);
-        function typeChar() {
-          span.textContent = w.slice(0, ++k);
-          if (k < w.length) setTimeout(typeChar, 60);
-          else setTimeout(runStep, 350);
-        }
-        typeChar();
-      } else if (step.type === 'newline') {
-        append('\n');
-        setTimeout(runStep, 100);
-      } else if (step.type === 'out') {
-        append('<span class="term-out">' + step.text + '</span>');
-        setTimeout(runStep, 300);
-      } else if (step.type === 'cursor') {
-        append('<span class="term-cursor">_</span>');
-      }
-    }
-    runStep();
-  }
-
-  // Option 5: pixel-art lifeline animation
-  var pa = document.querySelector('.hero-pixelart');
-  if (pa) {
-    var ageText = pa.querySelector('.pa-age-text');
-    var charG   = pa.querySelector('.pa-char');
-    var sprites = {
-      baby:    pa.querySelector('.pa-baby'),
-      toddler: pa.querySelector('.pa-toddler'),
-      kid:     pa.querySelector('.pa-kid'),
-      teen:    pa.querySelector('.pa-teen'),
-      adult:   pa.querySelector('.pa-adult')
-    };
-    var heights = { baby: 5, toddler: 8, kid: 11, teen: 14, adult: 17 };
-    var flagGuate = pa.querySelector('.pa-flag-guate');
-    var flagKorea = pa.querySelector('.pa-flag-korea');
-
-    // Time(ms) → age stops. Each segment runs faster than the previous one.
-    var stops = [
-      { t: 0,     age: 0  },
-      { t: 2800,  age: 3  },  // crawl: ~0.93s/year
-      { t: 3700,  age: 4  },  // stand up: 0.9s
-      { t: 7700,  age: 18 },  // walk/grow through Guatemala: ~0.29s/year
-      { t: 10000, age: 29 }   // South Korea: ~0.21s/year
-    ];
-    var loopDur = 11800; // 1.8s pause at the end before restart
-
-    function ageAt(t) {
-      var last = stops[stops.length - 1];
-      if (t >= last.t) return last.age;
-      for (var i = 0; i < stops.length - 1; i++) {
-        if (t < stops[i + 1].t) {
-          var p = (t - stops[i].t) / (stops[i + 1].t - stops[i].t);
-          return stops[i].age + p * (stops[i + 1].age - stops[i].age);
-        }
-      }
-      return last.age;
-    }
-    function spriteForAge(a) {
-      if (a < 3)  return 'baby';
-      if (a < 4)  return 'toddler';
-      if (a < 12) return 'kid';
-      if (a < 18) return 'teen';
-      return 'adult';
-    }
-    function flagForAge(a) {
-      if (a < 4)  return null;
-      if (a < 18) return 'guate';
-      return 'korea';
-    }
-
-    var startTime = performance.now();
-    function paTick(now) {
-      var t = (now - startTime) % loopDur;
-      var age = ageAt(t);
-      var current = spriteForAge(age);
-
-      ageText.textContent = String(Math.floor(age)).padStart(2, '0');
-
-      for (var k in sprites) {
-        sprites[k].style.display = (k === current) ? '' : 'none';
-      }
-
-      // Horizontal travel scales with age (0 → 140 across ages 0 → 29).
-      var x = (age / 29) * 140;
-
-      // Walking bob: 1px up/down. Frequency grows with age.
-      var bobHz = 1.5 + (age / 29) * 6;
-      var bob = (Math.sin(t / 1000 * Math.PI * 2 * bobHz) > 0 && age >= 3) ? -1 : 0;
-
-      // Bottom of sprite sits on ground (y=33). Sprite has its own height.
-      var y = 33 - heights[current] + bob;
-
-      charG.setAttribute('transform', 'translate(' + x.toFixed(2) + ', ' + y + ')');
-
-      flagGuate.setAttribute('opacity', flagForAge(age) === 'guate' ? '1' : '0');
-      flagKorea.setAttribute('opacity', flagForAge(age) === 'korea' ? '1' : '0');
-
-      requestAnimationFrame(paTick);
-    }
-    requestAnimationFrame(paTick);
   }
 })();
 </script>
