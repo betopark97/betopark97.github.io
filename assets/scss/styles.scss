@@ -61,6 +61,13 @@ blockquote {
 
 // ---- Landing hero: animated catppuccin mesh + typewriter ----
 
+// Quarto auto-renders a title block when `title:` is set. The home page sets
+// `title:` only so Quarto won't hoist the in-hero <h1> into the title block;
+// the visible title lives inside .hero, so hide the duplicate title block here.
+body:has(.hero) #title-block-header {
+  display: none;
+}
+
 .hero {
   position: relative;
   overflow: hidden;
