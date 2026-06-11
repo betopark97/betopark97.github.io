@@ -22,14 +22,14 @@
     "href": "portfolio.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "Data Engineer who’d rather use the boring tool that works than the shiny one that might.\n\n\n\n\n\nThe Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nBuilt the Snowflake data warehouse from scratch for IPTV, Music, YouTube, OTT, FAST, and Merchandise data.\nAutomated ETL with Python for raw data ingestion to Snowflake.\nAutomated ELT with DBT for data modeling and data quality tests in Snowflake.\nBuilt Streamlit/Tableau dashboards tracking KPIs and time series analysis.\nOrchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.\nModeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams.\n\n\n\n\n\n\n\nSungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016) \n\n\n\n\n\nLanguages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi\n\n\n\n\nAt university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
+    "text": "Data Engineer who’d rather use the boring tool that works than the shiny one that might.\n\n\n\n\n\nThe Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly.\n\n\n\n\n\n\n\nSungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016) \n\n\n\n\n\nSnowPro Associate: Platform Certification (2026.01 - 2028.01)\n\n\n\n\nLanguages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi\n\n\n\n\nAt university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
   },
   {
     "objectID": "portfolio.html#experience",
     "href": "portfolio.html#experience",
     "title": "Roberto Park",
     "section": "",
-    "text": "The Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nBuilt the Snowflake data warehouse from scratch for IPTV, Music, YouTube, OTT, FAST, and Merchandise data.\nAutomated ETL with Python for raw data ingestion to Snowflake.\nAutomated ELT with DBT for data modeling and data quality tests in Snowflake.\nBuilt Streamlit/Tableau dashboards tracking KPIs and time series analysis.\nOrchestrated data pipelines with Airflow and Prefect on premise Linux server with alert systems to Slack.\nModeled Snowflake Intelligence Agents for MD, Marketing, Sales, and Distribution teams."
+    "text": "The Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly."
   },
   {
     "objectID": "portfolio.html#education",
@@ -37,6 +37,13 @@
     "title": "Roberto Park",
     "section": "",
     "text": "Sungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)"
+  },
+  {
+    "objectID": "portfolio.html#certifications",
+    "href": "portfolio.html#certifications",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "SnowPro Associate: Platform Certification (2026.01 - 2028.01)"
   },
   {
     "objectID": "portfolio.html#tech-stack",
@@ -159,25 +166,25 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "I |"
+  },
+  {
+    "objectID": "index.html#hi-there",
+    "href": "index.html#hi-there",
+    "title": "Roberto Park",
+    "section": "Hi there 👋",
+    "text": "Hi there 👋"
+  },
+  {
     "objectID": "index.html#explore",
     "href": "index.html#explore",
     "title": "Roberto Park",
     "section": "Explore",
-    "text": "Explore\n\nPortfolio — résumé, experience, tech stack\nProjects — case studies and code\nNotes — technical notes across the data stack\nBlog — long-form posts"
-  },
-  {
-    "objectID": "index.html#recent-notes",
-    "href": "index.html#recent-notes",
-    "title": "Roberto Park",
-    "section": "Recent notes",
-    "text": "Recent notes\n\n\n\n\n\nPreface\n\n\n\n\n\n\n\n\n\n\nProject Setup\n\n\n\n\n\n\n\n\n\n\nProblems & Ideas\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#recent-posts",
-    "href": "index.html#recent-posts",
-    "title": "Roberto Park",
-    "section": "Recent posts",
-    "text": "Recent posts\n\n\n\n\nNo matching items"
+    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
   },
   {
     "objectID": "notes/data-analysis/01-project-setup.html",

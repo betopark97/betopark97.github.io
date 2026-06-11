@@ -33,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -44,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77e9978e4918400ef642140f6378d45a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-a0ec6ee24bffc544af8461392ab01160.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,63 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-latest-notes .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-latest-notes'] = new List('listing-latest-notes', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-latest-blog .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: [],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-latest-blog'] = new List('listing-latest-blog', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -150,49 +91,6 @@ ul.task-list li input[type="checkbox"] {
   })(window, document, 'script', 'dataLayer', 'GTM-5J63Z9M7');</script>
 <!-- End Google Tag Manager -->
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -253,27 +151,61 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 class="hero-name title display-7">Roberto Park</h1></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Roberto Park</h1>
+
+
+
+<div class="hero">
+  <div class="mesh-blob mesh-blob-1"></div>
+  <div class="mesh-blob mesh-blob-2"></div>
+  <div class="mesh-blob mesh-blob-3"></div>
+  <div class="mesh-blob mesh-blob-4"></div>
+  <div class="mesh-blob mesh-blob-5"></div>
+  <div class="hero-content">
+    
+    <div class="hero-role">
+      I <span id="typed-role"></span><span class="typed-cursor">|</span>
+    </div>
+  </div>
 </div>
 
+<script>
+(function() {
+  // Firefly: cursor-tracking radial glow inside the hero.
+  document.querySelectorAll('.hero').forEach(function(hero) {
+    hero.addEventListener('mousemove', function(e) {
+      var rect = hero.getBoundingClientRect();
+      hero.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+      hero.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+    });
+  });
 
-
-<div class="quarto-title-meta column-page">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
+  // Typewriter: cycle through roles.
+  var typedEl = document.getElementById('typed-role');
+  if (typedEl) {
+    var roles = [
+      'am a Data Engineer', 'love automation', 'use the Kitty Terminal', 
+      'like the Catppuccin Theme', 'read New Courier'
+    ];
+    var i = 0, j = 0, deleting = false;
+    function tickType() {
+      var word = roles[i];
+      if (deleting) {
+        j--;
+        typedEl.textContent = word.slice(0, j);
+        if (j === 0) { deleting = false; i = (i + 1) % roles.length; setTimeout(tickType, 400); return; }
+      } else {
+        j++;
+        typedEl.textContent = word.slice(0, j);
+        if (j === word.length) { deleting = true; setTimeout(tickType, 1600); return; }
+      }
+      setTimeout(tickType, deleting ? 45 : 90);
+    }
+    tickType();
+  }
+})();
+</script>
 <section id="hi-there" class="level2">
 <h2 class="anchored" data-anchor-id="hi-there">Hi there 👋</h2>
 <!--
@@ -293,63 +225,24 @@ Here are some ideas to get you started:
 </section>
 <section id="explore" class="level2">
 <h2 class="anchored" data-anchor-id="explore">Explore</h2>
-<ul>
-<li><strong><a href="./portfolio.html">Portfolio</a></strong> — résumé, experience, tech stack</li>
-<li><strong><a href="./projects/projects.html">Projects</a></strong> — case studies and code</li>
-<li><strong><a href="./notes/index.html">Notes</a></strong> — technical notes across the data stack</li>
-<li><strong><a href="./blog/index.html">Blog</a></strong> — long-form posts</li>
-</ul>
-</section>
-<section id="recent-notes" class="level2">
-<h2 class="anchored" data-anchor-id="recent-notes">Recent notes</h2>
-<div id="listing-latest-notes" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1780735806226" data-listing-reading-time-sort="3" data-listing-word-count-sort="505">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notes/data-analysis/00-preface.html" class="no-external">Preface</a>
-</h3>
+<div class="explore-grid">
+  <a href="portfolio.html" class="explore-card">
+    <div class="explore-card-title"><i class="bi bi-person-badge"></i> Portfolio</div>
+    <p>Résumé, experience, tech stack.</p>
+  </a>
+  <a href="projects/projects.html" class="explore-card">
+    <div class="explore-card-title"><i class="bi bi-collection"></i> Projects</div>
+    <p>Case studies and code.</p>
+  </a>
+  <a href="notes/index.html" class="explore-card">
+    <div class="explore-card-title"><i class="bi bi-journal-text"></i> Notes</div>
+    <p>Technical notes across the data stack.</p>
+  </a>
+  <a href="blog/index.html" class="explore-card">
+    <div class="explore-card-title"><i class="bi bi-pencil-square"></i> Blog</div>
+    <p>Long-form posts.</p>
+  </a>
 </div>
-<div class="metadata">
-<a href="./notes/data-analysis/00-preface.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1780735806226" data-listing-reading-time-sort="7" data-listing-word-count-sort="1266">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notes/data-analysis/01-project-setup.html" class="no-external">Project Setup</a>
-</h3>
-</div>
-<div class="metadata">
-<a href="./notes/data-analysis/01-project-setup.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1780735806226" data-listing-reading-time-sort="3" data-listing-word-count-sort="517">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./notes/data-analysis/02-problems-and-ideas.html" class="no-external">Problems &amp; Ideas</a>
-</h3>
-</div>
-<div class="metadata">
-<a href="./notes/data-analysis/02-problems-and-ideas.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="recent-posts" class="level2">
-<h2 class="anchored" data-anchor-id="recent-posts">Recent posts</h2>
-<div id="listing-latest-blog" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-
 
 
 </section>
