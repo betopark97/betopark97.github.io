@@ -76,19 +76,6 @@ $code-bg:    $ctp-surface0;
   background-color: $ctp-mantle;
 }
 
-.sidebar-item-text {
-  color: $ctp-text;
-}
-
-.sidebar-item-text:hover {
-  color: $ctp-blue;
-}
-
-.sidebar-item-text.active {
-  color: $ctp-blue;
-  font-weight: 600;
-}
-
 pre, pre.sourceCode {
   background-color: $ctp-surface0 !important;
   color: $ctp-text !important;

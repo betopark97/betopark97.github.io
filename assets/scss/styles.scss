@@ -11,6 +11,23 @@
   border-right: 1px solid $ctp-surface0;
 }
 
+// Sidebar nav items. Bumped specificity (.sidebar-navigation .sidebar-item-text)
+// beats Quarto's `.sidebar-navigation a { color: inherit }`, which otherwise
+// makes collapsible section titles inherit the muted grey from
+// `div.sidebar-item-container`.
+.sidebar-navigation .sidebar-item-text {
+  color: $ctp-text;
+
+  &:hover {
+    color: $ctp-blue;
+  }
+
+  &.active {
+    color: $ctp-subtext0;
+    font-weight: 600;
+  }
+}
+
 pre, pre.sourceCode {
   border: 1px solid $ctp-surface1 !important;
 }
