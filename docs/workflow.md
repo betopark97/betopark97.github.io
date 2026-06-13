@@ -57,54 +57,62 @@ Or just visit https://betopark97.github.io/ and hard-refresh.
 
 ## Adding content
 
-`_quarto.yml` only defines the **hierarchy** (which sections exist and in what order). Files and labels inside each section come from the folder.
+Notes live in Obsidian and sync into `notes/`; everything else (`index.md`, `portfolio.md`, `projects/`, `blog/`) is hand-edited in the repo.
 
-### Add a new page to an existing section under Notes
+### Notes section (Obsidian → repo)
 
-Drop a file into the section's folder. The numeric prefix controls order; the frontmatter `title:` controls the sidebar label.
+The `notes/` directory is **derived** — `scripts/sync_notes.py` mirrors an Obsidian vault folder into it. Do not hand-edit files under `notes/`; edit in Obsidian and re-sync.
+
+#### One-time setup
+
+Create a `.env` at the project root (gitignored) with the absolute path to the Notes folder inside your vault:
 
 ```
-notes/data-analysis/03-modeling.qmd
----
-title: "Modeling"
----
+OBSIDIAN_VAULT_NOTES=/Users/you/Library/Mobile Documents/iCloud~md~obsidian/Documents/<Vault>/notes
 ```
 
-No `_quarto.yml` edit needed.
+No quotes, no backslash escapes — Make's `include` reads the value literally. Spaces are fine, leading `~` is expanded by the script.
 
-### Add a new section under Notes
+#### Vault layout (in Obsidian)
 
-1. Create a folder under `notes/` with a kebab-case name (e.g. `notes/time-series/`).
-2. Drop files in with numeric prefixes (`00-intro.qmd`, `01-...`).
-3. In `_quarto.yml`, add one line under `sidebar.id: notes` → `contents:`:
+- **Section ordering** — numeric prefix on the folder name: `01-terminal/`, `02-devops/`, …. Without a prefix, sections sort alphabetically after the numbered ones.
+- **Nesting** — subfolders inside a section become collapsible sub-sections in the sidebar (e.g. `03-data-engineering/data-modeling/` shows "Data Modeling" nested under "Data Engineering").
+- **File ordering within a section** — same numeric-prefix trick on filenames: `00-preface.md`, `01-project-setup.md`, ….
+- **Section title** — Quarto title-cases the folder name by default, so `07-ai-engineering/` displays as "07 Ai Engineering". To override (clean prefix + fix acronyms), create an `index.md` in that section's Obsidian folder:
+  ```yaml
+  ---
+  title: "AI Engineering"
+  ---
 
-   ```yaml
-   - auto: "notes/time-series"
-   ```
+  Section overview goes here.
+  ```
+  The `index.md` also serves as the section's landing page at `/notes/<slug>/`.
+- **File titles** — each note's `title:` frontmatter controls its sidebar label, independent of filename.
 
-The section title is auto-derived from the folder name (`time-series` → "Time Series"). To override (e.g. "Time Series Analysis"), add `_metadata.yml` inside the folder:
+#### Sync command
 
-```yaml
-title: "Time Series Analysis"
+```bash
+make sync-notes
 ```
 
-#### Empty placeholder section
+That single target does the whole pipeline: `make clean` (busts Quarto's incremental cache so sidebar/title changes take effect), then runs the sync script, then `make render`. After it finishes, `_site/` is fresh.
 
-If you want the section header to appear in the sidebar *before* you've written any pages for it, you can't use `auto:` — it errors on empty folders. Use a bare `section:` block with an empty `contents:` list instead:
+The sync is **one-way** (vault → repo) with `--delete`. Anything in `notes/<slug>/` not present in the vault is removed. Empty Obsidian folders (no `.md` files) are skipped — their slugs don't appear in `_quarto.yml` or the sidebar.
 
-```yaml
-- section: "Time Series"
-  contents: []
-```
+#### What `make sync-notes` does
 
-When you write the first `.qmd` in that folder, **replace the whole `section:` block with `- auto: "notes/time-series"`** — don't keep the wrapper around the `auto:`, or you'll get a double-nested "Time Series > Time Series" in the sidebar (because `auto:` already derives its own header from the folder name).
+1. Iterates top-level subdirectories of `$OBSIDIAN_VAULT_NOTES`.
+2. Slugifies each name (`01 - Terminal` → `01-terminal`).
+3. rsyncs `*.md` files recursively from each vault folder into `notes/<slug>/`.
+4. Removes any `notes/<slug>/` directories no longer present in the vault.
+5. Regenerates the block between `# >>> auto-notes` and `# <<< auto-notes` in `_quarto.yml` — one `- auto: "notes/<slug>/"` entry per populated section, sorted alphabetically.
 
 ### Other sections
 
 | Where | What |
 |---|---|
-| `projects/<slug>/index.qmd` | New project. Add an entry under `sidebar.id: projects`. |
-| `blog/<post-name>.qmd` | New blog post. **No `_quarto.yml` edit needed** — the blog sidebar uses `contents: blog/` and auto-includes every `.qmd`. |
+| `projects/<slug>/index.md` | New project. Add an entry under `sidebar.id: projects` in `_quarto.yml`. |
+| `blog/<post-name>.md` | New blog post. **No `_quarto.yml` edit needed** — the blog sidebar uses `contents: blog/` and auto-includes every `.md`. |
 
 ### File-naming conventions
 

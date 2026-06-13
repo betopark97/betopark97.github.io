@@ -1,20 +1,31 @@
-.PHONY: help preview render aboutme clean check
+.PHONY: help preview render sync-aboutme sync-notes clean check
+
+# Load repo-local .env (e.g. OBSIDIAN_VAULT_NOTES) and export to recipes.
+-include .env
+export
 
 help:
 	@echo "Targets:"
-	@echo "  make preview   Render once, then start the live preview server"
-	@echo "  make render    Build the site to _site/ and exit"
-	@echo "  make aboutme   Fetch the GitHub profile README into assets/_aboutme.md"
-	@echo "  make clean     Remove build outputs (_site/, .quarto/, assets/_aboutme.md)"
-	@echo "  make check     Run quarto check for environment diagnostics"
+	@echo "  make preview       Render once, then start the live preview server"
+	@echo "  make render        Build the site to _site/ and exit"
+	@echo "  make sync-aboutme  Fetch the GitHub profile README into assets/_aboutme.md"
+	@echo "  make sync-notes    Mirror \$$OBSIDIAN_VAULT_NOTES into notes/, then clean + render"
+	@echo "  make clean         Remove build outputs (_site/, .quarto/, assets/_aboutme.md)"
+	@echo "  make check         Run quarto check for environment diagnostics"
 
-aboutme:
+sync-aboutme:
 	./scripts/fetch-aboutme.sh
 
-preview: aboutme
+# Pulls notes from Obsidian, busts Quarto's incremental cache so sidebar
+# changes (new sections, edited titles) take effect, then re-renders.
+sync-notes: clean
+	./scripts/sync_notes.py
+	$(MAKE) render
+
+preview: sync-aboutme
 	quarto render && quarto preview
 
-render: aboutme
+render: sync-aboutme
 	quarto render
 
 clean:
