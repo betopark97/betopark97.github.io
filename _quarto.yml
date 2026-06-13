@@ -3,8 +3,14 @@ project:
   output-dir: _site
   render:
     - "*.qmd"
+    - "*.md"
+    - "!README.md"
+    - "!docs/"
   resources:
     - assets/_aboutme.md
+
+filters:
+  - assets/filters/obsidian-callouts.lua
 
 format:
   html:
@@ -29,15 +35,15 @@ website:
       - icon: github
         href: https://github.com/betopark97
     right:
-      - href: index.qmd
+      - href: index.md
         text: Home
-      - href: portfolio.qmd
+      - href: portfolio.md
         text: Portfolio
-      - href: projects/projects.qmd
+      - href: projects/projects.md
         text: Projects
-      - href: notes/index.qmd
+      - href: notes/index.md
         text: Notes
-      - href: blog/index.qmd
+      - href: blog/index.md
         text: Blog
 
   sidebar:
@@ -46,9 +52,9 @@ website:
       collapse-level: 1
       contents:
         - text: Gallery
-          href: projects/projects.qmd
+          href: projects/projects.md
         - text: 1. Charon Analysis
-          href: projects/charon-analysis/final_deliverable.qmd
+          href: projects/charon-analysis/final_deliverable.md
 
     - id: blog
       title: "Blog"
@@ -58,7 +64,7 @@ website:
       title: "Notes"
       collapse-level: 1
       contents:
-        - notes/index.qmd
+        - notes/index.md
         - section: "Terminal"
           contents: []
         - section: "DevOps"

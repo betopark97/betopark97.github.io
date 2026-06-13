@@ -5,4 +5,4 @@ format: html
 
 Welcome to my project portfolio. Here’s an overview of the projects I’ve worked on.
 
-{{< include layout.qmd >}}
+{{< include _layout.md >}}
