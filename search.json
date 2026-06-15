@@ -177,7 +177,7 @@
     "href": "index.html#hi-there",
     "title": "Roberto Park",
     "section": "Hi there 👋",
-    "text": "Hi there 👋"
+    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
   },
   {
     "objectID": "index.html#explore",
