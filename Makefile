@@ -10,7 +10,7 @@ help:
 	@echo "  make render        Build the site to _site/ and exit"
 	@echo "  make sync-aboutme  Fetch the GitHub profile README, then clean + render"
 	@echo "  make sync-notes    Mirror \$$OBSIDIAN_VAULT_NOTES into notes/, then clean + render"
-	@echo "  make clean         Remove build outputs (_site/, .quarto/, assets/_aboutme.md)"
+	@echo "  make clean         Remove build outputs (_site/, .quarto/)"
 	@echo "  make check         Run quarto check for environment diagnostics"
 
 # Pulls the profile README, busts Quarto's incremental cache so the
@@ -34,7 +34,7 @@ render:
 	quarto render
 
 clean:
-	rm -rf _site .quarto assets/_aboutme.md
+	rm -rf _site .quarto
 
 check:
 	quarto check
