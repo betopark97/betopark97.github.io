@@ -11,6 +11,7 @@ project:
 
 filters:
   - assets/filters/obsidian-callouts.lua
+  - assets/filters/term-codeblocks.lua
 
 format:
   html:
@@ -19,6 +20,7 @@ format:
       - assets/scss/styles.scss
     toc: true
     html-math-method: katex
+    code-line-numbers: true
     include-in-header: assets/html/custom_header.html
     include-after-body: assets/html/custom_body.html
 

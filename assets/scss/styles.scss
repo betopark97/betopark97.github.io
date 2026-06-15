@@ -36,6 +36,85 @@ div.sourceCode {
   border: 1px solid $ctp-surface1 !important;
 }
 
+// macOS-style terminal chrome for code blocks. Opt-in:
+//   ::: {.term data-title="zsh"}
+//   ```bash ... ```
+//   :::
+//
+// Title bar (::before) takes its own 2rem of vertical space at the top of
+// `.term`; the code block falls naturally below it. Traffic-light dots (::after)
+// are absolutely positioned on top of the title bar — one circle + two
+// box-shadow clones.
+.term {
+  position: relative;
+  margin: 1rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid $ctp-surface1;
+  background: $ctp-surface0;
+
+  &::before {
+    content: attr(data-title);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 2rem;
+    padding-right: 1rem;
+    background: $ctp-mantle;
+    border-bottom: 1px solid $ctp-surface1;
+    color: $ctp-subtext0;
+    font-size: 0.8rem;
+    font-family: $font-family-monospace;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0.625rem;
+    left: 1rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: $ctp-red;
+    box-shadow:
+      1.25rem 0 0 $ctp-yellow,
+      2.5rem 0 0 $ctp-green;
+    z-index: 1;
+  }
+
+  div.sourceCode,
+  pre,
+  pre.sourceCode {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+}
+
+// Retheme the "Copied!" Bootstrap tooltip on code-block copy buttons.
+// Bootstrap's catppuccin-derived defaults end up as #000 background with
+// #1e1e2e text — unreadable. Override the CSS vars on the tooltip element.
+.tooltip.code-copy-button-tooltip {
+  --bs-tooltip-bg: #{$ctp-surface0};
+  --bs-tooltip-color: #{$ctp-text};
+  --bs-tooltip-opacity: 1;
+}
+
+// Same retheme for tippy.js tooltips (used by Quarto for citation/xref hover
+// previews) so all on-site tooltips share the catppuccin palette.
+.tippy-box[data-theme~="light-border"] {
+  background-color: $ctp-surface0 !important;
+  color: $ctp-text !important;
+  border-color: $ctp-surface1 !important;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.4);
+
+  &[data-placement^="top"] > .tippy-arrow::before    { border-top-color: $ctp-surface0; }
+  &[data-placement^="bottom"] > .tippy-arrow::before { border-bottom-color: $ctp-surface0; }
+  &[data-placement^="left"] > .tippy-arrow::before   { border-left-color: $ctp-surface0; }
+  &[data-placement^="right"] > .tippy-arrow::before  { border-right-color: $ctp-surface0; }
+}
+
 :not(pre) > code {
   padding: 0.15em 0.3em;
   border-radius: 3px;
