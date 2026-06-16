@@ -62,12 +62,39 @@ def rsync_md(src: Path, dst: Path) -> None:
     )
 
 
+def section_entries(slug: str, indent: str) -> list[str]:
+    """Build the sidebar lines for one section. If the section has subdirs,
+    emit an explicit `href:` + nested `auto:` list so subsection order is
+    pinned alphabetically by slug — Quarto's `auto:` walks directories in
+    raw FS-entry order (effectively random on APFS), so numeric prefixes
+    like `001-`, `002-` don't sort directories the way they sort files.
+    Sections that contain only `.md` files fall back to a single `auto:`
+    since Quarto's per-file sort already handles them."""
+    section_dir = NOTES_DIR / slug
+    children = sorted(section_dir.iterdir(), key=lambda p: p.name)
+    has_subdirs = any(p.is_dir() for p in children)
+    if not has_subdirs:
+        return [f'{indent}- auto: "notes/{slug}/"']
+
+    lines = [
+        f'{indent}- href: notes/{slug}/index.md',
+        f'{indent}  contents:',
+    ]
+    for child in children:
+        if child.name == "index.md":
+            continue
+        if child.is_dir():
+            lines.append(f'{indent}    - auto: "notes/{slug}/{child.name}/"')
+        elif child.suffix == ".md":
+            lines.append(f'{indent}    - notes/{slug}/{child.name}')
+    return lines
+
+
 def update_quarto_sidebar(slugs: list[str]) -> None:
-    """Regenerate the auto-notes block in _quarto.yml with one explicit
-    `auto:` entry per section, sorted alphabetically by slug. This pins the
-    sidebar order to the numeric prefixes in folder names (01-, 02-, ...)
-    rather than relying on Quarto's glob-expansion order, which sorts by
-    directory mtime."""
+    """Regenerate the auto-notes block in _quarto.yml. Top-level sections
+    are sorted alphabetically by slug; sections containing subdirs get an
+    explicit subsection list so they don't fall victim to Quarto's
+    FS-entry-order traversal."""
     lines = QUARTO_YML.read_text().splitlines()
     begin = next((i for i, ln in enumerate(lines) if SIDEBAR_BEGIN in ln), None)
     end = next((i for i, ln in enumerate(lines) if SIDEBAR_END in ln), None)
@@ -82,7 +109,7 @@ def update_quarto_sidebar(slugs: list[str]) -> None:
     indent = lines[begin][: len(lines[begin]) - len(lines[begin].lstrip())]
     new_block = [lines[begin]]
     for slug in sorted(slugs):
-        new_block.append(f'{indent}- auto: "notes/{slug}/"')
+        new_block.extend(section_entries(slug, indent))
     new_block.append(lines[end])
 
     QUARTO_YML.write_text("\n".join(lines[:begin] + new_block + lines[end + 1 :]) + "\n")
