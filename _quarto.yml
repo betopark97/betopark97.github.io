@@ -12,6 +12,7 @@ project:
 filters:
   - assets/filters/obsidian-callouts.lua
   - assets/filters/term-codeblocks.lua
+  - assets/filters/responsive-tables.lua
 
 format:
   html:
