@@ -176,3 +176,5 @@ TODOs.md
 .agents/
 .pi/
 
+
+**/*.quarto_ipynb

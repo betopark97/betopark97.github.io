@@ -26,6 +26,7 @@ format:
 
 website:
   title: "Roberto Park"
+  llms-txt: true
 
   page-navigation: true
   back-to-top-navigation: true
