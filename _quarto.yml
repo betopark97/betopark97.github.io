@@ -27,12 +27,14 @@ format:
 
 website:
   title: "Roberto Park"
+  favicon: assets/img/logos/logo.svg
   llms-txt: true
 
   page-navigation: true
   back-to-top-navigation: true
 
   navbar:
+    title: "bp-pkm"
     background: light
     search: true
     left:
