@@ -37,6 +37,16 @@ QUARTO_YML = REPO_ROOT / "_quarto.yml"
 SIDEBAR_BEGIN = "# >>> auto-notes"
 SIDEBAR_END = "# <<< auto-notes"
 
+# Markers in notes/index.md (the hand-authored gallery shell) bracketing the
+# intro prose, which is sourced from the vault's Notes index.md.
+INTRO_BEGIN = "<!-- >>> notes-intro"
+INTRO_END = "<!-- <<< notes-intro -->"
+
+# Markers inside the gallery's listing `contents:` (YAML comments), bracketing
+# the per-category entries, which are regenerated from the synced categories.
+CONTENTS_BEGIN = "# >>> auto-contents"
+CONTENTS_END = "# <<< auto-contents"
+
 
 def slugify(name: str) -> str:
     s = name.strip().lower()
@@ -153,6 +163,79 @@ def update_quarto_sidebar(slugs: list[str]) -> None:
     QUARTO_YML.write_text("\n".join(lines[:begin] + new_block + lines[end + 1 :]) + "\n")
 
 
+def strip_frontmatter(text: str) -> str:
+    """Return `text` with a leading `--- ... ---` YAML frontmatter block removed."""
+    lines = text.splitlines()
+    if lines and lines[0].strip() == "---":
+        for i in range(1, len(lines)):
+            if lines[i].strip() == "---":
+                return "\n".join(lines[i + 1 :]).strip()
+    return text.strip()
+
+
+def update_gallery_intro(src_root: Path) -> None:
+    """Sync the gallery's intro prose from the vault's Notes index.md into the
+    marked block of notes/index.md. The gallery's frontmatter (listing config)
+    and the `::: {#notes-categories}` placeholder are left untouched — only the
+    text between the INTRO markers is replaced, so the prose is authored in
+    Obsidian while the listing machinery stays in the repo."""
+    gallery = NOTES_DIR / "index.md"
+    src_index = src_root / "index.md"
+    if not gallery.exists():
+        return
+    if not src_index.is_file():
+        print(
+            "no index.md at the Notes root in the vault; leaving gallery intro as-is",
+            file=sys.stderr,
+        )
+        return
+
+    text = gallery.read_text()
+    begin = text.find(INTRO_BEGIN)
+    end = text.find(INTRO_END)
+    if begin == -1 or end == -1:
+        print(
+            f"warning: intro markers not found in notes/index.md; "
+            f"expected '{INTRO_BEGIN}' / '{INTRO_END}' — skipping intro update",
+            file=sys.stderr,
+        )
+        return
+
+    after_begin = text.index("\n", begin) + 1  # keep the begin-marker line
+    body = strip_frontmatter(src_index.read_text())
+    new = text[:after_begin] + body + "\n" + text[end:]
+    gallery.write_text(new)
+    print("synced gallery intro from vault Notes index.md")
+
+
+def update_gallery_contents(slugs: list[str]) -> None:
+    """Regenerate the listing `contents:` in notes/index.md from the synced
+    category slugs (sorted), so adding or removing a category in the vault
+    updates the gallery cards automatically — mirroring the sidebar block in
+    _quarto.yml. Each entry is the category's index page, relative to the
+    gallery (e.g. `001-terminal/index.md`)."""
+    gallery = NOTES_DIR / "index.md"
+    if not gallery.exists():
+        return
+    lines = gallery.read_text().splitlines()
+    begin = next((i for i, ln in enumerate(lines) if CONTENTS_BEGIN in ln), None)
+    end = next((i for i, ln in enumerate(lines) if CONTENTS_END in ln), None)
+    if begin is None or end is None:
+        print(
+            f"warning: contents markers not found in notes/index.md; "
+            f"expected '{CONTENTS_BEGIN}' / '{CONTENTS_END}' — skipping",
+            file=sys.stderr,
+        )
+        return
+
+    indent = lines[begin][: len(lines[begin]) - len(lines[begin].lstrip())]
+    new_block = [lines[begin]]
+    new_block += [f"{indent}- {slug}/index.md" for slug in sorted(slugs)]
+    new_block.append(lines[end])
+    gallery.write_text("\n".join(lines[:begin] + new_block + lines[end + 1 :]) + "\n")
+    print("regenerated gallery listing contents")
+
+
 def main() -> int:
     vault = os.environ.get("OBSIDIAN_VAULT_NOTES")
     if not vault:
@@ -200,6 +283,8 @@ def main() -> int:
         rsync_md(src_dir, dst_dir)
 
     update_quarto_sidebar([slug for _, slug in pairs])
+    update_gallery_contents([slug for _, slug in pairs])
+    update_gallery_intro(src_root)
 
     return 0
 
