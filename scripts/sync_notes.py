@@ -62,39 +62,77 @@ def rsync_md(src: Path, dst: Path) -> None:
     )
 
 
+def section_title(slug: str) -> str:
+    """Read the `title:` from notes/<slug>/index.md frontmatter so the sidebar
+    header matches the page's own title. Falls back to a prettified slug
+    (numeric prefix stripped, title-cased) if the file or field is missing."""
+    index = NOTES_DIR / slug / "index.md"
+    try:
+        lines = index.read_text().splitlines()
+    except OSError:
+        lines = []
+    if lines and lines[0].strip() == "---":
+        for ln in lines[1:]:
+            if ln.strip() == "---":
+                break
+            m = re.match(r"\s*title:\s*(.+)", ln)
+            if m:
+                return m.group(1).strip().strip("\"'")
+    return re.sub(r"^\d+-", "", slug).replace("-", " ").title()
+
+
 def section_entries(slug: str, indent: str) -> list[str]:
-    """Build the sidebar lines for one section. If the section has subdirs,
-    emit an explicit `href:` + nested `auto:` list so subsection order is
-    pinned alphabetically by slug — Quarto's `auto:` walks directories in
-    raw FS-entry order (effectively random on APFS), so numeric prefixes
-    like `001-`, `002-` don't sort directories the way they sort files.
-    Sections that contain only `.md` files fall back to a single `auto:`
-    since Quarto's per-file sort already handles them."""
+    """Build a self-contained sidebar object for one section, so each top-level
+    category renders its OWN scoped sidebar (you only ever see the tree for the
+    category you're in, never all of them). The category's index page is bound
+    via an explicit link labelled with the section name — a bare
+    `auto: "notes/<slug>/"` lets Quarto
+    decide how to render the node, and that choice is inconsistent (a folder with
+    index.md + a single note becomes a collapse-only section with no link, so
+    visiting its index shows no sidebar at all). Subdirs are listed via nested
+    `auto:` and loose `.md` files explicitly, so order is pinned by slug rather
+    than Quarto's FS-entry-order traversal (effectively random on APFS)."""
     section_dir = NOTES_DIR / slug
     children = sorted(section_dir.iterdir(), key=lambda p: p.name)
-    has_subdirs = any(p.is_dir() for p in children)
-    if not has_subdirs:
-        return [f'{indent}- auto: "notes/{slug}/"']
+    title = section_title(slug)
 
-    lines = [
-        f'{indent}- href: notes/{slug}/index.md',
-        f'{indent}  contents:',
+    # First entry links the category's index page, labelled with the section
+    # name (e.g. "Terminal") rather than a generic "Overview".
+    contents = [
+        f'{indent}    - text: "{title}"',
+        f"{indent}      href: notes/{slug}/index.md",
     ]
     for child in children:
         if child.name == "index.md":
             continue
         if child.is_dir():
-            lines.append(f'{indent}    - auto: "notes/{slug}/{child.name}/"')
+            contents.append(f'{indent}    - auto: "notes/{slug}/{child.name}/"')
         elif child.suffix == ".md":
-            lines.append(f'{indent}    - notes/{slug}/{child.name}')
-    return lines
+            contents.append(f"{indent}    - notes/{slug}/{child.name}")
+
+    # A back-to-gallery affordance via Quarto's built-in sidebar `tools` (an
+    # internal link, so it works in preview and deployed). Tools live outside
+    # `contents`, so — unlike a contents link — Quarto leaves them out of the
+    # bottom prev/next sequence automatically; no CSS hack needed. It renders
+    # as a back-arrow icon, labelled "Notes" via CSS (styles.scss).
+    return [
+        f"{indent}- id: notes-{slug}",
+        f'{indent}  title: "{title}"',
+        f"{indent}  tools:",
+        f"{indent}    - icon: arrow-left-circle",
+        f"{indent}      text: Notes",
+        f"{indent}      href: notes/index.md",
+        f"{indent}  contents:",
+        *contents,
+    ]
 
 
 def update_quarto_sidebar(slugs: list[str]) -> None:
-    """Regenerate the auto-notes block in _quarto.yml. Top-level sections
-    are sorted alphabetically by slug; sections containing subdirs get an
-    explicit subsection list so they don't fall victim to Quarto's
-    FS-entry-order traversal."""
+    """Regenerate the auto-notes block in _quarto.yml. Emits one scoped
+    sidebar object per category (sorted by slug) directly into the top-level
+    `sidebar:` list, so each category page shows only its own tree. The notes
+    landing (`notes/index.md`) is deliberately left out of every sidebar so it
+    renders full-width as the gallery entry point."""
     lines = QUARTO_YML.read_text().splitlines()
     begin = next((i for i, ln in enumerate(lines) if SIDEBAR_BEGIN in ln), None)
     end = next((i for i, ln in enumerate(lines) if SIDEBAR_END in ln), None)

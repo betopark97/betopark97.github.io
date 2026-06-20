@@ -28,6 +28,30 @@
   }
 }
 
+// Pull the "← All notes" tool icon to the top of the sidebar. Quarto's floating
+// layout flex-orders it last (order: 2) even though it's first in the DOM.
+#quarto-sidebar .sidebar-tools-main {
+  order: -1;
+  margin-bottom: 0.4rem;
+
+  // Tools render icon-only; surface the label (from the `title` attr, i.e. the
+  // sidebar tool's `text:`) as visible text next to the icon.
+  .quarto-navigation-tool::after {
+    content: attr(title);
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+    vertical-align: middle;
+  }
+}
+
+// Make the category's own name (the first sidebar entry, which links its index)
+// a touch larger than the notes listed beneath it.
+.sidebar-menu-container > ul > li.sidebar-item:first-child
+  > .sidebar-item-container > a[href*="/notes/"] .menu-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
 pre, pre.sourceCode {
   border: 1px solid $ctp-surface1 !important;
 }
