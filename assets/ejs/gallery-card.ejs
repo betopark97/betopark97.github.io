@@ -1,0 +1,8 @@
+<div class="gallery-grid">
+<% for (const item of items) { %>
+  <a href="<%= item.path %>" class="gallery-card">
+    <span class="gallery-card-title"><% if (item.icon) { %><i class="bi bi-<%= item.icon %>" aria-hidden="true"></i> <% } %><%= item.title %></span>
+    <% if (item.description) { %><span class="gallery-card-desc"><%= item.description %></span><% } %>
+  </a>
+<% } %>
+</div>
