@@ -75,19 +75,21 @@ No quotes, no backslash escapes — Make's `include` reads the value literally. 
 
 #### Vault layout (in Obsidian)
 
-- **Section ordering** — numeric prefix on the folder name: `01-terminal/`, `02-devops/`, …. Without a prefix, sections sort alphabetically after the numbered ones.
-- **Nesting** — subfolders inside a section become collapsible sub-sections in the sidebar (e.g. `03-data-engineering/data-modeling/` shows "Data Modeling" nested under "Data Engineering").
-- **File ordering within a section** — same numeric-prefix trick on filenames: `00-preface.md`, `01-project-setup.md`, ….
-- **Section title** — Quarto title-cases the folder name by default, so `07-ai-engineering/` displays as "07 Ai Engineering". To override (clean prefix + fix acronyms), create an `index.md` in that section's Obsidian folder:
-  ```yaml
-  ---
-  title: "AI Engineering"
-  ---
+The full rules live in [conventions.md](conventions.md). In short:
 
-  Section overview goes here.
-  ```
-  The `index.md` also serves as the section's landing page at `/notes/<slug>/`.
-- **File titles** — each note's `title:` frontmatter controls its sidebar label, independent of filename.
+- **Folders** (categories and subsections) are named `NNN-slug` — a 3-digit
+  zero-padded number (sets sidebar/gallery order) + lowercase kebab-case slug,
+  e.g. `001-terminal/`, `003-data-engineering/001-data-modeling/`.
+- **Every folder has an `index.md`** with `title` (all folders), plus
+  `description` and `icon` for top-level categories (these feed the gallery
+  card). `icon:` is a [Bootstrap Icons](https://icons.getbootstrap.com/) name
+  minus the `bi-` prefix (e.g. `icon: diagram-3`). Keep emoji out of `title`.
+- **Files** are named `NNN-slug.md`; each note's `title:` frontmatter sets its
+  sidebar label, independent of filename.
+- The vault's **top-level `index.md`** body becomes the gallery's intro text.
+
+`make sync-notes` validates all of this and reports anything that breaks the
+rules (see below).
 
 #### Sync command
 
@@ -95,17 +97,31 @@ No quotes, no backslash escapes — Make's `include` reads the value literally. 
 make sync-notes
 ```
 
-That single target does the whole pipeline: `make clean` (busts Quarto's incremental cache so sidebar/title changes take effect), then runs the sync script, then `make render`. After it finishes, `_site/` is fresh.
+This **mirrors the vault and prints the convention report — it does not render.**
+Read the report, fix any flagged files in Obsidian, re-run to re-check, then
+`make preview` / `make render` to build.
 
-The sync is **one-way** (vault → repo) with `--delete`. Anything in `notes/<slug>/` not present in the vault is removed. Empty Obsidian folders (no `.md` files) are skipped — their slugs don't appear in `_quarto.yml` or the sidebar.
+The sync is **one-way** (vault → repo) with `--delete`. Anything in
+`notes/<slug>/` not present in the vault is removed. Empty Obsidian folders (no
+`.md` files) are skipped.
 
 #### What `make sync-notes` does
 
-1. Iterates top-level subdirectories of `$OBSIDIAN_VAULT_NOTES`.
-2. Slugifies each name (`01 - Terminal` → `01-terminal`).
-3. rsyncs `*.md` files recursively from each vault folder into `notes/<slug>/`.
-4. Removes any `notes/<slug>/` directories no longer present in the vault.
-5. Regenerates the block between `# >>> auto-notes` and `# <<< auto-notes` in `_quarto.yml` — one `- auto: "notes/<slug>/"` entry per populated section, sorted alphabetically.
+1. `make clean` — busts Quarto's incremental cache so the next build picks up
+   sidebar/title changes.
+2. rsyncs `*.md` from each vault category into `notes/<slug>/`, and removes any
+   `notes/<slug>/` no longer in the vault.
+3. Regenerates the `# >>> auto-notes … # <<< auto-notes` block in `_quarto.yml`
+   — one **scoped sidebar per category** (each with a "Notes" back-button, the
+   section-name link, and the category's notes/subsections).
+4. Regenerates the gallery shell `notes/index.md`: the `# >>> auto-contents`
+   card list (one per category) and the `notes-intro` block (pulled from the
+   vault's top-level `index.md`).
+5. Prints the **convention report** (`--report`) — a dbt-style PASS/FAIL per
+   folder/file plus a consolidated list of what to fix in Obsidian.
+
+Build separately: `make preview` (live server) or `make render` (one-shot).
+Both mirror first, then run Quarto — without the convention report.
 
 ### Other sections
 
@@ -116,9 +132,9 @@ The sync is **one-way** (vault → repo) with `--delete`. Anything in `notes/<sl
 
 ### File-naming conventions
 
-- **Order**: numeric prefix (`00-`, `01-`, ...). Alphabetic sort = intended order.
-- **Label**: each file's frontmatter `title:` — independent of filename.
-- **URL slug**: the filename (minus extension), so use kebab-case, no `&`, no spaces.
+See [conventions.md](conventions.md) for the full Notes naming + metadata rules
+(`NNN-slug` folders and files, required `index.md` frontmatter, where to get
+`icon:` names). `make sync-notes` validates against them and reports violations.
 
 ## Dynamic about-me block
 

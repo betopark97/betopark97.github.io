@@ -47,6 +47,11 @@ INTRO_END = "<!-- <<< notes-intro -->"
 CONTENTS_BEGIN = "# >>> auto-contents"
 CONTENTS_END = "# <<< auto-contents"
 
+# Naming convention (see docs/conventions.md): a 3-digit zero-padded number
+# prefix + lowercase kebab-case slug. Folders use it bare; files add `.md`.
+FOLDER_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$")
+FILE_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
+
 
 def slugify(name: str) -> str:
     s = name.strip().lower()
@@ -236,6 +241,108 @@ def update_gallery_contents(slugs: list[str]) -> None:
     print("regenerated gallery listing contents")
 
 
+def read_frontmatter(path: Path) -> dict[str, str]:
+    """Best-effort parse of top-level scalar keys from a file's YAML frontmatter."""
+    try:
+        lines = path.read_text().splitlines()
+    except OSError:
+        return {}
+    if not lines or lines[0].strip() != "---":
+        return {}
+    out: dict[str, str] = {}
+    for ln in lines[1:]:
+        if ln.strip() == "---":
+            break
+        m = re.match(r"([A-Za-z0-9_-]+):\s*(.*)$", ln)
+        if m:
+            out[m.group(1)] = m.group(2).strip().strip("\"'")
+    return out
+
+
+def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) -> None:
+    """Validate one folder, its index.md, and (recursively) its children against
+    the project conventions, appending (relative_path, [issues]) tuples."""
+    rel = folder.relative_to(src_root)
+
+    folder_issues: list[str] = []
+    if not FOLDER_RE.match(folder.name):
+        folder_issues.append("folder name must be NNN-slug (3-digit number + lowercase kebab-case)")
+    index = folder / "index.md"
+    if not index.is_file():
+        folder_issues.append("missing index.md")
+    results.append((f"{rel}/", folder_issues))
+
+    if index.is_file():
+        fm = read_frontmatter(index)
+        index_issues: list[str] = []
+        title = fm.get("title", "")
+        if not title:
+            index_issues.append("missing 'title'")
+        elif any(ord(c) > 127 for c in title):
+            index_issues.append("'title' contains non-ASCII (emoji?) — keep titles plain; use 'icon:'")
+        if top_level and not fm.get("description"):
+            index_issues.append("missing 'description' (feeds the gallery card)")
+        if top_level and not fm.get("icon"):
+            index_issues.append("missing 'icon' (Bootstrap icon name; see docs/conventions.md)")
+        results.append((f"{rel}/index.md", index_issues))
+
+    for child in sorted(folder.iterdir(), key=lambda p: p.name):
+        if child.name.startswith("."):
+            continue
+        if child.is_dir():
+            _check_folder(child, src_root, False, results)
+        elif child.suffix == ".md" and child.name != "index.md":
+            file_issues: list[str] = []
+            if not FILE_RE.match(child.name):
+                file_issues.append("filename must be NNN-slug.md (3-digit number + lowercase kebab-case)")
+            if not read_frontmatter(child).get("title"):
+                file_issues.append("missing 'title'")
+            results.append((str(rel / child.name), file_issues))
+
+
+def validate_vault(src_root: Path) -> list:
+    """Walk the vault and collect convention issues per folder/file."""
+    results: list = []
+    if not (src_root / "index.md").is_file():
+        results.append(("index.md", ["missing Notes root index.md (the gallery intro source)"]))
+    for cat in sorted(p for p in src_root.iterdir() if p.is_dir() and not p.name.startswith(".")):
+        _check_folder(cat, src_root, True, results)
+    return results
+
+
+def print_validation_report(results: list) -> None:
+    """dbt-style PASS/FAIL per item, then a consolidated fix-list of failures."""
+    tty = sys.stdout.isatty()
+    def paint(code: str, s: str) -> str:
+        return f"\033[{code}m{s}\033[0m" if tty else s
+    ok, bad = paint("32", "PASS"), paint("31", "FAIL")
+
+    print("\n" + "─" * 64)
+    print("Convention check (vault) — see docs/conventions.md")
+    print("─" * 64)
+    for path, issues in results:
+        if issues:
+            print(f"  {bad}  {path}")
+            for i in issues:
+                print(f"          - {i}")
+        else:
+            print(f"  {ok}  {path}")
+
+    failed = [(p, i) for p, i in results if i]
+    passed = len(results) - len(failed)
+    print("─" * 64)
+    print(f"Done. {len(results)} checked  |  "
+          f"{paint('32', f'{passed} passed')}  |  {paint('31', f'{len(failed)} failed')}")
+
+    if failed:
+        print("\n" + paint("1", "Fix these in your Obsidian vault:"))
+        for path, issues in failed:
+            print(f"  {paint('31', '✗')} {path}")
+            for i in issues:
+                print(f"      - {i}")
+    print()
+
+
 def main() -> int:
     vault = os.environ.get("OBSIDIAN_VAULT_NOTES")
     if not vault:
@@ -285,6 +392,11 @@ def main() -> int:
     update_quarto_sidebar([slug for _, slug in pairs])
     update_gallery_contents([slug for _, slug in pairs])
     update_gallery_intro(src_root)
+
+    # The convention check is opt-in (--report) so it only prints for
+    # `make sync-notes`, not on every `make preview` / `make render`.
+    if "--report" in sys.argv:
+        print_validation_report(validate_vault(src_root))
 
     return 0
 

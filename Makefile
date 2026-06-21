@@ -9,7 +9,7 @@ help:
 	@echo "  make preview       Render once, then start the live preview server"
 	@echo "  make render        Build the site to _site/ and exit"
 	@echo "  make sync-aboutme  Fetch the GitHub profile README, then clean + render"
-	@echo "  make sync-notes    Mirror \$$OBSIDIAN_VAULT_NOTES into notes/, then clean + render"
+	@echo "  make sync-notes    Mirror \$$OBSIDIAN_VAULT_NOTES into notes/ + convention report (no render)"
 	@echo "  make clean         Remove build outputs (_site/, .quarto/)"
 	@echo "  make check         Run quarto check for environment diagnostics"
 
@@ -19,11 +19,12 @@ sync-aboutme: clean
 	./scripts/fetch-aboutme.sh
 	$(MAKE) render
 
-# Pulls notes from Obsidian, busts Quarto's incremental cache so sidebar
-# changes (new sections, edited titles) take effect, then re-renders.
+# Mirrors notes from Obsidian, regenerates the sidebar + gallery, busts
+# Quarto's incremental cache, and prints the convention report. Does NOT
+# render — read the report, fix any flagged files in Obsidian, re-run to
+# re-check, then `make preview` / `make render` to build.
 sync-notes: clean
-	./scripts/sync_notes.py
-	$(MAKE) render
+	./scripts/sync_notes.py --report
 
 preview:
 	./scripts/sync_notes.py
