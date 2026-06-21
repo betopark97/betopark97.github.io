@@ -259,6 +259,44 @@ def read_frontmatter(path: Path) -> dict[str, str]:
     return out
 
 
+def check_dividers(path: Path) -> list[str]:
+    """Flag bare `---` horizontal-rule dividers in the body that aren't fenced by
+    blank lines (see docs/conventions.md §5). The leading frontmatter `---`/`---`
+    pair is exempt — that's the metadata block. A divider with no blank line
+    *after* it makes Quarto parse the following prose as a second YAML block and
+    the render dies; no blank line *before* it turns the previous line into a
+    heading."""
+    try:
+        lines = path.read_text().splitlines()
+    except OSError:
+        return []
+    # Skip the leading frontmatter so its fences aren't mistaken for dividers.
+    start = 0
+    if lines and lines[0].strip() == "---":
+        for i in range(1, len(lines)):
+            if lines[i].strip() == "---":
+                start = i + 1
+                break
+    issues: list[str] = []
+    for i in range(start, len(lines)):
+        if lines[i].strip() != "---":
+            continue
+        after_blank = i + 1 >= len(lines) or lines[i + 1].strip() == ""
+        before_blank = i == 0 or lines[i - 1].strip() == ""
+        if not after_blank:
+            issues.append(
+                f"line {i + 1}: '---' divider needs a blank line after it, else "
+                f"Quarto parses the next lines as YAML and the render fails "
+                f"(add a blank line, or use '***')"
+            )
+        elif not before_blank:
+            issues.append(
+                f"line {i + 1}: '---' divider needs a blank line before it, else "
+                f"the previous line becomes a heading (add a blank line, or use '***')"
+            )
+    return issues
+
+
 def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) -> None:
     """Validate one folder, its index.md, and (recursively) its children against
     the project conventions, appending (relative_path, [issues]) tuples."""
@@ -284,6 +322,7 @@ def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) 
             index_issues.append("missing 'description' (feeds the gallery card)")
         if top_level and not fm.get("icon"):
             index_issues.append("missing 'icon' (Bootstrap icon name; see docs/conventions.md)")
+        index_issues.extend(check_dividers(index))
         results.append((f"{rel}/index.md", index_issues))
 
     for child in sorted(folder.iterdir(), key=lambda p: p.name):
@@ -297,14 +336,18 @@ def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) 
                 file_issues.append("filename must be NNN-slug.md (3-digit number + lowercase kebab-case)")
             if not read_frontmatter(child).get("title"):
                 file_issues.append("missing 'title'")
+            file_issues.extend(check_dividers(child))
             results.append((str(rel / child.name), file_issues))
 
 
 def validate_vault(src_root: Path) -> list:
     """Walk the vault and collect convention issues per folder/file."""
     results: list = []
-    if not (src_root / "index.md").is_file():
+    root_index = src_root / "index.md"
+    if not root_index.is_file():
         results.append(("index.md", ["missing Notes root index.md (the gallery intro source)"]))
+    else:
+        results.append(("index.md", check_dividers(root_index)))
     for cat in sorted(p for p in src_root.iterdir() if p.is_dir() and not p.name.startswith(".")):
         _check_folder(cat, src_root, True, results)
     return results

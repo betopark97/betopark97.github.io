@@ -117,6 +117,30 @@ the category cards. Its frontmatter is not used — the gallery's listing config
 lives in the repo (`notes/index.md` there is a hand-authored shell the script
 fills in).
 
+### 5. Horizontal-rule dividers need blank lines around them
+
+Markdown's `---` is overloaded. At the **top of a file** it's the YAML
+frontmatter fence — expected and fine. But a bare `---` used as a **section
+divider** in the body must have a blank line both **before and after** it:
+
+```markdown
+some paragraph
+
+---
+
+next section
+```
+
+- **No blank line _after_ the `---`** is the dangerous one: Quarto reads the
+  `---` plus the following text as a *second* YAML metadata block and the whole
+  render dies with `YAMLException: can not read a block mapping entry … (n:1)`.
+- **No blank line _before_ the `---`** silently turns the preceding line into a
+  setext `<h2>` heading.
+
+When in doubt, use `***` instead — it's a horizontal rule in both Obsidian and
+Quarto and is never mistaken for YAML. `make sync-notes` flags violations in the
+convention report.
+
 ---
 
 ## Other sections (hand-edited, not vault-synced)
