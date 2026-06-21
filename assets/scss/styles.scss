@@ -61,8 +61,10 @@
 // `description:` frontmatter feeds the gallery cards (and the SEO meta tag),
 // but Quarto also renders it as a subtitle under the H1. Hide that subtitle so
 // a category page shows only its own body content — the listing reads the
-// frontmatter field directly, so the cards are unaffected.
-#title-block-header.quarto-title-block.default .description {
+// frontmatter field directly, so the cards are unaffected. Skip `about:` pages
+// (portfolio): their trestles block renders `description:` into the same
+// `.description`, and there we *want* it shown.
+body:not(:has(.about-entity)) #title-block-header.quarto-title-block.default .description {
   display: none;
 }
 
