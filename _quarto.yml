@@ -76,7 +76,7 @@ website:
       contents:
         - text: "Terminal"
           href: notes/001-terminal/index.md
-        - auto: "notes/001-terminal/001-zsh/"
+        - notes/001-terminal/001-zsh.md
         - auto: "notes/001-terminal/002-homebrew/"
     - id: notes-002-devops
       title: "DevOps"
@@ -163,7 +163,7 @@ website:
       contents:
         - text: "DevTools"
           href: notes/009-devtools/index.md
-        - auto: "notes/009-devtools/001-kitty/"
+        - notes/009-devtools/001-kitty-terminal.md
         - notes/009-devtools/002-vs-code.md
         - notes/009-devtools/003-dbeaver.md
     - id: notes-010-homelab
