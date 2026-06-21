@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="📍 Seoul, South Korea 💼 Data Engineer ">
 
-<title>Roberto Park</title>
+<title>Kitty Terminal – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,26 +23,63 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-c94c82081a0f30da30a31713af11f9d8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../notes/009-devtools/index.html" rel="prev">
+<link href="../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c94c82081a0f30da30a31713af11f9d8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -95,14 +131,14 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">bp-pkm</span>
     </a>
   </div>
@@ -120,23 +156,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./portfolio.html" aria-current="page"> 
+    <a class="nav-link" href="../../portfolio.html"> 
 <span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects/projects.html"> 
+    <a class="nav-link" href="../../projects/projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes/index.html"> 
+    <a class="nav-link active" href="../../notes/index.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog/index.html"> 
+    <a class="nav-link" href="../../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
 </ul>
@@ -145,125 +181,369 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/009-devtools/001-kitty-terminal.html">Kitty Terminal</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="../../notes/index.html" title="Notes" class="quarto-navigation-tool px-1" aria-label="Notes"><i class="bi bi-arrow-left-circle"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/009-devtools/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DevTools</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/009-devtools/001-kitty-terminal.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Kitty Terminal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+ <span class="menu-text">notes/009-devtools/002-vs-code.md</span>
+  </li>
+        <li class="sidebar-item">
+ <span class="menu-text">notes/009-devtools/003-dbeaver.md</span>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a>
+  <ul class="collapse">
+  <li><a href="#binary-install" id="toc-binary-install" class="nav-link" data-scroll-target="#binary-install">Binary Install</a></li>
+  <li><a href="#brew-install-recommended" id="toc-brew-install-recommended" class="nav-link" data-scroll-target="#brew-install-recommended">Brew Install (Recommended)</a></li>
+  </ul></li>
+  <li><a href="#configurations" id="toc-configurations" class="nav-link" data-scroll-target="#configurations">Configurations</a>
+  <ul class="collapse">
+  <li><a href="#kitty.conf" id="toc-kitty.conf" class="nav-link" data-scroll-target="#kitty.conf">kitty.conf</a></li>
+  <li><a href="#current-theme.conf" id="toc-current-theme.conf" class="nav-link" data-scroll-target="#current-theme.conf">current-theme.conf</a></li>
+  </ul></li>
+  <li><a href="#keybindings-1" id="toc-keybindings-1" class="nav-link" data-scroll-target="#keybindings-1">Keybindings</a>
+  <ul class="collapse">
+  <li><a href="#tabs" id="toc-tabs" class="nav-link" data-scroll-target="#tabs">Tabs</a></li>
+  <li><a href="#windows-panes" id="toc-windows-panes" class="nav-link" data-scroll-target="#windows-panes">Windows (Panes)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="./assets/img/my/background.jpeg" class="about-image
-  rounded " style="width: 20em;">
+<main class="content" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Roberto Park</h1>
+<h1 class="title">Kitty Terminal</h1>
 </div>
-<div>
-  <div class="description">
-    <p>📍 Seoul, South Korea<br>
-    💼 Data Engineer<br>
-    </p>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</div>
-<div class="quarto-title-meta column-page">
-  </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="https://github.com/betopark97" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-  <a href="https://www.linkedin.com/in/keon-ung-park-077605270/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="mailto:betopark97@gmail.com" class="about-link" rel="" target="">
-    <i class="bi bi-envelope-at-fill"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
-<section id="résumé" class="level1 unnumbered">
-<h1 class="unnumbered">Résumé</h1>
-<p><em>Data Engineer who’d rather use the boring tool that works than the shiny one that might.</em></p>
-<section id="experience" class="level2">
-<h2 data-anchor-id="experience">Experience</h2>
+
+
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.</p>
+<p>The key features are: - GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators. - Built-in Tiling &amp; Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like <code>tmux</code>. - Scriptable &amp; Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs. - Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.</p>
+<p>What caught my interest was the GPU rendering, and built-in tiling and tabs.</p>
 <hr>
-<div class="resume-entry">
-<div class="resume-left">
-<p><strong>The Pinkfong Company</strong><br>
-<em>Data Analyst</em></p>
-</div>
-<div class="resume-right">
-<p>Seoul, South Korea<br>
-2025.02 – Present <span class="time-since" data-start="2025-02"></span></p>
-</div>
-</div>
-<ul>
-<li>Architected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.</li>
-<li>Built automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.</li>
-<li>Modeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.</li>
-<li>Delivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.</li>
-<li>Orchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.</li>
-<li>Built 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly.</li>
-</ul>
 </section>
-<section id="education" class="level2">
-<h2 data-anchor-id="education">Education</h2>
-<hr>
-<div class="resume-entry">
-<div class="resume-left">
-<p><strong>Sungkyunkwan University</strong><br>
-<em>BA, Psychology</em></p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<section id="binary-install" class="level3">
+<h3 class="anchored" data-anchor-id="binary-install">Binary Install</h3>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="resume-right">
-<p>Seoul, South Korea<br>
-2016.03 – 2021.08</p>
+</section>
+<section id="brew-install-recommended" class="level3">
+<h3 class="anchored" data-anchor-id="brew-install-recommended">Brew Install (Recommended)</h3>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>brew install --cask kitty</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+</section>
+</section>
+<section id="configurations" class="level2">
+<h2 class="anchored" data-anchor-id="configurations">Configurations</h2>
+<p>The configurations that I’ve made to Kitty are as follows and it consists of only two files:</p>
+<ul>
+<li>main configurations: <code>~/.config/kitty/kitty.conf</code></li>
+<li>theme configurations: <code>~/.config/kitty/current-theme.conf</code></li>
+</ul>
+<section id="kitty.conf" class="level3">
+<h3 class="anchored" data-anchor-id="kitty.conf">kitty.conf</h3>
+<section id="font" class="level4">
+<h4 class="anchored" data-anchor-id="font">Font</h4>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>font_size</code></td>
+<td><code>24.0</code></td>
+<td>Base font size</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="window" class="level4">
+<h4 class="anchored" data-anchor-id="window">Window</h4>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 37%">
+<col style="width: 17%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>remember_window_size</code></td>
+<td><code>yes</code></td>
+<td>Reopen at last size</td>
+</tr>
+<tr class="even">
+<td><code>remember_window_position</code></td>
+<td><code>yes</code></td>
+<td>Reopen at last position</td>
+</tr>
+<tr class="odd">
+<td><code>enabled_layouts</code></td>
+<td><code>tall, grid</code></td>
+<td>Splitting layouts (multiplexing)</td>
+</tr>
+<tr class="even">
+<td><code>window_border_width</code></td>
+<td><code>3pt</code></td>
+<td>Border thickness</td>
+</tr>
+<tr class="odd">
+<td><code>draw_minimal_borders</code></td>
+<td><code>no</code></td>
+<td>Draw full borders</td>
+</tr>
+<tr class="even">
+<td><code>window_padding_width</code></td>
+<td><code>7</code></td>
+<td>Inner padding</td>
+</tr>
+<tr class="odd">
+<td><code>active_border_color</code></td>
+<td><code>#fab387</code></td>
+<td>Focused window border (peach)</td>
+</tr>
+<tr class="even">
+<td><code>inactive_border_color</code></td>
+<td><code>#585b70</code></td>
+<td>Unfocused window border</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="appearance" class="level4">
+<h4 class="anchored" data-anchor-id="appearance">Appearance</h4>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Setting</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>background_opacity</code></td>
+<td><code>0.8</code></td>
+<td>Transparent background</td>
+</tr>
+<tr class="even">
+<td><code>background_blur</code></td>
+<td><code>1</code></td>
+<td>Blur behind transparency</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="keybindings" class="level4">
+<h4 class="anchored" data-anchor-id="keybindings">Keybindings</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
 </div>
 </div>
-<ul>
-<li>Academic Excellence Scholarship <em>(Fall 2021, Spring 2022)</em></li>
-<li>Class Representative, Freshman Year <em>(2016)</em> <!-- Optional extras below the entry — Thesis, Coursework, GPA, Awards, etc. --></li>
-</ul>
+<div class="callout-body-container callout-body">
+<p><code>cmd+enter</code> is mapped to <code>no_op</code> to disable kitty’s default new-window shortcut, so <code>ctrl+shift+enter</code> is the single binding for new panes.</p>
+</div>
+</div>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Keybinding</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ctrl+shift+enter</code></td>
+<td>New window (pane) in current dir</td>
+</tr>
+<tr class="even">
+<td><code>cmd+t</code></td>
+<td>New tab in current dir</td>
+</tr>
+<tr class="odd">
+<td><code>cmd+n</code></td>
+<td>New OS window in current dir</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>All use <code>launch --cwd=current</code> so the new tab/window opens in the same directory as the active one. This is done because it’s way easier to go back to the root (which is default), but not to a specific project unless your project directory is easy to memorize.</p>
 </section>
-<section id="certifications" class="level2">
-<h2 data-anchor-id="certifications">Certifications</h2>
-<hr>
-<p>SnowPro Associate: Platform Certification (2026.01 - 2028.01)</p>
 </section>
-<section id="tech-stack" class="level2">
-<h2 data-anchor-id="tech-stack">Tech Stack</h2>
+<section id="current-theme.conf" class="level3">
+<h3 class="anchored" data-anchor-id="current-theme.conf">current-theme.conf</h3>
+<p>Catppuccin-Mocha (<code>current-theme.conf</code>).</p>
+<p>Dark pastel palette: - foreground <code>#CDD6F4</code> - background <code>#1E1E2E</code> - accent lilac <code>#CBA6F7</code> on active tab</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This part can be configured with the <code>kitten themes</code> command.</p>
+</div>
+</div>
 <hr>
-<p><strong>Languages:</strong> Python, SQL<br>
-<strong>Data:</strong> PostgreSQL, Snowflake, DuckDB, DBT<br>
-<strong>Orchestration:</strong> Airflow, Prefect, Docker<br>
-<strong>BI:</strong> Streamlit, Tableau<br>
-<strong>Tools:</strong> Git &amp; GitHub, Notion, Slack, Discord, Obsidian<br>
-<strong>AI:</strong> Claude Code, Gemini CLI, Pi</p>
 </section>
-<section id="misc." class="level2">
-<h2 data-anchor-id="misc.">Misc.</h2>
-<hr>
-<p>At university…</p>
-<ul>
-<li>🎤 African Music Club</li>
-<li>🤝 Community Service Club</li>
-</ul>
-<p>In my free time…</p>
-<ul>
-<li>💻 coding, customizing my tools</li>
-<li>🧶 crochet</li>
-</ul>
+</section>
+<section id="keybindings-1" class="level2">
+<h2 class="anchored" data-anchor-id="keybindings-1">Keybindings</h2>
+<p>The keybindings listed are more than enough in my honest opinion.</p>
+<section id="tabs" class="level3">
+<h3 class="anchored" data-anchor-id="tabs">Tabs</h3>
+<p>This section is for managing the tabs that appear in the bottom.</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>Keybinding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New Tab</td>
+<td>command + T</td>
+</tr>
+<tr class="even">
+<td>Rename Tab</td>
+<td>command + I</td>
+</tr>
+<tr class="odd">
+<td>Switch Tab</td>
+<td>command + shift + []</td>
+</tr>
+<tr class="even">
+<td>Close Tab</td>
+<td>command + W</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="windows-panes" class="level3">
+<h3 class="anchored" data-anchor-id="windows-panes">Windows (Panes)</h3>
+<p>This section is for managing the windows (splitting the terminal into multiple panes, i.e.&nbsp;multiplexing).</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Action</th>
+<th>Keybinding</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>New window</td>
+<td>ctrl + shift + enter</td>
+</tr>
+<tr class="even">
+<td>Move window</td>
+<td>ctrl + shift + F</td>
+</tr>
+<tr class="odd">
+<td>Switch window</td>
+<td>ctrl + shift + []</td>
+</tr>
+<tr class="even">
+<td>Close window</td>
+<td>ctrl + shift + W</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 </section>
 </section>
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main></div>
-</div>
- <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J63Z9M7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -310,6 +590,13 @@ ul.task-list li input[type="checkbox"] {
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -701,6 +988,15 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notes/009-devtools/index.html" class="pagination-link" aria-label="DevTools">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">DevTools</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

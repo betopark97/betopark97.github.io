@@ -1,0 +1,17 @@
+[
+  {
+    "listing": "/notes/index.html",
+    "items": [
+      "/notes/001-terminal/index.html",
+      "/notes/002-devops/index.html",
+      "/notes/003-data-engineering/index.html",
+      "/notes/004-data-analysis/index.html",
+      "/notes/005-business-intelligence/index.html",
+      "/notes/006-machine-learning/index.html",
+      "/notes/007-ai-engineering/index.html",
+      "/notes/008-domain-knowledge/index.html",
+      "/notes/009-devtools/index.html",
+      "/notes/010-homelab/index.html"
+    ]
+  }
+]

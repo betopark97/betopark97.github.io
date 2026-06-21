@@ -1,0 +1,21 @@
+# Roberto Park
+
+## Pages
+
+- [My Projects](https://betopark97.github.io/projects/projects.llms.md)
+- [Roberto Park](https://betopark97.github.io/portfolio.llms.md)
+- [Homelab](https://betopark97.github.io/notes/010-homelab/index.llms.md)
+- [Kitty Terminal](https://betopark97.github.io/notes/009-devtools/001-kitty-terminal.llms.md)
+- [AI Engineering](https://betopark97.github.io/notes/007-ai-engineering/index.llms.md)
+- [Business Intelligence](https://betopark97.github.io/notes/005-business-intelligence/index.llms.md)
+- [Data Engineering](https://betopark97.github.io/notes/003-data-engineering/index.llms.md)
+- [Terminal](https://betopark97.github.io/notes/001-terminal/index.llms.md)
+- [Roberto Park](https://betopark97.github.io/index.llms.md)
+- [Blog](https://betopark97.github.io/blog/index.llms.md)
+- [zsh](https://betopark97.github.io/notes/001-terminal/001-zsh.llms.md)
+- [DevOps](https://betopark97.github.io/notes/002-devops/index.llms.md)
+- [Data Analysis](https://betopark97.github.io/notes/004-data-analysis/index.llms.md)
+- [Machine Learning](https://betopark97.github.io/notes/006-machine-learning/index.llms.md)
+- [Domain Knowledge](https://betopark97.github.io/notes/008-domain-knowledge/index.llms.md)
+- [DevTools](https://betopark97.github.io/notes/009-devtools/index.llms.md)
+- [Notes](https://betopark97.github.io/notes/index.llms.md)
