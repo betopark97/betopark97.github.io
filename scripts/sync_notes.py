@@ -6,13 +6,24 @@ Source of truth: Obsidian. Anything in notes/ that does not have a
 counterpart in the vault is removed (so do not hand-author files inside
 notes/ — author in Obsidian and run this script).
 
-Layout convention
------------------
-Vault folder names like "01 - Terminal/" are slugified to "01-terminal/"
-so Quarto's `auto:` sidebar lists sections in the intended numeric order.
-A stub index.md is generated per section with a `title:` frontmatter
-stripping the numeric prefix, so the sidebar header reads "Terminal"
-instead of "01 - Terminal".
+Strict convention gate
+-----------------------
+This is not a blind mirror: a node is synced only if it satisfies the
+conventions in docs/conventions.md, so a malformed note never reaches Quarto
+(and the render can't fail on it). The gate and the `--report` check share one
+rule set, so they never drift:
+
+  - a leaf note is synced only if its filename is `NNN-slug.md` AND it has a
+    `title` AND it has no unfenced `---` divider;
+  - a subsection folder is synced (recursively) only if its name is `NNN-slug`
+    AND it has an `index.md` with a `title` (missing index.md -> the whole
+    subsection is skipped);
+  - a top-level category additionally requires `description` and `icon` on its
+    index.md (they feed the gallery card) — otherwise the whole category is
+    skipped.
+
+Non-compliant nodes are skipped with a one-line reason on stderr; `make
+sync-notes` (--report) prints the full dbt-style PASS/FAIL table.
 
 Configuration
 -------------
@@ -26,7 +37,6 @@ from __future__ import annotations
 import os
 import re
 import shutil
-import subprocess
 import sys
 from pathlib import Path
 
@@ -52,29 +62,100 @@ CONTENTS_END = "# <<< auto-contents"
 FOLDER_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$")
 FILE_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
+# Routine progress (per-node skips, per-category syncs, "regenerated …") is only
+# printed in verbose mode — set when `--report` is passed (i.e. `make sync-notes`).
+# On a bare `make preview` / `make render` the sync stays quiet except for a
+# one-line summary; genuine warnings/errors always print to stderr directly.
+_VERBOSE = False
 
-def slugify(name: str) -> str:
-    s = name.strip().lower()
-    s = re.sub(r"[^\w\s-]", "", s)
-    s = re.sub(r"[\s_]+", "-", s)
-    s = re.sub(r"-+", "-", s)
-    return s.strip("-")
+
+def log(msg: str) -> None:
+    if _VERBOSE:
+        print(msg, file=sys.stderr)
 
 
 def has_md(directory: Path) -> bool:
     return any(directory.rglob("*.md"))
 
 
-def rsync_md(src: Path, dst: Path) -> None:
+# --- Convention rules (shared by the sync gate and the --report check) --------
+# Each returns a list of human-readable issues; empty list == compliant.
+
+def folder_name_issue(folder: Path) -> str | None:
+    if not FOLDER_RE.match(folder.name):
+        return "folder name must be NNN-slug (3-digit number + lowercase kebab-case)"
+    return None
+
+
+def index_issues(index: Path, top_level: bool) -> list[str]:
+    """Issues with a folder's index.md content (assumes the file exists)."""
+    fm = read_frontmatter(index)
+    issues: list[str] = []
+    title = fm.get("title", "")
+    if not title:
+        issues.append("missing 'title'")
+    elif any(ord(c) > 127 for c in title):
+        issues.append("'title' contains non-ASCII (emoji?) — keep titles plain; use 'icon:'")
+    if top_level and not fm.get("description"):
+        issues.append("missing 'description' (feeds the gallery card)")
+    if top_level and not fm.get("icon"):
+        issues.append("missing 'icon' (Bootstrap icon name; see docs/conventions.md)")
+    issues.extend(check_dividers(index))
+    return issues
+
+
+def leaf_issues(path: Path) -> list[str]:
+    """Issues with a leaf note file."""
+    issues: list[str] = []
+    if not FILE_RE.match(path.name):
+        issues.append("filename must be NNN-slug.md (3-digit number + lowercase kebab-case)")
+    if not read_frontmatter(path).get("title"):
+        issues.append("missing 'title'")
+    issues.extend(check_dividers(path))
+    return issues
+
+
+def folder_reasons(folder: Path, top_level: bool) -> list[str]:
+    """All reasons a category/subsection folder is non-compliant (name + index)."""
+    reasons: list[str] = []
+    name_issue = folder_name_issue(folder)
+    if name_issue:
+        reasons.append(name_issue)
+    index = folder / "index.md"
+    if not index.is_file():
+        reasons.append("missing index.md")
+    else:
+        reasons.extend(index_issues(index, top_level))
+    return reasons
+
+
+def copy_tree_gated(src: Path, dst: Path, top_level: bool, src_root: Path) -> int:
+    """Copy a folder already validated as compliant: its index.md plus every
+    compliant child (compliant leaf files and compliant subsections, recursively).
+    Non-compliant children are skipped (reason logged in verbose mode). Returns
+    the number of skipped nodes."""
     dst.mkdir(parents=True, exist_ok=True)
-    subprocess.run(
-        [
-            "rsync", "-a", "--delete",
-            "--include=*/", "--include=*.md", "--exclude=*",
-            f"{src}/", f"{dst}/",
-        ],
-        check=True,
-    )
+    shutil.copy2(src / "index.md", dst / "index.md")
+    skipped = 0
+    for child in sorted(src.iterdir(), key=lambda p: p.name):
+        if child.name == "index.md" or child.name.startswith("."):
+            continue
+        rel = child.relative_to(src_root)
+        if child.is_dir():
+            reasons = folder_reasons(child, top_level=False)
+            if reasons:
+                log(f"skipping subsection notes/{rel}/ ({'; '.join(reasons)})")
+                skipped += 1
+                continue
+            skipped += copy_tree_gated(child, dst / child.name, False, src_root)
+        elif child.suffix == ".md":
+            reasons = leaf_issues(child)
+            if reasons:
+                log(f"skipping note notes/{rel} ({'; '.join(reasons)})")
+                skipped += 1
+                continue
+            shutil.copy2(child, dst / child.name)
+    return skipped
 
 
 def section_title(slug: str) -> str:
@@ -210,7 +291,7 @@ def update_gallery_intro(src_root: Path) -> None:
     body = strip_frontmatter(src_index.read_text())
     new = text[:after_begin] + body + "\n" + text[end:]
     gallery.write_text(new)
-    print("synced gallery intro from vault Notes index.md")
+    log("synced gallery intro from vault Notes index.md")
 
 
 def update_gallery_contents(slugs: list[str]) -> None:
@@ -238,7 +319,7 @@ def update_gallery_contents(slugs: list[str]) -> None:
     new_block += [f"{indent}- {slug}/index.md" for slug in sorted(slugs)]
     new_block.append(lines[end])
     gallery.write_text("\n".join(lines[:begin] + new_block + lines[end + 1 :]) + "\n")
-    print("regenerated gallery listing contents")
+    log("regenerated gallery listing contents")
 
 
 def read_frontmatter(path: Path) -> dict[str, str]:
@@ -299,31 +380,21 @@ def check_dividers(path: Path) -> list[str]:
 
 def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) -> None:
     """Validate one folder, its index.md, and (recursively) its children against
-    the project conventions, appending (relative_path, [issues]) tuples."""
+    the project conventions, appending (relative_path, [issues]) tuples. Uses the
+    same rule helpers as the sync gate, so the report matches what gets synced."""
     rel = folder.relative_to(src_root)
 
-    folder_issues: list[str] = []
-    if not FOLDER_RE.match(folder.name):
-        folder_issues.append("folder name must be NNN-slug (3-digit number + lowercase kebab-case)")
+    folder_line: list[str] = []
+    name_issue = folder_name_issue(folder)
+    if name_issue:
+        folder_line.append(name_issue)
     index = folder / "index.md"
     if not index.is_file():
-        folder_issues.append("missing index.md")
-    results.append((f"{rel}/", folder_issues))
+        folder_line.append("missing index.md")
+    results.append((f"{rel}/", folder_line))
 
     if index.is_file():
-        fm = read_frontmatter(index)
-        index_issues: list[str] = []
-        title = fm.get("title", "")
-        if not title:
-            index_issues.append("missing 'title'")
-        elif any(ord(c) > 127 for c in title):
-            index_issues.append("'title' contains non-ASCII (emoji?) — keep titles plain; use 'icon:'")
-        if top_level and not fm.get("description"):
-            index_issues.append("missing 'description' (feeds the gallery card)")
-        if top_level and not fm.get("icon"):
-            index_issues.append("missing 'icon' (Bootstrap icon name; see docs/conventions.md)")
-        index_issues.extend(check_dividers(index))
-        results.append((f"{rel}/index.md", index_issues))
+        results.append((f"{rel}/index.md", index_issues(index, top_level)))
 
     for child in sorted(folder.iterdir(), key=lambda p: p.name):
         if child.name.startswith("."):
@@ -331,13 +402,7 @@ def _check_folder(folder: Path, src_root: Path, top_level: bool, results: list) 
         if child.is_dir():
             _check_folder(child, src_root, False, results)
         elif child.suffix == ".md" and child.name != "index.md":
-            file_issues: list[str] = []
-            if not FILE_RE.match(child.name):
-                file_issues.append("filename must be NNN-slug.md (3-digit number + lowercase kebab-case)")
-            if not read_frontmatter(child).get("title"):
-                file_issues.append("missing 'title'")
-            file_issues.extend(check_dividers(child))
-            results.append((str(rel / child.name), file_issues))
+            results.append((str(rel / child.name), leaf_issues(child)))
 
 
 def validate_vault(src_root: Path) -> list:
@@ -387,6 +452,9 @@ def print_validation_report(results: list) -> None:
 
 
 def main() -> int:
+    global _VERBOSE
+    _VERBOSE = "--report" in sys.argv
+
     vault = os.environ.get("OBSIDIAN_VAULT_NOTES")
     if not vault:
         print(
@@ -407,33 +475,44 @@ def main() -> int:
 
     NOTES_DIR.mkdir(exist_ok=True)
 
-    # Only sections that contain at least one .md anywhere in their tree
-    # make it into the repo. Empty Obsidian folders are skipped silently —
-    # Quarto's `auto:` errors on empty directories, and there's nothing
-    # useful to show in the sidebar for them anyway.
-    pairs: list[tuple[Path, str]] = []
-    for child in sorted(src_root.iterdir()):
-        if not child.is_dir() or child.name.startswith("."):
+    # Sync only compliant top-level categories (strict gate). A category is
+    # compliant when its folder name is NNN-slug and its index.md carries
+    # title + description + icon; each is rebuilt from scratch so no stale or
+    # newly-non-compliant file lingers. Empty Obsidian folders (no .md at all)
+    # are skipped silently — there's nothing to show and Quarto's `auto:`
+    # errors on empty directories.
+    synced: list[str] = []
+    skipped = 0
+    for cat in sorted(src_root.iterdir()):
+        if not cat.is_dir() or cat.name.startswith("."):
             continue
-        if not has_md(child):
+        if not has_md(cat):
             continue
-        pairs.append((child, slugify(child.name)))
+        reasons = folder_reasons(cat, top_level=True)
+        if reasons:
+            log(f"skipping category notes/{cat.name}/ ({'; '.join(reasons)})")
+            skipped += 1
+            continue
+        dst_dir = NOTES_DIR / cat.name
+        if dst_dir.exists():
+            shutil.rmtree(dst_dir)
+        log(f"syncing {cat.name} → notes/{cat.name}/")
+        skipped += copy_tree_gated(cat, dst_dir, top_level=True, src_root=src_root)
+        synced.append(cat.name)
 
-    expected = {slug for _, slug in pairs}
-
+    # Drop anything in notes/ that is no longer a synced category (removed from
+    # the vault, or newly non-compliant so it was skipped above).
     for existing in NOTES_DIR.iterdir():
-        if not existing.is_dir() or existing.name in expected:
+        if not existing.is_dir() or existing.name in synced:
             continue
-        print(f"removing stale section: notes/{existing.name}/")
+        log(f"removing notes/{existing.name}/ (absent from vault or non-compliant)")
         shutil.rmtree(existing)
 
-    for src_dir, slug in pairs:
-        dst_dir = NOTES_DIR / slug
-        print(f"syncing {src_dir.name} → notes/{slug}/")
-        rsync_md(src_dir, dst_dir)
+    suffix = "" if _VERBOSE else " — run `make sync-notes` for details"
+    print(f"notes: synced {len(synced)} categories, skipped {skipped} node(s){suffix}")
 
-    update_quarto_sidebar([slug for _, slug in pairs])
-    update_gallery_contents([slug for _, slug in pairs])
+    update_quarto_sidebar(synced)
+    update_gallery_contents(synced)
     update_gallery_intro(src_root)
 
     # The convention check is opt-in (--report) so it only prints for
