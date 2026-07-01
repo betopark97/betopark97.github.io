@@ -5,8 +5,9 @@ to order sections, pull metadata, and build the sidebar + gallery — so followi
 them is what keeps the Notes section "author in Obsidian, everything else
 automatic."
 
-Today these conventions cover the **Notes** section (vault-synced). Other
-sections (`projects/`, `blog/`) are hand-edited; see the bottom of this file.
+Today these conventions cover the **Notes** and **Blog** sections (both
+vault-synced, by `scripts/sync_notes.py` and `scripts/sync_blog.py`). Other
+sections (`projects/`) are hand-edited; see the bottom of this file.
 
 ---
 
@@ -18,6 +19,15 @@ never hand-edit `notes/` in the repo** — it's a one-way mirror and gets
 overwritten.
 
 All conventions below apply to the **vault** layout.
+
+> **Strict gate.** The sync is not a blind mirror — a node is synced *only if
+> it satisfies these conventions*, so a malformed note never reaches Quarto.
+> A leaf note that breaks a rule is skipped; a folder that breaks a rule (bad
+> name, missing `index.md`, or an `index.md` missing required fields) is
+> skipped **whole**, subsections and all. Skips print a one-line reason during
+> any sync; `make sync-notes` prints the full PASS/FAIL report. Nothing is
+> lost — Obsidian is the source of truth; a skipped note simply won't publish
+> until you fix what the report flags.
 
 ### 1. Folders: numbered + kebab-case
 
@@ -48,7 +58,8 @@ category's sidebar.
 ### 2. Every folder has an `index.md`
 
 Each folder **must contain an `index.md`** — its landing page and metadata
-source. Frontmatter:
+source. A folder with no `index.md` is skipped whole (the gate can't build a
+section without it). Frontmatter:
 
 ```yaml
 ---
@@ -138,8 +149,94 @@ next section
   setext `<h2>` heading.
 
 When in doubt, use `***` instead — it's a horizontal rule in both Obsidian and
-Quarto and is never mistaken for YAML. `make sync-notes` flags violations in the
-convention report.
+Quarto and is never mistaken for YAML. A file with an unfenced divider is
+**skipped by the gate** (and flagged in the `make sync-notes` report), since it
+would otherwise crash the render.
+
+---
+
+## Blog
+
+The Blog section is generated from the Obsidian vault at `$OBSIDIAN_VAULT_BLOG`
+by `scripts/sync_blog.py` (run via `make sync-blog`). **Author in the vault;
+never hand-edit `blog/posts/` in the repo** — it's a one-way mirror and gets
+overwritten. Unlike Notes, the blog is a dated *listing* (newest first), not a
+topic taxonomy, so the conventions differ.
+
+### 1. Vault layout
+
+```
+$OBSIDIAN_VAULT_BLOG/
+  index.md          # optional intro prose for the blog landing page
+  posts/
+    <slug>.md       # one file per post
+```
+
+The repo side is generated: `blog/posts/<slug>.md` (mirrored posts) and the
+`# >>> auto-blog` sidebar block in `_quarto.yml`. The repo's `blog/index.md` is
+a hand-authored shell (the List/Grid listing + tabset); the script only fills
+in its intro block.
+
+### 2. Post filenames: kebab-case slug, no number
+
+```
+<slug>.md
+```
+
+- lowercase **kebab-case**, no spaces/underscores/`&`.
+- **No `NNN-` prefix** (unlike Notes) — posts order by **date**, not filename.
+- The filename (minus `.md`) becomes the post's URL, so keep it clean and
+  descriptive: `choosing-the-right-stack.md` → `…/blog/posts/choosing-the-right-stack.html`.
+
+### 3. Post frontmatter
+
+Author **Quarto-native field names** in Obsidian. The sync translates only what
+Obsidian models differently and normalises blanks:
+
+```yaml
+---
+title: Personal Knowledge Management   # required
+date: 2026-06-27                        # required — listing sorts + displays this
+description: One-line hook for the listing.   # optional
+image: cover.png                        # optional — grid-view thumbnail
+tags:                                   # optional — Obsidian Tags property
+  - PKM
+  - Obsidian
+draft: false                            # optional — true hides the post
+---
+```
+
+| Field | Required? | Notes |
+|---|---|---|
+| `title` | **yes** | post title; keep it plain ASCII (no emoji) |
+| `date` | **yes** | listing **displays and sorts** by this. `date-modified` alone sorts but *won't display* — use `date` |
+| `description` | no | listing subtitle; dropped if blank |
+| `image` | no | grid-view thumbnail; dropped if blank |
+| `tags` | no | Obsidian Tags property → synced to Quarto `categories` (each tag a value) |
+| `draft` | no | `true` excludes the post from the listing (Obsidian Checkbox property) |
+
+**Enforcement (the sync is the gate, so the render never fails):**
+
+- A post **missing a required field is skipped** — it never reaches Quarto, so a
+  half-finished post can't break `make render` / the deploy.
+- **Blank optional fields are dropped** (a null `description:`/`image:` would
+  otherwise fail Quarto's schema).
+- `make sync-blog` prints a dbt-style **PASS/FAIL report** naming exactly which
+  required fields a skipped post is missing — fix them in Obsidian and re-run.
+
+### 4. The Blog root `index.md` (optional intro)
+
+The vault's `blog/index.md` is optional. Its **body** (frontmatter is ignored)
+is synced into the intro block of the repo's blog landing page, above the
+List/Grid tabs — the same mechanism as the Notes gallery intro. Leave it empty
+and the landing page is just the title + listing; add a sentence or two and it
+shows as a blurb. No metadata is required there.
+
+### 5. Horizontal-rule dividers need blank lines around them
+
+Same rule as Notes (§5 above): a body `---` divider must have a blank line both
+before and after it, or use `***`. `make sync-blog` flags violations in the
+report.
 
 ---
 
@@ -148,4 +245,3 @@ convention report.
 | Section | Convention |
 |---|---|
 | `projects/<slug>/index.md` | Hand-edit in the repo. Add a sidebar entry under `sidebar.id: projects` in `_quarto.yml`. |
-| `blog/<post>.md` | Hand-edit in the repo. No `_quarto.yml` change needed — the blog sidebar uses `contents: blog/` and auto-includes every `.md`. |
