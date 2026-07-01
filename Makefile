@@ -1,4 +1,4 @@
-.PHONY: help preview render sync-aboutme sync-notes clean check
+.PHONY: help preview render sync-aboutme sync-notes sync-blog clean check
 
 # Load repo-local .env (e.g. OBSIDIAN_VAULT_NOTES) and export to recipes.
 -include .env
@@ -10,6 +10,7 @@ help:
 	@echo "  make render        Build the site to _site/ and exit"
 	@echo "  make sync-aboutme  Fetch the GitHub profile README, then clean + render"
 	@echo "  make sync-notes    Mirror \$$OBSIDIAN_VAULT_NOTES into notes/ + convention report (no render)"
+	@echo "  make sync-blog     Mirror \$$OBSIDIAN_VAULT_BLOG into blog/posts/ + convention report (no render)"
 	@echo "  make clean         Remove build outputs (_site/, .quarto/)"
 	@echo "  make check         Run quarto check for environment diagnostics"
 
@@ -26,12 +27,20 @@ sync-aboutme: clean
 sync-notes: clean
 	./scripts/sync_notes.py --report
 
+# Mirrors blog posts from Obsidian, regenerates the blog sidebar + intro, busts
+# Quarto's cache, and prints the convention report. Does NOT render — read the
+# report, fix any flagged posts in Obsidian, then `make preview` / `make render`.
+sync-blog: clean
+	./scripts/sync_blog.py --report
+
 preview:
 	./scripts/sync_notes.py
+	./scripts/sync_blog.py
 	quarto preview
 
 render:
 	./scripts/sync_notes.py
+	./scripts/sync_blog.py
 	quarto render
 
 clean:
