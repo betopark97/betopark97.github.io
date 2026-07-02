@@ -28,6 +28,26 @@
   }
 }
 
+// Give each sidebar note some breathing room. Quarto packs the items tightly;
+// a little vertical padding on the link row spaces them out without changing
+// the sidebar's overall rhythm.
+.sidebar-navigation .sidebar-item .sidebar-item-container {
+  margin-bottom: 0.35rem;
+
+  .sidebar-item-text {
+    padding-top: 0.15rem;
+    padding-bottom: 0.15rem;
+  }
+}
+
+// Tree guide: when a subsection is expanded, trace its files with a subtle
+// vertical line down the left of the nested list.
+.sidebar-navigation ul.sidebar-section {
+  margin-left: 0.55rem;
+  padding-left: 0.7rem;
+  border-left: 1px solid $ctp-surface1;
+}
+
 // Pull the "← All notes" tool icon to the top of the sidebar. Quarto's floating
 // layout flex-orders it last (order: 2) even though it's first in the DOM.
 #quarto-sidebar .sidebar-tools-main {
