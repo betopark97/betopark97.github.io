@@ -443,3 +443,12 @@ body:has(.hero) #title-block-header {
     color: $ctp-subtext0; // soft grey so titles stand out
   }
 }
+
+// "Last modified" footer stamped onto each note by scripts/sync_notes.py.
+// Smaller and dimmer than body text (p is $ctp-subtext0) so it reads as
+// metadata rather than prose.
+.note-modified {
+  font-size: 0.8em;
+  font-style: italic;
+  color: $ctp-overlay1;
+}

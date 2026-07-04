@@ -38,6 +38,7 @@ import os
 import re
 import shutil
 import sys
+from datetime import datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -129,6 +130,19 @@ def folder_reasons(folder: Path, top_level: bool) -> list[str]:
     return reasons
 
 
+def copy_leaf_with_footer(src: Path, dst: Path) -> None:
+    """Copy a leaf note, appending a last-modified footer derived from the
+    vault file's mtime (Obsidian bumps it on every edit — the same property
+    the Bases plugin reads). The date must be baked in here at sync time:
+    CI renders from a fresh git checkout, where every file's mtime is just
+    the clone time, so a render-time lookup would be wrong in production."""
+    stamp = datetime.fromtimestamp(src.stat().st_mtime).strftime("%Y-%m-%d")
+    text = src.read_text().rstrip()
+    # Divider + class-tagged span; .note-modified (styles.scss) renders it
+    # smaller and dimmer than body text so it reads as metadata.
+    dst.write_text(f"{text}\n\n***\n\n[Last modified: {stamp}]{{.note-modified}}\n")
+
+
 def copy_tree_gated(src: Path, dst: Path, top_level: bool, src_root: Path) -> int:
     """Copy a folder already validated as compliant: its index.md plus every
     compliant child (compliant leaf files and compliant subsections, recursively).
@@ -154,7 +168,7 @@ def copy_tree_gated(src: Path, dst: Path, top_level: bool, src_root: Path) -> in
                 log(f"skipping note notes/{rel} ({'; '.join(reasons)})")
                 skipped += 1
                 continue
-            shutil.copy2(child, dst / child.name)
+            copy_leaf_with_footer(child, dst / child.name)
     return skipped
 
 

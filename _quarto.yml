@@ -14,6 +14,10 @@ filters:
   - assets/filters/term-codeblocks.lua
   - assets/filters/responsive-tables.lua
 
+# All displayed dates (blog title blocks, listings, any date/date-modified
+# metadata) render as ISO 8601 (YYYY-MM-DD) site-wide.
+date-format: iso
+
 format:
   html:
     theme:
