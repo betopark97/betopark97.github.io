@@ -63,6 +63,14 @@ CONTENTS_END = "# <<< auto-contents"
 FOLDER_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$")
 FILE_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
+# Obsidian writes mermaid diagrams as ```mermaid fences; Quarto only treats the
+# braced form ```{mermaid} as a diagram cell, and refuses to process diagram
+# cells in a .md file at all ("You must use the .qmd extension for documents
+# with executable code"). So notes containing a mermaid fence (either spelling)
+# are normalised to the braced form and published as .qmd — same output .html,
+# so URLs don't change.
+MERMAID_FENCE_RE = re.compile(r"^```\{?mermaid\}?[ \t]*$", re.MULTILINE)
+
 # Routine progress (per-node skips, per-category syncs, "regenerated …") is only
 # printed in verbose mode — set when `--report` is passed (i.e. `make sync-notes`).
 # On a bare `make preview` / `make render` the sync stays quiet except for a
@@ -135,9 +143,15 @@ def copy_leaf_with_footer(src: Path, dst: Path) -> None:
     vault file's mtime (Obsidian bumps it on every edit — the same property
     the Bases plugin reads). The date must be baked in here at sync time:
     CI renders from a fresh git checkout, where every file's mtime is just
-    the clone time, so a render-time lookup would be wrong in production."""
+    the clone time, so a render-time lookup would be wrong in production.
+
+    A note with mermaid fences is converted to Quarto's dialect and written
+    as .qmd (see MERMAID_FENCE_RE)."""
     stamp = datetime.fromtimestamp(src.stat().st_mtime).strftime("%Y-%m-%d")
     text = src.read_text().rstrip()
+    if MERMAID_FENCE_RE.search(text):
+        text = MERMAID_FENCE_RE.sub("```{mermaid}", text)
+        dst = dst.with_suffix(".qmd")
     # Divider + class-tagged span; .note-modified (styles.scss) renders it
     # smaller and dimmer than body text so it reads as metadata.
     dst.write_text(f"{text}\n\n***\n\n[Last modified: {stamp}]{{.note-modified}}\n")
@@ -217,7 +231,7 @@ def section_entries(slug: str, indent: str) -> list[str]:
             continue
         if child.is_dir():
             contents.append(f'{indent}    - auto: "notes/{slug}/{child.name}/"')
-        elif child.suffix == ".md":
+        elif child.suffix in (".md", ".qmd"):  # .qmd = mermaid-bearing note
             contents.append(f"{indent}    - notes/{slug}/{child.name}")
 
     # A back-to-gallery affordance via Quarto's built-in sidebar `tools` (an

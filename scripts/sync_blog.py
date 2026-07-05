@@ -61,6 +61,13 @@ REQUIRED = ("title", "date")
 # blog posts order by date, not filename).
 FILE_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
 
+# Obsidian writes mermaid diagrams as ```mermaid fences; Quarto only treats the
+# braced form ```{mermaid} as a diagram cell, and refuses to process diagram
+# cells in a .md file at all. Posts containing a mermaid fence (either
+# spelling) are normalised to the braced form and published as .qmd — same
+# output .html, so URLs don't change.
+MERMAID_FENCE_RE = re.compile(r"^```\{?mermaid\}?[ \t]*$", re.MULTILINE)
+
 LIST_ITEM_RE = re.compile(r"\s+-\s+(.*)$")
 KEY_RE = re.compile(r"([A-Za-z0-9_-]+):\s*(.*)$")
 
@@ -206,13 +213,18 @@ def sync_posts(posts_src: Path) -> list[tuple[str, str]]:
         if missing:
             log(f"skipping blog/posts/{src.name} (missing required: {', '.join(missing)})")
             continue
-        (POSTS_DIR / src.name).write_text(translate(src.read_text()))
-        log(f"syncing {src.name} → blog/posts/{src.name}")
-        synced.append((src.name, fm["date"]))
+        text = translate(src.read_text())
+        out_name = src.name
+        if MERMAID_FENCE_RE.search(text):
+            text = MERMAID_FENCE_RE.sub("```{mermaid}", text)
+            out_name = src.stem + ".qmd"
+        (POSTS_DIR / out_name).write_text(text)
+        log(f"syncing {src.name} → blog/posts/{out_name}")
+        synced.append((out_name, fm["date"]))
 
     expected = {name for name, _ in synced}
     for existing in POSTS_DIR.iterdir():
-        if existing.suffix == ".md" and existing.name not in expected:
+        if existing.suffix in (".md", ".qmd") and existing.name not in expected:
             log(f"removing stale post: blog/posts/{existing.name}")
             existing.unlink()
 

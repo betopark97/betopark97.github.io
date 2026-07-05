@@ -153,6 +153,19 @@ Quarto and is never mistaken for YAML. A file with an unfenced divider is
 **skipped by the gate** (and flagged in the `make sync-notes` report), since it
 would otherwise crash the render.
 
+### 6. Mermaid diagrams: write ` ```mermaid `, published as `.qmd`
+
+Author diagrams with Obsidian's plain ` ```mermaid ` fence — Obsidian previews
+it natively. Quarto, however, only renders the braced form ` ```{mermaid} `,
+and only in `.qmd` files (a diagram cell in a `.md` aborts the render with
+"You must use the .qmd extension for documents with executable code").
+
+The sync handles the translation: a note (or blog post) containing a mermaid
+fence — either spelling — is normalised to ` ```{mermaid} ` and written out as
+`.qmd` instead of `.md`. The output URL is unchanged (both render to the same
+`.html`). Caveat: this applies to leaf notes and posts only — folder `index.md`
+files are copied verbatim, so keep diagrams out of index pages.
+
 ---
 
 ## Blog
