@@ -49,6 +49,17 @@ $border-color: $ctp-surface1;
 $code-color: $ctp-red;
 $code-bg:    $ctp-surface0;
 
+// Mermaid diagrams. Quarto maps these onto mermaid's theme; without them
+// mermaid uses light-theme defaults, whose filled edge-label boxes
+// are unreadable on the dark background.
+$mermaid-bg-color:       $ctp-base;
+$mermaid-fg-color:       $ctp-text;
+$mermaid-edge-color:     $ctp-overlay2;
+$mermaid-node-bg-color:  $ctp-surface0;
+$mermaid-node-fg-color:  $ctp-text;
+$mermaid-label-bg-color: $ctp-surface0;
+$mermaid-label-fg-color: $ctp-text;
+
 /*-- scss:rules --*/
 
 // Color/typography skin for framework-provided elements.
@@ -56,6 +67,20 @@ $code-bg:    $ctp-surface0;
 
 .navbar {
   background-color: $ctp-mantle !important;
+}
+
+// Mermaid injects its own light-theme edge-label backgrounds with
+// #id-prefixed selectors, which outrank Quarto's $mermaid-* variable
+// theming on specificity — force the palette for the label boxes.
+.mermaid-js .edgeLabel,
+.mermaid-js .edgeLabel p,
+.mermaid-js .edgeLabel .labelBkg {
+  background-color: $ctp-surface0 !important;
+}
+
+.mermaid-js .edgeLabel rect {
+  fill: $ctp-surface0 !important;
+  opacity: 1 !important;
 }
 
 .navbar .navbar-brand,
