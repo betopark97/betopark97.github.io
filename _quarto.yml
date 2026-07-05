@@ -20,6 +20,9 @@ date-format: iso
 
 format:
   html:
+    # Obsidian auto-links bare URLs (https://…); pandoc's default markdown
+    # reader doesn't, so vault notes' reference links rendered as plain text.
+    from: markdown+autolink_bare_uris
     theme:
       - assets/scss/catppuccin-mocha.scss
       - assets/scss/styles.scss
