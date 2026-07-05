@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Build and optimize data pipeline workflows for data driven decision-making.">
 
-<title>Data Engineering – Roberto Park</title>
+<title>uv – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,6 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../notes/001-terminal/004-chezmoi.html" rel="next">
+<link href="../../notes/001-terminal/002-homebrew.html" rel="prev">
 <link href="../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -151,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/003-data-engineering/index.html">Data Engineering</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/001-terminal/003-uv.html">uv</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -168,8 +204,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/003-data-engineering/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Engineering</span></a>
+  <a href="../../notes/001-terminal/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terminal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/001-zsh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">zsh</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/002-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homebrew</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/003-uv.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">uv</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/004-chezmoi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chezmoi</span></a>
   </div>
 </li>
     </ul>
@@ -177,22 +237,36 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#initialization" id="toc-initialization" class="nav-link" data-scroll-target="#initialization">Initialization</a></li>
+  <li><a href="#virtual-environment" id="toc-virtual-environment" class="nav-link" data-scroll-target="#virtual-environment">Virtual Environment</a>
+  <ul class="collapse">
+  <li><a href="#creating-the-virtual-environment" id="toc-creating-the-virtual-environment" class="nav-link" data-scroll-target="#creating-the-virtual-environment">Creating the virtual environment</a></li>
+  <li><a href="#activating-and-deactivating" id="toc-activating-and-deactivating" class="nav-link" data-scroll-target="#activating-and-deactivating">Activating and deactivating</a></li>
+  </ul></li>
+  <li><a href="#package-management" id="toc-package-management" class="nav-link" data-scroll-target="#package-management">Package Management</a>
+  <ul class="collapse">
+  <li><a href="#adding-and-removing-packages" id="toc-adding-and-removing-packages" class="nav-link" data-scroll-target="#adding-and-removing-packages">Adding and removing packages</a></li>
+  <li><a href="#exporting-dependencies" id="toc-exporting-dependencies" class="nav-link" data-scroll-target="#exporting-dependencies">Exporting dependencies</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Engineering</h1>
+<h1 class="title">uv</h1>
 </div>
 
-<div>
-  <div class="description">
-    Build and optimize data pipeline workflows for data driven decision-making.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -207,9 +281,117 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Overview coming soon.</em></p>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.</p>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<p>Homebrew</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>brew install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pip</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>pip install uv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="initialization" class="level2">
+<h2 class="anchored" data-anchor-id="initialization">Initialization</h2>
+<p>If you don’t have a project directory run the following command:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>uv init &lt;project-title&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you already have a project directory <code>cd</code> into the directory and run the following command:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>uv init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>When initializing the project, there are a few files that will be populated: <code>.python-version</code>, <code>hello.py</code>, <code>pyproject.toml</code>, and <code>uv.lock</code>.</p>
+<p>Let’s go over what each one does:</p>
+<ul>
+<li><code>.python-version</code>: this is the file used to manage the python version. For example, let’s say that it defaults to python version 3.13 because it’s your global python’s version but you want to use a different version, then you can modify it to 3.12.</li>
+<li><code>hello.py</code>: this is just a basic Python template, so it doesn’t carry much meaning on its own and can safely be deleted.</li>
+<li><code>pyproject.toml</code>: this file is the core of setting up your coding environment. It will be explained further below, but it manages the Python version and can also take on the role of <code>requirements.txt</code>.</li>
+<li><code>uv.lock</code>: there’s no need to touch this file directly.</li>
+</ul>
+</section>
+<section id="virtual-environment" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-environment">Virtual Environment</h2>
+<section id="creating-the-virtual-environment" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-virtual-environment">Creating the virtual environment</h3>
+<p>After initializing the project, running the command below will automatically do what <code>python3 -m venv .venv</code> used to do when creating a virtual environment manually:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>uv sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This creates the <code>.venv</code> virtual environment and installs the dependencies by referencing the <code>.python-version</code>, <code>pyproject.toml</code>, and <code>uv.lock</code> files. In fact, you don’t even have to run it explicitly — running any Python script with <code>uv run &lt;script.py&gt;</code> will create the virtual environment the same way if it doesn’t exist yet.</p>
+</section>
+<section id="activating-and-deactivating" class="level3">
+<h3 class="anchored" data-anchor-id="activating-and-deactivating">Activating and deactivating</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use <code>uv run</code> for any scripts or packages as uv auto detects your virtual environment.</p>
+</div>
+</div>
+<p>Normally, every time you come back to a project you would have to activate the virtual environment before running anything:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>source .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>You would then see the terminal prompt change from <code>username project-directory</code> to <code>(.venv) username project-directory</code>, and when you’re done, deactivate it:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>With uv, none of this is necessary. <code>uv run</code> automatically detects the <code>.venv</code> in your project and runs your script inside it, so you never have to remember to activate the environment every time you return to the project. The commands above are only there in case you want to work inside an activated shell manually.</p>
+</section>
+</section>
+<section id="package-management" class="level2">
+<h2 class="anchored" data-anchor-id="package-management">Package Management</h2>
+<p>This part is where uv truly shines. You no longer have to sit through long download times for large libraries or decipher cryptic error messages from version conflicts like you would with pip or conda.</p>
+<section id="adding-and-removing-packages" class="level3">
+<h3 class="anchored" data-anchor-id="adding-and-removing-packages">Adding and removing packages</h3>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a># Add a package</span>
+<span id="cb8-2"><a href="#cb8-2"></a>uv add &lt;package-name==version&gt;</span>
+<span id="cb8-3"><a href="#cb8-3"></a></span>
+<span id="cb8-4"><a href="#cb8-4"></a># Remove a package</span>
+<span id="cb8-5"><a href="#cb8-5"></a>uv remove &lt;package-name==version&gt;</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Occasionally a package name comes with extra options in square brackets. In that case, handle it as follows:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a># For example</span>
+<span id="cb9-2"><a href="#cb9-2"></a>pip install "fastapi[standard]"</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a># The uv way</span>
+<span id="cb9-5"><a href="#cb9-5"></a>uv add fastapi --extra standard</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Think of <code>--extra</code> as replacing the double quotes and square brackets.</p>
+</section>
+<section id="exporting-dependencies" class="level3">
+<h3 class="anchored" data-anchor-id="exporting-dependencies">Exporting dependencies</h3>
+<p>Packages are automatically recorded in <code>pyproject.toml</code> along with their versions, but if you’re new to uv and find <code>requirements.txt</code> more comfortable, you can export them by running the following commands in the terminal:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a>uv pip freeze &gt; requirements.txt</span>
+<span id="cb10-2"><a href="#cb10-2"></a></span>
+<span id="cb10-3"><a href="#cb10-3"></a># To install packages from requirements.txt</span>
+<span id="cb10-4"><a href="#cb10-4"></a>uv pip install -r requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>If you want to explore other features, check out the documentation on the uv homepage: <a href="https://docs.astral.sh/uv/" class="uri">https://docs.astral.sh/uv/</a></p>
+<hr>
+<p><span class="note-modified">Last modified: 2026-07-05</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -656,6 +838,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notes/001-terminal/002-homebrew.html" class="pagination-link" aria-label="Homebrew">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Homebrew</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../notes/001-terminal/004-chezmoi.html" class="pagination-link" aria-label="Chezmoi">
+        <span class="nav-page-text">Chezmoi</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

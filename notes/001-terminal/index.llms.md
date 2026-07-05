@@ -6,6 +6,6 @@ This section is designed for all things related to the terminal and local enviro
 
 > **NOTE:**
 >
-> It is biased for macOS.
+> It is biased toward macOS and Python.
 
 Back to top

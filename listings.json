@@ -1,5 +1,9 @@
 [
   {
+    "listing": "/blog/index.html",
+    "items": []
+  },
+  {
     "listing": "/notes/index.html",
     "items": [
       "/notes/001-terminal/index.html",

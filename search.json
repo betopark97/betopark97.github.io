@@ -147,9 +147,59 @@
     "href": "notes/001-terminal/index.html",
     "title": "Terminal",
     "section": "",
-    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased for macOS.\n\n\n\n\n\n Back to top",
+    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased toward macOS and Python.\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html",
+    "href": "notes/001-terminal/002-homebrew.html",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#intro",
+    "href": "notes/001-terminal/002-homebrew.html#intro",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#installations",
+    "href": "notes/001-terminal/002-homebrew.html#installations",
+    "title": "Homebrew",
+    "section": "Installations",
+    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "title": "Homebrew",
+    "section": "Useful Commands",
+    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#references",
+    "href": "notes/001-terminal/002-homebrew.html#references",
+    "title": "Homebrew",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage: https://docs.brew.sh/\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "Homebrew"
     ]
   },
   {
@@ -174,11 +224,81 @@
     "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
   },
   {
+    "objectID": "notes/001-terminal/004-chezmoi.html",
+    "href": "notes/001-terminal/004-chezmoi.html",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#intro",
+    "href": "notes/001-terminal/004-chezmoi.html#intro",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "href": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "title": "Chezmoi",
+    "section": "Mental Model",
+    "text": "Mental Model\nThere are two trees to keep in mind:\n\nSource: the git repository where your dotfiles live, chezmoi repo. This is what you commit and push.\nTarget: $HOME. This is what chezmoi writes out.\n\nThe flow to push and pull your files:\n\nchezmoi apply pushes source → target\nchezmoi add|re-add pulls target → source\n\n\n\n\n\n\ngraph LR\n    B[\"Target&lt;br&gt;$HOME\"]\n    A[\"Source&lt;br&gt;~/path/to/your/chezmoi\"]\n    A --&gt;|chezmoi apply| B\n    B --&gt;|chezmoi add #124; re-add| A",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#installation",
+    "href": "notes/001-terminal/004-chezmoi.html#installation",
+    "title": "Chezmoi",
+    "section": "Installation",
+    "text": "Installation\n\nbrew install chezmoi",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#setup",
+    "href": "notes/001-terminal/004-chezmoi.html#setup",
+    "title": "Chezmoi",
+    "section": "Setup",
+    "text": "Setup\nBy default chezmoi looks for source files in ~/.local/share/chezmoi. If you want to keep your dotfiles repo somewhere else (e.g. alongside your other projects), you need to tell chezmoi where to look.\nCreate ~/.config/chezmoi/chezmoi.toml, substituting your actual path:\n\nsourceDir = \"~/path/to/your/chezmoi\"\n\n\n\n\n\n\n\nNote\n\n\n\nShould we save the chezmoi.toml file?\nChicken-and-egg problem This config file can itself be tracked by the repo (at dot_config/chezmoi/chezmoi.toml), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial chezmoi apply, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.\n\n\nVerify it’s wired up:\n\nchezmoi source-path\n# → /path/to/your/chezmoi\n\nThen preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in $HOME:\n\nchezmoi diff      # show changes against $HOME\nchezmoi apply     # write to $HOME (overwrite)\n\n\n\n\n\n\n\nWarning\n\n\n\nChezmoi tries to apply everything in the source tree to $HOME, not just files prefixed with dot_. Anything that isn’t a dotfile source (e.g. README.md, docs/) will be copied into $HOME verbatim unless it’s listed in .chezmoiignore. When adding non-dotfile content to the repo, add it to .chezmoiignore, and sanity-check with chezmoi managed.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#workflow",
+    "href": "notes/001-terminal/004-chezmoi.html#workflow",
+    "title": "Chezmoi",
+    "section": "Workflow",
+    "text": "Workflow\n\nCommon commands\n\nchezmoi cd                # drop into the source dir (the repo)\nchezmoi diff              # show what apply would change in $HOME\nchezmoi apply             # write chezmoi → $HOME\nchezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)\nchezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi\nchezmoi status            # short status of pending changes\nchezmoi managed           # list every file chezmoi manages\n\n\n\nAdding a new dotfile\nTo start tracking a file that currently only lives in $HOME:\n\nchezmoi add ~/.some-config\n\nChezmoi copies it into the source tree, renaming it to its internal convention (e.g. .some-config → dot_some-config). Commit the new file from inside the repo.\n\n\nEditing a tracked file\nThe recommended way to edit the tracked file is to edit the source by doing chezmoi edit ~/.some-config. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g. a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g. changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).\nThat’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.\nThen follow the steps:\n\nRe-add the changes to track it with chezmoi:\n\n\nchezmoi re-add ~/.edited-config # or just chezmoi re-add\n\n\nCheck the differences in your editor of choice.\nTake action to save or revert.\n\nif you like the changes: git commit.\nif you don’t like the changes: revert changes and chezmoi apply to overwrite $HOME with the reverted version (before the edits).\n\n\n\n\n\n\n\n\nTip\n\n\n\nAlways do the chezmoi re-add first, as the chezmoi directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your $HOME is not git tracked, so if you do a chezmoi apply first, it overwrites your live files and the previous version is gone.\n\n\n\n\nSyncing across machines\nOn the machine where you made changes:\n\nchezmoi cd\ngit add -p && git commit -m \"...\"\ngit push\n\nOn the other machine:\n\nchezmoi cd\ngit pull\nchezmoi diff      # sanity-check\nchezmoi apply",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#references",
+    "href": "notes/001-terminal/004-chezmoi.html#references",
+    "title": "Chezmoi",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the chezmoi homepage: https://www.chezmoi.io/\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
     "objectID": "blog/index.html",
     "href": "blog/index.html",
     "title": "Blog",
     "section": "",
-    "text": "Coming soon.\n\n\n\n Back to top",
+    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share. \n\nListGrid\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
       "Blog"
     ]
@@ -208,7 +328,7 @@
     "href": "notes/001-terminal/001-zsh.html#zshrc",
     "title": "zsh",
     "section": ".zshrc",
-    "text": ".zshrc\nThis is the configuration file for the zsh shell.\nUse it to set aliases and a custom prompt for the terminal window.\nMost people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.\nI personally use this to set CLI tools and to customize my prompts.",
+    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
     "crumbs": [
       "zsh"
     ]
@@ -228,9 +348,79 @@
     "href": "notes/001-terminal/001-zsh.html#zshenv",
     "title": "zsh",
     "section": ".zshenv",
-    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.",
+    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
     "crumbs": [
       "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html",
+    "href": "notes/001-terminal/003-uv.html",
+    "title": "uv",
+    "section": "",
+    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#intro",
+    "href": "notes/001-terminal/003-uv.html#intro",
+    "title": "uv",
+    "section": "",
+    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#installation",
+    "href": "notes/001-terminal/003-uv.html#installation",
+    "title": "uv",
+    "section": "Installation",
+    "text": "Installation\nHomebrew\n\nbrew install uv\n\nPip\n\npip install uv",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#initialization",
+    "href": "notes/001-terminal/003-uv.html#initialization",
+    "title": "uv",
+    "section": "Initialization",
+    "text": "Initialization\nIf you don’t have a project directory run the following command:\n\nuv init &lt;project-title&gt;\n\nIf you already have a project directory cd into the directory and run the following command:\n\nuv init\n\nWhen initializing the project, there are a few files that will be populated: .python-version, hello.py, pyproject.toml, and uv.lock.\nLet’s go over what each one does:\n\n.python-version: this is the file used to manage the python version. For example, let’s say that it defaults to python version 3.13 because it’s your global python’s version but you want to use a different version, then you can modify it to 3.12.\nhello.py: this is just a basic Python template, so it doesn’t carry much meaning on its own and can safely be deleted.\npyproject.toml: this file is the core of setting up your coding environment. It will be explained further below, but it manages the Python version and can also take on the role of requirements.txt.\nuv.lock: there’s no need to touch this file directly.",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#virtual-environment",
+    "href": "notes/001-terminal/003-uv.html#virtual-environment",
+    "title": "uv",
+    "section": "Virtual Environment",
+    "text": "Virtual Environment\n\nCreating the virtual environment\nAfter initializing the project, running the command below will automatically do what python3 -m venv .venv used to do when creating a virtual environment manually:\n\nuv sync\n\nThis creates the .venv virtual environment and installs the dependencies by referencing the .python-version, pyproject.toml, and uv.lock files. In fact, you don’t even have to run it explicitly — running any Python script with uv run &lt;script.py&gt; will create the virtual environment the same way if it doesn’t exist yet.\n\n\nActivating and deactivating\n\n\n\n\n\n\nNote\n\n\n\nUse uv run for any scripts or packages as uv auto detects your virtual environment.\n\n\nNormally, every time you come back to a project you would have to activate the virtual environment before running anything:\n\nsource .venv/bin/activate\n\nYou would then see the terminal prompt change from username project-directory to (.venv) username project-directory, and when you’re done, deactivate it:\n\ndeactivate\n\nWith uv, none of this is necessary. uv run automatically detects the .venv in your project and runs your script inside it, so you never have to remember to activate the environment every time you return to the project. The commands above are only there in case you want to work inside an activated shell manually.",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#package-management",
+    "href": "notes/001-terminal/003-uv.html#package-management",
+    "title": "uv",
+    "section": "Package Management",
+    "text": "Package Management\nThis part is where uv truly shines. You no longer have to sit through long download times for large libraries or decipher cryptic error messages from version conflicts like you would with pip or conda.\n\nAdding and removing packages\n\n# Add a package\nuv add &lt;package-name==version&gt;\n\n# Remove a package\nuv remove &lt;package-name==version&gt;\n\nOccasionally a package name comes with extra options in square brackets. In that case, handle it as follows:\n\n# For example\npip install \"fastapi[standard]\"\n\n# The uv way\nuv add fastapi --extra standard\n\nThink of --extra as replacing the double quotes and square brackets.\n\n\nExporting dependencies\nPackages are automatically recorded in pyproject.toml along with their versions, but if you’re new to uv and find requirements.txt more comfortable, you can export them by running the following commands in the terminal:\n\nuv pip freeze &gt; requirements.txt\n\n# To install packages from requirements.txt\nuv pip install -r requirements.txt",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#references",
+    "href": "notes/001-terminal/003-uv.html#references",
+    "title": "uv",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the uv homepage: https://docs.astral.sh/uv/\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "uv"
     ]
   },
   {
@@ -288,7 +478,7 @@
     "href": "notes/index.html",
     "title": "Notes",
     "section": "",
-    "text": "This section is for having a structured, bite-sized documentation of things I study and apply.\nA working notebook across the data stack — pick a topic to dig in. \n\n\n  Terminal To build a productive local environment. \n  DevOps Automation and integration of development and operations to deliver faster and more reliably. \n  Data Engineering Build and optimize data pipeline workflows for data driven decision-making. \n  Data Analysis Exploration and interpretation of data to uncover actionable insights for strategic decision-making. \n  Business Intelligence Design dashboards and reporting for strategic business choices. \n  Machine Learning Develop and train statistical models that allow systems to learn patterns and make predictions from data. \n  AI Engineering Artificial Intelligence for development and applications. \n  Domain Knowledge Deep understanding of a specific industry or business are to ensure technical solutions solve real-world problems. \n  DevTools Tools and utilities that optimize developer productivity. \n  Homelab Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies. \n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "“Your brain is for having ideas not for holding them.” - David Allen\n\nA working notebook across the data stack — pick a topic to dig in. \n\n\n  Terminal To build a productive local environment. \n  DevOps Automation and integration of development and operations to deliver faster and more reliably. \n  Data Engineering Build and optimize data pipeline workflows for data driven decision-making. \n  Data Analysis Exploration and interpretation of data to uncover actionable insights for strategic decision-making. \n  Business Intelligence Design dashboards and reporting for strategic business choices. \n  Machine Learning Develop and train statistical models that allow systems to learn patterns and make predictions from data. \n  AI Engineering Artificial Intelligence for development and applications. \n  Domain Knowledge Deep understanding of a specific industry or business are to ensure technical solutions solve real-world problems. \n  DevTools Tools and utilities that optimize developer productivity. \n  Homelab Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies. \n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/charon-analysis/final_deliverable.html#slide-1",

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Build and optimize data pipeline workflows for data driven decision-making.">
 
-<title>Data Engineering – Roberto Park</title>
+<title>Chezmoi – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,6 +68,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../notes/001-terminal/003-uv.html" rel="prev">
 <link href="../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -92,6 +127,9 @@ ul.task-list li input[type="checkbox"] {
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
   })(window, document, 'script', 'dataLayer', 'GTM-5J63Z9M7');</script>
 <!-- End Google Tag Manager -->
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -151,7 +189,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/003-data-engineering/index.html">Data Engineering</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/001-terminal/004-chezmoi.html">Chezmoi</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -168,8 +206,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/003-data-engineering/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Engineering</span></a>
+  <a href="../../notes/001-terminal/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terminal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/001-zsh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">zsh</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/002-homebrew.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Homebrew</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/003-uv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">uv</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/004-chezmoi.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Chezmoi</span></a>
   </div>
 </li>
     </ul>
@@ -177,22 +239,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#mental-model" id="toc-mental-model" class="nav-link" data-scroll-target="#mental-model">Mental Model</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a>
+  <ul class="collapse">
+  <li><a href="#common-commands" id="toc-common-commands" class="nav-link" data-scroll-target="#common-commands">Common commands</a></li>
+  <li><a href="#adding-a-new-dotfile" id="toc-adding-a-new-dotfile" class="nav-link" data-scroll-target="#adding-a-new-dotfile">Adding a new dotfile</a></li>
+  <li><a href="#editing-a-tracked-file" id="toc-editing-a-tracked-file" class="nav-link" data-scroll-target="#editing-a-tracked-file">Editing a tracked file</a></li>
+  <li><a href="#syncing-across-machines" id="toc-syncing-across-machines" class="nav-link" data-scroll-target="#syncing-across-machines">Syncing across machines</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Engineering</h1>
+<h1 class="title">Chezmoi</h1>
 </div>
 
-<div>
-  <div class="description">
-    Build and optimize data pipeline workflows for data driven decision-making.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -207,9 +281,170 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Overview coming soon.</em></p>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>Chezmoi is a dotfiles manager that keeps your configuration files (<code>.zshrc</code>, <code>.gitconfig</code>, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into <code>$HOME</code> for you.</p>
+</section>
+<section id="mental-model" class="level2">
+<h2 class="anchored" data-anchor-id="mental-model">Mental Model</h2>
+<p>There are two trees to keep in mind:</p>
+<ul>
+<li><strong>Source</strong>: the git repository where your dotfiles live, <code>chezmoi</code> repo. This is what you commit and push.</li>
+<li><strong>Target</strong>: <code>$HOME</code>. This is what chezmoi writes out.</li>
+</ul>
+<p>The flow to push and pull your files:</p>
+<ul>
+<li><code>chezmoi apply</code> pushes source → target</li>
+<li><code>chezmoi add|re-add</code> pulls target → source</li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    B["Target&lt;br&gt;$HOME"]
+    A["Source&lt;br&gt;~/path/to/your/chezmoi"]
+    A --&gt;|chezmoi apply| B
+    B --&gt;|chezmoi add #124; re-add| A
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="installation" class="level2">
+<h2 class="anchored" data-anchor-id="installation">Installation</h2>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>brew install chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<p>By default chezmoi looks for source files in <code>~/.local/share/chezmoi</code>. If you want to keep your dotfiles repo somewhere else (e.g.&nbsp;alongside your other projects), you need to tell chezmoi where to look.</p>
+<p>Create <code>~/.config/chezmoi/chezmoi.toml</code>, substituting your actual path:</p>
+<div class="term" data-title="toml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">sourceDir</span> <span class="op">=</span> <span class="st">"~/path/to/your/chezmoi"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Should we save the <code>chezmoi.toml</code> file?</p>
+<p><strong><em>Chicken-and-egg problem</em></strong> This config file can itself be tracked by the repo (at <code>dot_config/chezmoi/chezmoi.toml</code>), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial <code>chezmoi apply</code>, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.</p>
+</div>
+</div>
+<p>Verify it’s wired up:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>chezmoi source-path</span>
+<span id="cb3-2"><a href="#cb3-2"></a># → /path/to/your/chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Then preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in <code>$HOME</code>:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>chezmoi diff      # show changes against $HOME</span>
+<span id="cb4-2"><a href="#cb4-2"></a>chezmoi apply     # write to $HOME (overwrite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Chezmoi tries to apply <strong>everything</strong> in the source tree to <code>$HOME</code>, not just files prefixed with <code>dot_</code>. Anything that isn’t a dotfile source (e.g.&nbsp;<code>README.md</code>, <code>docs/</code>) will be copied into <code>$HOME</code> verbatim unless it’s listed in <code>.chezmoiignore</code>. When adding non-dotfile content to the repo, add it to <code>.chezmoiignore</code>, and sanity-check with <code>chezmoi managed</code>.</p>
+</div>
+</div>
+</section>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<section id="common-commands" class="level3">
+<h3 class="anchored" data-anchor-id="common-commands">Common commands</h3>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>chezmoi cd                # drop into the source dir (the repo)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>chezmoi diff              # show what apply would change in $HOME</span>
+<span id="cb5-3"><a href="#cb5-3"></a>chezmoi apply             # write chezmoi → $HOME</span>
+<span id="cb5-4"><a href="#cb5-4"></a>chezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>chezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi</span>
+<span id="cb5-6"><a href="#cb5-6"></a>chezmoi status            # short status of pending changes</span>
+<span id="cb5-7"><a href="#cb5-7"></a>chezmoi managed           # list every file chezmoi manages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="adding-a-new-dotfile" class="level3">
+<h3 class="anchored" data-anchor-id="adding-a-new-dotfile">Adding a new dotfile</h3>
+<p>To start tracking a file that currently only lives in <code>$HOME</code>:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>chezmoi add ~/.some-config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Chezmoi copies it into the source tree, renaming it to its internal convention (e.g.&nbsp;<code>.some-config</code> → <code>dot_some-config</code>). Commit the new file from inside the repo.</p>
+</section>
+<section id="editing-a-tracked-file" class="level3">
+<h3 class="anchored" data-anchor-id="editing-a-tracked-file">Editing a tracked file</h3>
+<p>The recommended way to edit the tracked file is to edit the source by doing <code>chezmoi edit ~/.some-config</code>. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g.&nbsp;a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g.&nbsp;changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).</p>
+<p>That’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.</p>
+<p>Then follow the steps:</p>
+<ol type="1">
+<li>Re-add the changes to track it with chezmoi:</li>
+</ol>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>chezmoi re-add ~/.edited-config # or just chezmoi re-add</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
+<li>Check the differences in your editor of choice.</li>
+<li>Take action to save or revert.
+<ul>
+<li>if you like the changes: git commit.</li>
+<li>if you don’t like the changes: revert changes and <code>chezmoi apply</code> to overwrite <code>$HOME</code> with the reverted version (before the edits).</li>
+</ul></li>
+</ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Always do the <code>chezmoi re-add</code> first, as the <code>chezmoi</code> directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your <code>$HOME</code> is not git tracked, so if you do a <code>chezmoi apply</code> first, it overwrites your live files and the previous version is gone.</p>
+</div>
+</div>
+</section>
+<section id="syncing-across-machines" class="level3">
+<h3 class="anchored" data-anchor-id="syncing-across-machines">Syncing across machines</h3>
+<p>On the machine where you made changes:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>chezmoi cd</span>
+<span id="cb8-2"><a href="#cb8-2"></a>git add -p &amp;&amp; git commit -m "..."</span>
+<span id="cb8-3"><a href="#cb8-3"></a>git push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>On the other machine:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a>chezmoi cd</span>
+<span id="cb9-2"><a href="#cb9-2"></a>git pull</span>
+<span id="cb9-3"><a href="#cb9-3"></a>chezmoi diff      # sanity-check</span>
+<span id="cb9-4"><a href="#cb9-4"></a>chezmoi apply</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>If you want to explore other features, check out the documentation on the chezmoi homepage: <a href="https://www.chezmoi.io/" class="uri">https://www.chezmoi.io/</a></p>
+<hr>
+<p><span class="note-modified">Last modified: 2026-07-05</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -656,6 +891,15 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notes/001-terminal/003-uv.html" class="pagination-link" aria-label="uv">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">uv</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

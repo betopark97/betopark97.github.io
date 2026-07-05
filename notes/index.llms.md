@@ -1,6 +1,6 @@
 # Notes
 
-This section is for having a structured, bite-sized documentation of things I study and apply.
+> “Your brain is for having ideas not for holding them.” - David Allen
 
 A working notebook across the data stack — pick a topic to dig in.
 

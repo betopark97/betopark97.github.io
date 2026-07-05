@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Build and optimize data pipeline workflows for data driven decision-making.">
 
-<title>Data Engineering – Roberto Park</title>
+<title>Homebrew – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -24,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -34,6 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../notes/001-terminal/003-uv.html" rel="next">
+<link href="../../notes/001-terminal/001-zsh.html" rel="prev">
 <link href="../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -151,7 +187,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/003-data-engineering/index.html">Data Engineering</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notes/001-terminal/002-homebrew.html">Homebrew</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -168,8 +204,32 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../notes/003-data-engineering/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Engineering</span></a>
+  <a href="../../notes/001-terminal/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Terminal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/001-zsh.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">zsh</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/002-homebrew.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Homebrew</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/003-uv.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">uv</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/001-terminal/004-chezmoi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chezmoi</span></a>
   </div>
 </li>
     </ul>
@@ -177,22 +237,32 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
+  <li><a href="#installations" id="toc-installations" class="nav-link" data-scroll-target="#installations">Installations</a></li>
+  <li><a href="#useful-commands" id="toc-useful-commands" class="nav-link" data-scroll-target="#useful-commands">Useful Commands</a>
+  <ul class="collapse">
+  <li><a href="#install-services" id="toc-install-services" class="nav-link" data-scroll-target="#install-services">Install Services</a></li>
+  <li><a href="#list-homebrew-services" id="toc-list-homebrew-services" class="nav-link" data-scroll-target="#list-homebrew-services">List Homebrew Services</a></li>
+  <li><a href="#update-homebrew-and-services" id="toc-update-homebrew-and-services" class="nav-link" data-scroll-target="#update-homebrew-and-services">Update Homebrew and services</a></li>
+  <li><a href="#manage-backups" id="toc-manage-backups" class="nav-link" data-scroll-target="#manage-backups">Manage Backups</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Engineering</h1>
+<h1 class="title">Homebrew</h1>
 </div>
 
-<div>
-  <div class="description">
-    Build and optimize data pipeline workflows for data driven decision-making.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -207,9 +277,128 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Overview coming soon.</em></p>
+<section id="intro" class="level2">
+<h2 class="anchored" data-anchor-id="intro">Intro</h2>
+<p>Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.</p>
+<p>It is divided into three main components:</p>
+<ul>
+<li><strong>Formulae (Formulas)</strong>: Package definitions for command-line tools (e.g., brew install python or brew install wget).</li>
+<li><strong>Casks</strong>: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).</li>
+<li><strong>The Cellar</strong>: The local directory on your Mac where Homebrew actually stores all the installed files.</li>
+</ul>
+<p>Formulas and casks are what’s installed and the cellar is where it’s stored.</p>
+</section>
+<section id="installations" class="level2">
+<h2 class="anchored" data-anchor-id="installations">Installations</h2>
+<p>Run the command below to install Homebrew.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There will be follow-up prompts, which are very self explanatory.</p>
+</div>
+</div>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Check that Homebrew was installed successfully:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>brew --version</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="useful-commands" class="level2">
+<h2 class="anchored" data-anchor-id="useful-commands">Useful Commands</h2>
+<p>This is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.</p>
+<section id="install-services" class="level3">
+<h3 class="anchored" data-anchor-id="install-services">Install Services</h3>
+<p>Search for the services that you want to install. For example, google something like “brew discord”.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you are installing a Formulae (CLI Tool &amp; Libraries) it’s different to when you are installing a Cask (GUI Applications)</p>
+</div>
+</div>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a># Install a Formulae</span>
+<span id="cb3-2"><a href="#cb3-2"></a>brew install {formulae}</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a># Example</span>
+<span id="cb3-5"><a href="#cb3-5"></a>brew install claude-code</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a># Install a Cask</span>
+<span id="cb4-2"><a href="#cb4-2"></a>brew install --cask {cask}</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a># Example</span>
+<span id="cb4-5"><a href="#cb4-5"></a>brew install --cask discord</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="list-homebrew-services" class="level3">
+<h3 class="anchored" data-anchor-id="list-homebrew-services">List Homebrew Services</h3>
+<p>To list all your brew Formulae and Casks:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>brew list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To list only the top level services:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>brew leaves</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="update-homebrew-and-services" class="level3">
+<h3 class="anchored" data-anchor-id="update-homebrew-and-services">Update Homebrew and services</h3>
+<p>To update Homebrew:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>brew update</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To upgrade a specific services:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>brew upgrade [formula|cask]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="manage-backups" class="level3">
+<h3 class="anchored" data-anchor-id="manage-backups">Manage Backups</h3>
+<p>First dump all your services into a file:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a># Dump your files to the path of your choice</span>
+<span id="cb9-2"><a href="#cb9-2"></a>brew bundle dump --file="~/path/to/your/Brewfile"</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a># If you need to overwrite the existing file (to sync new services)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>brew bundle dump --force --file="~/path/to/your/Brewfile"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>To install or restore from your file:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1"></a># To restore everything</span>
+<span id="cb10-2"><a href="#cb10-2"></a>brew bundle --file="~/path/to/your/Brewfile"</span>
+<span id="cb10-3"><a href="#cb10-3"></a></span>
+<span id="cb10-4"><a href="#cb10-4"></a># To check what's missing without installing</span>
+<span id="cb10-5"><a href="#cb10-5"></a>brew bundle check --file="~/path/to/your/Brewfile"</span>
+<span id="cb10-6"><a href="#cb10-6"></a></span>
+<span id="cb10-7"><a href="#cb10-7"></a># To install everything in the file and automatically uninstall any extra software in your machine not present in the file</span>
+<span id="cb10-8"><a href="#cb10-8"></a>brew bundle --cleanup --file="~/path/to/your/Brewfile"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>If you want to explore other features, check out the documentation on the Homebrew homepage: <a href="https://docs.brew.sh/" class="uri">https://docs.brew.sh/</a></p>
+<hr>
+<p><span class="note-modified">Last modified: 2026-07-05</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -656,6 +845,18 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../notes/001-terminal/001-zsh.html" class="pagination-link" aria-label="zsh">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">zsh</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../notes/001-terminal/003-uv.html" class="pagination-link" aria-label="uv">
+        <span class="nav-page-text">uv</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
