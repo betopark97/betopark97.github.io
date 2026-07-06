@@ -7,9 +7,11 @@
 ------------------------------------------------------------------------
 
 **The Pinkfong Company**  
+  
 *Data Analyst*
 
 Seoul, South Korea  
+  
 2025.02 – Present
 
 - Architected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.
@@ -24,13 +26,15 @@ Seoul, South Korea
 ------------------------------------------------------------------------
 
 **Sungkyunkwan University**  
+  
 *BA, Psychology*
 
 Seoul, South Korea  
+  
 2016.03 – 2021.08
 
 - Academic Excellence Scholarship *(Fall 2021, Spring 2022)*
-- Class Representative, Freshman Year *(2016)*
+- Class Representative, Freshman Year *(2016)*  
 
 ## Certifications
 
@@ -43,10 +47,15 @@ SnowPro Associate: Platform Certification (2026.01 - 2028.01)
 ------------------------------------------------------------------------
 
 **Languages:** Python, SQL  
+  
 **Data:** PostgreSQL, Snowflake, DuckDB, DBT  
+  
 **Orchestration:** Airflow, Prefect, Docker  
+  
 **BI:** Streamlit, Tableau  
+  
 **Tools:** Git & GitHub, Notion, Slack, Discord, Obsidian  
+  
 **AI:** Claude Code, Gemini CLI, Pi
 
 ## Misc.

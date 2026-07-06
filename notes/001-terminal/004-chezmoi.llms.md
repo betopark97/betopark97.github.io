@@ -44,7 +44,8 @@ sourceDir = "~/path/to/your/chezmoi"
 >
 > Should we save the `chezmoi.toml` file?
 >
-> ***Chicken-and-egg problem*** This config file can itself be tracked by the repo (at `dot_config/chezmoi/chezmoi.toml`), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial `chezmoi apply`, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.
+> ***Chicken-and-egg problem***  
+> This config file can itself be tracked by the repo (at `dot_config/chezmoi/chezmoi.toml`), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial `chezmoi apply`, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.
 
 Verify it’s wired up:
 
@@ -132,7 +133,8 @@ chezmoi apply
 
 ## References
 
-If you want to explore other features, check out the documentation on the chezmoi homepage: <https://www.chezmoi.io/>
+If you want to explore other features, check out the documentation on the chezmoi homepage:  
+<https://www.chezmoi.io/>
 
 ------------------------------------------------------------------------
 

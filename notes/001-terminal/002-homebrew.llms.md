@@ -113,7 +113,8 @@ brew bundle --cleanup --file="~/path/to/your/Brewfile"
 
 ## References
 
-If you want to explore other features, check out the documentation on the Homebrew homepage: <https://docs.brew.sh/>
+If you want to explore other features, check out the documentation on the Homebrew homepage:  
+<https://docs.brew.sh/>
 
 ------------------------------------------------------------------------
 

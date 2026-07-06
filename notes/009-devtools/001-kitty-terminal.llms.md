@@ -4,7 +4,11 @@
 
 Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.
 
-The key features are: - GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators. - Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like `tmux`. - Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs. - Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.
+The key features are:  
+- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.  
+- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like `tmux`.  
+- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.  
+- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.
 
 What caught my interest was the GPU rendering, and built-in tiling and tabs.
 
@@ -79,7 +83,10 @@ All use `launch --cwd=current` so the new tab/window opens in the same directory
 
 Catppuccin-Mocha (`current-theme.conf`).
 
-Dark pastel palette: - foreground `#CDD6F4` - background `#1E1E2E` - accent lilac `#CBA6F7` on active tab
+Dark pastel palette:  
+- foreground `#CDD6F4`  
+- background `#1E1E2E`  
+- accent lilac `#CBA6F7` on active tab
 
 > **NOTE:**
 >
