@@ -317,7 +317,10 @@ def update_gallery_intro(src_root: Path) -> None:
 
     after_begin = text.index("\n", begin) + 1  # keep the begin-marker line
     body = strip_frontmatter(src_index.read_text())
-    new = text[:after_begin] + body + "\n" + text[end:]
+    # Blank line before the end marker: the site renders with hard_line_breaks
+    # (_quarto.yml), so an end-marker comment directly after the prose would
+    # add a trailing <br> to the intro paragraph.
+    new = text[:after_begin] + body + "\n\n" + text[end:]
     gallery.write_text(new)
     log("synced gallery intro from vault Notes index.md")
 

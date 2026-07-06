@@ -20,9 +20,11 @@ date-format: iso
 
 format:
   html:
-    # Obsidian auto-links bare URLs (https://…); pandoc's default markdown
-    # reader doesn't, so vault notes' reference links rendered as plain text.
-    from: markdown+autolink_bare_uris
+    # Match Obsidian's markdown dialect site-wide: bare URLs auto-link, and a
+    # single newline renders as a line break (pandoc's default joins lines).
+    # Consequence: never soft-wrap prose in source files — one paragraph, one
+    # line — and no trailing "\" / double-space needed to force a break.
+    from: markdown+autolink_bare_uris+hard_line_breaks
     theme:
       - assets/scss/catppuccin-mocha.scss
       - assets/scss/styles.scss
