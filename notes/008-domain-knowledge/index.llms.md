@@ -1,7 +1,7 @@
 # Domain Knowledge
 
-Deep understanding of a specific industry or business are to ensure technical solutions solve real-world problems.
+Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.
 
-*Overview coming soon.*
+Overview coming soon.
 
 Back to top

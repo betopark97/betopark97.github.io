@@ -15,21 +15,21 @@
     "href": "portfolio.html",
     "title": "Roberto Park",
     "section": "",
-    "text": "Data Engineer who’d rather use the boring tool that works than the shiny one that might.\n\n\n\n\n\nThe Pinkfong Company\n\nData Analyst\n\n\nSeoul, South Korea\n\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly.\n\n\n\n\n\n\n\nSungkyunkwan University\n\nBA, Psychology\n\n\nSeoul, South Korea\n\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)\n\n\n\n\n\n\nSnowPro Associate: Platform Certification (2026.01 - 2028.01)\n\n\n\n\nLanguages: Python, SQL\n\nData: PostgreSQL, Snowflake, DuckDB, DBT\n\nOrchestration: Airflow, Prefect, Docker\n\nBI: Streamlit, Tableau\n\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\n\nAI: Claude Code, Gemini CLI, Pi\n\n\n\n\nAt university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
+    "text": "Data Engineer who’d rather use the boring tool that works than the shiny one that might.\n\n\n\n\n\nThe Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly.\n\n\n\n\n\n\n\nSungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)\n\n\n\n\n\n\nSnowPro Associate: Platform Certification (2026.01 - 2028.01)\n\n\n\n\nLanguages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi\n\n\n\n\nAt university…\n\n🎤 African Music Club\n🤝 Community Service Club\n\nIn my free time…\n\n💻 coding, customizing my tools\n🧶 crochet"
   },
   {
     "objectID": "portfolio.html#experience",
     "href": "portfolio.html#experience",
     "title": "Roberto Park",
     "section": "",
-    "text": "The Pinkfong Company\n\nData Analyst\n\n\nSeoul, South Korea\n\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly."
+    "text": "The Pinkfong Company\nData Analyst\n\n\nSeoul, South Korea\n2025.02 – Present \n\n\n\nArchitected a Snowflake data warehouse from scratch consolidating 6 revenue domains (IPTV, Music, YouTube, OTT, FAST, Merchandise) into 52 fact/dimension marts, becoming the single source of truth for company-wide revenue reporting.\nBuilt automated Python ETL ingesting 200+ source tables from 80+ Google Drive/Sheets and API feeds into Snowflake via 80 modular pipelines, eliminating manual spreadsheet consolidation across 6 business units.\nModeled 443 dbt transformations across a 3-layer architecture (189 staging · 174 intermediate · 80 mart) with 85+ automated data-quality tests, cutting reporting errors and enabling trusted self-serve analytics.\nDelivered 9 Streamlit + Tableau dashboards tracking revenue KPIs and time-series trends across all domains, giving MD, Sales, and Marketing teams real-time visibility that previously required manual monthly reports.\nOrchestrated the full pipeline on-prem (Linux) with Prefect and Airflow — 19 flows / 16 scheduled deployments with Slack failure alerting — achieving hands-off daily/monthly refreshes.\nBuilt 6 Snowflake Intelligence semantic views powering natural-language AI agents with role-based access for MD, Marketing, Sales, and Distribution teams, enabling non-technical staff to query revenue data directly."
   },
   {
     "objectID": "portfolio.html#education",
     "href": "portfolio.html#education",
     "title": "Roberto Park",
     "section": "",
-    "text": "Sungkyunkwan University\n\nBA, Psychology\n\n\nSeoul, South Korea\n\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)"
+    "text": "Sungkyunkwan University\nBA, Psychology\n\n\nSeoul, South Korea\n2016.03 – 2021.08\n\n\n\nAcademic Excellence Scholarship (Fall 2021, Spring 2022)\nClass Representative, Freshman Year (2016)"
   },
   {
     "objectID": "portfolio.html#certifications",
@@ -43,7 +43,7 @@
     "href": "portfolio.html#tech-stack",
     "title": "Roberto Park",
     "section": "",
-    "text": "Languages: Python, SQL\n\nData: PostgreSQL, Snowflake, DuckDB, DBT\n\nOrchestration: Airflow, Prefect, Docker\n\nBI: Streamlit, Tableau\n\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\n\nAI: Claude Code, Gemini CLI, Pi"
+    "text": "Languages: Python, SQL\nData: PostgreSQL, Snowflake, DuckDB, DBT\nOrchestration: Airflow, Prefect, Docker\nBI: Streamlit, Tableau\nTools: Git & GitHub, Notion, Slack, Discord, Obsidian\nAI: Claude Code, Gemini CLI, Pi"
   },
   {
     "objectID": "portfolio.html#misc.",
@@ -57,9 +57,49 @@
     "href": "notes/010-homelab/index.html",
     "title": "Homelab",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "There a lot of different hardwares for homelabs. This section will cover homelabbing with Raspberry Pis\nOS: Ubuntu Server LTS\nOrchestrator: Kubernetes k3s",
     "crumbs": [
       "Homelab"
+    ]
+  },
+  {
+    "objectID": "notes/010-homelab/index.html#preface",
+    "href": "notes/010-homelab/index.html#preface",
+    "title": "Homelab",
+    "section": "",
+    "text": "There a lot of different hardwares for homelabs. This section will cover homelabbing with Raspberry Pis\nOS: Ubuntu Server LTS\nOrchestrator: Kubernetes k3s",
+    "crumbs": [
+      "Homelab"
+    ]
+  },
+  {
+    "objectID": "notes/010-homelab/002-hardware-requirements.html",
+    "href": "notes/010-homelab/002-hardware-requirements.html",
+    "title": "Hardware Requirements",
+    "section": "",
+    "text": "Last modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "Hardware Requirements"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/index.html",
+    "href": "notes/009-devtools/index.html",
+    "title": "DevTools",
+    "section": "",
+    "text": "Back to top",
+    "crumbs": [
+      "DevTools"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/003-dbeaver.html",
+    "href": "notes/009-devtools/003-dbeaver.html",
+    "title": "DBeaver",
+    "section": "",
+    "text": "driver properties\nname: private_key_file\nvalue: $PATH to rsa_key.p8\nUser Interfaces &gt; Keys:\n- move lines up - option up\n- move lines down - option down\n\nLast modified: 2026-06-27\n\n\n\n Back to top",
+    "crumbs": [
+      "DBeaver"
     ]
   },
   {
@@ -113,23 +153,74 @@
     ]
   },
   {
-    "objectID": "notes/007-ai-engineering/index.html",
-    "href": "notes/007-ai-engineering/index.html",
-    "title": "AI Engineering",
-    "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "href": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "title": "Kitty Terminal",
+    "section": "Reminders",
+    "text": "Reminders\n\n\n\n\n\n\nWarning\n\n\n\nWhen SSH-ing into a server use the kitten command else the shell will be very buggy.\nFor example, kitten ssh user@xxx.xx.xx.xxx\n\n\n\nLast modified: 2026-06-22",
     "crumbs": [
-      "AI Engineering"
+      "Kitty Terminal"
     ]
   },
   {
-    "objectID": "notes/005-business-intelligence/index.html",
-    "href": "notes/005-business-intelligence/index.html",
-    "title": "Business Intelligence",
+    "objectID": "notes/008-domain-knowledge/001-scm/index.html",
+    "href": "notes/008-domain-knowledge/001-scm/index.html",
+    "title": "SCM",
+    "section": "",
+    "text": "This is notes for Supply Chain Management.\n\n\n\n Back to top",
+    "crumbs": [
+      "SCM"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "href": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "title": "Definition",
+    "section": "",
+    "text": "Supply Chain Management consists of different components:\n\nPlanning\n\nS&OP\nDemand Plan\nSupply Plan\nInventory\n\nSourcing\n\nProcurement\nSRM\nSupplier Negotiation\n\nManufacturing\n\nProduction Scheduling\nCapacity Planning\n\nLogistics\n\nWarehousing\nTransport\nLast-Mile\n\n\n\nLast modified: 2026-06-16\n\n\n\n Back to top",
+    "crumbs": [
+      "SCM",
+      "Definition"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "title": "AI Harness",
+    "section": "",
+    "text": "Note\n\n\n\nThe harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.\n\n\nThere are various AI harnesses that I use, each with its own unique strengths.\nThe one that I think works the best out-of-the-box is Claude Code. It can be bloated, token-inefficient, and expensive, but this is the one I use at work and the company covers the subscription.\nThen I also use Antigravity CLI (formerly Gemini CLI) to fix, format, and organize text like this Obsidian vault (strictly for drafts, not stuff I post to the public, which I try my best to make it my own words and writing style).\nFinally, I also enjoy spending time tweaking and using Pi (pi-coding-agent) for hobby projects (along with Claude Code).\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Harness"
+    ]
+  },
+  {
+    "objectID": "notes/006-machine-learning/index.html",
+    "href": "notes/006-machine-learning/index.html",
+    "title": "Machine Learning",
     "section": "",
     "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
-      "Business Intelligence"
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "notes/005-business-intelligence/003-visualization.html",
+    "href": "notes/005-business-intelligence/003-visualization.html",
+    "title": "Visualization",
+    "section": "",
+    "text": "Choosing the appropriate visualization for data is essential.\nIt depends a lot on what the stakeholder wants to see. Communication is key. Instead of make filters and dimensions everywhere, ask what they want to see and try to only make visualizations that they want to see. Remember that not every stakeholder has high data literacy, make it simple and straightforward. Something that will help them quickly understand their data and make decisions.\n\nLast modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "Visualization"
+    ]
+  },
+  {
+    "objectID": "notes/005-business-intelligence/001-intro.html",
+    "href": "notes/005-business-intelligence/001-intro.html",
+    "title": "Intro",
+    "section": "",
+    "text": "Business intelligence is not about making flashy and cool graphs. It’s about delivering data insights for data driven decisions.\nThere are various tools to consider when making dashboards. The one that I like the most because of its simplicity is Streamlit. It comes with so many downsides when compared with actual backend + frontend stacks in relation to performance at large scale. However, all-in-all it’s a great tool to make dashboards for business intelligence.\n\nLast modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "Intro"
     ]
   },
   {
@@ -143,214 +234,330 @@
     ]
   },
   {
-    "objectID": "notes/001-terminal/index.html",
-    "href": "notes/001-terminal/index.html",
-    "title": "Terminal",
+    "objectID": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html",
+    "href": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html",
+    "title": "Optimize Build Time",
     "section": "",
-    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased toward macOS and Python.\n\n\n\n\n\n Back to top",
+    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
     "crumbs": [
-      "Terminal"
+      "dbt",
+      "Optimize Build Time"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html",
-    "href": "notes/001-terminal/002-homebrew.html",
-    "title": "Homebrew",
+    "objectID": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html#project-wide-optimizations",
+    "href": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html#project-wide-optimizations",
+    "title": "Optimize Build Time",
     "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
     "crumbs": [
-      "Homebrew"
+      "dbt",
+      "Optimize Build Time"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#intro",
-    "href": "notes/001-terminal/002-homebrew.html#intro",
-    "title": "Homebrew",
+    "objectID": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html#model-wide-optimizations",
+    "href": "notes/003-data-engineering/003-dbt/006-optimize-build-time.html#model-wide-optimizations",
+    "title": "Optimize Build Time",
+    "section": "Model-wide Optimizations",
+    "text": "Model-wide Optimizations\nYou would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).\n\nLast modified: 2026-06-26",
+    "crumbs": [
+      "dbt",
+      "Optimize Build Time"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html",
+    "href": "notes/003-data-engineering/003-dbt/004-documentations.html",
+    "title": "Documentations",
     "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
     "crumbs": [
-      "Homebrew"
+      "dbt",
+      "Documentations"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#installations",
-    "href": "notes/001-terminal/002-homebrew.html#installations",
-    "title": "Homebrew",
-    "section": "Installations",
-    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "title": "Homebrew",
-    "section": "Useful Commands",
-    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#references",
-    "href": "notes/001-terminal/002-homebrew.html#references",
-    "title": "Homebrew",
-    "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-05",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Roberto Park",
+    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#types-of-documentation",
+    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#types-of-documentation",
+    "title": "Documentations",
     "section": "",
-    "text": "I |"
+    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
   },
   {
-    "objectID": "index.html#hi-there",
-    "href": "index.html#hi-there",
-    "title": "Roberto Park",
-    "section": "Hi there 👋",
-    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
+    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#generate-documentations",
+    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#generate-documentations",
+    "title": "Documentations",
+    "section": "Generate Documentations",
+    "text": "Generate Documentations\n\ndbt docs generate\n\n\n\n\n\n\n\nNote\n\n\n\nThe command to generate the docs will change in future releases.\ndbt compile --write-index --static-analysis strict",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
   },
   {
-    "objectID": "index.html#explore",
-    "href": "index.html#explore",
-    "title": "Roberto Park",
-    "section": "Explore",
-    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
+    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#serve-documentations",
+    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#serve-documentations",
+    "title": "Documentations",
+    "section": "Serve Documentations",
+    "text": "Serve Documentations\n\ndbt docs serve\n\n\nLast modified: 2026-07-02",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
   },
   {
-    "objectID": "notes/001-terminal/004-chezmoi.html",
-    "href": "notes/001-terminal/004-chezmoi.html",
-    "title": "Chezmoi",
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html",
+    "title": "Conventions",
     "section": "",
-    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "text": "add foldabble examples\nadd full project tree example",
     "crumbs": [
-      "Chezmoi"
+      "dbt",
+      "Conventions"
     ]
   },
   {
-    "objectID": "notes/001-terminal/004-chezmoi.html#intro",
-    "href": "notes/001-terminal/004-chezmoi.html#intro",
-    "title": "Chezmoi",
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#project-level-meta-files",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#project-level-meta-files",
+    "title": "Conventions",
+    "section": "Project Level Meta Files",
+    "text": "Project Level Meta Files\ndbt_project.yml\npackages.yml\nprofiles.yml",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#directory-names",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#directory-names",
+    "title": "Conventions",
+    "section": "Directory Names",
+    "text": "Directory Names\nmodels/{domain}/{layer}",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#meta-names",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#meta-names",
+    "title": "Conventions",
+    "section": "Meta Names",
+    "text": "Meta Names\n_{layer}__{sources|models}.yaml\nThe main characteristic of meta yaml files is that the naming starts with an underscore/underbar.\nThe sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.\nThe models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.\nThe data tests are generic (singular) tests and custom tests, package tests.\n- singular tests include: unique, not null, accepted_values, relationships\n- custom tests consist of macros\n- package tests consist of dbt_utils and other community packages",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#model-names",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#model-names",
+    "title": "Conventions",
+    "section": "Model Names",
+    "text": "Model Names\n{layer}_{domain}__{entity}_{temp}.sql",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#tests-names",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#tests-names",
+    "title": "Conventions",
+    "section": "Tests Names",
+    "text": "Tests Names\nThe test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#incremental-models",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#incremental-models",
+    "title": "Conventions",
+    "section": "Incremental Models",
+    "text": "Incremental Models\nonly use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\nremember to add the logic to erase orphaned data.\nif the data is too big for merge, then use delete+insert or insert_overwrite\ndelete+insert checks for a set of keys that you define",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#environment-variables",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#environment-variables",
+    "title": "Conventions",
+    "section": "Environment Variables",
+    "text": "Environment Variables\n\nshell environment overrides all\n.env file is auto detected with the new dbt fusion",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#models",
+    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#models",
+    "title": "Conventions",
+    "section": "Models",
+    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-06-30",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/index.html",
+    "href": "notes/003-data-engineering/002-snowflake/index.html",
+    "title": "Snowflake",
     "section": "",
-    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
-      "Chezmoi"
+      "Snowflake"
     ]
   },
   {
-    "objectID": "notes/001-terminal/004-chezmoi.html#mental-model",
-    "href": "notes/001-terminal/004-chezmoi.html#mental-model",
-    "title": "Chezmoi",
-    "section": "Mental Model",
-    "text": "Mental Model\nThere are two trees to keep in mind:\n\nSource: the git repository where your dotfiles live, chezmoi repo. This is what you commit and push.\nTarget: $HOME. This is what chezmoi writes out.\n\nThe flow to push and pull your files:\n\nchezmoi apply pushes source → target\nchezmoi add|re-add pulls target → source\n\n\n\n\n\n\ngraph LR\n    B[\"Target&lt;br&gt;$HOME\"]\n    A[\"Source&lt;br&gt;~/path/to/your/chezmoi\"]\n    A --&gt;|chezmoi apply| B\n    B --&gt;|chezmoi add #124; re-add| A",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#installation",
-    "href": "notes/001-terminal/004-chezmoi.html#installation",
-    "title": "Chezmoi",
-    "section": "Installation",
-    "text": "Installation\n\nbrew install chezmoi",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#setup",
-    "href": "notes/001-terminal/004-chezmoi.html#setup",
-    "title": "Chezmoi",
-    "section": "Setup",
-    "text": "Setup\nBy default chezmoi looks for source files in ~/.local/share/chezmoi. If you want to keep your dotfiles repo somewhere else (e.g. alongside your other projects), you need to tell chezmoi where to look.\nCreate ~/.config/chezmoi/chezmoi.toml, substituting your actual path:\n\nsourceDir = \"~/path/to/your/chezmoi\"\n\n\n\n\n\n\n\nNote\n\n\n\nShould we save the chezmoi.toml file?\nChicken-and-egg problem\nThis config file can itself be tracked by the repo (at dot_config/chezmoi/chezmoi.toml), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial chezmoi apply, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.\n\n\nVerify it’s wired up:\n\nchezmoi source-path\n# → /path/to/your/chezmoi\n\nThen preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in $HOME:\n\nchezmoi diff      # show changes against $HOME\nchezmoi apply     # write to $HOME (overwrite)\n\n\n\n\n\n\n\nWarning\n\n\n\nChezmoi tries to apply everything in the source tree to $HOME, not just files prefixed with dot_. Anything that isn’t a dotfile source (e.g. README.md, docs/) will be copied into $HOME verbatim unless it’s listed in .chezmoiignore. When adding non-dotfile content to the repo, add it to .chezmoiignore, and sanity-check with chezmoi managed.",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#workflow",
-    "href": "notes/001-terminal/004-chezmoi.html#workflow",
-    "title": "Chezmoi",
-    "section": "Workflow",
-    "text": "Workflow\n\nCommon commands\n\nchezmoi cd                # drop into the source dir (the repo)\nchezmoi diff              # show what apply would change in $HOME\nchezmoi apply             # write chezmoi → $HOME\nchezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)\nchezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi\nchezmoi status            # short status of pending changes\nchezmoi managed           # list every file chezmoi manages\n\n\n\nAdding a new dotfile\nTo start tracking a file that currently only lives in $HOME:\n\nchezmoi add ~/.some-config\n\nChezmoi copies it into the source tree, renaming it to its internal convention (e.g. .some-config → dot_some-config). Commit the new file from inside the repo.\n\n\nEditing a tracked file\nThe recommended way to edit the tracked file is to edit the source by doing chezmoi edit ~/.some-config. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g. a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g. changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).\nThat’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.\nThen follow the steps:\n\nRe-add the changes to track it with chezmoi:\n\n\nchezmoi re-add ~/.edited-config # or just chezmoi re-add\n\n\nCheck the differences in your editor of choice.\nTake action to save or revert.\n\nif you like the changes: git commit.\nif you don’t like the changes: revert changes and chezmoi apply to overwrite $HOME with the reverted version (before the edits).\n\n\n\n\n\n\n\n\nTip\n\n\n\nAlways do the chezmoi re-add first, as the chezmoi directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your $HOME is not git tracked, so if you do a chezmoi apply first, it overwrites your live files and the previous version is gone.\n\n\n\n\nSyncing across machines\nOn the machine where you made changes:\n\nchezmoi cd\ngit add -p && git commit -m \"...\"\ngit push\n\nOn the other machine:\n\nchezmoi cd\ngit pull\nchezmoi diff      # sanity-check\nchezmoi apply",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#references",
-    "href": "notes/001-terminal/004-chezmoi.html#references",
-    "title": "Chezmoi",
-    "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the chezmoi homepage:\nhttps://www.chezmoi.io/\n\nLast modified: 2026-07-05",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "title": "Create Snippets",
     "section": "",
-    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
-      "Blog"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html",
-    "href": "notes/001-terminal/001-zsh.html",
-    "title": "zsh",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "title": "Create Snippets",
     "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
-      "zsh"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#intro",
-    "href": "notes/001-terminal/001-zsh.html#intro",
-    "title": "zsh",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "title": "Create Snippets",
+    "section": "Create Role",
+    "text": "Create Role\n\nUSE ROLE useradmin;\nCREATE ROLE {{ DEFAULT_ROLE }};\nGRANT USAGE ON WAREHOUSE {{ DEFAULT_WH }} TO ROLE {{ DEFAULT_ROLE }};",
+    "crumbs": [
+      "Snowflake",
+      "Create Snippets"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "title": "Create Snippets",
+    "section": "Create Agent",
+    "text": "Create Agent\n\nAlways have two roles for Agents (Snowflake Intelligence)\n\nsuperior manager of all agents (owner of all agent)\ninferior manager of a specific agent (reader of an agent)\n\n\n\ncreate the agent with sysadmin in the UI\n\n\n[[create_role]] for the specific agent.\nFor both superior and inferior roles there are 2 types of grants needed:\n\n\ngive grants on snowflake intelligence - agent, schema, database\n\n\nUSE ROLE securityadmin;\nGRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.{{ domain_agent }} TO ROLE {{ domain_agent_user_role }};\nGRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE {{ domain_agent_user_role }};\nGRANTE USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE {{ domain_agent_user_role }};\n\n\ngive grants on underlying tables that the semantic view/model is using\n[TODO: add link to having a dbt_project.yml and how to manage the SELECT and REFERENCES in dbt for all tables that are needed for the agent]\nremember that views need all underlying tables\n\n\nLast modified: 2026-07-01",
+    "crumbs": [
+      "Snowflake",
+      "Create Snippets"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/001-data-modeling/index.html",
+    "href": "notes/003-data-engineering/001-data-modeling/index.html",
+    "title": "Data Modeling",
     "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "text": "This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.\nThere are a lot of different frameworks, but I am biased toward Kimball’s way of modeling.\n\n\n\n Back to top",
     "crumbs": [
-      "zsh"
+      "Data Modeling"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
-    "href": "notes/001-terminal/001-zsh.html#zshrc",
-    "title": "zsh",
-    "section": ".zshrc",
-    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
+    "objectID": "notes/002-devops/003-observability-monitoring/index.html",
+    "href": "notes/002-devops/003-observability-monitoring/index.html",
+    "title": "Observability & Monitoring",
+    "section": "",
+    "text": "This section will cover how to manage the following 3 main pillars of observability and monitoring.\n\nLogs (what happened)\nMetrics (system health/numbers)\nTraces (journey of a request)\n\n\n\n\n Back to top",
     "crumbs": [
-      "zsh"
+      "Observability & Monitoring"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
-    "href": "notes/001-terminal/001-zsh.html#zprofile",
-    "title": "zsh",
-    "section": ".zprofile",
-    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
+    "objectID": "notes/002-devops/002-project-init/001-setup.html",
+    "href": "notes/002-devops/002-project-init/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
     "crumbs": [
-      "zsh"
+      "Project Init",
+      "Setup"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
-    "href": "notes/001-terminal/001-zsh.html#zshenv",
-    "title": "zsh",
-    "section": ".zshenv",
-    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
+    "objectID": "notes/002-devops/002-project-init/001-setup.html#project-init",
+    "href": "notes/002-devops/002-project-init/001-setup.html#project-init",
+    "title": "Setup",
+    "section": "",
+    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
     "crumbs": [
-      "zsh"
+      "Project Init",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
+    "href": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
+    "title": "Setup",
+    "section": "Dev Packages",
+    "text": "Dev Packages\nWhen working in data engineering there are some dev packages that are useful.\n\nruff\nty\npytest\nsqlfluff\n## Pre-commit Hooks\n``\nBuilt-in\nFormatters\nLinters\n\n\nLast modified: 2026-07-02",
+    "crumbs": [
+      "Project Init",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/003-ci-cd.html",
+    "href": "notes/002-devops/001-git-github/003-ci-cd.html",
+    "title": "CI/CD",
+    "section": "",
+    "text": "Last modified: 2026-07-06\n\n\n\n Back to top",
+    "crumbs": [
+      "Git & GitHub",
+      "CI/CD"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/001-setup.html",
+    "href": "notes/002-devops/001-git-github/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
+    "crumbs": [
+      "Git & GitHub",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/001-setup.html#git",
+    "href": "notes/002-devops/001-git-github/001-setup.html#git",
+    "title": "Setup",
+    "section": "",
+    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
+    "crumbs": [
+      "Git & GitHub",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/001-setup.html#github",
+    "href": "notes/002-devops/001-git-github/001-setup.html#github",
+    "title": "Setup",
+    "section": "GitHub",
+    "text": "GitHub\nGo to https://github.com/ and create an account.\n\nSSH key Authentication\nThis is a key-pair authentication. SSH authentication uses a pair of keys that work like a lock and key:\n\nPrivate Key (id_ed25519): Stays strictly on your computer. Never share this.\nPublic Key (id_ed25519.pub): Acts as the lock that only your private key can open. Upload this to GitHub.\n\n\nStep 1: Generate a new SSH key pair\n\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n\nSome prompts will appear asking:\n\nwhere to save they keys, press Enter to accept the default location (~./ssh).\nfor a passphrase, press Enter to leave it empty (convenient), or type a password for extra security.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you decide to enter a passphrase, be aware that the terminal will not show any visual feedback (such as asterisks or characters) while you are typing. Simply type the passphrase fully and press Enter.\n\n\n\n\nStep 2: Add the SSH Key to the ssh-agent\nThe ssh-agent is what manages your keys in the background.\n\nStart the agent:\n\n\neval \"$(ssh-agent -s)\"\n\n\nAdd your private key to the agent:\n\n\nssh-add ~/.ssh/id_ed25519\n\n\n\nStep 3: Add the Public Key to GitHub\n\nCopy the public key’s content to your clipboard:\n\n\npbcopy &lt; ~/.ssh/id_ed25519.pub\n\n\nGo to GitHub, click your profile picture (top-right corner), and then Settings.\nIn the left sidebar, click SSH and GPG keys.\nClick New SSH key (green button top-right).\nGive it a descriptive title of your local machine (e.g., “my-mac”) and paste your key from the clip board.\nClick Add SSH key.\n\n\n\nStep 4: Test the Connection\n\nssh -T git git@github.com\n\nIf you see a message like the following, then you are good to go.\n\nHi {username}! You've successfully authenticated, but GitHub does not provide shell access.\n\n\nLast modified: 2026-07-06",
+    "crumbs": [
+      "Git & GitHub",
+      "Setup"
     ]
   },
   {
@@ -424,13 +631,518 @@
     ]
   },
   {
+    "objectID": "notes/001-terminal/001-zsh.html",
+    "href": "notes/001-terminal/001-zsh.html",
+    "title": "zsh",
+    "section": "",
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#intro",
+    "href": "notes/001-terminal/001-zsh.html#intro",
+    "title": "zsh",
+    "section": "",
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
+    "href": "notes/001-terminal/001-zsh.html#zshrc",
+    "title": "zsh",
+    "section": ".zshrc",
+    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
+    "href": "notes/001-terminal/001-zsh.html#zprofile",
+    "title": "zsh",
+    "section": ".zprofile",
+    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
+    "href": "notes/001-terminal/001-zsh.html#zshenv",
+    "title": "zsh",
+    "section": ".zshenv",
+    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "blog/posts/personal-knowledge-management.html",
+    "href": "blog/posts/personal-knowledge-management.html",
+    "title": "Personal Knowledge Management",
+    "section": "",
+    "text": "I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.\nI like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable - not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.\nThe frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These’s were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).\n\n\n\n\n\n\nNote\n\n\n\nYes, the system I’ve built is also structured like PARA, but accustomed to my needs not something pre configured. While, Zettelkasten seems like a cool system, a big downside is that it’s hard to share with others meaning that it’s also hard to share with a future me.\n\n\nThat’s why I’ve chosen my own build to manage my knowledge. My personal workflow came to a more mature stage as I was making this personal website. And it is a mesh of MOC, PARA, and Zettelkasten along with some Obsidian native plugins like the BASE and CANVAS.\nThe architecture/structure consists of the following:\n\n/archive\n\nThis is the directory that is for anything that doesn’t seem to belong in any of the other directories.\n\n/blog\n\nThis is a directory for ideas that are shareable with the public.\n\n/clippings\n\nThis is for Obsidian clipping through a chrome extension to save articles that are worthy of being absorbed by my notes.\n\n/inbox\n\nThis is for sudden ideas that pop up and are mostly AI responses to structure my questions.\n\n/notes\n\nThis is the core of knowledge and place that absorbs ideas, clippings, to-dos, youtube content, etc. It is for having a structured, bite-sized documentation of things I study and apply.\n\n/portfolio\n\nThis is any documentation related to what goes into my career specs like the portfolio itself, CV and Resume.\n\n/projects\n\nThis brainstorming documentation for my projects, however it doesn’t store much because all project related documentation goes in the docs/ directory inside the project, code-as-documentation, and in my to-do application.\n\nOther parts of my personal knowledge management are YouTube where most of my knowledge comes from other than blog articles and textbooks; and to manage my schedule, ToDoist.\n\nThis will sound something similar to David Allen’s “Getting Things Done” (GTD) Philosophy. Not that I created my own system knowingly, but making a reference to his philosophy does help to clarify what my system is doing. Also kind of a mix of C(apture), O(rganize), D(istill), E(xpress) by Tiago Forte.\n\nCapture: Collect anything and everything that has your attention into an inbox.\nClarify: Determine if captured items are actionable. If not, trash them, incubate them, or file them as reference.\nOrganize: Sort actionable tasks into logically categorized lists (e.g., next actions, projects, waiting-for).\nReflect: Review and update your lists regularly to maintain clarity and trust in your system.\nEngage: Do the work based on your current context, time available, and energy levels.\n\nLet’s go over how we will manage to do each step.\n\nCapture: most of my capture happens within YouTube, blog articles, textbooks, LLM chats.\n\nYouTube -&gt; playlists (watch later, etc.)\nBlog articles -&gt; clippings\nTextbooks / LLM pinned chats -&gt; inbox\n\n\nHowever, this is almost never linear as it seems because in the end, everything passes through an LLM filter for formatting, structuring, and fact checks.\n\nClarify: from all the data that we have captured from different sources, these will differ in importance and maturity. If the data was a moments thing, which was captured but as an afterthought it’s not something I needed, doesn’t seem as important, or I’m not ready for it yet, it will be deleted/thrown away or it may just stay there as long as it needs and wait its turn to be digested to be part of my notes.\nOrganize: this I believe is the most important part as it’s what and how knowledge gets absorbed and structured; something like a long term memory. The core would be the /notes directory which absorbs clippings, youtube video informations, completed todo tasks, textbook information, tool documentations, and more. However be aware that everything starts as a small idea and therefore everything starts as a single file and when many related ideas start to clutter the single file it becomes a folder. And this will change a lot over time. Think lots on how to structure your knowledge, as you give more thought the higher the probability of it staying with you longer. The key is malleability, and space to change than it being too rigid as that’s not really how our brain works, which is plastic. Something to note when managing data is also the importance of metadata. That’s why every single folder should have a index.md which is not exactly an index of the ideas inside the folder in the orthodox way but more like an abstract version of what goes in that folder along with the workflow if needed. This is to prevent documentation staleness like what I experienced with the MOC. All files must include some kind of YAML metadata at the top because file names should default to snake casing and no symbols. More of the file naming and project structuring conventions will be provided below.\nReflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.\nEngage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is Command + Shift + F and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a Command + Shift + K in Notion, which I can free from my brain now.\n\nIn conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details - you just have to remember the location, which you put effort to structure so it’s easier to remember. Also it’s managing an external brain where knowledge compounds over time, adding value.\n\n\n\n Back to top",
+    "crumbs": [
+      "Blog",
+      "Personal Knowledge Management"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "title": "RBAC",
+    "section": "",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "title": "RBAC",
+    "section": "",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "title": "RBAC",
+    "section": "Custom Domain/Team Roles",
+    "text": "Custom Domain/Team Roles\nSnowflake recommends a two-tier pattern to keep permissions scalable.\n\n\n\n\n\n\n\n\n\nLayer\nExample\nPurpose\n\n\n\n\nAccess roles\ndb_sales_r, db_sales_rw\nGrant specific privileges on specific objects.\n\n\nFunctional roles\nanalyst, data_engineer\nBundle access roles by business function; granted to users.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "title": "RBAC",
+    "section": "Handling dbt & Automation Roles",
+    "text": "Handling dbt & Automation Roles\nIn practice, you don’t run dbt as SYSADMIN. Instead, you create a dedicated role and “wire” it into the hierarchy.\n\nExample Setup\n\n-- 1. USERADMIN creates the role\nCREATE ROLE DBT_ROLE;\n\n-- 2. SECURITYADMIN grants object creation privileges\nGRANT USAGE ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT USAGE ON WAREHOUSE my_wh TO ROLE DBT_ROLE;\n\nGRANT CREATE SCHEMA ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;\n\n-- 3. THE KEY STEP: Wire it into the hierarchy\nGRANT ROLE DBT_ROLE TO ROLE SYSADMIN;\n\n\n\n\n\n\n\nThe #1 RBAC Mistake If DBT_ROLE is not granted to SYSADMIN, the objects become orphaned. SYSADMIN (and even ACCOUNTADMIN) will not be able to manage, modify, or drop those objects without manual intervention.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "title": "RBAC",
+    "section": "Role Hierarchy & Wiring",
+    "text": "Role Hierarchy & Wiring\n\nThe Relationship Chain\n\n\n\n\n\ngraph LR\n    AR[Access Roles] --&gt; FR[Functional Roles]\n    DBT[DBT_ROLE] --&gt; SA[SYSADMIN]\n    FR --&gt; SA\n    SA --&gt; AA[ACCOUNTADMIN]\n\n\n\n\n\n\n\n\nResponsibility Matrix\n\nUSERADMIN: Creates the custom roles.\nSECURITYADMIN: Grants privileges to access roles and wires functional roles to SYSADMIN.\nUsers/Service Accounts: Assigned functional roles or tool-specific roles (like DBT_ROLE).\n\n\n\n\n\n\n\nKey Takeaway Any role can create schemas/tables if granted CREATE privileges. The goal of RBAC is to ensure those roles are children of SYSADMIN so admins retain visibility and control.\n\n\n\n\n\n\n\nLast modified: 2026-06-23",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html",
+    "href": "notes/001-terminal/004-chezmoi.html",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#intro",
+    "href": "notes/001-terminal/004-chezmoi.html#intro",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "href": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "title": "Chezmoi",
+    "section": "Mental Model",
+    "text": "Mental Model\nThere are two trees to keep in mind:\n\nSource: the git repository where your dotfiles live, chezmoi repo. This is what you commit and push.\nTarget: $HOME. This is what chezmoi writes out.\n\nThe flow to push and pull your files:\n\nchezmoi apply pushes source → target\nchezmoi add|re-add pulls target → source\n\n\n\n\n\n\ngraph LR\n    B[\"Target&lt;br&gt;$HOME\"]\n    A[\"Source&lt;br&gt;~/path/to/your/chezmoi\"]\n    A --&gt;|chezmoi apply| B\n    B --&gt;|chezmoi add #124; re-add| A",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#installation",
+    "href": "notes/001-terminal/004-chezmoi.html#installation",
+    "title": "Chezmoi",
+    "section": "Installation",
+    "text": "Installation\n\nbrew install chezmoi",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#setup",
+    "href": "notes/001-terminal/004-chezmoi.html#setup",
+    "title": "Chezmoi",
+    "section": "Setup",
+    "text": "Setup\nBy default chezmoi looks for source files in ~/.local/share/chezmoi. If you want to keep your dotfiles repo somewhere else (e.g. alongside your other projects), you need to tell chezmoi where to look.\nCreate ~/.config/chezmoi/chezmoi.toml, substituting your actual path:\n\nsourceDir = \"~/path/to/your/chezmoi\"\n\n\n\n\n\n\n\nNote\n\n\n\nShould we save the chezmoi.toml file?\nChicken-and-egg problem\nThis config file can itself be tracked by the repo (at dot_config/chezmoi/chezmoi.toml), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial chezmoi apply, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.\n\n\nVerify it’s wired up:\n\nchezmoi source-path\n# → /path/to/your/chezmoi\n\nThen preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in $HOME:\n\nchezmoi diff      # show changes against $HOME\nchezmoi apply     # write to $HOME (overwrite)\n\n\n\n\n\n\n\nWarning\n\n\n\nChezmoi tries to apply everything in the source tree to $HOME, not just files prefixed with dot_. Anything that isn’t a dotfile source (e.g. README.md, docs/) will be copied into $HOME verbatim unless it’s listed in .chezmoiignore. When adding non-dotfile content to the repo, add it to .chezmoiignore, and sanity-check with chezmoi managed.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#workflow",
+    "href": "notes/001-terminal/004-chezmoi.html#workflow",
+    "title": "Chezmoi",
+    "section": "Workflow",
+    "text": "Workflow\n\nCommon commands\n\nchezmoi cd                # drop into the source dir (the repo)\nchezmoi diff              # show what apply would change in $HOME\nchezmoi apply             # write chezmoi → $HOME\nchezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)\nchezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi\nchezmoi status            # short status of pending changes\nchezmoi managed           # list every file chezmoi manages\n\n\n\nAdding a new dotfile\nTo start tracking a file that currently only lives in $HOME:\n\nchezmoi add ~/.some-config\n\nChezmoi copies it into the source tree, renaming it to its internal convention (e.g. .some-config → dot_some-config). Commit the new file from inside the repo.\n\n\nEditing a tracked file\nThe recommended way to edit the tracked file is to edit the source by doing chezmoi edit ~/.some-config. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g. a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g. changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).\nThat’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.\nThen follow the steps:\n\nRe-add the changes to track it with chezmoi:\n\n\nchezmoi re-add ~/.edited-config # or just chezmoi re-add\n\n\nCheck the differences in your editor of choice.\nTake action to save or revert.\n\nif you like the changes: git commit.\nif you don’t like the changes: revert changes and chezmoi apply to overwrite $HOME with the reverted version (before the edits).\n\n\n\n\n\n\n\n\nTip\n\n\n\nAlways do the chezmoi re-add first, as the chezmoi directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your $HOME is not git tracked, so if you do a chezmoi apply first, it overwrites your live files and the previous version is gone.\n\n\n\n\nSyncing across machines\nOn the machine where you made changes:\n\nchezmoi cd\ngit add -p && git commit -m \"...\"\ngit push\n\nOn the other machine:\n\nchezmoi cd\ngit pull\nchezmoi diff      # sanity-check\nchezmoi apply",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#references",
+    "href": "notes/001-terminal/004-chezmoi.html#references",
+    "title": "Chezmoi",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the chezmoi homepage:\nhttps://www.chezmoi.io/\n\nLast modified: 2026-07-06",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n\n\n2026-06-27\n\n7 min\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n7 min\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n2026-06-27\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Blog"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "I |"
+  },
+  {
+    "objectID": "index.html#hi-there",
+    "href": "index.html#hi-there",
+    "title": "Roberto Park",
+    "section": "Hi there 👋",
+    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
+  },
+  {
+    "objectID": "index.html#explore",
+    "href": "index.html#explore",
+    "title": "Roberto Park",
+    "section": "Explore",
+    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html",
+    "href": "notes/001-terminal/002-homebrew.html",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#intro",
+    "href": "notes/001-terminal/002-homebrew.html#intro",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#installations",
+    "href": "notes/001-terminal/002-homebrew.html#installations",
+    "title": "Homebrew",
+    "section": "Installations",
+    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "title": "Homebrew",
+    "section": "Useful Commands",
+    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#references",
+    "href": "notes/001-terminal/002-homebrew.html#references",
+    "title": "Homebrew",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/index.html",
+    "href": "notes/001-terminal/index.html",
+    "title": "Terminal",
+    "section": "",
+    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased toward macOS and Python.\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html",
+    "href": "notes/002-devops/001-git-github/002-workflow.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "There are a lot of different workflows.\n\nLast modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "Git & GitHub",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/index.html",
+    "href": "notes/002-devops/001-git-github/index.html",
+    "title": "Git & GitHub",
+    "section": "",
+    "text": "Git is a local software tool that tracks changes to your code files over time (version control).\nGitHub is an online, cloud-based platform used to host those tracked files so you can back them up and collaborate with other developers.\nGit is the engine, GitHub is the network.\nThere are various version control tools and various collaboration cloud platforms, but I will choose the mainstream and battle-tested one.\n\n\n\n Back to top",
+    "crumbs": [
+      "Git & GitHub"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/002-project-init/index.html",
+    "href": "notes/002-devops/002-project-init/index.html",
+    "title": "Project Init",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Project Init"
+    ]
+  },
+  {
     "objectID": "notes/002-devops/index.html",
     "href": "notes/002-devops/index.html",
     "title": "DevOps",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "This section will have technical notes covering the overall workflow of the DevOps lifecycle starting with local development setup and version control to CI/CD and automated deployment.\nIt documents the processes, infrastructure, and automation required to deliver software reliably and efficiently.\n\n\n\n\n\n\nNote\n\n\n\nAlthough the documentation is biased for macOS, DevOps requires Linux foundations as the development environment may be macOS, but the production environment will most certainly be Linux.\n\n\n\n\n\n Back to top",
     "crumbs": [
       "DevOps"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "title": "Authentication",
+    "section": "",
+    "text": "There are various ways to authenticate yourself to Snowflake, but when building data pipelines and automation, my recommendation would be to use the key-pair authentication.",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "title": "Authentication",
+    "section": "1. Private Key Generation",
+    "text": "1. Private Key Generation\ncreate an unencrypted version of the private key\n\nopenssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt\n\nthis will create something that looks like:\n\n-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIE6T...\n-----END ENCRYPTED PRIVATE KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "title": "Authentication",
+    "section": "2. Public Key Generation",
+    "text": "2. Public Key Generation\ncreate a public key from the private key\n\nopenssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub\n\nthis will create something that looks like:\n\n-----BEGIN PUBLIC KEY-----\nMIIBIj...\n-----END PUBLIC KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "title": "Authentication",
+    "section": "3. Snowflake User Key-Pair Assignment",
+    "text": "3. Snowflake User Key-Pair Assignment\ngive your key for the SECURITYADMIN to register to your user, you can register two RSA public keys\n\n-- Switch to Security Admin to manage user authentication credentials\nUSE ROLE securityadmin;\n\n-- RSA_PUBLIC_KEY for python data ingestion\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n-- RSA_PUBLIC_KEY for dbt connection + dbeaver\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY_2 = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n\nLast modified: 2026-06-17",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "title": "Native Platform Services",
+    "section": "",
+    "text": "Snowflake, like many other data platforms, has a set of native services some of which are quite unique and ‘declarative’ instead of procedural with zero-ops. This means that there are many stages in the data engineering workflow where you don’t need a third-party tool for pipeline logic and orchestration.\nThis is a curated list of features that I think are better handled inside of Snowflake and serverless.",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "title": "Native Platform Services",
+    "section": "Data Integration",
+    "text": "Data Integration\n(powered by Apache NiFi)\nOpenflow\nSnowpipe Streaming\nStreams and Tasks",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "title": "Native Platform Services",
+    "section": "Data Transformation",
+    "text": "Data Transformation\nDynamic Tables",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "title": "Native Platform Services",
+    "section": "Data Governance & Quality",
+    "text": "Data Governance & Quality\nData Metric Functions (DMFs)",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "title": "Native Platform Services",
+    "section": "Intelligence Frameworks",
+    "text": "Intelligence Frameworks\nCortex AI\nSnowflake Intelligence\n\nLast modified: 2026-06-24",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-fusion",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-fusion",
+    "title": "Setup",
+    "section": "",
+    "text": "# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-core",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-core",
+    "title": "Setup",
+    "section": "Installation: dbt core",
+    "text": "Installation: dbt core\n\n# Pyproject.toml\nuv add dbt-core\n\n# Provider\nuv add dbt-snowflake dbt-postgres",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#check-installation",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html#check-installation",
+    "title": "Setup",
+    "section": "Check installation",
+    "text": "Check installation\n\ndbt --version\n\ndbt init --skip-profile-setup",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-packages",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-packages",
+    "title": "Setup",
+    "section": "Useful dbt-packages",
+    "text": "Useful dbt-packages\n\ndbt-labs/dbt_utils\ngodatadriven/dbt_date\nSnowflake-Labs/dbt_semantic_view",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "href": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "title": "Setup",
+    "section": "Useful dbt related python packages",
+    "text": "Useful dbt related python packages\n\ndbt-{database adapter} (e.g., dbt-postgres, dbt-snowflake)\n\nadds support for a specific database.\n\ndbt-autofix\n\nofficial command-line utility designed to automate the refactoring and updating of dbt projects.\n\ndbt-osmosis\n\nstreamlines the management of YAML files by ensuring consistency and accuracy in dbt docs and the actual models.\n\ndbterd\n\ndetects entity relationships through test relationships, semantic entities, and model contract constraints to make an ERD.\n\ndbt-state (Coming soon…; On afterthought it seems like it’s a freemium feature…)\n\nsaves compute costs and development time by avoiding unnecessary model builds by comparing current definitions against past runs to skip execution if nothing has changed or cloning existing nodes.\n\n\n\nLast modified: 2026-07-02",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/003-workflow.html",
+    "href": "notes/003-data-engineering/003-dbt/003-workflow.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "dbt commands\n- dbt debug\n- dbt clean\n- dbt deps\n- dbt run\n- dbt test\n- dbt build\n- dbt seed\n- dbt lint (requires .sqlfluff)\n- dbt fmt (Coming soon…)\nLet’s use dbt fusion locally for faster build, run, compilation whatever times.\n\n-t | --target\n-s | --select\n-x | --fail-fast\n\n+model = upstream\nmodel+ = downstream\n\n\nLast modified: 2026-06-26\n\n\n\n Back to top",
+    "crumbs": [
+      "dbt",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/005-data-modeling.html",
+    "href": "notes/003-data-engineering/003-dbt/005-data-modeling.html",
+    "title": "Data Modeling",
+    "section": "",
+    "text": "we will follow kimballs three layered data warehouse\nstaging, intermediate, marts\nbronze, silver, gold\nstaging is for renames and data types only and a data contract will be applied to these\nthe intermediate is for all transformations\nthe gold stage is for dim and fact tables\nbi and semantics as views\na data contract is also applied to the gold stage\n\nLast modified: 2026-07-01\n\n\n\n Back to top",
+    "crumbs": [
+      "dbt",
+      "Data Modeling"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dbt/index.html",
+    "href": "notes/003-data-engineering/003-dbt/index.html",
+    "title": "dbt",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "dbt"
     ]
   },
   {
@@ -444,13 +1156,88 @@
     ]
   },
   {
-    "objectID": "notes/006-machine-learning/index.html",
-    "href": "notes/006-machine-learning/index.html",
-    "title": "Machine Learning",
+    "objectID": "notes/005-business-intelligence/002-ui-ux.html",
+    "href": "notes/005-business-intelligence/002-ui-ux.html",
+    "title": "UI / UX",
+    "section": "",
+    "text": "The importance in dashboards is to convey what the underlying data means effectively to the users, but for the users to engage with your dashboard, the ui/ux is very important. I’ve come to realize that if it’s difficult to find filters, to know (get feedback) if something is working as expected or not, and if the layout is not straightforward, people do not engage with your dashboard and just want the raw data to investigate by themselves on a spreadsheet like Excel.\nThe tools that I’ve come to use for my UI/UX and dashboarding is streamlit and streamlit-shadcn-ui.\n\nLast modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "UI / UX"
+    ]
+  },
+  {
+    "objectID": "notes/005-business-intelligence/index.html",
+    "href": "notes/005-business-intelligence/index.html",
+    "title": "Business Intelligence",
+    "section": "",
+    "text": "This section is about Business Intelligence(BI). It will cover the theory and application of dashboards for data driven decisions.\n\n\n\n Back to top",
+    "crumbs": [
+      "Business Intelligence"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "Last modified: 2026-07-02\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/index.html",
+    "href": "notes/007-ai-engineering/index.html",
+    "title": "AI Engineering",
     "section": "",
     "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
-      "Machine Learning"
+      "AI Engineering"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "title": "SCOR DS",
+    "section": "Data Mart Core Architecture",
+    "text": "Data Mart Core Architecture\nTo build a scalable analytical layer, your fact tables should mirror the natural state transitions of an entity (e.g., an order or a batch of product) as it moves through the supply chain.\nThe data should be prepared using a Conformed Dimension Data Mart approach. This means that your fact tables directly around the 6 execution phases are wrapped tightly by an Orchestration (Log/Audit) dimension to track pipeline health and end-to-end latency.\n\n1. Orchestration & Lineage (The Dimension/Audit Layer)\nBefore analyzing the business, you must analyze the pipeline. This layer tracks data quality, ingestion latencies, and end-to-end processing times.\n\nCore Dimension/Fact: dim_pipeline_execution, fact_data_lineage\nKey Columns: dag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nDashboard Visual: Data pipeline health monitoring, source-to-target latency gauges, rows processed per hour.\n\n\n\n2. Plan (The Forecasting Mart)\n\nCore Fact Table: fact_demand_forecast\nGrain: One row per Product_ID per Location_ID per Forecast_Period_Month.\nKey Columns: forecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nDashboard Visual: Forecast Accuracy KPI (MAPE), Actual vs. Forecasted Demand trends, Capacity Utilization charts.\n\n\n\n3. Order (The Digital Transaction Mart)\n\nCore Fact Table: fact_order_lifecycle\nGrain: One row per Order_Line_Item.\nKey Columns: order_id, customer_id, order_status_code (Created, Approved, Invoiced), order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDashboard Visual: Daily/Monthly Revenue, Total Orders Placed, Order conversion rates, Average Order Value (AOV).\n\n\n\n4. Source (The Procurement Mart)\n\nCore Fact Table: fact_purchase_orders\nGrain: One row per Purchase_Order_Line_Item.\nKey Columns: po_number, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nDashboard Visual: Supplier Lead Time, Supplier OTIF (On-Time In-Full), Procurement spend analysis by vendor.\n\n\n\n5. Transform (The Manufacturing & Quality Mart)\n\nCore Fact Table: fact_production_runs\nGrain: One row per Production_Batch_ID or Work_Order_ID.\nKey Columns: work_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nDashboard Visual: First Pass Yield (FPY %), OEE (Overall Equipment Effectiveness), Defect Rate by product line, Production Downtime trends.\n\n\n\n6. Fulfill (The Logistics & Distribution Mart)\n\nCore Fact Table: fact_shipment_fulfillment\nGrain: One row per Shipment_ID / Waybill.\nKey Columns: shipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nDashboard Visual: Perfect Order Index (POI), Shipping/Last-Mile Cost per order, Warehouse processing time (Click-to-Ship latency).\n\n\n\n7. Return (The Reverse Logistics Mart)\n\nCore Fact Table: fact_order_returns\nGrain: One row per Return_Line_Item.\nKey Columns: return_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status (Restocked, Refurbished, Scrapped), refund_amount\nDashboard Visual: Return Rate % by product category, Top Reasons for Returns, Financial impact of refunds vs. scrap loss.\n\n\n\nConformed Dimensions (The “Glue”)\nTo build an executive dashboard that allows filtering the entire supply chain by a specific product, location, or date, these dimension tables must link seamlessly across all 6 fact tables above:\n\ndim_products — product_id, SKU, category, brand, cost_price, retail_price\ndim_locations — location_id, site_name, type (Warehouse, Plant, Store), region, country\ndim_date — date_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\n\n\n\nExecutive Dashboard Layout Strategy\nWhen setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it into three distinct operational layers:\n\nThe Executive Summary (High Level): Place 4–5 global KPIs at the very top: Total Revenue (Order), Global OTIF % (Fulfill), Forecast Accuracy (Plan), and Gross Margin %.\nThe Supply Chain Funnel (Process Flow): Build a chronological funnel visualization or linear timeline tracking an order’s lifecycle. Show the average duration (in hours/days) it takes to pass through each phase: Order Placed → PO Raised → Produced → Shipped → Delivered.\nThe Operational Drill-Downs (Tabbed Views): Create dedicated tabs for specific team playbooks (e.g., a “Procurement Tab” powered by the Source Mart, a “Plant Operations Tab” powered by the Transform Mart).\n\n\n\n\nQuick Reference\n\nProcess Marts\n\n\n\n\n\n\n\n\n\n\n\n\n#\nProcess\nCore Table\nGrain\nKey Columns\nDashboard\n\n\n\n\n0\nOrchestrate\ndim_pipeline_execution, fact_data_lineage\nPer DAG run\ndag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nPipeline health, source-to-target latency gauges, rows/hr\n\n\n1\nPlan\nfact_demand_forecast\nProduct × Location × Forecast month\nforecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nForecast Accuracy (MAPE), Actual vs Forecast, Capacity Utilization\n\n\n2\nOrder\nfact_order_lifecycle (sales)\nOrder line item\norder_id, customer_id, order_status_code, order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDaily/Monthly Revenue, Total Orders, AOV\n\n\n3\nSource\nfact_purchase_orders (orders / PO)\nPO line item (PO Number x Product)\npo_number, product_id, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nSupplier Lead Time, OTIF, Spend by vendor\n\n\n4\nTransform\nfact_production_runs\nProduction batch / Work order\nwork_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nFirst Pass Yield %, OEE, Defect Rate, Downtime trends\n\n\n5-a\nFulfill\nfact_shipment_fulfillment\nShipment / Waybill\nshipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nPerfect Order Index, Cost/order, Click-to-Ship latency\n\n\n5-b\nFulfill\nfact_warehouse_inventory_snapshot\nWarehouse x SKU x Day\nsnapshot_date, warehouse_id, product_id, ending_on_hand_quantity, daily_allocated_overhead_cost\nInventory Turnover Ratio, Days Sales of Inventory (DSI), Total Warehousing Carrying Cost\n\n\n6\nReturn\nfact_order_returns\nReturn line item\nreturn_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status, refund_amount\nReturn Rate %, Top reasons, Refund vs Scrap impact\n\n\n\n\n\n\nConformed Dimensions\n\n\n\n\n\n\n\n\n\nDimension\nKey Columns\nDescription / SCM Context\n\n\n\n\ndim_products\nproduct_id, SKU, category, brand, cost_price, retail_price\nMaster catalog for items. Updated with weight/material columns to calculate sustainability metrics (EV.1.1).\n\n\ndim_locations\nlocation_id, site_name, type (Warehouse/Plant/Store), region, country\nThe geographical backbone. Shared by fulfillment warehouses, production plants, and customer shipping zones.\n\n\ndim_date\ndate_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\nThe universal calendar heartbeat used to calculate cycle times, monthly revenue, and daily inventory snapshots.\n\n\ndim_supplier_profile\nsupplier_id, supplier_name, tier_ranking, risk_score, compliance_status, country\nThe master record for vendors. Used by fact_purchase_orders to slice spend and track supplier network risk.\n\n\ndim_bill_of_materials\nparent_sku, component_sku, required_quantity, effectivity_start_date, effectivity_end_date\nThe structural map of your products. Allows you to break down a finished item into its raw component parts.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "title": "SCOR DS",
+    "section": "Metrics",
+    "text": "Metrics\n\n\n\n\n\n\nNote\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
     ]
   },
   {
@@ -464,13 +1251,43 @@
     ]
   },
   {
-    "objectID": "notes/009-devtools/index.html",
-    "href": "notes/009-devtools/index.html",
-    "title": "DevTools",
+    "objectID": "notes/009-devtools/002-vs-code.html",
+    "href": "notes/009-devtools/002-vs-code.html",
+    "title": "Visual Studio Code",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "Last modified: 2026-06-21\n\n\n\n Back to top",
     "crumbs": [
-      "DevTools"
+      "Visual Studio Code"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/004-obsidian.html",
+    "href": "notes/009-devtools/004-obsidian.html",
+    "title": "Obsidian",
+    "section": "",
+    "text": "Last modified: 2026-07-06\n\n\n\n Back to top",
+    "crumbs": [
+      "Obsidian"
+    ]
+  },
+  {
+    "objectID": "notes/010-homelab/001-preface.html",
+    "href": "notes/010-homelab/001-preface.html",
+    "title": "Preface",
+    "section": "",
+    "text": "Last modified: 2026-06-22\n\n\n\n Back to top",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "notes/010-homelab/003-software-requirements.html",
+    "href": "notes/010-homelab/003-software-requirements.html",
+    "title": "Software Requirements",
+    "section": "",
+    "text": "Last modified: 2026-07-07\n\n\n\n Back to top",
+    "crumbs": [
+      "Software Requirements"
     ]
   },
   {
@@ -478,7 +1295,7 @@
     "href": "notes/index.html",
     "title": "Notes",
     "section": "",
-    "text": "“Your brain is for having ideas not for holding them.” - David Allen\n\nA working notebook across the data stack — pick a topic to dig in.\n\n\n\n\n  \n     Terminal\n    To build a productive local environment.\n  \n\n  \n     DevOps\n    Automation and integration of development and operations to deliver faster and more reliably.\n  \n\n  \n     Data Engineering\n    Build and optimize data pipeline workflows for data driven decision-making.\n  \n\n  \n     Data Analysis\n    Exploration and interpretation of data to uncover actionable insights for strategic decision-making.\n  \n\n  \n     Business Intelligence\n    Design dashboards and reporting for strategic business choices.\n  \n\n  \n     Machine Learning\n    Develop and train statistical models that allow systems to learn patterns and make predictions from data.\n  \n\n  \n     AI Engineering\n    Artificial Intelligence for development and applications.\n  \n\n  \n     Domain Knowledge\n    Deep understanding of a specific industry or business are to ensure technical solutions solve real-world problems.\n  \n\n  \n     DevTools\n    Tools and utilities that optimize developer productivity.\n  \n\n  \n     Homelab\n    Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies.\n  \n\n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "“Your brain is for having ideas not for holding them.” - David Allen\n\nA working notebook across the data stack — pick a topic to dig in.\n\n\n\n\n  \n     Terminal\n    To build a productive local environment.\n  \n\n  \n     DevOps\n    Automation and integration of development and operations to deliver faster and more reliably.\n  \n\n  \n     Data Engineering\n    Build and optimize data pipeline workflows for data driven decision-making.\n  \n\n  \n     Data Analysis\n    Exploration and interpretation of data to uncover actionable insights for strategic decision-making.\n  \n\n  \n     Business Intelligence\n    Design dashboards and reporting for strategic business choices.\n  \n\n  \n     Machine Learning\n    Develop and train statistical models that allow systems to learn patterns and make predictions from data.\n  \n\n  \n     AI Engineering\n    Artificial Intelligence for development and applications.\n  \n\n  \n     Domain Knowledge\n    Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.\n  \n\n  \n     DevTools\n    Tools and utilities that optimize developer productivity.\n  \n\n  \n     Homelab\n    Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies.\n  \n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/charon-analysis/final_deliverable.html#slide-1",

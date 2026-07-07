@@ -1,7 +1,9 @@
 [
   {
     "listing": "/blog/index.html",
-    "items": []
+    "items": [
+      "/blog/posts/personal-knowledge-management.html"
+    ]
   },
   {
     "listing": "/notes/index.html",
