@@ -136,6 +136,28 @@ See [conventions.md](conventions.md) for the full Notes naming + metadata rules
 (`NNN-slug` folders and files, required `index.md` frontmatter, where to get
 `icon:` names). `make sync-notes` validates against them and reports violations.
 
+### Committing content
+
+Commit the regenerated `_quarto.yml` (its `auto-notes` sidebar / `auto-contents`
+gallery blocks) **together with the content that changed it**. Those blocks are
+derived data — they only ever change *because* notes/blog content changed — so
+they belong in the same commit, not a separate one. The sidebar links would also
+point at uncommitted files if split off.
+
+Batching is fine — a personal site optimizes commit history for your own later
+recall, not for review or `git bisect`. Scope the subject to what actually
+landed:
+
+- Single post — `docs: add post on personal knowledge management`
+- Single note — `docs: add dbeaver note to devtools`
+- New category (several notes) — `docs: add data-modeling notes to data engineering`
+- Reworking existing content — `docs: expand snowflake note with warehouse sizing`
+- Mixed batch — `docs: sync notes and blog from vault`
+
+The one split that pays off: keep **real code/config changes** (a `scripts/` fix,
+a hand-edited `_quarto.yml` setting) in their own commit, apart from the content
+blob — those are the changes you might need to isolate or revert later.
+
 ## Dynamic about-me block
 
 The Home page (`index.qmd`) hero is pulled from the GitHub profile README at `betopark97/betopark97`. Flow:
