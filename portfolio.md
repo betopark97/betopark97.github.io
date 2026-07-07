@@ -1,6 +1,8 @@
 ---
 title: Roberto Park
 image: ./assets/img/my/background.jpeg
+# Metadata strings don't go through the document's markdown reader, so
+# hard_line_breaks doesn't apply in the description — the "\" is still needed.
 description: |
   📍 Seoul, South Korea\
   💼 Data Engineer\
@@ -30,12 +32,12 @@ page-layout: full
 
 ::: {.resume-entry}
 ::: {.resume-left}
-**The Pinkfong Company**\
+**The Pinkfong Company**
 *Data Analyst*
 :::
 
 ::: {.resume-right}
-Seoul, South Korea\
+Seoul, South Korea
 2025.02 – Present <span class="time-since" data-start="2025-02"></span>
 :::
 :::
@@ -53,12 +55,12 @@ Seoul, South Korea\
 
 ::: {.resume-entry}
 ::: {.resume-left}
-**Sungkyunkwan University**\
+**Sungkyunkwan University**
 *BA, Psychology*
 :::
 
 ::: {.resume-right}
-Seoul, South Korea\
+Seoul, South Korea
 2016.03 – 2021.08
 :::
 :::
@@ -77,11 +79,11 @@ SnowPro Associate: Platform Certification (2026.01 - 2028.01)
 
 ---
 
-**Languages:** Python, SQL\
-**Data:** PostgreSQL, Snowflake, DuckDB, DBT\
-**Orchestration:** Airflow, Prefect, Docker\
-**BI:** Streamlit, Tableau\
-**Tools:** Git & GitHub, Notion, Slack, Discord, Obsidian\
+**Languages:** Python, SQL
+**Data:** PostgreSQL, Snowflake, DuckDB, DBT
+**Orchestration:** Airflow, Prefect, Docker
+**BI:** Streamlit, Tableau
+**Tools:** Git & GitHub, Notion, Slack, Discord, Obsidian
 **AI:** Claude Code, Gemini CLI, Pi
 
 ## Misc.
