@@ -118,3 +118,15 @@ This section is for managing the windows (splitting the terminal into multiple p
 | Move window   | ctrl + shift + F     |
 | Switch window | ctrl + shift + []    |
 | Close window  | ctrl + shift + W     |
+
+---
+
+## Reminders
+
+> [!WARNING]
+>  When SSH-ing into a server use the `kitten` command else the shell will be very buggy. 
+>  For example, `kitten ssh user@xxx.xx.xx.xxx`
+
+***
+
+[Last modified: 2026-06-22]{.note-modified}

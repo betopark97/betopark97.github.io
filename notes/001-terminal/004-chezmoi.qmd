@@ -136,4 +136,4 @@ https://www.chezmoi.io/
 
 ***
 
-[Last modified: 2026-07-05]{.note-modified}
+[Last modified: 2026-07-06]{.note-modified}

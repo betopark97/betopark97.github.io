@@ -1,6 +1,6 @@
 ---
 title: Domain Knowledge
 icon: book
-description: Deep understanding of a specific industry or business are to ensure technical solutions solve real-world problems.
+description: Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.
 ---
-_Overview coming soon._
+Overview coming soon.
