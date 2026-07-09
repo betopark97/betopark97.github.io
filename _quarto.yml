@@ -118,6 +118,7 @@ website:
         - auto: "notes/003-data-engineering/001-data-modeling/"
         - auto: "notes/003-data-engineering/002-snowflake/"
         - auto: "notes/003-data-engineering/003-dbt/"
+        - auto: "notes/003-data-engineering/004-fastapi/"
     - id: notes-004-data-analysis
       title: "Data Analysis"
       tools:
