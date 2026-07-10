@@ -93,6 +93,9 @@ ul.task-list li input[type="checkbox"] {
         'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
   })(window, document, 'script', 'dataLayer', 'GTM-5J63Z9M7');</script>
 <!-- End Google Tag Manager -->
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 </head>
@@ -230,8 +233,16 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#choose-a-flow" id="toc-choose-a-flow" class="nav-link active" data-scroll-target="#choose-a-flow">Choose a Flow</a></li>
+  <li><a href="#choose-a-merge-strategy" id="toc-choose-a-merge-strategy" class="nav-link" data-scroll-target="#choose-a-merge-strategy">Choose a merge strategy</a></li>
+  <li><a href="#workflow-details" id="toc-workflow-details" class="nav-link" data-scroll-target="#workflow-details">Workflow Details</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -255,11 +266,102 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>There are a lot of different workflows.</p>
+<section id="choose-a-flow" class="level2">
+<h2 class="anchored" data-anchor-id="choose-a-flow">Choose a Flow</h2>
+<p>There are a lot of different workflows.<br>
+Git related workflows differ per person and community be it an open-source project or company.</p>
+<p>The two that are well recognized like paradigms are <strong>Git Flow</strong> and <strong>GitHub Flow</strong>.</p>
+<p>I think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.</p>
+<p>Git Flow looks something like this:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gitGraph
+    commit id: "init"
+    branch develop
+    checkout develop
+    commit id: "dev start"
+    branch feature
+    checkout feature
+    commit id: "work"
+    commit id: "more work"
+    checkout develop
+    merge feature id: "feature done"
+    branch release
+    checkout release
+    commit id: "rc fixes"
+    checkout main
+    merge release id: "release" tag: "v1.0"
+    checkout develop
+    merge release id: "back to dev"
+    checkout main
+    branch hotfix
+    checkout hotfix
+    commit id: "urgent fix"
+    checkout main
+    merge hotfix id: "hotfix" tag: "v1.0.1"
+    checkout develop
+    merge hotfix id: "sync hotfix"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>I will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.</p>
+<p>GitHub Flow looks something like this:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">gitGraph
+    commit id: "init"
+    commit id: "release"
+    branch feature
+    checkout feature
+    commit id: "work"
+    commit id: "more work"
+    commit id: "review fixes"
+    checkout main
+    merge feature id: "PR merged" tag: "deploy"
+    commit id: "next"
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>The five steps, in words:</p>
+<ol type="1">
+<li><strong>Branch</strong>: make a <code>feature</code> branch off <code>main</code>.</li>
+<li><strong>Commit</strong>: do the work, one commit at a time.</li>
+<li><strong>Pull Request</strong>: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.</li>
+<li><strong>Merge</strong>: merge the PR back into <code>main</code>.</li>
+<li><strong>Deploy</strong>: <code>main</code> ships.</li>
+</ol>
+<p>These five steps are all there is. This is quite simple and works for a solo or small dev team.</p>
+</section>
+<section id="choose-a-merge-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="choose-a-merge-strategy">Choose a merge strategy</h2>
+<p>There are three merge strategies that you can choose from: merge, rebase, and squash.</p>
+</section>
+<section id="workflow-details" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-details">Workflow Details</h2>
+<p>let’s add what’s the whole process, something like doing a git status before anything to check if I’ve made a git commit WIP to reset if not just continue</p>
+<p>sometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop</p>
+<p>then work, git commit</p>
+<p>then open a PR: use a good PR template for other people to know what happened</p>
+<p>assign someone to review my code</p>
+<p>merge the pr</p>
+<p>make another feature branch and continue</p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-07</span></p>
+<p><span class="note-modified">Last modified: 2026-07-08</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->

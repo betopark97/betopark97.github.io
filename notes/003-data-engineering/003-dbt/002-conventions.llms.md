@@ -3,17 +3,15 @@
 add foldabble examples  
 add full project tree example
 
+## Project Level Meta Files
+
 > **NOTE:**
 >
 > asdf
 
-## Project Level Meta Files
+> **NOTE:**
 
-`dbt_project.yml`
-
-`packages.yml`
-
-`profiles.yml`
+> **NOTE:**
 
 ## Directory Names
 
@@ -23,7 +21,7 @@ add full project tree example
 
 `_{layer}__{sources|models}.yaml`
 
-The main characteristic of meta yaml files is that the naming starts with an underscore/underbar.
+The main characteristic of meta yaml files is that the naming starts with an underscore.
 
 The sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.
 
@@ -62,6 +60,6 @@ delete+insert checks for a set of keys that you define
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-06-30
+Last modified: 2026-07-08
 
 Back to top

@@ -212,6 +212,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Native Platform Services</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/002-snowflake/005-ai-ml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">AI &amp; ML</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -249,14 +255,37 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/005-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/006-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/003-data-engineering/004-fastapi/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">FastAPI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Directory Structure</span></a>
   </div>
 </li>
       </ul>
@@ -306,13 +335,15 @@ ul.task-list li input[type="checkbox"] {
 
 <p>add foldabble examples<br>
 add full project tree example</p>
+<section id="project-level-meta-files" class="level2">
+<h2 class="anchored" data-anchor-id="project-level-meta-files">Project Level Meta Files</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-target=".callout-1-contents" aria-expanded="false" aria-label="Toggle callout" aria-controls="callout-1" data-bs-toggle="collapse">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Example
+<code>dbt_project.yml</code>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -322,11 +353,38 @@ Example
 </div>
 </div>
 </div>
-<section id="project-level-meta-files" class="level2">
-<h2 class="anchored" data-anchor-id="project-level-meta-files">Project Level Meta Files</h2>
-<p><code>dbt_project.yml</code></p>
-<p><code>packages.yml</code></p>
-<p><code>profiles.yml</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-target=".callout-2-contents" aria-expanded="false" aria-label="Toggle callout" aria-controls="callout-2" data-bs-toggle="collapse">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>packages.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-target=".callout-3-contents" aria-expanded="false" aria-label="Toggle callout" aria-controls="callout-3" data-bs-toggle="collapse">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>profiles.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
 </section>
 <section id="directory-names" class="level2">
 <h2 class="anchored" data-anchor-id="directory-names">Directory Names</h2>
@@ -335,7 +393,7 @@ Example
 <section id="meta-names" class="level2">
 <h2 class="anchored" data-anchor-id="meta-names">Meta Names</h2>
 <p><code>_{layer}__{sources|models}.yaml</code></p>
-<p>The main characteristic of meta yaml files is that the naming starts with an underscore/underbar.</p>
+<p>The main characteristic of meta yaml files is that the naming starts with an underscore.</p>
 <p>The sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.</p>
 <p>The models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.</p>
 <p>The data tests are generic (singular) tests and custom tests, package tests.<br>
@@ -372,7 +430,7 @@ delete+insert checks for a set of keys that you define</p>
 <li>no select stars</li>
 </ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-06-30</span></p>
+<p><span class="note-modified">Last modified: 2026-07-08</span></p>
 
 
 </section>
