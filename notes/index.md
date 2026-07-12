@@ -25,7 +25,7 @@ listing:
 ---
 
 <!-- >>> notes-intro (synced from the Obsidian Notes index.md by scripts/sync_notes.py) -->
-> “Your brain is for having ideas not for holding them.” - David Allen
+> [!quote] “Your brain is for having ideas not for holding them.” — David Allen
 
 A working notebook across the data stack — pick a topic to dig in.
 <!-- <<< notes-intro -->

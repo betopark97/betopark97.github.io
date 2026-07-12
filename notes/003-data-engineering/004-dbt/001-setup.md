@@ -3,6 +3,9 @@ title: Setup
 ---
 ## Installation: dbt Fusion
 
+> [!warning]
+> We are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.
+
 ```shell
 # Curl install
 curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update
@@ -11,16 +14,13 @@ curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --upda
 brew install dbt
 ```
 
-> [!warning] 
-> We are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.
-
 ## Installation: dbt core
 
 ```shell
 # Pyproject.toml
 uv add dbt-core
 
-# Provider
+# Provider (of choice)
 uv add dbt-snowflake dbt-postgres
 ```
 
@@ -53,4 +53,4 @@ dbt init --skip-profile-setup
 
 ***
 
-[Last modified: 2026-07-02]{.note-modified}
+[Last modified: 2026-07-08]{.note-modified}

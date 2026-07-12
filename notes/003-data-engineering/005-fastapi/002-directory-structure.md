@@ -3,7 +3,7 @@ title: Directory Structure
 ---
 The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I'm not well versed with how an actual backend directory structure should look like, but let's start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let's write down both to consider when making or working on projects.
 
-To be honest, I don't think I will be every using the second type of structure, so just rely on the first structure.
+To be honest, I don't think I will be ever using the second type of structure, so just rely on the first structure.
 
 > [!tip]
 > **Best Practices**
