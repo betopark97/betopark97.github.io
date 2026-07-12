@@ -1,6 +1,6 @@
 # Notes
 
-> “Your brain is for having ideas not for holding them.” - David Allen
+> **NOTE:**
 
 A working notebook across the data stack — pick a topic to dig in.  
 

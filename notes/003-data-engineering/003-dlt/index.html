@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Directory Structure – Roberto Park</title>
+<title>dlt – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,7 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/004-fastapi/001-setup.html" rel="prev">
+<link href="../../../notes/003-data-engineering/003-dlt/001-setup.html" rel="next">
+<link href="../../../notes/003-data-engineering/002-snowflake/005-ai-ml.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,7 +45,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-58ec219732667eb493d315c9d5906342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -186,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-fastapi/index.html">FastAPI</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-fastapi/002-directory-structure.html">Directory Structure</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/003-dlt/index.html">dlt</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -256,46 +222,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/003-dbt/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dbt</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../../notes/003-data-engineering/003-dlt/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">dlt</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dbt</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -303,22 +292,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/004-fastapi/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FastAPI</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../notes/003-data-engineering/005-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Directory Structure</span></a>
   </div>
 </li>
@@ -329,22 +318,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#structure-1-organized-by-layer-best-for-medium-apps" id="toc-structure-1-organized-by-layer-best-for-medium-apps" class="nav-link active" data-scroll-target="#structure-1-organized-by-layer-best-for-medium-apps">Structure 1: Organized by Layer (Best for Medium Apps)</a></li>
-  <li><a href="#structure-2-organized-by-domainfeature-best-for-large-apps" id="toc-structure-2-organized-by-domainfeature-best-for-large-apps" class="nav-link" data-scroll-target="#structure-2-organized-by-domainfeature-best-for-large-apps">Structure 2: Organized by Domain/Feature (Best for Large Apps)</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-fastapi/index.html">FastAPI</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-fastapi/002-directory-structure.html">Directory Structure</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Directory Structure</h1>
+<h1 class="title">dlt</h1>
 </div>
 
 
@@ -361,94 +343,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I’m not well versed with how an actual backend directory structure should look like, but let’s start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let’s write down both to consider when making or working on projects.</p>
-<p>To be honest, I don’t think I will be every using the second type of structure, so just rely on the first structure.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Best Practices</strong><br>
-- <strong>Keep <code>main.py</code> Thin:</strong> Avoid putting route logic. Use it only to instantiate your app, configure CORS middleware, handle startup/shutdown lifespans, and attach routers via <code>app.include_router()</code>.<br>
-- <strong>Decouple Models and Schemas:</strong> Always keep database ORM files (<code>models/</code>) distinct from Pydantic contract files (<code>schemas/</code>). Mixing them results in tight coupling, circular import loops, and data validation bottlenecks.<br>
-- <strong>Isolate Configuration:</strong> Use <code>pydandic-settings</code> inside <code>core/config.py</code> to pull variables from your environment or <code>.env</code> files dynamically, allowing your code to remain secure and transportable.</p>
-</div>
-</div>
-<section id="structure-1-organized-by-layer-best-for-medium-apps" class="level2">
-<h2 class="anchored" data-anchor-id="structure-1-organized-by-layer-best-for-medium-apps">Structure 1: Organized by Layer (Best for Medium Apps)</h2>
-<p>This approach is popular for small-to-medium APIs. It separates your application logic by architectural responsibility (routes, business logic, and database).</p>
-<div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>my_fastapi_project/</span>
-<span id="cb1-2"><a href="#cb1-2"></a>├── alembic/                  # Database migration files (if using Alembic)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>├── app/                      # Main application package</span>
-<span id="cb1-4"><a href="#cb1-4"></a>│   ├── api/                  # API layer (HTTP routers and endpoints)</span>
-<span id="cb1-5"><a href="#cb1-5"></a>│   │   ├── v1/</span>
-<span id="cb1-6"><a href="#cb1-6"></a>│   │   │   ├── auth.py</span>
-<span id="cb1-7"><a href="#cb1-7"></a>│   │   │   └── users.py</span>
-<span id="cb1-8"><a href="#cb1-8"></a>│   │   └── deps.py           # Common FastAPI dependencies (e.g., get_db, get_current_user)</span>
-<span id="cb1-9"><a href="#cb1-9"></a>│   ├── core/                 # Application configuration &amp; security setup</span>
-<span id="cb1-10"><a href="#cb1-10"></a>│   │   ├── config.py         # Pydantic Settings for environment variables</span>
-<span id="cb1-11"><a href="#cb1-11"></a>│   │   └── security.py       # Password hashing and JWT generation</span>
-<span id="cb1-12"><a href="#cb1-12"></a>│   ├── crud/                 # Raw database interactions (Create, Read, Update, Delete)</span>
-<span id="cb1-13"><a href="#cb1-13"></a>│   │   ├── crud_user.py</span>
-<span id="cb1-14"><a href="#cb1-14"></a>│   │   └── crud_item.py</span>
-<span id="cb1-15"><a href="#cb1-15"></a>│   ├── db/                   # Database setup</span>
-<span id="cb1-16"><a href="#cb1-16"></a>│   │   ├── base.py           # Base model class for SQLAlchemy/SQLModel</span>
-<span id="cb1-17"><a href="#cb1-17"></a>│   │   └── session.py        # Database engine and sessionmaker config</span>
-<span id="cb1-18"><a href="#cb1-18"></a>│   ├── models/               # Database ORM models (SQLAlchemy, SQLModel, Tortoise, etc.)</span>
-<span id="cb1-19"><a href="#cb1-19"></a>│   │   ├── user.py</span>
-<span id="cb1-20"><a href="#cb1-20"></a>│   │   └── item.py</span>
-<span id="cb1-21"><a href="#cb1-21"></a>│   ├── schemas/              # Pydantic data schemas (Request validation &amp; Response serialization)</span>
-<span id="cb1-22"><a href="#cb1-22"></a>│   │   ├── user.py</span>
-<span id="cb1-23"><a href="#cb1-23"></a>│   │   └── item.py</span>
-<span id="cb1-24"><a href="#cb1-24"></a>│   ├── services/             # Business logic layer (Glue code between routes and data access)</span>
-<span id="cb1-25"><a href="#cb1-25"></a>│   │   └── payment.py</span>
-<span id="cb1-26"><a href="#cb1-26"></a>│   ├── __init__.py</span>
-<span id="cb1-27"><a href="#cb1-27"></a>│   └── main.py               # Application entrypoint (Initializes FastAPI and registers routers)</span>
-<span id="cb1-28"><a href="#cb1-28"></a>├── tests/                    # Test suite (using pytest)</span>
-<span id="cb1-29"><a href="#cb1-29"></a>│   ├── conftest.py          # Pytest shared fixtures</span>
-<span id="cb1-30"><a href="#cb1-30"></a>│   ├── api/                  # API integration tests</span>
-<span id="cb1-31"><a href="#cb1-31"></a>│   └── services/             # Unit tests for business logic</span>
-<span id="cb1-32"><a href="#cb1-32"></a>├── .env                      # Local secret environment variables</span>
-<span id="cb1-33"><a href="#cb1-33"></a>├── .gitignore</span>
-<span id="cb1-34"><a href="#cb1-34"></a>├── .python-version           # Pins Python version for uv</span>
-<span id="cb1-35"><a href="#cb1-35"></a>├── README.md</span>
-<span id="cb1-36"><a href="#cb1-36"></a>├── pyproject.toml            # Project metadata &amp; dependencies (uv-managed)</span>
-<span id="cb1-37"><a href="#cb1-37"></a>└── uv.lock                   # Locked, reproducible dependency versions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="structure-2-organized-by-domainfeature-best-for-large-apps" class="level2">
-<h2 class="anchored" data-anchor-id="structure-2-organized-by-domainfeature-best-for-large-apps">Structure 2: Organized by Domain/Feature (Best for Large Apps)</h2>
-<p>If you are building a larger monolith, organizing by file type quickly becomes cluttered. Instead, keep everything related to a specific feature inside one self-contained domain folder.</p>
-<div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1"></a>my_fastapi_project/</span>
-<span id="cb2-2"><a href="#cb2-2"></a>├── app/</span>
-<span id="cb2-3"><a href="#cb2-3"></a>│   ├── core/                 # Shared configs, middleware, and core security</span>
-<span id="cb2-4"><a href="#cb2-4"></a>│   │   ├── config.py</span>
-<span id="cb2-5"><a href="#cb2-5"></a>│   │   └── database.py</span>
-<span id="cb2-6"><a href="#cb2-6"></a>│   ├── users/                # All code related to users</span>
-<span id="cb2-7"><a href="#cb2-7"></a>│   │   ├── router.py         # User endpoints</span>
-<span id="cb2-8"><a href="#cb2-8"></a>│   │   ├── models.py         # User DB model</span>
-<span id="cb2-9"><a href="#cb2-9"></a>│   │   ├── schemas.py        # User Pydantic data shapes</span>
-<span id="cb2-10"><a href="#cb2-10"></a>│   │   ├── service.py        # User business rules</span>
-<span id="cb2-11"><a href="#cb2-11"></a>│   │   └── dependencies.py   # User-specific route dependencies</span>
-<span id="cb2-12"><a href="#cb2-12"></a>│   ├── products/             # All code related to products</span>
-<span id="cb2-13"><a href="#cb2-13"></a>│   │   ├── router.py</span>
-<span id="cb2-14"><a href="#cb2-14"></a>│   │   ├── models.py</span>
-<span id="cb2-15"><a href="#cb2-15"></a>│   │   └── ...</span>
-<span id="cb2-16"><a href="#cb2-16"></a>│   └── main.py</span>
-<span id="cb2-17"><a href="#cb2-17"></a>└── ...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<hr>
-<p><span class="note-modified">Last modified: 2026-07-09</span></p>
+<p>This dlt guide / note will be updated to follow the most stable version of the dlt package.<br>
+This means that this section does not cover paid services like dltHub or paid features.</p>
+<p>Current version: dlt 1.28.2</p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -897,11 +796,14 @@ Tip
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-fastapi/001-setup.html" class="pagination-link" aria-label="Setup">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
+      <a href="../../../notes/003-data-engineering/002-snowflake/005-ai-ml.html" class="pagination-link" aria-label="AI &amp; ML">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">AI &amp; ML</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="pagination-link" aria-label="Setup">
+        <span class="nav-page-text">Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

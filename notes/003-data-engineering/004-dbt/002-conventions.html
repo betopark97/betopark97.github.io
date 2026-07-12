@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Workflow – Roberto Park</title>
+<title>Conventions – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/003-dbt/004-documentations.html" rel="next">
-<link href="../../../notes/003-data-engineering/003-dbt/002-conventions.html" rel="prev">
+<link href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" rel="next">
+<link href="../../../notes/003-data-engineering/004-dbt/001-setup.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-58ec219732667eb493d315c9d5906342.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -187,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/003-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/003-dbt/003-workflow.html">Workflow</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html">Conventions</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -257,46 +257,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/003-dbt/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dbt</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a href="../../../notes/003-data-engineering/003-dlt/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dlt</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conventions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">dbt</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/003-workflow.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentations</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -304,22 +327,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/004-fastapi/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FastAPI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Directory Structure</span></a>
   </div>
 </li>
@@ -330,15 +353,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#project-directory-structure" id="toc-project-directory-structure" class="nav-link active" data-scroll-target="#project-directory-structure">Project Directory Structure</a></li>
+  <li><a href="#project-level-meta-files" id="toc-project-level-meta-files" class="nav-link" data-scroll-target="#project-level-meta-files">Project Level Meta Files</a></li>
+  <li><a href="#directory-names" id="toc-directory-names" class="nav-link" data-scroll-target="#directory-names">Directory Names</a></li>
+  <li><a href="#meta-names" id="toc-meta-names" class="nav-link" data-scroll-target="#meta-names">Meta Names</a></li>
+  <li><a href="#model-names" id="toc-model-names" class="nav-link" data-scroll-target="#model-names">Model Names</a></li>
+  <li><a href="#tests-names" id="toc-tests-names" class="nav-link" data-scroll-target="#tests-names">Tests Names</a></li>
+  <li><a href="#incremental-models" id="toc-incremental-models" class="nav-link" data-scroll-target="#incremental-models">Incremental Models</a></li>
+  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">Environment Variables</a></li>
+  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/003-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/003-dbt/003-workflow.html">Workflow</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html">Conventions</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Workflow</h1>
+<h1 class="title">Conventions</h1>
 </div>
 
 
@@ -355,29 +392,131 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>dbt commands<br>
-- dbt debug<br>
-- dbt clean<br>
-- dbt deps<br>
-- dbt run<br>
-- dbt test<br>
-- dbt build<br>
-- dbt seed<br>
-- dbt lint (requires .sqlfluff)<br>
-- dbt fmt (Coming soon…)</p>
-<p>Let’s use dbt fusion locally for faster build, run, compilation whatever times.</p>
+<section id="project-directory-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-directory-structure">Project Directory Structure</h2>
+<p>Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:</p>
 <div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>-t | --target</span>
-<span id="cb1-2"><a href="#cb1-2"></a>-s | --select</span>
-<span id="cb1-3"><a href="#cb1-3"></a>-x | --fail-fast</span>
-<span id="cb1-4"><a href="#cb1-4"></a></span>
-<span id="cb1-5"><a href="#cb1-5"></a>+model = upstream</span>
-<span id="cb1-6"><a href="#cb1-6"></a>model+ = downstream</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>dbt_project/</span>
+<span id="cb1-2"><a href="#cb1-2"></a>├── .dbt/                              # Profiles dir (optional, project-local)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>│   └── profiles.yml                   # Connection profiles (git-ignored)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>├── analyses/                          # Ad-hoc analytical queries (not materialized)</span>
+<span id="cb1-5"><a href="#cb1-5"></a>├── dbt_packages/                      # Installed packages (git-ignored)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>├── logs/                              # Run logs (git-ignored)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>├── macros/                            # Custom macros &amp; generic tests</span>
+<span id="cb1-8"><a href="#cb1-8"></a>│   └── generate_schema_name.sql</span>
+<span id="cb1-9"><a href="#cb1-9"></a>├── models/</span>
+<span id="cb1-10"><a href="#cb1-10"></a>│   └── {domain}/</span>
+<span id="cb1-11"><a href="#cb1-11"></a>│       ├── staging/</span>
+<span id="cb1-12"><a href="#cb1-12"></a>│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs</span>
+<span id="cb1-13"><a href="#cb1-13"></a>│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions</span>
+<span id="cb1-14"><a href="#cb1-14"></a>│       │   └── stg_{domain}__{entity}.sql</span>
+<span id="cb1-15"><a href="#cb1-15"></a>│       ├── intermediate/</span>
+<span id="cb1-16"><a href="#cb1-16"></a>│       │   ├── _int__models.yaml</span>
+<span id="cb1-17"><a href="#cb1-17"></a>│       │   └── int_{domain}__{entity}.sql</span>
+<span id="cb1-18"><a href="#cb1-18"></a>│       └── mart/</span>
+<span id="cb1-19"><a href="#cb1-19"></a>│           ├── _mart__models.yaml</span>
+<span id="cb1-20"><a href="#cb1-20"></a>│           └── mart_{domain}__{entity}.sql</span>
+<span id="cb1-21"><a href="#cb1-21"></a>├── seeds/                             # Static CSV reference data</span>
+<span id="cb1-22"><a href="#cb1-22"></a>├── snapshots/                         # SCD type-2 snapshots</span>
+<span id="cb1-23"><a href="#cb1-23"></a>├── target/                            # Compiled SQL &amp; artifacts (git-ignored)</span>
+<span id="cb1-24"><a href="#cb1-24"></a>├── tests/                             # Singular (complex) data tests</span>
+<span id="cb1-25"><a href="#cb1-25"></a>│   └── assert_{domain}__{condition}.sql</span>
+<span id="cb1-26"><a href="#cb1-26"></a>├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)</span>
+<span id="cb1-27"><a href="#cb1-27"></a>├── .gitignore</span>
+<span id="cb1-28"><a href="#cb1-28"></a>├── dbt_project.yml                    # Project config</span>
+<span id="cb1-29"><a href="#cb1-29"></a>└── packages.yml                       # Package dependencies</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Below we’ll discuss what each component is and how to fill them in.</p>
+</section>
+<section id="project-level-meta-files" class="level2">
+<h2 class="anchored" data-anchor-id="project-level-meta-files">Project Level Meta Files</h2>
+<div class="callout callout-style-default callout-titled" data-callout="example">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>dbt_project.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>asdf</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-titled" data-callout="example">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>packages.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+</div>
+<div class="callout callout-style-default callout-titled" data-callout="example">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>profiles.yml</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+</div>
+</section>
+<section id="directory-names" class="level2">
+<h2 class="anchored" data-anchor-id="directory-names">Directory Names</h2>
+<p><code>models/{domain}/{layer}</code></p>
+</section>
+<section id="meta-names" class="level2">
+<h2 class="anchored" data-anchor-id="meta-names">Meta Names</h2>
+<p><code>_{layer}__{sources|models}.yaml</code></p>
+<p>The main characteristic of meta yaml files is that the naming starts with an underscore.</p>
+<p>The sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.</p>
+<p>The models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.</p>
+<p>The data tests are generic (singular) tests and custom tests, package tests.<br>
+- singular tests include: <code>unique</code>, <code>not null</code>, <code>accepted_values</code>, <code>relationships</code><br>
+- custom tests consist of macros<br>
+- package tests consist of <code>dbt_utils</code> and other community packages</p>
+</section>
+<section id="model-names" class="level2">
+<h2 class="anchored" data-anchor-id="model-names">Model Names</h2>
+<p><code>{layer}_{domain}__{entity}_{temp}.sql</code></p>
+</section>
+<section id="tests-names" class="level2">
+<h2 class="anchored" data-anchor-id="tests-names">Tests Names</h2>
+<p>The test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.</p>
+</section>
+<section id="incremental-models" class="level2">
+<h2 class="anchored" data-anchor-id="incremental-models">Incremental Models</h2>
+<p>only use merge, it’s the only idempotent closes to “set-it-and-forget-it”.<br>
+remember to add the logic to erase orphaned data.</p>
+<p>if the data is too big for merge, then use delete+insert or insert_overwrite<br>
+delete+insert checks for a set of keys that you define</p>
+</section>
+<section id="environment-variables" class="level2">
+<h2 class="anchored" data-anchor-id="environment-variables">Environment Variables</h2>
+<ul>
+<li>shell environment overrides all</li>
+<li><code>.env</code> file is auto detected with the new dbt fusion</li>
+</ul>
+</section>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
+<ul>
+<li>all lower case</li>
+<li>no select stars</li>
+</ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-06-26</span></p>
+<p><span class="note-modified">Last modified: 2026-07-12</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -826,13 +965,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/003-dbt/002-conventions.html" class="pagination-link" aria-label="Conventions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conventions</span>
+      <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="pagination-link" aria-label="Setup">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/003-dbt/004-documentations.html" class="pagination-link" aria-label="Documentations">
-        <span class="nav-page-text">Documentations</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="pagination-link" aria-label="Workflow">
+        <span class="nav-page-text">Workflow</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

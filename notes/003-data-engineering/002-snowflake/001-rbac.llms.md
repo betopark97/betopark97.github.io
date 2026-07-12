@@ -4,13 +4,13 @@
 
 ### Core System Roles
 
-> **WARNING:**
+> **NOTE:**
 >
 > \- **Should do:** Account-level settings, billing/credit management, cross-region config, `CREATE SNOWFLAKE INTELLIGENCE`, enabling features.  
 > - **Should NOT do:** Create day-to-day objects (databases, tables, warehouses), run automated scripts.  
 > **Best practice:** Assign to 2+ users, require MFA, never set as anyone’s default role.
 
-> **IMPORTANT:**
+> **NOTE:**
 >
 > \- **Creates/manages:** Privilege grants on all objects (has `MANAGE GRANTS`), role-to-role grants, role-to-user grants.  
 > - **Inherits:** `USERADMIN`. **Use for:** `GRANT ... TO ROLE`, future grants, managed access schema grants.
@@ -20,7 +20,7 @@
 > \- **Creates:** Users (`CREATE USER`) and roles (`CREATE ROLE`).  
 > - **Use for:** Provisioning new users, creating custom access/functional roles.
 
-> **TIP:**
+> **NOTE:**
 >
 > \- **Creates:** Warehouses, databases, schemas, and all database objects.  
 > - **Clarification:** While `SYSADMIN` can create these, **any role** with `CREATE` privileges can too.  
@@ -58,7 +58,7 @@ GRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;
 GRANT ROLE DBT_ROLE TO ROLE SYSADMIN;
 ```
 
-> **WARNING:**
+> **NOTE:**
 
 ## Role Hierarchy & Wiring
 
@@ -80,7 +80,7 @@ graph LR
 
 - **Users/Service Accounts:** Assigned functional roles or tool-specific roles (like `DBT_ROLE`).
 
-> **TIP:**
+> **NOTE:**
 
 ------------------------------------------------------------------------
 

@@ -61,7 +61,7 @@ chezmoi diff      # show changes against $HOME
 chezmoi apply     # write to $HOME (overwrite)
 ```
 
-> **WARNING:**
+> **NOTE:**
 >
 > Chezmoi tries to apply **everything** in the source tree to `$HOME`, not just files prefixed with `dot_`. Anything that isn’t a dotfile source (e.g. `README.md`, `docs/`) will be copied into `$HOME` verbatim unless it’s listed in `.chezmoiignore`. When adding non-dotfile content to the repo, add it to `.chezmoiignore`, and sanity-check with `chezmoi managed`.
 
@@ -108,7 +108,7 @@ chezmoi re-add ~/.edited-config # or just chezmoi re-add
     - if you like the changes: git commit.
     - if you don’t like the changes: revert changes and `chezmoi apply` to overwrite `$HOME` with the reverted version (before the edits).
 
-> **TIP:**
+> **NOTE:**
 >
 > Always do the `chezmoi re-add` first, as the `chezmoi` directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your `$HOME` is not git tracked, so if you do a `chezmoi apply` first, it overwrites your live files and the previous version is gone.
 

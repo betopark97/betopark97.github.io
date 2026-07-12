@@ -111,7 +111,7 @@ When setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it int
 >
 > Three overarching focus areas, spread across 8 performance attributes.
 
-> **WARNING:**
+> **NOTE:**
 >
 > These are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).
 

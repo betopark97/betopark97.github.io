@@ -234,19 +234,19 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-fastapi/002-directory-structure.html",
-    "href": "notes/003-data-engineering/004-fastapi/002-directory-structure.html",
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
     "title": "Directory Structure",
     "section": "",
-    "text": "The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I’m not well versed with how an actual backend directory structure should look like, but let’s start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let’s write down both to consider when making or working on projects.\nTo be honest, I don’t think I will be every using the second type of structure, so just rely on the first structure.",
+    "text": "The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I’m not well versed with how an actual backend directory structure should look like, but let’s start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let’s write down both to consider when making or working on projects.\nTo be honest, I don’t think I will be ever using the second type of structure, so just rely on the first structure.",
     "crumbs": [
       "FastAPI",
       "Directory Structure"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
-    "href": "notes/003-data-engineering/004-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
     "title": "Directory Structure",
     "section": "Structure 1: Organized by Layer (Best for Medium Apps)",
     "text": "Structure 1: Organized by Layer (Best for Medium Apps)\nThis approach is popular for small-to-medium APIs. It separates your application logic by architectural responsibility (routes, business logic, and database).\n\nmy_fastapi_project/\n├── alembic/                  # Database migration files (if using Alembic)\n├── app/                      # Main application package\n│   ├── api/                  # API layer (HTTP routers and endpoints)\n│   │   ├── v1/\n│   │   │   ├── auth.py\n│   │   │   └── users.py\n│   │   └── deps.py           # Common FastAPI dependencies (e.g., get_db, get_current_user)\n│   ├── core/                 # Application configuration & security setup\n│   │   ├── config.py         # Pydantic Settings for environment variables\n│   │   └── security.py       # Password hashing and JWT generation\n│   ├── crud/                 # Raw database interactions (Create, Read, Update, Delete)\n│   │   ├── crud_user.py\n│   │   └── crud_item.py\n│   ├── db/                   # Database setup\n│   │   ├── base.py           # Base model class for SQLAlchemy/SQLModel\n│   │   └── session.py        # Database engine and sessionmaker config\n│   ├── models/               # Database ORM models (SQLAlchemy, SQLModel, Tortoise, etc.)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── schemas/              # Pydantic data schemas (Request validation & Response serialization)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── services/             # Business logic layer (Glue code between routes and data access)\n│   │   └── payment.py\n│   ├── __init__.py\n│   └── main.py               # Application entrypoint (Initializes FastAPI and registers routers)\n├── tests/                    # Test suite (using pytest)\n│   ├── conftest.py          # Pytest shared fixtures\n│   ├── api/                  # API integration tests\n│   └── services/             # Unit tests for business logic\n├── .env                      # Local secret environment variables\n├── .gitignore\n├── .python-version           # Pins Python version for uv\n├── README.md\n├── pyproject.toml            # Project metadata & dependencies (uv-managed)\n└── uv.lock                   # Locked, reproducible dependency versions",
@@ -256,8 +256,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
-    "href": "notes/003-data-engineering/004-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
     "title": "Directory Structure",
     "section": "Structure 2: Organized by Domain/Feature (Best for Large Apps)",
     "text": "Structure 2: Organized by Domain/Feature (Best for Large Apps)\nIf you are building a larger monolith, organizing by file type quickly becomes cluttered. Instead, keep everything related to a specific feature inside one self-contained domain folder.\n\nmy_fastapi_project/\n├── app/\n│   ├── core/                 # Shared configs, middleware, and core security\n│   │   ├── config.py\n│   │   └── database.py\n│   ├── users/                # All code related to users\n│   │   ├── router.py         # User endpoints\n│   │   ├── models.py         # User DB model\n│   │   ├── schemas.py        # User Pydantic data shapes\n│   │   ├── service.py        # User business rules\n│   │   └── dependencies.py   # User-specific route dependencies\n│   ├── products/             # All code related to products\n│   │   ├── router.py\n│   │   ├── models.py\n│   │   └── ...\n│   └── main.py\n└── ...\n\n\nLast modified: 2026-07-09",
@@ -267,8 +267,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/index.html",
-    "href": "notes/003-data-engineering/003-dbt/index.html",
+    "objectID": "notes/003-data-engineering/004-dbt/index.html",
+    "href": "notes/003-data-engineering/004-dbt/index.html",
     "title": "dbt",
     "section": "",
     "text": "This dbt guide / note will be updated to follow the most stable version of the dbt-core package.\nThis means that this section does not cover paid services like dbt Cloud or paid features (or freemium) like dbt State.\nCurrent version: dbt Core v1.11\n\n\n\n Back to top",
@@ -277,8 +277,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/006-data-modeling.html",
-    "href": "notes/003-data-engineering/003-dbt/006-data-modeling.html",
+    "objectID": "notes/003-data-engineering/004-dbt/006-data-modeling.html",
+    "href": "notes/003-data-engineering/004-dbt/006-data-modeling.html",
     "title": "Data Modeling",
     "section": "",
     "text": "we will follow kimballs three layered data warehouse\nstaging, intermediate, marts\nbronze, silver, gold\nstaging is for renames and data types only and a data contract will be applied to these\nthe intermediate is for all transformations\nthe gold stage is for dim and fact tables\nbi and semantics as views\na data contract is also applied to the gold stage\n\nLast modified: 2026-07-01\n\n\n\n Back to top",
@@ -288,8 +288,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/003-workflow.html",
-    "href": "notes/003-data-engineering/003-dbt/003-workflow.html",
+    "objectID": "notes/003-data-engineering/004-dbt/003-workflow.html",
+    "href": "notes/003-data-engineering/004-dbt/003-workflow.html",
     "title": "Workflow",
     "section": "",
     "text": "dbt commands\n- dbt debug\n- dbt clean\n- dbt deps\n- dbt run\n- dbt test\n- dbt build\n- dbt seed\n- dbt lint (requires .sqlfluff)\n- dbt fmt (Coming soon…)\nLet’s use dbt fusion locally for faster build, run, compilation whatever times.\n\n-t | --target\n-s | --select\n-x | --fail-fast\n\n+model = upstream\nmodel+ = downstream\n\n\nLast modified: 2026-06-26\n\n\n\n Back to top",
@@ -299,41 +299,41 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html",
     "title": "Setup",
     "section": "",
-    "text": "# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.",
+    "text": "Warning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
     "crumbs": [
       "dbt",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-fusion",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-fusion",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#installation-dbt-fusion",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#installation-dbt-fusion",
     "title": "Setup",
     "section": "",
-    "text": "# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.",
+    "text": "Warning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
     "crumbs": [
       "dbt",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-core",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html#installation-dbt-core",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#installation-dbt-core",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#installation-dbt-core",
     "title": "Setup",
     "section": "Installation: dbt core",
-    "text": "Installation: dbt core\n\n# Pyproject.toml\nuv add dbt-core\n\n# Provider\nuv add dbt-snowflake dbt-postgres",
+    "text": "Installation: dbt core\n\n# Pyproject.toml\nuv add dbt-core\n\n# Provider (of choice)\nuv add dbt-snowflake dbt-postgres",
     "crumbs": [
       "dbt",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#check-installation",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html#check-installation",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
     "title": "Setup",
     "section": "Check installation",
     "text": "Check installation\n\ndbt --version\n\ndbt init --skip-profile-setup",
@@ -343,8 +343,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-packages",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-packages",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
     "title": "Setup",
     "section": "Useful dbt-packages",
     "text": "Useful dbt-packages\n\ndbt-labs/dbt_utils\ngodatadriven/dbt_date\nSnowflake-Labs/dbt_semantic_view",
@@ -354,454 +354,219 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-related-python-packages",
-    "href": "notes/003-data-engineering/003-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
     "title": "Setup",
     "section": "Useful dbt related python packages",
-    "text": "Useful dbt related python packages\n\ndbt-{database adapter} (e.g., dbt-postgres, dbt-snowflake)\n\nadds support for a specific database.\n\ndbt-autofix\n\nofficial command-line utility designed to automate the refactoring and updating of dbt projects.\n\ndbt-osmosis\n\nstreamlines the management of YAML files by ensuring consistency and accuracy in dbt docs and the actual models.\n\ndbterd\n\ndetects entity relationships through test relationships, semantic entities, and model contract constraints to make an ERD.\n\ndbt-state (Coming soon…; On afterthought it seems like it’s a freemium feature…)\n\nsaves compute costs and development time by avoiding unnecessary model builds by comparing current definitions against past runs to skip execution if nothing has changed or cloning existing nodes.\n\n\n\nLast modified: 2026-07-02",
+    "text": "Useful dbt related python packages\n\ndbt-{database adapter} (e.g., dbt-postgres, dbt-snowflake)\n\nadds support for a specific database.\n\ndbt-autofix\n\nofficial command-line utility designed to automate the refactoring and updating of dbt projects.\n\ndbt-osmosis\n\nstreamlines the management of YAML files by ensuring consistency and accuracy in dbt docs and the actual models.\n\ndbterd\n\ndetects entity relationships through test relationships, semantic entities, and model contract constraints to make an ERD.\n\ndbt-state (Coming soon…; On afterthought it seems like it’s a freemium feature…)\n\nsaves compute costs and development time by avoiding unnecessary model builds by comparing current definitions against past runs to skip execution if nothing has changed or cloning existing nodes.\n\n\n\nLast modified: 2026-07-08",
     "crumbs": [
       "dbt",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
-    "href": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
-    "title": "AI & ML",
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html",
+    "title": "Conventions",
     "section": "",
-    "text": "The AI & ML services from Snowflake has been undergoing a lot of changes. That’s why the notes for this section might also change frequently.\nThe architecture in a nutshell looks something like:\n\nMake a semantic view -&gt; this becomes a Cortex Analyst\nMake an agent, go to Configuration &gt; Tools &gt; Query structured data -&gt; Add semantic view\n\nThat’s pretty much it. But you also have to configure your agent with other stuff like Instructions, Skills, and MCP if you want more harness for your agent.\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
+    "text": "There is not much to dlt as it’s more like a lightweight tool instead of a framework. That’s why the structure and conventions to setting up dlt is quite free to do as you want. However, there is a .dlt folder, which is a dlt-native way to manage dlt configurations.",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
+    "title": "Conventions",
+    "section": "Directory Structure",
+    "text": "Directory Structure\nThe directory structure will look like the following:\n\n\n\n\n\n\nNote\n\n\n\nI manage my dependencies with uv hence the pyprojects.yml, uv.lock, and .python-version files.\n\n\n\ndlt_project/\n├── .dlt/\n│   ├── config.toml                 # non-secret config (log level, runtime, dataset names)\n│   ├── secrets.toml                # gitignored — real credentials\n│   └── secrets.toml.example        # committed template\n│\n├── sources/                        # EXTRACT layer — one package per source\n│   ├── __init__.py\n│   │\n│   ├── {source_a}/\n│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions\n│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff\n│   │   ├── settings.py             # constants: base URL, endpoints, default params\n│   │   └── README.md               # what it pulls, quirks, rate limits\n│   │\n│   └── {source_b}/\n│       ├── __init__.py\n│       ├── helpers.py\n│       ├── settings.py\n│       └── README.md\n│\n├── pipelines/                      # LOAD/RUN layer — one runner per pipeline\n│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())\n│   └── {source_b}_pipeline.py\n│\n├── schemas/                        # optional — schema contracts\n│   ├── export/                     # dlt writes inferred schemas here\n│   └── import/                     # pin/edit schemas here to enforce them\n│\n├── tests/                          # mirror sources/ structure\n│   ├── conftest.py\n│   ├── test_{source_a}.py\n│   └── test_{source_b}.py\n│\n├── pyproject.toml                  # deps: dlt[{destination}] + source libs\n├── uv.lock\n├── .python-version\n├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.\n└── README.md",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
+    "title": "Conventions",
+    "section": "Configs & Secrets",
+    "text": "Configs & Secrets\nThere are various ways to set up configs and secrets. The one I prefer is to use the .dlt native features. Then use the dlt supported decorators to call them with @dlt.source, @dlt.resource and @dlt.destination.\n\n\n\n\n\n\nNote\n\n\n\nEnvironment variables override secrets.toml and config.toml. That’s why if you prefer setting up configs and secrets with environment variables you can do so.\n\n\n\nConfigs\nThe configurations are managed by the config.toml. This file is to handle non secret variables.\n\n[runtime]\nlog_level=\"INFO\"\n\n# Do not compress files sent to the filesystem bucket\n[normalize.data_writer]\ndisable_compression=true\n\n# Recommended sections for the destination (destination.module)\n[destination.filesystem]\nbucket_url = \"s3://[your_bucket_name]\"\n\n\n\nSecrets\nThe secrets are managed by the secrets.toml. This file will have the variables for sources and target. The thing is that there is no hard rules to manage these and the following conventions are “one” of the default ways, but also trying to keep it modular.\n\n[sources.{source_a}]\napi_key = \"...\"\n\n[sources.{source_b}.credentials]\nusername = \"...\"\npassword = \"...\"\n\n[destination.{destination_a}]\ncredentials = \"db://user:password@service-account/database?warehouse=warehouse_name&role=role\"\n\n[destination.{destination_b}.credentials]\nhost = \"...\"\nusername = \"...\"\npassword = \"...\"\ndatabase = \"...\"\n\n\nLast modified: 2026-07-12",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/index.html",
+    "href": "notes/003-data-engineering/002-snowflake/index.html",
+    "title": "Snowflake",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Snowflake"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "title": "Native Platform Services",
+    "section": "",
+    "text": "Snowflake, like many other data platforms, has a set of native services some of which are quite unique and ‘declarative’ instead of procedural with zero-ops. This means that there are many stages in the data engineering workflow where you don’t need a third-party tool for pipeline logic and orchestration.\nThis is a curated list of features that I think are better handled inside of Snowflake and serverless.",
     "crumbs": [
       "Snowflake",
-      "AI & ML"
+      "Native Platform Services"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
-    "title": "Create Snippets",
-    "section": "",
-    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "title": "Native Platform Services",
+    "section": "Data Integration",
+    "text": "Data Integration\n(powered by Apache NiFi)\nOpenflow\nSnowpipe Streaming\nStreams and Tasks",
     "crumbs": [
       "Snowflake",
-      "Create Snippets"
+      "Native Platform Services"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
-    "title": "Create Snippets",
-    "section": "",
-    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "title": "Native Platform Services",
+    "section": "Data Transformation",
+    "text": "Data Transformation\nDynamic Tables",
     "crumbs": [
       "Snowflake",
-      "Create Snippets"
+      "Native Platform Services"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
-    "title": "Create Snippets",
-    "section": "Create Role",
-    "text": "Create Role\n\nUSE ROLE useradmin;\nCREATE ROLE {{ DEFAULT_ROLE }};\nGRANT USAGE ON WAREHOUSE {{ DEFAULT_WH }} TO ROLE {{ DEFAULT_ROLE }};",
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "title": "Native Platform Services",
+    "section": "Data Governance & Quality",
+    "text": "Data Governance & Quality\nData Metric Functions (DMFs)",
     "crumbs": [
       "Snowflake",
-      "Create Snippets"
+      "Native Platform Services"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
-    "title": "Create Snippets",
-    "section": "Create Agent",
-    "text": "Create Agent\n\nAlways have two roles for Agents (Snowflake Intelligence)\n\nsuperior manager of all agents (owner of all agent)\ninferior manager of a specific agent (reader of an agent)\n\n\n\ncreate the agent with sysadmin in the UI\n\n\n[[create_role]] for the specific agent.\nFor both superior and inferior roles there are 2 types of grants needed:\n\n\ngive grants on snowflake intelligence - agent, schema, database\n\n\nUSE ROLE securityadmin;\nGRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.{{ domain_agent }} TO ROLE {{ domain_agent_user_role }};\nGRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE {{ domain_agent_user_role }};\nGRANTE USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE {{ domain_agent_user_role }};\n\n\ngive grants on underlying tables that the semantic view/model is using\n[TODO: add link to having a dbt_project.yml and how to manage the SELECT and REFERENCES in dbt for all tables that are needed for the agent]\nremember that views need all underlying tables\n\n\nLast modified: 2026-07-01",
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "title": "Native Platform Services",
+    "section": "Intelligence Frameworks",
+    "text": "Intelligence Frameworks\nCortex AI\nSnowflake Intelligence\n\nLast modified: 2026-06-24",
     "crumbs": [
       "Snowflake",
-      "Create Snippets"
+      "Native Platform Services"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/001-data-modeling/index.html",
-    "href": "notes/003-data-engineering/001-data-modeling/index.html",
-    "title": "Data Modeling",
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "title": "Authentication",
     "section": "",
-    "text": "This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.\nThere are a lot of different frameworks, but I am biased toward Kimball’s way of modeling.\n\n\n\n Back to top",
+    "text": "There are various ways to authenticate yourself to Snowflake, but when building data pipelines and automation, my recommendation would be to use the key-pair authentication.",
     "crumbs": [
-      "Data Modeling"
+      "Snowflake",
+      "Authentication"
     ]
   },
   {
-    "objectID": "notes/002-devops/003-observability-monitoring/index.html",
-    "href": "notes/002-devops/003-observability-monitoring/index.html",
-    "title": "Observability & Monitoring",
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "title": "Authentication",
+    "section": "1. Private Key Generation",
+    "text": "1. Private Key Generation\ncreate an unencrypted version of the private key\n\nopenssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt\n\nthis will create something that looks like:\n\n-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIE6T...\n-----END ENCRYPTED PRIVATE KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "title": "Authentication",
+    "section": "2. Public Key Generation",
+    "text": "2. Public Key Generation\ncreate a public key from the private key\n\nopenssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub\n\nthis will create something that looks like:\n\n-----BEGIN PUBLIC KEY-----\nMIIBIj...\n-----END PUBLIC KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "title": "Authentication",
+    "section": "3. Snowflake User Key-Pair Assignment",
+    "text": "3. Snowflake User Key-Pair Assignment\ngive your key for the SECURITYADMIN to register to your user, you can register two RSA public keys\n\n-- Switch to Security Admin to manage user authentication credentials\nUSE ROLE securityadmin;\n\n-- RSA_PUBLIC_KEY for python data ingestion\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n-- RSA_PUBLIC_KEY for dbt connection + dbeaver\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY_2 = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n\nLast modified: 2026-06-17",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/index.html",
+    "href": "notes/002-devops/index.html",
+    "title": "DevOps",
     "section": "",
-    "text": "This section will cover how to manage the following 3 main pillars of observability and monitoring.\n\nLogs (what happened)\nMetrics (system health/numbers)\nTraces (journey of a request)\n\n\n\n\n Back to top",
+    "text": "This section will have technical notes covering the overall workflow of the DevOps lifecycle starting with local development setup and version control to CI/CD and automated deployment.\nIt documents the processes, infrastructure, and automation required to deliver software reliably and efficiently.\n\n\n\n\n\n\nNote\n\n\n\nAlthough the documentation is biased for macOS, DevOps requires Linux foundations as the development environment may be macOS, but the production environment will most certainly be Linux.\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Observability & Monitoring"
+      "DevOps"
     ]
   },
   {
-    "objectID": "notes/002-devops/002-project-init/001-setup.html",
-    "href": "notes/002-devops/002-project-init/001-setup.html",
+    "objectID": "notes/002-devops/002-project-init/index.html",
+    "href": "notes/002-devops/002-project-init/index.html",
+    "title": "Project Init",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Project Init"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/index.html",
+    "href": "notes/002-devops/001-git-github/index.html",
+    "title": "Git & GitHub",
+    "section": "",
+    "text": "Git is a local software tool that tracks changes to your code files over time (version control).\nGitHub is an online, cloud-based platform used to host those tracked files so you can back them up and collaborate with other developers.\nGit is the engine, GitHub is the network.\nThere are various version control tools and various collaboration cloud platforms, but I will choose the mainstream and battle-tested one.\n\n\n\n Back to top",
+    "crumbs": [
+      "Git & GitHub"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/001-setup.html",
+    "href": "notes/002-devops/001-git-github/001-setup.html",
     "title": "Setup",
     "section": "",
-    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
+    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
     "crumbs": [
-      "Project Init",
+      "Git & GitHub",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/002-devops/002-project-init/001-setup.html#project-init",
-    "href": "notes/002-devops/002-project-init/001-setup.html#project-init",
+    "objectID": "notes/002-devops/001-git-github/001-setup.html#git",
+    "href": "notes/002-devops/001-git-github/001-setup.html#git",
     "title": "Setup",
     "section": "",
-    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
+    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
     "crumbs": [
-      "Project Init",
+      "Git & GitHub",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
-    "href": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
+    "objectID": "notes/002-devops/001-git-github/001-setup.html#github",
+    "href": "notes/002-devops/001-git-github/001-setup.html#github",
     "title": "Setup",
-    "section": "Dev Packages",
-    "text": "Dev Packages\nWhen working in data engineering there are some dev packages that are useful.\n\nruff\nty\npytest\nsqlfluff\n## Pre-commit Hooks\n``\nBuilt-in\nFormatters\nLinters\n\n\nLast modified: 2026-07-02",
+    "section": "GitHub",
+    "text": "GitHub\nGo to https://github.com/ and create an account.\n\nSSH key Authentication\nThis is a key-pair authentication. SSH authentication uses a pair of keys that work like a lock and key:\n\nPrivate Key (id_ed25519): Stays strictly on your computer. Never share this.\nPublic Key (id_ed25519.pub): Acts as the lock that only your private key can open. Upload this to GitHub.\n\n\nStep 1: Generate a new SSH key pair\n\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n\nSome prompts will appear asking:\n\nwhere to save they keys, press Enter to accept the default location (~./ssh).\nfor a passphrase, press Enter to leave it empty (convenient), or type a password for extra security.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you decide to enter a passphrase, be aware that the terminal will not show any visual feedback (such as asterisks or characters) while you are typing. Simply type the passphrase fully and press Enter.\n\n\n\n\nStep 2: Add the SSH Key to the ssh-agent\nThe ssh-agent is what manages your keys in the background.\n\nStart the agent:\n\n\neval \"$(ssh-agent -s)\"\n\n\nAdd your private key to the agent:\n\n\nssh-add ~/.ssh/id_ed25519\n\n\n\nStep 3: Add the Public Key to GitHub\n\nCopy the public key’s content to your clipboard:\n\n\npbcopy &lt; ~/.ssh/id_ed25519.pub\n\n\nGo to GitHub, click your profile picture (top-right corner), and then Settings.\nIn the left sidebar, click SSH and GPG keys.\nClick New SSH key (green button top-right).\nGive it a descriptive title of your local machine (e.g., “my-mac”) and paste your key from the clip board.\nClick Add SSH key.\n\n\n\nStep 4: Test the Connection\n\nssh -T git git@github.com\n\nIf you see a message like the following, then you are good to go.\n\nHi {username}! You've successfully authenticated, but GitHub does not provide shell access.\n\n\nLast modified: 2026-07-06",
     "crumbs": [
-      "Project Init",
+      "Git & GitHub",
       "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/002-devops/001-git-github/003-ci-cd.html",
-    "href": "notes/002-devops/001-git-github/003-ci-cd.html",
-    "title": "CI/CD",
-    "section": "",
-    "text": "Last modified: 2026-07-06\n\n\n\n Back to top",
-    "crumbs": [
-      "Git & GitHub",
-      "CI/CD"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/index.html",
-    "href": "notes/001-terminal/index.html",
-    "title": "Terminal",
-    "section": "",
-    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased toward macOS and Python.\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html",
-    "href": "notes/001-terminal/002-homebrew.html",
-    "title": "Homebrew",
-    "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#intro",
-    "href": "notes/001-terminal/002-homebrew.html#intro",
-    "title": "Homebrew",
-    "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#installations",
-    "href": "notes/001-terminal/002-homebrew.html#installations",
-    "title": "Homebrew",
-    "section": "Installations",
-    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "title": "Homebrew",
-    "section": "Useful Commands",
-    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/002-homebrew.html#references",
-    "href": "notes/001-terminal/002-homebrew.html#references",
-    "title": "Homebrew",
-    "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-05",
-    "crumbs": [
-      "Homebrew"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Roberto Park",
-    "section": "",
-    "text": "I |"
-  },
-  {
-    "objectID": "index.html#hi-there",
-    "href": "index.html#hi-there",
-    "title": "Roberto Park",
-    "section": "Hi there 👋",
-    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
-  },
-  {
-    "objectID": "index.html#explore",
-    "href": "index.html#explore",
-    "title": "Roberto Park",
-    "section": "Explore",
-    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
-    "section": "",
-    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n\n\n2026-06-27\n\n7 min\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n7 min\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n2026-06-27\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
-    "crumbs": [
-      "Blog"
-    ]
-  },
-  {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html",
-    "href": "notes/002-devops/001-git-github/002-workflow.html",
-    "title": "Workflow",
-    "section": "",
-    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
-    "crumbs": [
-      "Git & GitHub",
-      "Workflow"
-    ]
-  },
-  {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
-    "title": "Workflow",
-    "section": "",
-    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
-    "crumbs": [
-      "Git & GitHub",
-      "Workflow"
-    ]
-  },
-  {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
-    "title": "Workflow",
-    "section": "Choose a merge strategy",
-    "text": "Choose a merge strategy\nThere are three merge strategies that you can choose from: merge, rebase, and squash.",
-    "crumbs": [
-      "Git & GitHub",
-      "Workflow"
-    ]
-  },
-  {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
-    "title": "Workflow",
-    "section": "Workflow Details",
-    "text": "Workflow Details\nlet’s add what’s the whole process, something like doing a git status before anything to check if I’ve made a git commit WIP to reset if not just continue\nsometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop\nthen work, git commit\nthen open a PR: use a good PR template for other people to know what happened\nassign someone to review my code\nmerge the pr\nmake another feature branch and continue\n\nLast modified: 2026-07-08",
-    "crumbs": [
-      "Git & GitHub",
-      "Workflow"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html",
-    "href": "notes/001-terminal/004-chezmoi.html",
-    "title": "Chezmoi",
-    "section": "",
-    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#intro",
-    "href": "notes/001-terminal/004-chezmoi.html#intro",
-    "title": "Chezmoi",
-    "section": "",
-    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#mental-model",
-    "href": "notes/001-terminal/004-chezmoi.html#mental-model",
-    "title": "Chezmoi",
-    "section": "Mental Model",
-    "text": "Mental Model\nThere are two trees to keep in mind:\n\nSource: the git repository where your dotfiles live, chezmoi repo. This is what you commit and push.\nTarget: $HOME. This is what chezmoi writes out.\n\nThe flow to push and pull your files:\n\nchezmoi apply pushes source → target\nchezmoi add|re-add pulls target → source\n\n\n\n\n\n\ngraph LR\n    B[\"Target&lt;br&gt;$HOME\"]\n    A[\"Source&lt;br&gt;~/path/to/your/chezmoi\"]\n    A --&gt;|chezmoi apply| B\n    B --&gt;|chezmoi add #124; re-add| A",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#installation",
-    "href": "notes/001-terminal/004-chezmoi.html#installation",
-    "title": "Chezmoi",
-    "section": "Installation",
-    "text": "Installation\n\nbrew install chezmoi",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#setup",
-    "href": "notes/001-terminal/004-chezmoi.html#setup",
-    "title": "Chezmoi",
-    "section": "Setup",
-    "text": "Setup\nBy default chezmoi looks for source files in ~/.local/share/chezmoi. If you want to keep your dotfiles repo somewhere else (e.g. alongside your other projects), you need to tell chezmoi where to look.\nCreate ~/.config/chezmoi/chezmoi.toml, substituting your actual path:\n\nsourceDir = \"~/path/to/your/chezmoi\"\n\n\n\n\n\n\n\nNote\n\n\n\nShould we save the chezmoi.toml file?\nChicken-and-egg problem\nThis config file can itself be tracked by the repo (at dot_config/chezmoi/chezmoi.toml), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial chezmoi apply, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.\n\n\nVerify it’s wired up:\n\nchezmoi source-path\n# → /path/to/your/chezmoi\n\nThen preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in $HOME:\n\nchezmoi diff      # show changes against $HOME\nchezmoi apply     # write to $HOME (overwrite)\n\n\n\n\n\n\n\nWarning\n\n\n\nChezmoi tries to apply everything in the source tree to $HOME, not just files prefixed with dot_. Anything that isn’t a dotfile source (e.g. README.md, docs/) will be copied into $HOME verbatim unless it’s listed in .chezmoiignore. When adding non-dotfile content to the repo, add it to .chezmoiignore, and sanity-check with chezmoi managed.",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#workflow",
-    "href": "notes/001-terminal/004-chezmoi.html#workflow",
-    "title": "Chezmoi",
-    "section": "Workflow",
-    "text": "Workflow\n\nCommon commands\n\nchezmoi cd                # drop into the source dir (the repo)\nchezmoi diff              # show what apply would change in $HOME\nchezmoi apply             # write chezmoi → $HOME\nchezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)\nchezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi\nchezmoi status            # short status of pending changes\nchezmoi managed           # list every file chezmoi manages\n\n\n\nAdding a new dotfile\nTo start tracking a file that currently only lives in $HOME:\n\nchezmoi add ~/.some-config\n\nChezmoi copies it into the source tree, renaming it to its internal convention (e.g. .some-config → dot_some-config). Commit the new file from inside the repo.\n\n\nEditing a tracked file\nThe recommended way to edit the tracked file is to edit the source by doing chezmoi edit ~/.some-config. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g. a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g. changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).\nThat’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.\nThen follow the steps:\n\nRe-add the changes to track it with chezmoi:\n\n\nchezmoi re-add ~/.edited-config # or just chezmoi re-add\n\n\nCheck the differences in your editor of choice.\nTake action to save or revert.\n\nif you like the changes: git commit.\nif you don’t like the changes: revert changes and chezmoi apply to overwrite $HOME with the reverted version (before the edits).\n\n\n\n\n\n\n\n\nTip\n\n\n\nAlways do the chezmoi re-add first, as the chezmoi directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your $HOME is not git tracked, so if you do a chezmoi apply first, it overwrites your live files and the previous version is gone.\n\n\n\n\nSyncing across machines\nOn the machine where you made changes:\n\nchezmoi cd\ngit add -p && git commit -m \"...\"\ngit push\n\nOn the other machine:\n\nchezmoi cd\ngit pull\nchezmoi diff      # sanity-check\nchezmoi apply",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/004-chezmoi.html#references",
-    "href": "notes/001-terminal/004-chezmoi.html#references",
-    "title": "Chezmoi",
-    "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the chezmoi homepage:\nhttps://www.chezmoi.io/\n\nLast modified: 2026-07-06",
-    "crumbs": [
-      "Chezmoi"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html",
-    "title": "RBAC",
-    "section": "",
-    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
-    "title": "RBAC",
-    "section": "",
-    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
-    "title": "RBAC",
-    "section": "Custom Domain/Team Roles",
-    "text": "Custom Domain/Team Roles\nSnowflake recommends a two-tier pattern to keep permissions scalable.\n\n\n\n\n\n\n\n\n\nLayer\nExample\nPurpose\n\n\n\n\nAccess roles\ndb_sales_r, db_sales_rw\nGrant specific privileges on specific objects.\n\n\nFunctional roles\nanalyst, data_engineer\nBundle access roles by business function; granted to users.",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
-    "title": "RBAC",
-    "section": "Handling dbt & Automation Roles",
-    "text": "Handling dbt & Automation Roles\nIn practice, you don’t run dbt as SYSADMIN. Instead, you create a dedicated role and “wire” it into the hierarchy.\n\nExample Setup\n\n-- 1. USERADMIN creates the role\nCREATE ROLE DBT_ROLE;\n\n-- 2. SECURITYADMIN grants object creation privileges\nGRANT USAGE ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT USAGE ON WAREHOUSE my_wh TO ROLE DBT_ROLE;\n\nGRANT CREATE SCHEMA ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;\n\n-- 3. THE KEY STEP: Wire it into the hierarchy\nGRANT ROLE DBT_ROLE TO ROLE SYSADMIN;\n\n\n\n\n\n\n\nThe #1 RBAC Mistake If DBT_ROLE is not granted to SYSADMIN, the objects become orphaned. SYSADMIN (and even ACCOUNTADMIN) will not be able to manage, modify, or drop those objects without manual intervention.",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
-    "title": "RBAC",
-    "section": "Role Hierarchy & Wiring",
-    "text": "Role Hierarchy & Wiring\n\nThe Relationship Chain\n\n\n\n\n\ngraph LR\n    AR[Access Roles] --&gt; FR[Functional Roles]\n    DBT[DBT_ROLE] --&gt; SA[SYSADMIN]\n    FR --&gt; SA\n    SA --&gt; AA[ACCOUNTADMIN]\n\n\n\n\n\n\n\n\nResponsibility Matrix\n\nUSERADMIN: Creates the custom roles.\nSECURITYADMIN: Grants privileges to access roles and wires functional roles to SYSADMIN.\nUsers/Service Accounts: Assigned functional roles or tool-specific roles (like DBT_ROLE).\n\n\n\n\n\n\n\nKey Takeaway Any role can create schemas/tables if granted CREATE privileges. The goal of RBAC is to ensure those roles are children of SYSADMIN so admins retain visibility and control.\n\n\n\n\n\n\n\nLast modified: 2026-06-23",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "blog/posts/personal-knowledge-management.html",
-    "href": "blog/posts/personal-knowledge-management.html",
-    "title": "Personal Knowledge Management",
-    "section": "",
-    "text": "I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.\nI like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable - not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.\nThe frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These’s were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).\n\n\n\n\n\n\nNote\n\n\n\nYes, the system I’ve built is also structured like PARA, but accustomed to my needs not something pre configured. While, Zettelkasten seems like a cool system, a big downside is that it’s hard to share with others meaning that it’s also hard to share with a future me.\n\n\nThat’s why I’ve chosen my own build to manage my knowledge. My personal workflow came to a more mature stage as I was making this personal website. And it is a mesh of MOC, PARA, and Zettelkasten along with some Obsidian native plugins like the BASE and CANVAS.\nThe architecture/structure consists of the following:\n\n/archive\n\nThis is the directory that is for anything that doesn’t seem to belong in any of the other directories.\n\n/blog\n\nThis is a directory for ideas that are shareable with the public.\n\n/clippings\n\nThis is for Obsidian clipping through a chrome extension to save articles that are worthy of being absorbed by my notes.\n\n/inbox\n\nThis is for sudden ideas that pop up and are mostly AI responses to structure my questions.\n\n/notes\n\nThis is the core of knowledge and place that absorbs ideas, clippings, to-dos, youtube content, etc. It is for having a structured, bite-sized documentation of things I study and apply.\n\n/portfolio\n\nThis is any documentation related to what goes into my career specs like the portfolio itself, CV and Resume.\n\n/projects\n\nThis brainstorming documentation for my projects, however it doesn’t store much because all project related documentation goes in the docs/ directory inside the project, code-as-documentation, and in my to-do application.\n\nOther parts of my personal knowledge management are YouTube where most of my knowledge comes from other than blog articles and textbooks; and to manage my schedule, ToDoist.\n\nThis will sound something similar to David Allen’s “Getting Things Done” (GTD) Philosophy. Not that I created my own system knowingly, but making a reference to his philosophy does help to clarify what my system is doing. Also kind of a mix of C(apture), O(rganize), D(istill), E(xpress) by Tiago Forte.\n\nCapture: Collect anything and everything that has your attention into an inbox.\nClarify: Determine if captured items are actionable. If not, trash them, incubate them, or file them as reference.\nOrganize: Sort actionable tasks into logically categorized lists (e.g., next actions, projects, waiting-for).\nReflect: Review and update your lists regularly to maintain clarity and trust in your system.\nEngage: Do the work based on your current context, time available, and energy levels.\n\nLet’s go over how we will manage to do each step.\n\nCapture: most of my capture happens within YouTube, blog articles, textbooks, LLM chats.\n\nYouTube -&gt; playlists (watch later, etc.)\nBlog articles -&gt; clippings\nTextbooks / LLM pinned chats -&gt; inbox\n\n\nHowever, this is almost never linear as it seems because in the end, everything passes through an LLM filter for formatting, structuring, and fact checks.\n\nClarify: from all the data that we have captured from different sources, these will differ in importance and maturity. If the data was a moments thing, which was captured but as an afterthought it’s not something I needed, doesn’t seem as important, or I’m not ready for it yet, it will be deleted/thrown away or it may just stay there as long as it needs and wait its turn to be digested to be part of my notes.\nOrganize: this I believe is the most important part as it’s what and how knowledge gets absorbed and structured; something like a long term memory. The core would be the /notes directory which absorbs clippings, youtube video informations, completed todo tasks, textbook information, tool documentations, and more. However be aware that everything starts as a small idea and therefore everything starts as a single file and when many related ideas start to clutter the single file it becomes a folder. And this will change a lot over time. Think lots on how to structure your knowledge, as you give more thought the higher the probability of it staying with you longer. The key is malleability, and space to change than it being too rigid as that’s not really how our brain works, which is plastic. Something to note when managing data is also the importance of metadata. That’s why every single folder should have a index.md which is not exactly an index of the ideas inside the folder in the orthodox way but more like an abstract version of what goes in that folder along with the workflow if needed. This is to prevent documentation staleness like what I experienced with the MOC. All files must include some kind of YAML metadata at the top because file names should default to snake casing and no symbols. More of the file naming and project structuring conventions will be provided below.\nReflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.\nEngage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is Command + Shift + F and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a Command + Shift + K in Notion, which I can free from my brain now.\n\nIn conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details - you just have to remember the location, which you put effort to structure so it’s easier to remember. Also it’s managing an external brain where knowledge compounds over time, adding value.\n\n\n\n Back to top",
-    "crumbs": [
-      "Blog",
-      "Personal Knowledge Management"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html",
-    "href": "notes/001-terminal/001-zsh.html",
-    "title": "zsh",
-    "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#intro",
-    "href": "notes/001-terminal/001-zsh.html#intro",
-    "title": "zsh",
-    "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
-    "href": "notes/001-terminal/001-zsh.html#zshrc",
-    "title": "zsh",
-    "section": ".zshrc",
-    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
-    "href": "notes/001-terminal/001-zsh.html#zprofile",
-    "title": "zsh",
-    "section": ".zprofile",
-    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
-    "href": "notes/001-terminal/001-zsh.html#zshenv",
-    "title": "zsh",
-    "section": ".zshenv",
-    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
-    "crumbs": [
-      "zsh"
     ]
   },
   {
@@ -875,202 +640,513 @@
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/001-setup.html",
-    "href": "notes/002-devops/001-git-github/001-setup.html",
-    "title": "Setup",
+    "objectID": "notes/001-terminal/001-zsh.html",
+    "href": "notes/001-terminal/001-zsh.html",
+    "title": "zsh",
     "section": "",
-    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#intro",
+    "href": "notes/001-terminal/001-zsh.html#intro",
+    "title": "zsh",
+    "section": "",
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
+    "href": "notes/001-terminal/001-zsh.html#zshrc",
+    "title": "zsh",
+    "section": ".zshrc",
+    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
+    "href": "notes/001-terminal/001-zsh.html#zprofile",
+    "title": "zsh",
+    "section": ".zprofile",
+    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
+    "href": "notes/001-terminal/001-zsh.html#zshenv",
+    "title": "zsh",
+    "section": ".zshenv",
+    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "blog/posts/personal-knowledge-management.html",
+    "href": "blog/posts/personal-knowledge-management.html",
+    "title": "Personal Knowledge Management",
+    "section": "",
+    "text": "I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.\nI like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable - not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.\nThe frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These’s were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).\n\n\n\n\n\n\nNote\n\n\n\nYes, the system I’ve built is also structured like PARA, but accustomed to my needs not something pre configured. While, Zettelkasten seems like a cool system, a big downside is that it’s hard to share with others meaning that it’s also hard to share with a future me.\n\n\nThat’s why I’ve chosen my own build to manage my knowledge. My personal workflow came to a more mature stage as I was making this personal website. And it is a mesh of MOC, PARA, and Zettelkasten along with some Obsidian native plugins like the BASE and CANVAS.\nThe architecture/structure consists of the following:\n\n/archive\n\nThis is the directory that is for anything that doesn’t seem to belong in any of the other directories.\n\n/blog\n\nThis is a directory for ideas that are shareable with the public.\n\n/clippings\n\nThis is for Obsidian clipping through a chrome extension to save articles that are worthy of being absorbed by my notes.\n\n/inbox\n\nThis is for sudden ideas that pop up and are mostly AI responses to structure my questions.\n\n/notes\n\nThis is the core of knowledge and place that absorbs ideas, clippings, to-dos, youtube content, etc. It is for having a structured, bite-sized documentation of things I study and apply.\n\n/portfolio\n\nThis is any documentation related to what goes into my career specs like the portfolio itself, CV and Resume.\n\n/projects\n\nThis brainstorming documentation for my projects, however it doesn’t store much because all project related documentation goes in the docs/ directory inside the project, code-as-documentation, and in my to-do application.\n\nOther parts of my personal knowledge management are YouTube where most of my knowledge comes from other than blog articles and textbooks; and to manage my schedule, ToDoist.\n\nThis will sound something similar to David Allen’s “Getting Things Done” (GTD) Philosophy. Not that I created my own system knowingly, but making a reference to his philosophy does help to clarify what my system is doing. Also kind of a mix of C(apture), O(rganize), D(istill), E(xpress) by Tiago Forte.\n\nCapture: Collect anything and everything that has your attention into an inbox.\nClarify: Determine if captured items are actionable. If not, trash them, incubate them, or file them as reference.\nOrganize: Sort actionable tasks into logically categorized lists (e.g., next actions, projects, waiting-for).\nReflect: Review and update your lists regularly to maintain clarity and trust in your system.\nEngage: Do the work based on your current context, time available, and energy levels.\n\nLet’s go over how we will manage to do each step.\n\nCapture: most of my capture happens within YouTube, blog articles, textbooks, LLM chats.\n\nYouTube -&gt; playlists (watch later, etc.)\nBlog articles -&gt; clippings\nTextbooks / LLM pinned chats -&gt; inbox\n\n\nHowever, this is almost never linear as it seems because in the end, everything passes through an LLM filter for formatting, structuring, and fact checks.\n\nClarify: from all the data that we have captured from different sources, these will differ in importance and maturity. If the data was a moments thing, which was captured but as an afterthought it’s not something I needed, doesn’t seem as important, or I’m not ready for it yet, it will be deleted/thrown away or it may just stay there as long as it needs and wait its turn to be digested to be part of my notes.\nOrganize: this I believe is the most important part as it’s what and how knowledge gets absorbed and structured; something like a long term memory. The core would be the /notes directory which absorbs clippings, youtube video informations, completed todo tasks, textbook information, tool documentations, and more. However be aware that everything starts as a small idea and therefore everything starts as a single file and when many related ideas start to clutter the single file it becomes a folder. And this will change a lot over time. Think lots on how to structure your knowledge, as you give more thought the higher the probability of it staying with you longer. The key is malleability, and space to change than it being too rigid as that’s not really how our brain works, which is plastic. Something to note when managing data is also the importance of metadata. That’s why every single folder should have a index.md which is not exactly an index of the ideas inside the folder in the orthodox way but more like an abstract version of what goes in that folder along with the workflow if needed. This is to prevent documentation staleness like what I experienced with the MOC. All files must include some kind of YAML metadata at the top because file names should default to snake casing and no symbols. More of the file naming and project structuring conventions will be provided below.\nReflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.\nEngage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is Command + Shift + F and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a Command + Shift + K in Notion, which I can free from my brain now.\n\nIn conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details - you just have to remember the location, which you put effort to structure so it’s easier to remember. Also it’s managing an external brain where knowledge compounds over time, adding value.\n\n\n\n Back to top",
+    "crumbs": [
+      "Blog",
+      "Personal Knowledge Management"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "title": "RBAC",
+    "section": "",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "title": "RBAC",
+    "section": "",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "title": "RBAC",
+    "section": "Custom Domain/Team Roles",
+    "text": "Custom Domain/Team Roles\nSnowflake recommends a two-tier pattern to keep permissions scalable.\n\n\n\n\n\n\n\n\n\nLayer\nExample\nPurpose\n\n\n\n\nAccess roles\ndb_sales_r, db_sales_rw\nGrant specific privileges on specific objects.\n\n\nFunctional roles\nanalyst, data_engineer\nBundle access roles by business function; granted to users.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "title": "RBAC",
+    "section": "Handling dbt & Automation Roles",
+    "text": "Handling dbt & Automation Roles\nIn practice, you don’t run dbt as SYSADMIN. Instead, you create a dedicated role and “wire” it into the hierarchy.\n\nExample Setup\n\n-- 1. USERADMIN creates the role\nCREATE ROLE DBT_ROLE;\n\n-- 2. SECURITYADMIN grants object creation privileges\nGRANT USAGE ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT USAGE ON WAREHOUSE my_wh TO ROLE DBT_ROLE;\n\nGRANT CREATE SCHEMA ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;\n\n-- 3. THE KEY STEP: Wire it into the hierarchy\nGRANT ROLE DBT_ROLE TO ROLE SYSADMIN;\n\n\n\n\n\n\n\nThe #1 RBAC Mistake If DBT_ROLE is not granted to SYSADMIN, the objects become orphaned. SYSADMIN (and even ACCOUNTADMIN) will not be able to manage, modify, or drop those objects without manual intervention.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "title": "RBAC",
+    "section": "Role Hierarchy & Wiring",
+    "text": "Role Hierarchy & Wiring\n\nThe Relationship Chain\n\n\n\n\n\ngraph LR\n    AR[Access Roles] --&gt; FR[Functional Roles]\n    DBT[DBT_ROLE] --&gt; SA[SYSADMIN]\n    FR --&gt; SA\n    SA --&gt; AA[ACCOUNTADMIN]\n\n\n\n\n\n\n\n\nResponsibility Matrix\n\nUSERADMIN: Creates the custom roles.\nSECURITYADMIN: Grants privileges to access roles and wires functional roles to SYSADMIN.\nUsers/Service Accounts: Assigned functional roles or tool-specific roles (like DBT_ROLE).\n\n\n\n\n\n\n\nKey Takeaway Any role can create schemas/tables if granted CREATE privileges. The goal of RBAC is to ensure those roles are children of SYSADMIN so admins retain visibility and control.\n\n\n\n\nLast modified: 2026-06-23",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html",
+    "href": "notes/001-terminal/004-chezmoi.html",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#intro",
+    "href": "notes/001-terminal/004-chezmoi.html#intro",
+    "title": "Chezmoi",
+    "section": "",
+    "text": "Chezmoi is a dotfiles manager that keeps your configuration files (.zshrc, .gitconfig, kitty config, etc.) in a single git repository and syncs them across machines. Instead of manually copying config files to a new machine or symlinking them one by one, you keep a source repo and let chezmoi write the files into $HOME for you.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "href": "notes/001-terminal/004-chezmoi.html#mental-model",
+    "title": "Chezmoi",
+    "section": "Mental Model",
+    "text": "Mental Model\nThere are two trees to keep in mind:\n\nSource: the git repository where your dotfiles live, chezmoi repo. This is what you commit and push.\nTarget: $HOME. This is what chezmoi writes out.\n\nThe flow to push and pull your files:\n\nchezmoi apply pushes source → target\nchezmoi add|re-add pulls target → source\n\n\n\n\n\n\ngraph LR\n    B[\"Target&lt;br&gt;$HOME\"]\n    A[\"Source&lt;br&gt;~/path/to/your/chezmoi\"]\n    A --&gt;|chezmoi apply| B\n    B --&gt;|chezmoi add #124; re-add| A",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#installation",
+    "href": "notes/001-terminal/004-chezmoi.html#installation",
+    "title": "Chezmoi",
+    "section": "Installation",
+    "text": "Installation\n\nbrew install chezmoi",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#setup",
+    "href": "notes/001-terminal/004-chezmoi.html#setup",
+    "title": "Chezmoi",
+    "section": "Setup",
+    "text": "Setup\nBy default chezmoi looks for source files in ~/.local/share/chezmoi. If you want to keep your dotfiles repo somewhere else (e.g. alongside your other projects), you need to tell chezmoi where to look.\nCreate ~/.config/chezmoi/chezmoi.toml, substituting your actual path:\n\nsourceDir = \"~/path/to/your/chezmoi\"\n\n\n\n\n\n\n\nNote\n\n\n\nShould we save the chezmoi.toml file?\nChicken-and-egg problem\nThis config file can itself be tracked by the repo (at dot_config/chezmoi/chezmoi.toml), but you still have to create it by hand the first time, because chezmoi has to read it before it knows where the source directory is. After the initial chezmoi apply, chezmoi takes over and any future edits go through the source tree like everything else. However, I wouldn’t personally recommend it.\n\n\nVerify it’s wired up:\n\nchezmoi source-path\n# → /path/to/your/chezmoi\n\nThen preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in $HOME:\n\nchezmoi diff      # show changes against $HOME\nchezmoi apply     # write to $HOME (overwrite)\n\n\n\n\n\n\n\nWarning\n\n\n\nChezmoi tries to apply everything in the source tree to $HOME, not just files prefixed with dot_. Anything that isn’t a dotfile source (e.g. README.md, docs/) will be copied into $HOME verbatim unless it’s listed in .chezmoiignore. When adding non-dotfile content to the repo, add it to .chezmoiignore, and sanity-check with chezmoi managed.",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#workflow",
+    "href": "notes/001-terminal/004-chezmoi.html#workflow",
+    "title": "Chezmoi",
+    "section": "Workflow",
+    "text": "Workflow\n\nCommon commands\n\nchezmoi cd                # drop into the source dir (the repo)\nchezmoi diff              # show what apply would change in $HOME\nchezmoi apply             # write chezmoi → $HOME\nchezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)\nchezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi\nchezmoi status            # short status of pending changes\nchezmoi managed           # list every file chezmoi manages\n\n\n\nAdding a new dotfile\nTo start tracking a file that currently only lives in $HOME:\n\nchezmoi add ~/.some-config\n\nChezmoi copies it into the source tree, renaming it to its internal convention (e.g. .some-config → dot_some-config). Commit the new file from inside the repo.\n\n\nEditing a tracked file\nThe recommended way to edit the tracked file is to edit the source by doing chezmoi edit ~/.some-config. However, I prefer to just edit the live file as I don’t want to change the way I used to manage my files before chezmoi. Also, some configurations are changed automatically by tools (e.g. a binary setting paths to a zsh script) and the chezmoi recommended way can add overhead (e.g. changing a config in the native settings panel of an editor like VS Code or Obsidian but having to go to chezmoi to change it instead of inside the editor).\nThat’s why I just edit my tracked files manually in my editor of choice, VS Code, if it’s a file that can be opened and edited.\nThen follow the steps:\n\nRe-add the changes to track it with chezmoi:\n\n\nchezmoi re-add ~/.edited-config # or just chezmoi re-add\n\n\nCheck the differences in your editor of choice.\nTake action to save or revert.\n\nif you like the changes: git commit.\nif you don’t like the changes: revert changes and chezmoi apply to overwrite $HOME with the reverted version (before the edits).\n\n\n\n\n\n\n\n\nTip\n\n\n\nAlways do the chezmoi re-add first, as the chezmoi directory is being tracked, so it’s okay to be overwritten. You can review the changes in an editor and commit only what’s necessary. However, your $HOME is not git tracked, so if you do a chezmoi apply first, it overwrites your live files and the previous version is gone.\n\n\n\n\nSyncing across machines\nOn the machine where you made changes:\n\nchezmoi cd\ngit add -p && git commit -m \"...\"\ngit push\n\nOn the other machine:\n\nchezmoi cd\ngit pull\nchezmoi diff      # sanity-check\nchezmoi apply",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/004-chezmoi.html#references",
+    "href": "notes/001-terminal/004-chezmoi.html#references",
+    "title": "Chezmoi",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the chezmoi homepage:\nhttps://www.chezmoi.io/\n\nLast modified: 2026-07-06",
+    "crumbs": [
+      "Chezmoi"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html",
+    "href": "notes/002-devops/001-git-github/002-workflow.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
     "crumbs": [
       "Git & GitHub",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
+    "title": "Workflow",
+    "section": "",
+    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
+    "crumbs": [
+      "Git & GitHub",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
+    "title": "Workflow",
+    "section": "Choose a merge strategy",
+    "text": "Choose a merge strategy\nThere are three merge strategies that you can choose from: merge, rebase, and squash.",
+    "crumbs": [
+      "Git & GitHub",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
+    "title": "Workflow",
+    "section": "Workflow Details",
+    "text": "Workflow Details\nlet’s add what’s the whole process, something like doing a git status before anything to check if I’ve made a git commit WIP to reset if not just continue\nsometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop\nthen work, git commit\nthen open a PR: use a good PR template for other people to know what happened\nassign someone to review my code\nmerge the pr\nmake another feature branch and continue\n\nLast modified: 2026-07-08",
+    "crumbs": [
+      "Git & GitHub",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\n\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n\n\n2026-06-27\n\n7 min\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n7 min\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n2026-06-27\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Blog"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Roberto Park",
+    "section": "",
+    "text": "I |"
+  },
+  {
+    "objectID": "index.html#hi-there",
+    "href": "index.html#hi-there",
+    "title": "Roberto Park",
+    "section": "Hi there 👋",
+    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
+  },
+  {
+    "objectID": "index.html#explore",
+    "href": "index.html#explore",
+    "title": "Roberto Park",
+    "section": "Explore",
+    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html",
+    "href": "notes/001-terminal/002-homebrew.html",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#intro",
+    "href": "notes/001-terminal/002-homebrew.html#intro",
+    "title": "Homebrew",
+    "section": "",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#installations",
+    "href": "notes/001-terminal/002-homebrew.html#installations",
+    "title": "Homebrew",
+    "section": "Installations",
+    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "title": "Homebrew",
+    "section": "Useful Commands",
+    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html#references",
+    "href": "notes/001-terminal/002-homebrew.html#references",
+    "title": "Homebrew",
+    "section": "References",
+    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-05",
+    "crumbs": [
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/index.html",
+    "href": "notes/001-terminal/index.html",
+    "title": "Terminal",
+    "section": "",
+    "text": "This section is designed for all things related to the terminal and local environment setup.\n\n\n\n\n\n\nNote\n\n\n\nIt is biased toward macOS and Python.\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/001-git-github/003-ci-cd.html",
+    "href": "notes/002-devops/001-git-github/003-ci-cd.html",
+    "title": "CI/CD",
+    "section": "",
+    "text": "Last modified: 2026-07-06\n\n\n\n Back to top",
+    "crumbs": [
+      "Git & GitHub",
+      "CI/CD"
+    ]
+  },
+  {
+    "objectID": "notes/002-devops/002-project-init/001-setup.html",
+    "href": "notes/002-devops/002-project-init/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
+    "crumbs": [
+      "Project Init",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/001-setup.html#git",
-    "href": "notes/002-devops/001-git-github/001-setup.html#git",
+    "objectID": "notes/002-devops/002-project-init/001-setup.html#project-init",
+    "href": "notes/002-devops/002-project-init/001-setup.html#project-init",
     "title": "Setup",
     "section": "",
-    "text": "If you’re on mac, it’s already installed so just check the version.\n\ngit --version\n\nIf you are on linux (Ubuntu) do a sudo install.\n\nsudo apt update\nsudo apt install git -y\n\n\n\n\nGit requires an identification.\n\ngit config --global user.name \"Your Name\"\ngit config --global user.email \"your.email@example.com\"",
+    "text": "The way I start my projects is one of two ways: create a directory in my repo with a uv init or create a repo in GitHub and git clone it.",
     "crumbs": [
-      "Git & GitHub",
+      "Project Init",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/001-setup.html#github",
-    "href": "notes/002-devops/001-git-github/001-setup.html#github",
+    "objectID": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
+    "href": "notes/002-devops/002-project-init/001-setup.html#dev-packages",
     "title": "Setup",
-    "section": "GitHub",
-    "text": "GitHub\nGo to https://github.com/ and create an account.\n\nSSH key Authentication\nThis is a key-pair authentication. SSH authentication uses a pair of keys that work like a lock and key:\n\nPrivate Key (id_ed25519): Stays strictly on your computer. Never share this.\nPublic Key (id_ed25519.pub): Acts as the lock that only your private key can open. Upload this to GitHub.\n\n\nStep 1: Generate a new SSH key pair\n\nssh-keygen -t ed25519 -C \"your.email@example.com\"\n\nSome prompts will appear asking:\n\nwhere to save they keys, press Enter to accept the default location (~./ssh).\nfor a passphrase, press Enter to leave it empty (convenient), or type a password for extra security.\n\n\n\n\n\n\n\nNote\n\n\n\nIf you decide to enter a passphrase, be aware that the terminal will not show any visual feedback (such as asterisks or characters) while you are typing. Simply type the passphrase fully and press Enter.\n\n\n\n\nStep 2: Add the SSH Key to the ssh-agent\nThe ssh-agent is what manages your keys in the background.\n\nStart the agent:\n\n\neval \"$(ssh-agent -s)\"\n\n\nAdd your private key to the agent:\n\n\nssh-add ~/.ssh/id_ed25519\n\n\n\nStep 3: Add the Public Key to GitHub\n\nCopy the public key’s content to your clipboard:\n\n\npbcopy &lt; ~/.ssh/id_ed25519.pub\n\n\nGo to GitHub, click your profile picture (top-right corner), and then Settings.\nIn the left sidebar, click SSH and GPG keys.\nClick New SSH key (green button top-right).\nGive it a descriptive title of your local machine (e.g., “my-mac”) and paste your key from the clip board.\nClick Add SSH key.\n\n\n\nStep 4: Test the Connection\n\nssh -T git git@github.com\n\nIf you see a message like the following, then you are good to go.\n\nHi {username}! You've successfully authenticated, but GitHub does not provide shell access.\n\n\nLast modified: 2026-07-06",
+    "section": "Dev Packages",
+    "text": "Dev Packages\nWhen working in data engineering there are some dev packages that are useful.\n\nruff\nty\npytest\nsqlfluff\n## Pre-commit Hooks\n``\nBuilt-in\nFormatters\nLinters\n\n\nLast modified: 2026-07-02",
     "crumbs": [
-      "Git & GitHub",
+      "Project Init",
       "Setup"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/index.html",
-    "href": "notes/002-devops/001-git-github/index.html",
-    "title": "Git & GitHub",
+    "objectID": "notes/002-devops/003-observability-monitoring/index.html",
+    "href": "notes/002-devops/003-observability-monitoring/index.html",
+    "title": "Observability & Monitoring",
     "section": "",
-    "text": "Git is a local software tool that tracks changes to your code files over time (version control).\nGitHub is an online, cloud-based platform used to host those tracked files so you can back them up and collaborate with other developers.\nGit is the engine, GitHub is the network.\nThere are various version control tools and various collaboration cloud platforms, but I will choose the mainstream and battle-tested one.\n\n\n\n Back to top",
+    "text": "This section will cover how to manage the following 3 main pillars of observability and monitoring.\n\nLogs (what happened)\nMetrics (system health/numbers)\nTraces (journey of a request)\n\n\n\n\n Back to top",
     "crumbs": [
-      "Git & GitHub"
+      "Observability & Monitoring"
     ]
   },
   {
-    "objectID": "notes/002-devops/002-project-init/index.html",
-    "href": "notes/002-devops/002-project-init/index.html",
-    "title": "Project Init",
+    "objectID": "notes/003-data-engineering/001-data-modeling/index.html",
+    "href": "notes/003-data-engineering/001-data-modeling/index.html",
+    "title": "Data Modeling",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.\nThere are a lot of different frameworks, but I am biased toward Kimball’s way of modeling.\n\n\n\n Back to top",
     "crumbs": [
-      "Project Init"
+      "Data Modeling"
     ]
   },
   {
-    "objectID": "notes/002-devops/index.html",
-    "href": "notes/002-devops/index.html",
-    "title": "DevOps",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "title": "Create Snippets",
     "section": "",
-    "text": "This section will have technical notes covering the overall workflow of the DevOps lifecycle starting with local development setup and version control to CI/CD and automated deployment.\nIt documents the processes, infrastructure, and automation required to deliver software reliably and efficiently.\n\n\n\n\n\n\nNote\n\n\n\nAlthough the documentation is biased for macOS, DevOps requires Linux foundations as the development environment may be macOS, but the production environment will most certainly be Linux.\n\n\n\n\n\n Back to top",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
-      "DevOps"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html",
-    "title": "Authentication",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "title": "Create Snippets",
     "section": "",
-    "text": "There are various ways to authenticate yourself to Snowflake, but when building data pipelines and automation, my recommendation would be to use the key-pair authentication.",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
       "Snowflake",
-      "Authentication"
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
-    "title": "Authentication",
-    "section": "1. Private Key Generation",
-    "text": "1. Private Key Generation\ncreate an unencrypted version of the private key\n\nopenssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt\n\nthis will create something that looks like:\n\n-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIE6T...\n-----END ENCRYPTED PRIVATE KEY-----",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "title": "Create Snippets",
+    "section": "Create Role",
+    "text": "Create Role\n\nUSE ROLE useradmin;\nCREATE ROLE {{ DEFAULT_ROLE }};\nGRANT USAGE ON WAREHOUSE {{ DEFAULT_WH }} TO ROLE {{ DEFAULT_ROLE }};",
     "crumbs": [
       "Snowflake",
-      "Authentication"
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
-    "title": "Authentication",
-    "section": "2. Public Key Generation",
-    "text": "2. Public Key Generation\ncreate a public key from the private key\n\nopenssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub\n\nthis will create something that looks like:\n\n-----BEGIN PUBLIC KEY-----\nMIIBIj...\n-----END PUBLIC KEY-----",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "title": "Create Snippets",
+    "section": "Create Agent",
+    "text": "Create Agent\n\nAlways have two roles for Agents (Snowflake Intelligence)\n\nsuperior manager of all agents (owner of all agent)\ninferior manager of a specific agent (reader of an agent)\n\n\n\ncreate the agent with sysadmin in the UI\n\n\n[[create_role]] for the specific agent.\nFor both superior and inferior roles there are 2 types of grants needed:\n\n\ngive grants on snowflake intelligence - agent, schema, database\n\n\nUSE ROLE securityadmin;\nGRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.{{ domain_agent }} TO ROLE {{ domain_agent_user_role }};\nGRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE {{ domain_agent_user_role }};\nGRANTE USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE {{ domain_agent_user_role }};\n\n\ngive grants on underlying tables that the semantic view/model is using\n[TODO: add link to having a dbt_project.yml and how to manage the SELECT and REFERENCES in dbt for all tables that are needed for the agent]\nremember that views need all underlying tables\n\n\nLast modified: 2026-07-01",
     "crumbs": [
       "Snowflake",
-      "Authentication"
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
-    "title": "Authentication",
-    "section": "3. Snowflake User Key-Pair Assignment",
-    "text": "3. Snowflake User Key-Pair Assignment\ngive your key for the SECURITYADMIN to register to your user, you can register two RSA public keys\n\n-- Switch to Security Admin to manage user authentication credentials\nUSE ROLE securityadmin;\n\n-- RSA_PUBLIC_KEY for python data ingestion\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n-- RSA_PUBLIC_KEY for dbt connection + dbeaver\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY_2 = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n\nLast modified: 2026-06-17",
-    "crumbs": [
-      "Snowflake",
-      "Authentication"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
-    "title": "Native Platform Services",
+    "objectID": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
+    "href": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
+    "title": "AI & ML",
     "section": "",
-    "text": "Snowflake, like many other data platforms, has a set of native services some of which are quite unique and ‘declarative’ instead of procedural with zero-ops. This means that there are many stages in the data engineering workflow where you don’t need a third-party tool for pipeline logic and orchestration.\nThis is a curated list of features that I think are better handled inside of Snowflake and serverless.",
+    "text": "The AI & ML services from Snowflake has been undergoing a lot of changes. That’s why the notes for this section might also change frequently.\nThe architecture in a nutshell looks something like:\n\nMake a semantic view -&gt; this becomes a Cortex Analyst\nMake an agent, go to Configuration &gt; Tools &gt; Query structured data -&gt; Add semantic view\n\nThat’s pretty much it. But you also have to configure your agent with other stuff like Instructions, Skills, and MCP if you want more harness for your agent.\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
     "crumbs": [
       "Snowflake",
-      "Native Platform Services"
+      "AI & ML"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
-    "title": "Native Platform Services",
-    "section": "Data Integration",
-    "text": "Data Integration\n(powered by Apache NiFi)\nOpenflow\nSnowpipe Streaming\nStreams and Tasks",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
-    "title": "Native Platform Services",
-    "section": "Data Transformation",
-    "text": "Data Transformation\nDynamic Tables",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
-    "title": "Native Platform Services",
-    "section": "Data Governance & Quality",
-    "text": "Data Governance & Quality\nData Metric Functions (DMFs)",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
-    "title": "Native Platform Services",
-    "section": "Intelligence Frameworks",
-    "text": "Intelligence Frameworks\nCortex AI\nSnowflake Intelligence\n\nLast modified: 2026-06-24",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/index.html",
-    "href": "notes/003-data-engineering/002-snowflake/index.html",
-    "title": "Snowflake",
+    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html",
+    "href": "notes/003-data-engineering/003-dlt/001-setup.html",
+    "title": "Setup",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "uv add dlt\n\n\nLast modified: 2026-07-10",
     "crumbs": [
-      "Snowflake"
+      "dlt",
+      "Setup"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html",
+    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
+    "href": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
+    "title": "Setup",
+    "section": "",
+    "text": "uv add dlt\n\n\nLast modified: 2026-07-10",
+    "crumbs": [
+      "dlt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/index.html",
+    "href": "notes/003-data-engineering/003-dlt/index.html",
+    "title": "dlt",
+    "section": "",
+    "text": "This dlt guide / note will be updated to follow the most stable version of the dlt package.\nThis means that this section does not cover paid services like dltHub or paid features.\nCurrent version: dlt 1.28.2\n\n\n\n Back to top",
+    "crumbs": [
+      "dlt"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html",
     "title": "Conventions",
     "section": "",
-    "text": "add foldabble examples\nadd full project tree example",
+    "text": "Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{domain}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{domain}__{entity}.sql\n│       └── mart/\n│           ├── _mart__models.yaml\n│           └── mart_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.",
     "crumbs": [
       "dbt",
       "Conventions"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#project-level-meta-files",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#project-level-meta-files",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
+    "title": "Conventions",
+    "section": "",
+    "text": "Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{domain}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{domain}__{entity}.sql\n│       └── mart/\n│           ├── _mart__models.yaml\n│           └── mart_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
     "title": "Conventions",
     "section": "Project Level Meta Files",
-    "text": "Project Level Meta Files\n\n\n\n\n\n\ndbt_project.yml\n\n\n\n\n\nasdf\n\n\n\n\n\n\n\n\n\npackages.yml\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nprofiles.yml",
+    "text": "Project Level Meta Files\n\n\n\n\n\n\ndbt_project.yml\n\n\n\n\n\nasdf\n\n\n\n\n\n\n\n\n\npackages.yml\n\n\n\n\n\n\n\n\n\n\nprofiles.yml",
     "crumbs": [
       "dbt",
       "Conventions"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#directory-names",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#directory-names",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
     "title": "Conventions",
     "section": "Directory Names",
     "text": "Directory Names\nmodels/{domain}/{layer}",
@@ -1080,8 +1156,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#meta-names",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#meta-names",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
     "title": "Conventions",
     "section": "Meta Names",
     "text": "Meta Names\n_{layer}__{sources|models}.yaml\nThe main characteristic of meta yaml files is that the naming starts with an underscore.\nThe sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.\nThe models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.\nThe data tests are generic (singular) tests and custom tests, package tests.\n- singular tests include: unique, not null, accepted_values, relationships\n- custom tests consist of macros\n- package tests consist of dbt_utils and other community packages",
@@ -1091,8 +1167,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#model-names",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#model-names",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
     "title": "Conventions",
     "section": "Model Names",
     "text": "Model Names\n{layer}_{domain}__{entity}_{temp}.sql",
@@ -1102,8 +1178,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#tests-names",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#tests-names",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
     "title": "Conventions",
     "section": "Tests Names",
     "text": "Tests Names\nThe test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.",
@@ -1113,8 +1189,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#incremental-models",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#incremental-models",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
     "title": "Conventions",
     "section": "Incremental Models",
     "text": "Incremental Models\nonly use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\nremember to add the logic to erase orphaned data.\nif the data is too big for merge, then use delete+insert or insert_overwrite\ndelete+insert checks for a set of keys that you define",
@@ -1124,8 +1200,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#environment-variables",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#environment-variables",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
     "title": "Conventions",
     "section": "Environment Variables",
     "text": "Environment Variables\n\nshell environment overrides all\n.env file is auto detected with the new dbt fusion",
@@ -1135,19 +1211,19 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/002-conventions.html#models",
-    "href": "notes/003-data-engineering/003-dbt/002-conventions.html#models",
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
     "title": "Conventions",
     "section": "Models",
-    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-07-08",
+    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-07-12",
     "crumbs": [
       "dbt",
       "Conventions"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html",
-    "href": "notes/003-data-engineering/003-dbt/004-documentations.html",
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html",
     "title": "Documentations",
     "section": "",
     "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
@@ -1157,8 +1233,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#types-of-documentation",
-    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#types-of-documentation",
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
     "title": "Documentations",
     "section": "",
     "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
@@ -1168,8 +1244,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#generate-documentations",
-    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#generate-documentations",
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
     "title": "Documentations",
     "section": "Generate Documentations",
     "text": "Generate Documentations\n\ndbt docs generate\n\n\n\n\n\n\n\nNote\n\n\n\nThe command to generate the docs will change in future releases.\ndbt compile --write-index --static-analysis strict",
@@ -1179,8 +1255,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/004-documentations.html#serve-documentations",
-    "href": "notes/003-data-engineering/003-dbt/004-documentations.html#serve-documentations",
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
     "title": "Documentations",
     "section": "Serve Documentations",
     "text": "Serve Documentations\n\ndbt docs serve\n\n\nLast modified: 2026-07-02",
@@ -1190,8 +1266,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html",
-    "href": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html",
+    "objectID": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html",
+    "href": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html",
     "title": "Optimize Build Time",
     "section": "",
     "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
@@ -1201,8 +1277,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html#project-wide-optimizations",
-    "href": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html#project-wide-optimizations",
+    "objectID": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html#project-wide-optimizations",
+    "href": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html#project-wide-optimizations",
     "title": "Optimize Build Time",
     "section": "",
     "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
@@ -1212,8 +1288,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html#model-wide-optimizations",
-    "href": "notes/003-data-engineering/003-dbt/007-optimize-build-time.html#model-wide-optimizations",
+    "objectID": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html#model-wide-optimizations",
+    "href": "notes/003-data-engineering/004-dbt/007-optimize-build-time.html#model-wide-optimizations",
     "title": "Optimize Build Time",
     "section": "Model-wide Optimizations",
     "text": "Model-wide Optimizations\nYou would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).\n\nLast modified: 2026-06-26",
@@ -1223,8 +1299,8 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-fastapi/001-setup.html",
-    "href": "notes/003-data-engineering/004-fastapi/001-setup.html",
+    "objectID": "notes/003-data-engineering/005-fastapi/001-setup.html",
+    "href": "notes/003-data-engineering/005-fastapi/001-setup.html",
     "title": "Setup",
     "section": "",
     "text": "Coming soon…\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
@@ -1234,11 +1310,11 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-fastapi/index.html",
-    "href": "notes/003-data-engineering/004-fastapi/index.html",
+    "objectID": "notes/003-data-engineering/005-fastapi/index.html",
+    "href": "notes/003-data-engineering/005-fastapi/index.html",
     "title": "FastAPI",
     "section": "",
-    "text": "Yes, FastAPI is a backend. It feels weird to put FastAPI inside a data engineering section. However, these are notes to managing the backend for a data platform. The boundaries with an actual full blown app will be quite blurry, but it is a skill that I want to practice and put under my belt because Tableau and Streamlit gets you so far.\n\n\n\n Back to top",
+    "text": "Yes, FastAPI is a backend. It feels weird to put FastAPI inside a data engineering section. However, these are notes to managing the backend for a data platform. The boundaries with an actual full blown app will be quite blurry, but it is a skill that I want to practice and put under my belt because Tableau and Streamlit gets you so far.\nThe frontend for this backend has a few choices. I used to just do HTML, CSS, and vanilla Javascript because of the advancements on AI making this easier to do. However, it bloats really fast and it’s hard to wrap your head around most of the features when the app grows. That’s why I think from now on I will choose to go with NiceGUI.\n\n\n\n Back to top",
     "crumbs": [
       "FastAPI"
     ]
@@ -1354,7 +1430,7 @@
     "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
     "title": "SCOR DS",
     "section": "Metrics",
-    "text": "Metrics\n\n\n\n\n\n\nNote\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
+    "text": "Metrics\n\n\n\n\n\n\nInfo\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
     "crumbs": [
       "SCM",
       "SCOR DS"
@@ -1415,7 +1491,7 @@
     "href": "notes/index.html",
     "title": "Notes",
     "section": "",
-    "text": "“Your brain is for having ideas not for holding them.” - David Allen\n\nA working notebook across the data stack — pick a topic to dig in.\n\n\n\n\n  \n     Terminal\n    To build a productive local environment.\n  \n\n  \n     DevOps\n    Automation and integration of development and operations to deliver faster and more reliably.\n  \n\n  \n     Data Engineering\n    Build and optimize data pipeline workflows for data driven decision-making.\n  \n\n  \n     Data Analysis\n    Exploration and interpretation of data to uncover actionable insights for strategic decision-making.\n  \n\n  \n     Business Intelligence\n    Design dashboards and reporting for strategic business choices.\n  \n\n  \n     Machine Learning\n    Develop and train statistical models that allow systems to learn patterns and make predictions from data.\n  \n\n  \n     AI Engineering\n    Artificial Intelligence for development and applications.\n  \n\n  \n     Domain Knowledge\n    Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.\n  \n\n  \n     DevTools\n    Tools and utilities that optimize developer productivity.\n  \n\n  \n     Homelab\n    Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies.\n  \n\n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "“Your brain is for having ideas not for holding them.” — David Allen\n\n\n\nA working notebook across the data stack — pick a topic to dig in.\n\n\n\n\n  \n     Terminal\n    To build a productive local environment.\n  \n\n  \n     DevOps\n    Automation and integration of development and operations to deliver faster and more reliably.\n  \n\n  \n     Data Engineering\n    Build and optimize data pipeline workflows for data driven decision-making.\n  \n\n  \n     Data Analysis\n    Exploration and interpretation of data to uncover actionable insights for strategic decision-making.\n  \n\n  \n     Business Intelligence\n    Design dashboards and reporting for strategic business choices.\n  \n\n  \n     Machine Learning\n    Develop and train statistical models that allow systems to learn patterns and make predictions from data.\n  \n\n  \n     AI Engineering\n    Artificial Intelligence for development and applications.\n  \n\n  \n     Domain Knowledge\n    Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.\n  \n\n  \n     DevTools\n    Tools and utilities that optimize developer productivity.\n  \n\n  \n     Homelab\n    Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies.\n  \n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "projects/charon-analysis/final_deliverable.html#slide-1",
