@@ -28,6 +28,7 @@ format:
     theme:
       - assets/scss/catppuccin-mocha.scss
       - assets/scss/styles.scss
+      - assets/scss/obsidian-callouts.scss
     toc: true
     html-math-method: katex
     code-line-numbers: true
