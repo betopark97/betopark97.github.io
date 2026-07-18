@@ -48,6 +48,16 @@
   border-left: 1px solid $ctp-surface1;
 }
 
+// Brand/icon mark injected before a sidebar section's name (assets/html/
+// custom_body.html, from the section index's `icon:` frontmatter). The
+// Iconify web component scales with font-size; monochrome icons inherit the
+// link colour via currentColor, brand logos keep their own.
+.sidebar-section-icon {
+  margin-right: 0.5em;
+  font-size: 1.1em;
+  vertical-align: -0.15em;
+}
+
 // Pull the "← All notes" tool icon to the top of the sidebar. Quarto's floating
 // layout flex-orders it last (order: 2) even though it's first in the DOM.
 #quarto-sidebar .sidebar-tools-main {
@@ -434,6 +444,15 @@ body:has(.hero) #title-block-header {
     i {
       margin-right: 0.5rem;
       color: $ctp-blue; // accent the icon
+    }
+
+    // Brand icon (Iconify web component) rendered from a category's `icon:`
+    // frontmatter. Scales with font-size like the Bootstrap `i` icon; brand
+    // marks carry their own colours, so no `color` override here.
+    .gallery-card-icon {
+      margin-right: 0.5rem;
+      font-size: 1.15em;
+      vertical-align: -0.18em;
     }
   }
 

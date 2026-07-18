@@ -2,7 +2,7 @@
 <div class="gallery-grid">
 <% for (const item of items) { %>
   <a href="<%= item.path %>" class="gallery-card">
-    <span class="gallery-card-title"><% if (item.icon) { %><i class="bi bi-<%= item.icon %>" aria-hidden="true"></i> <% } %><%= item.title %></span>
+    <span class="gallery-card-title"><% if (item.icon) { %><% if (item.icon.includes(':')) { %><iconify-icon class="gallery-card-icon" icon="<%= item.icon %>" aria-hidden="true"></iconify-icon> <% } else { %><i class="bi bi-<%= item.icon %>" aria-hidden="true"></i> <% } %><% } %><%= item.title %></span>
     <% if (item.description) { %><span class="gallery-card-desc"><%= item.description %></span><% } %>
   </a>
 <% } %>
