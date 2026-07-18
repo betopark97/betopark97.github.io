@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Optimize Build Time – Roberto Park</title>
+<title>CI/CD – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/005-fastapi/index.html" rel="next">
-<link href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" rel="prev">
+<link href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" rel="next">
+<link href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6f1411da052ef3106e3cf7a18e8e151f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,6 +73,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
+     bootstrap-icons), then reference any icon by name via
+     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
+     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -152,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html">Optimize Build Time</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html">CI/CD</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -241,6 +247,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normalization</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,13 +290,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">CI/CD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -318,22 +336,15 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#project-wide-optimizations" id="toc-project-wide-optimizations" class="nav-link active" data-scroll-target="#project-wide-optimizations">Project-wide Optimizations</a></li>
-  <li><a href="#model-wide-optimizations" id="toc-model-wide-optimizations" class="nav-link" data-scroll-target="#model-wide-optimizations">Model-wide Optimizations</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html">Optimize Build Time</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html">CI/CD</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Optimize Build Time</h1>
+<h1 class="title">CI/CD</h1>
 </div>
 
 
@@ -350,19 +361,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="project-wide-optimizations" class="level2">
-<h2 class="anchored" data-anchor-id="project-wide-optimizations">Project-wide Optimizations</h2>
-<p>The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.</p>
-<p>For the free way to do this would be to chain selectors like <code>state:modified</code>, <code>source_status:fresher</code>, <code>config.materialized:view</code></p>
-</section>
-<section id="model-wide-optimizations" class="level2">
-<h2 class="anchored" data-anchor-id="model-wide-optimizations">Model-wide Optimizations</h2>
-<p>You would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).</p>
+<p>Slim CI (Pull Requests)</p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-06-26</span></p>
+<p><span class="note-modified">Last modified: 2026-07-13</span></p>
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Google Tag Manager (noscript) -->
@@ -382,6 +385,83 @@ ul.task-list li input[type="checkbox"] {
       }
     }
   });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar section icons. The map (folder path segment -> Iconify id) is
+     regenerated by scripts/sync_notes.py from each nested section's `icon:`
+     frontmatter; the injector below is static. Quarto's auto-sidebar has no
+     per-item template hook, so we inject the <iconify-icon> web component (the
+     same reliable one the gallery cards use) into each section header on load.
+     Matching is by folder path segment, present in the href both before and
+     after Quarto's on-load href rewrite. -->
+<!-- >>> sidebar-icons (regenerated by scripts/sync_notes.py) -->
+<script>window.__SIDEBAR_ICONS__ = {
+  "/003-data-engineering/002-snowflake/": "logos:snowflake-icon",
+  "/003-data-engineering/003-dlt/": "simple-icons:dlthub",
+  "/003-data-engineering/004-dbt/": "logos:dbt-icon",
+  "/003-data-engineering/005-fastapi/": "logos:fastapi-icon"
+};</script>
+<!-- <<< sidebar-icons -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-item-section > .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        for (var seg in MAP) {
+          if (href.indexOf(seg) === -1) continue;
+          var menu = link.querySelector('.menu-text');
+          if (menu && !menu.querySelector('iconify-icon.sidebar-section-icon')) {
+            var ic = document.createElement('iconify-icon');
+            ic.className = 'sidebar-section-icon';
+            ic.setAttribute('icon', MAP[seg]);
+            ic.setAttribute('aria-hidden', 'true');
+            menu.insertBefore(ic, menu.firstChild);
+          }
+          break;
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    } else {
+      inject();
+    }
+  })();
 </script>
 
 <!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
@@ -811,13 +891,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="pagination-link" aria-label="Data Modeling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Modeling</span>
+      <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="pagination-link" aria-label="Documentations">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Documentations</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="pagination-link" aria-label="FastAPI">
-        <span class="nav-page-text">FastAPI</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="pagination-link" aria-label="Data Modeling">
+        <span class="nav-page-text">Data Modeling</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,5 +1,7 @@
 # Conventions
 
+This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.
+
 ## Project Directory Structure
 
 Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:
@@ -40,13 +42,87 @@ Below we’ll discuss what each component is and how to fill them in.
 
 ## Project Level Meta Files
 
-> **NOTE:**
->
-> asdf
+### dbt_project.yml
 
-> **NOTE:**
+### packages.yml
 
-> **NOTE:**
+### profiles.yml
+
+Postgres
+
+Snowflake
+
+``` numberSource
+{project_name}:
+  target: dev
+  outputs:
+    dev:
+      type: {adapter_type}
+      host: "{{ env_var('host') }}"
+      user: "{{ env_var('user') }}"
+      password: "{{ env_var('password') }}"
+      port: "{{ env_var('port') }}"
+      database: DEV_STAGE
+      schema: {public} # default, macro will manage this
+      threads: 16
+    test:
+      type: {adapter_type}
+      host: "{{ env_var('host') }}"
+      user: "{{ env_var('user') }}"
+      password: "{{ env_var('password') }}"
+      port: "{{ env_var('port') }}"
+      database: TEST_STAGE
+      schema: {public} # default, macro will manage this
+      threads: 16
+    prod:
+      type: {adapter_type}
+      host: "{{ env_var('host') }}"
+      user: "{{ env_var('user') }}"
+      password: "{{ env_var('password') }}"
+      port: "{{ env_var('port') }}"
+      database: PROD_STAGE
+      schema: {public} # default, macro will manage this
+      threads: 16
+```
+
+``` numberSource
+{project_name}:
+  target: dev
+  outputs:
+    dev:
+      type: {adapter_type}
+      account: "{{ env_var('account') }}"
+      authenticator: {auth_type}
+      user: "{{ env_var('user') }}"
+      private_key: "{{ env_var('private_key') }}" # use a key-pair auth if possible
+      role: "{{ env_var('role') }}"
+      database: DEV_STAGE
+      schema: {public} # default, macro will manage this
+      warehouse: {warehouse}
+      threads: 16
+    test:
+      type: {adapter_type}
+      account: "{{ env_var('account') }}"
+      authenticator: {auth_type}
+      user: "{{ env_var('user') }}"
+      private_key: "{{ env_var('private_key') }}" # use a key-pair auth if possible
+      role: "{{ env_var('role') }}"
+      database: TEST_STAGE
+      schema: {public} # default, macro will manage this
+      warehouse: CICD_WH
+      threads: 16
+    prod:
+      type: {adapter_type}
+      account: "{{ env_var('account') }}"
+      authenticator: {auth_type}
+      user: "{{ env_var('user') }}"
+      private_key: "{{ env_var('private_key') }}" # use a key-pair auth if possible
+      role: "{{ env_var('role') }}"
+      database: PROD_STAGE
+      schema: {public} # default, macro will manage this
+      warehouse: {warehouse}
+      threads: 16
+```
 
 ## Directory Names
 
@@ -95,6 +171,6 @@ delete+insert checks for a set of keys that you define
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-12
+Last modified: 2026-07-18
 
 Back to top

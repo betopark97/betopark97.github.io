@@ -34,7 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../notes/003-data-engineering/004-dbt/001-setup.html" rel="next">
-<link href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" rel="prev">
+<link href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6f1411da052ef3106e3cf7a18e8e151f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,6 +73,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
+     bootstrap-icons), then reference any icon by name via
+     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
+     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -241,6 +247,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normalization</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -278,13 +290,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CI/CD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -367,6 +385,83 @@ This means that this section does not cover paid services like dbt Cloud or paid
       }
     }
   });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar section icons. The map (folder path segment -> Iconify id) is
+     regenerated by scripts/sync_notes.py from each nested section's `icon:`
+     frontmatter; the injector below is static. Quarto's auto-sidebar has no
+     per-item template hook, so we inject the <iconify-icon> web component (the
+     same reliable one the gallery cards use) into each section header on load.
+     Matching is by folder path segment, present in the href both before and
+     after Quarto's on-load href rewrite. -->
+<!-- >>> sidebar-icons (regenerated by scripts/sync_notes.py) -->
+<script>window.__SIDEBAR_ICONS__ = {
+  "/003-data-engineering/002-snowflake/": "logos:snowflake-icon",
+  "/003-data-engineering/003-dlt/": "simple-icons:dlthub",
+  "/003-data-engineering/004-dbt/": "logos:dbt-icon",
+  "/003-data-engineering/005-fastapi/": "logos:fastapi-icon"
+};</script>
+<!-- <<< sidebar-icons -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-item-section > .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        for (var seg in MAP) {
+          if (href.indexOf(seg) === -1) continue;
+          var menu = link.querySelector('.menu-text');
+          if (menu && !menu.querySelector('iconify-icon.sidebar-section-icon')) {
+            var ic = document.createElement('iconify-icon');
+            ic.className = 'sidebar-section-icon';
+            ic.setAttribute('icon', MAP[seg]);
+            ic.setAttribute('aria-hidden', 'true');
+            menu.insertBefore(ic, menu.firstChild);
+          }
+          break;
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    } else {
+      inject();
+    }
+  })();
 </script>
 
 <!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
@@ -796,8 +891,8 @@ This means that this section does not cover paid services like dbt Cloud or paid
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" class="pagination-link" aria-label="Conventions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conventions</span>
+      <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="pagination-link" aria-label="Normalization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Normalization</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

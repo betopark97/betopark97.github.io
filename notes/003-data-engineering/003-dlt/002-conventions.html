@@ -68,7 +68,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/004-dbt/index.html" rel="next">
+<link href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" rel="next">
 <link href="../../../notes/003-data-engineering/003-dlt/001-setup.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6f1411da052ef3106e3cf7a18e8e151f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +108,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
+     bootstrap-icons), then reference any icon by name via
+     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
+     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -276,6 +282,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normalization</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -313,13 +325,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CI/CD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -364,6 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#configs" id="toc-configs" class="nav-link" data-scroll-target="#configs">Configs</a></li>
   <li><a href="#secrets" id="toc-secrets" class="nav-link" data-scroll-target="#secrets">Secrets</a></li>
   </ul></li>
+  <li><a href="#pipelines" id="toc-pipelines" class="nav-link" data-scroll-target="#pipelines">Pipelines</a></li>
+  <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source">Source</a></li>
   </ul>
 </nav>
     </div>
@@ -413,39 +433,68 @@ Note
 <span id="cb1-4"><a href="#cb1-4"></a>│   ├── secrets.toml                # gitignored — real credentials</span>
 <span id="cb1-5"><a href="#cb1-5"></a>│   └── secrets.toml.example        # committed template</span>
 <span id="cb1-6"><a href="#cb1-6"></a>│</span>
-<span id="cb1-7"><a href="#cb1-7"></a>├── sources/                        # EXTRACT layer — one package per source</span>
-<span id="cb1-8"><a href="#cb1-8"></a>│   ├── __init__.py</span>
-<span id="cb1-9"><a href="#cb1-9"></a>│   │</span>
-<span id="cb1-10"><a href="#cb1-10"></a>│   ├── {source_a}/</span>
-<span id="cb1-11"><a href="#cb1-11"></a>│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions</span>
-<span id="cb1-12"><a href="#cb1-12"></a>│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff</span>
-<span id="cb1-13"><a href="#cb1-13"></a>│   │   ├── settings.py             # constants: base URL, endpoints, default params</span>
-<span id="cb1-14"><a href="#cb1-14"></a>│   │   └── README.md               # what it pulls, quirks, rate limits</span>
-<span id="cb1-15"><a href="#cb1-15"></a>│   │</span>
-<span id="cb1-16"><a href="#cb1-16"></a>│   └── {source_b}/</span>
-<span id="cb1-17"><a href="#cb1-17"></a>│       ├── __init__.py</span>
-<span id="cb1-18"><a href="#cb1-18"></a>│       ├── helpers.py</span>
-<span id="cb1-19"><a href="#cb1-19"></a>│       ├── settings.py</span>
-<span id="cb1-20"><a href="#cb1-20"></a>│       └── README.md</span>
-<span id="cb1-21"><a href="#cb1-21"></a>│</span>
-<span id="cb1-22"><a href="#cb1-22"></a>├── pipelines/                      # LOAD/RUN layer — one runner per pipeline</span>
-<span id="cb1-23"><a href="#cb1-23"></a>│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())</span>
-<span id="cb1-24"><a href="#cb1-24"></a>│   └── {source_b}_pipeline.py</span>
-<span id="cb1-25"><a href="#cb1-25"></a>│</span>
-<span id="cb1-26"><a href="#cb1-26"></a>├── schemas/                        # optional — schema contracts</span>
-<span id="cb1-27"><a href="#cb1-27"></a>│   ├── export/                     # dlt writes inferred schemas here</span>
-<span id="cb1-28"><a href="#cb1-28"></a>│   └── import/                     # pin/edit schemas here to enforce them</span>
-<span id="cb1-29"><a href="#cb1-29"></a>│</span>
-<span id="cb1-30"><a href="#cb1-30"></a>├── tests/                          # mirror sources/ structure</span>
-<span id="cb1-31"><a href="#cb1-31"></a>│   ├── conftest.py</span>
-<span id="cb1-32"><a href="#cb1-32"></a>│   ├── test_{source_a}.py</span>
-<span id="cb1-33"><a href="#cb1-33"></a>│   └── test_{source_b}.py</span>
-<span id="cb1-34"><a href="#cb1-34"></a>│</span>
-<span id="cb1-35"><a href="#cb1-35"></a>├── pyproject.toml                  # deps: dlt[{destination}] + source libs</span>
-<span id="cb1-36"><a href="#cb1-36"></a>├── uv.lock</span>
-<span id="cb1-37"><a href="#cb1-37"></a>├── .python-version</span>
-<span id="cb1-38"><a href="#cb1-38"></a>├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.</span>
-<span id="cb1-39"><a href="#cb1-39"></a>└── README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7"></a># &gt;&gt;&gt; custom sources &amp; destinations</span>
+<span id="cb1-8"><a href="#cb1-8"></a>├── sources/                        # EXTRACT layer — one package per source</span>
+<span id="cb1-9"><a href="#cb1-9"></a>│   ├── __init__.py</span>
+<span id="cb1-10"><a href="#cb1-10"></a>│   │</span>
+<span id="cb1-11"><a href="#cb1-11"></a>│   ├── {source_a}/</span>
+<span id="cb1-12"><a href="#cb1-12"></a>│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions</span>
+<span id="cb1-13"><a href="#cb1-13"></a>│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff</span>
+<span id="cb1-14"><a href="#cb1-14"></a>│   │   ├── settings.py             # constants: base URL, endpoints, default params</span>
+<span id="cb1-15"><a href="#cb1-15"></a>│   │   └── README.md               # what it pulls, quirks, rate limits</span>
+<span id="cb1-16"><a href="#cb1-16"></a>│   │</span>
+<span id="cb1-17"><a href="#cb1-17"></a>│   └── {source_b}/</span>
+<span id="cb1-18"><a href="#cb1-18"></a>│       ├── __init__.py</span>
+<span id="cb1-19"><a href="#cb1-19"></a>│       ├── helpers.py</span>
+<span id="cb1-20"><a href="#cb1-20"></a>│       ├── settings.py</span>
+<span id="cb1-21"><a href="#cb1-21"></a>│       └── README.md</span>
+<span id="cb1-22"><a href="#cb1-22"></a>│</span>
+<span id="cb1-23"><a href="#cb1-23"></a>├── destinations/                   # LOAD layer — one package per custom destination</span>
+<span id="cb1-24"><a href="#cb1-24"></a>│   ├── __init__.py</span>
+<span id="cb1-25"><a href="#cb1-25"></a>│   │</span>
+<span id="cb1-26"><a href="#cb1-26"></a>│   ├── {destination_a}/</span>
+<span id="cb1-27"><a href="#cb1-27"></a>│   │   ├── __init__.py             # @dlt.destination definitions</span>
+<span id="cb1-28"><a href="#cb1-28"></a>│   │   ├── helpers.py              # client, auth, write/flush logic</span>
+<span id="cb1-29"><a href="#cb1-29"></a>│   │   └── settings.py             # constants: endpoints, batch size, defaults</span>
+<span id="cb1-30"><a href="#cb1-30"></a>│   │</span>
+<span id="cb1-31"><a href="#cb1-31"></a>│   └── {destination_b}/</span>
+<span id="cb1-32"><a href="#cb1-32"></a>│       ├── __init__.py</span>
+<span id="cb1-33"><a href="#cb1-33"></a>│       ├── helpers.py</span>
+<span id="cb1-34"><a href="#cb1-34"></a>│       └── settings.py</span>
+<span id="cb1-35"><a href="#cb1-35"></a># &lt;&lt;&lt; custom sources &amp; destinations</span>
+<span id="cb1-36"><a href="#cb1-36"></a>│</span>
+<span id="cb1-37"><a href="#cb1-37"></a>├── pipelines/                      # LOAD/RUN layer — one runner per pipeline</span>
+<span id="cb1-38"><a href="#cb1-38"></a>│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())</span>
+<span id="cb1-39"><a href="#cb1-39"></a>│   └── {source_b}_pipeline.py</span>
+<span id="cb1-40"><a href="#cb1-40"></a>│</span>
+<span id="cb1-41"><a href="#cb1-41"></a>├── schemas/                        # optional — schema contracts</span>
+<span id="cb1-42"><a href="#cb1-42"></a>│   ├── export/                     # dlt writes inferred schemas here</span>
+<span id="cb1-43"><a href="#cb1-43"></a>│   └── import/                     # pin/edit schemas here to enforce them</span>
+<span id="cb1-44"><a href="#cb1-44"></a>│</span>
+<span id="cb1-45"><a href="#cb1-45"></a>├── tests/                          # mirror sources/ structure</span>
+<span id="cb1-46"><a href="#cb1-46"></a>│   ├── conftest.py</span>
+<span id="cb1-47"><a href="#cb1-47"></a>│   ├── test_{source_a}.py</span>
+<span id="cb1-48"><a href="#cb1-48"></a>│   └── test_{source_b}.py</span>
+<span id="cb1-49"><a href="#cb1-49"></a>│</span>
+<span id="cb1-50"><a href="#cb1-50"></a>├── pyproject.toml                  # deps: dlt[{destination}] + source libs</span>
+<span id="cb1-51"><a href="#cb1-51"></a>├── uv.lock</span>
+<span id="cb1-52"><a href="#cb1-52"></a>├── .python-version</span>
+<span id="cb1-53"><a href="#cb1-53"></a>├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.</span>
+<span id="cb1-54"><a href="#cb1-54"></a>└── README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Below will be an explanation of each of the subdirectories and files in logical order. Meaning that this is the order I would fill in the code to run my pipelines.</p>
+<div class="callout callout-style-default callout-titled" data-callout="tip">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A good way to build a robust pipeline is to think in enhancing the project in the following order: secrets, idempotency, error/retry handling, incremental optimizations, observability, scheduling, tests, schema drifts. This does not apply only for dlt, but for all data pipelines, too.</p>
+</div>
 </div>
 </section>
 <section id="configs-secrets" class="level2">
@@ -500,11 +549,42 @@ Note
 <span id="cb3-14"><a href="#cb3-14"></a><span class="dt">password</span> <span class="op">=</span> <span class="st">"..."</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="dt">database</span> <span class="op">=</span> <span class="st">"..."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<hr>
-<p><span class="note-modified">Last modified: 2026-07-12</span></p>
-
-
 </section>
+</section>
+<section id="pipelines" class="level2">
+<h2 class="anchored" data-anchor-id="pipelines">Pipelines</h2>
+<p>Normally pipeline files are the starting point. It calls a source and destination through the decorators <code>@dlt.source</code> and <code>@dlt.destination</code>. However, we wouldn’t make all the mess of using dlt for a project that wouldn’t scale. That’s why I plan to start with a scaffold that I’ve provided above in the directory structure part with the tree.</p>
+<p>The pipeline script should look something like the following:</p>
+<div class="term" data-title="python">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> dlt</span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="im">from</span> sources.{source_dir} <span class="im">import</span> {source_dir}</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> run() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    pipeline <span class="op">=</span> dlt.pipeline(</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        pipeline_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9"></a>        destination<span class="op">=</span><span class="st">"</span><span class="sc">{destination}</span><span class="st">"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10"></a>        dataset_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    )</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    load_info <span class="op">=</span> pipeline.run({source_dir}())</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="cf">return</span> load_info</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    </span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    run()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="source" class="level2">
+<h2 class="anchored" data-anchor-id="source">Source</h2>
+<p>let’s set the <code>@dlt.source</code>’s parameter to <code>max_table_nesting=0</code> so that it doesn’t do any normalization and we strictly do all transformations in <code>dbt</code> the right tool for transformation. we thus use dlt only for what it’s best: extraction and loading (normally dlt works in three steps under the hood: extraction, normalization, and loading).</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1"></a>@dlt.source(name="{source_name}", max_table_nesting=0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<hr>
+<p><span class="note-modified">Last modified: 2026-07-17</span></p>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -525,6 +605,83 @@ Note
       }
     }
   });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar section icons. The map (folder path segment -> Iconify id) is
+     regenerated by scripts/sync_notes.py from each nested section's `icon:`
+     frontmatter; the injector below is static. Quarto's auto-sidebar has no
+     per-item template hook, so we inject the <iconify-icon> web component (the
+     same reliable one the gallery cards use) into each section header on load.
+     Matching is by folder path segment, present in the href both before and
+     after Quarto's on-load href rewrite. -->
+<!-- >>> sidebar-icons (regenerated by scripts/sync_notes.py) -->
+<script>window.__SIDEBAR_ICONS__ = {
+  "/003-data-engineering/002-snowflake/": "logos:snowflake-icon",
+  "/003-data-engineering/003-dlt/": "simple-icons:dlthub",
+  "/003-data-engineering/004-dbt/": "logos:dbt-icon",
+  "/003-data-engineering/005-fastapi/": "logos:fastapi-icon"
+};</script>
+<!-- <<< sidebar-icons -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-item-section > .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        for (var seg in MAP) {
+          if (href.indexOf(seg) === -1) continue;
+          var menu = link.querySelector('.menu-text');
+          if (menu && !menu.querySelector('iconify-icon.sidebar-section-icon')) {
+            var ic = document.createElement('iconify-icon');
+            ic.className = 'sidebar-section-icon';
+            ic.setAttribute('icon', MAP[seg]);
+            ic.setAttribute('aria-hidden', 'true');
+            menu.insertBefore(ic, menu.firstChild);
+          }
+          break;
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    } else {
+      inject();
+    }
+  })();
 </script>
 
 <!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
@@ -959,8 +1116,8 @@ Note
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="pagination-link" aria-label="dbt">
-        <span class="nav-page-text">dbt</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="pagination-link" aria-label="Normalization">
+        <span class="nav-page-text">Normalization</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

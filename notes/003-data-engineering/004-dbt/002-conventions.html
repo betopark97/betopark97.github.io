@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6f1411da052ef3106e3cf7a18e8e151f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -108,6 +108,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
+     bootstrap-icons), then reference any icon by name via
+     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
+     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -276,6 +282,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Normalization</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -313,13 +325,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-data-modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">CI/CD</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/007-optimize-build-time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Optimize Build Time</span></a>
   </div>
 </li>
@@ -359,7 +377,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#project-directory-structure" id="toc-project-directory-structure" class="nav-link active" data-scroll-target="#project-directory-structure">Project Directory Structure</a></li>
-  <li><a href="#project-level-meta-files" id="toc-project-level-meta-files" class="nav-link" data-scroll-target="#project-level-meta-files">Project Level Meta Files</a></li>
+  <li><a href="#project-level-meta-files" id="toc-project-level-meta-files" class="nav-link" data-scroll-target="#project-level-meta-files">Project Level Meta Files</a>
+  <ul class="collapse">
+  <li><a href="#dbt_project.yml" id="toc-dbt_project.yml" class="nav-link" data-scroll-target="#dbt_project.yml">dbt_project.yml</a></li>
+  <li><a href="#packages.yml" id="toc-packages.yml" class="nav-link" data-scroll-target="#packages.yml">packages.yml</a></li>
+  <li><a href="#profiles.yml" id="toc-profiles.yml" class="nav-link" data-scroll-target="#profiles.yml">profiles.yml</a></li>
+  </ul></li>
   <li><a href="#directory-names" id="toc-directory-names" class="nav-link" data-scroll-target="#directory-names">Directory Names</a></li>
   <li><a href="#meta-names" id="toc-meta-names" class="nav-link" data-scroll-target="#meta-names">Meta Names</a></li>
   <li><a href="#model-names" id="toc-model-names" class="nav-link" data-scroll-target="#model-names">Model Names</a></li>
@@ -392,6 +415,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.</p>
 <section id="project-directory-structure" class="level2">
 <h2 class="anchored" data-anchor-id="project-directory-structure">Project Directory Structure</h2>
 <p>Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:</p>
@@ -430,44 +454,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="project-level-meta-files" class="level2">
 <h2 class="anchored" data-anchor-id="project-level-meta-files">Project Level Meta Files</h2>
-<div class="callout callout-style-default callout-titled" data-callout="example">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<section id="dbt_project.yml" class="level3">
+<h3 class="anchored" data-anchor-id="dbt_project.yml">dbt_project.yml</h3>
+</section>
+<section id="packages.yml" class="level3">
+<h3 class="anchored" data-anchor-id="packages.yml">packages.yml</h3>
+</section>
+<section id="profiles.yml" class="level3">
+<h3 class="anchored" data-anchor-id="profiles.yml">profiles.yml</h3>
+<div class="doc-tabs">
+<div class="doc-tabs__nav" role="tablist"><button type="button" class="doc-tabs__tab is-active" id="dtab-1-1-label" role="tab" aria-controls="dtab-1-1" aria-selected="true" tabindex="0">Postgres</button><button type="button" class="doc-tabs__tab" id="dtab-1-2-label" role="tab" aria-controls="dtab-1-2" aria-selected="false" tabindex="-1">Snowflake</button></div>
+<div class="doc-tabs__panels">
+<div id="dtab-1-1" class="doc-tabs__panel is-active" role="tabpanel" aria-labelledby="dtab-1-1-label">
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="at">  </span><span class="fu">target</span><span class="kw">:</span><span class="at"> dev</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="at">  </span><span class="fu">outputs</span><span class="kw">:</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> DEV_STAGE</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="at">    </span><span class="fu">test</span><span class="kw">:</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> TEST_STAGE</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="at">    </span><span class="fu">prod</span><span class="kw">:</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb2-24"><a href="#cb2-24"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> PROD_STAGE</span></span>
+<span id="cb2-29"><a href="#cb2-29"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="callout-title-container flex-fill">
-<code>dbt_project.yml</code>
 </div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+<div id="dtab-1-2" class="doc-tabs__panel" role="tabpanel" aria-labelledby="dtab-1-2-label" hidden="">
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="at">  </span><span class="fu">target</span><span class="kw">:</span><span class="at"> dev</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="at">  </span><span class="fu">outputs</span><span class="kw">:</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> DEV_STAGE</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">warehouse</span><span class="kw">}</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="at">    </span><span class="fu">test</span><span class="kw">:</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> TEST_STAGE</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> CICD_WH</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="at">    </span><span class="fu">prod</span><span class="kw">:</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> PROD_STAGE</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">warehouse</span><span class="kw">}</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>asdf</p>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-titled" data-callout="example">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code>packages.yml</code>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-</div>
-<div class="callout callout-style-default callout-titled" data-callout="example">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" aria-label="Toggle callout" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<code>profiles.yml</code>
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-</div>
+</div></div>
+</section>
 </section>
 <section id="directory-names" class="level2">
 <h2 class="anchored" data-anchor-id="directory-names">Directory Names</h2>
@@ -513,7 +586,7 @@ delete+insert checks for a set of keys that you define</p>
 <li>no select stars</li>
 </ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-12</span></p>
+<p><span class="note-modified">Last modified: 2026-07-18</span></p>
 
 
 </section>
@@ -536,6 +609,83 @@ delete+insert checks for a set of keys that you define</p>
       }
     }
   });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar section icons. The map (folder path segment -> Iconify id) is
+     regenerated by scripts/sync_notes.py from each nested section's `icon:`
+     frontmatter; the injector below is static. Quarto's auto-sidebar has no
+     per-item template hook, so we inject the <iconify-icon> web component (the
+     same reliable one the gallery cards use) into each section header on load.
+     Matching is by folder path segment, present in the href both before and
+     after Quarto's on-load href rewrite. -->
+<!-- >>> sidebar-icons (regenerated by scripts/sync_notes.py) -->
+<script>window.__SIDEBAR_ICONS__ = {
+  "/003-data-engineering/002-snowflake/": "logos:snowflake-icon",
+  "/003-data-engineering/003-dlt/": "simple-icons:dlthub",
+  "/003-data-engineering/004-dbt/": "logos:dbt-icon",
+  "/003-data-engineering/005-fastapi/": "logos:fastapi-icon"
+};</script>
+<!-- <<< sidebar-icons -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-item-section > .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        for (var seg in MAP) {
+          if (href.indexOf(seg) === -1) continue;
+          var menu = link.querySelector('.menu-text');
+          if (menu && !menu.querySelector('iconify-icon.sidebar-section-icon')) {
+            var ic = document.createElement('iconify-icon');
+            ic.className = 'sidebar-section-icon';
+            ic.setAttribute('icon', MAP[seg]);
+            ic.setAttribute('aria-hidden', 'true');
+            menu.insertBefore(ic, menu.firstChild);
+          }
+          break;
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    } else {
+      inject();
+    }
+  })();
 </script>
 
 <!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->

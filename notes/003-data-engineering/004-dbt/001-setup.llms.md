@@ -1,6 +1,18 @@
 # Setup
 
-## Installation: dbt Fusion
+## Installation
+
+dbt core
+
+dbt Fusion
+
+``` numberSource
+# Pyproject.toml
+uv add dbt-core
+
+# Adapter package (of choice)
+uv add dbt-snowflake dbt-postgres
+```
 
 > **NOTE:**
 >
@@ -12,16 +24,6 @@ curl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --upda
 
 # Brew install
 brew install dbt
-```
-
-## Installation: dbt core
-
-``` numberSource
-# Pyproject.toml
-uv add dbt-core
-
-# Provider (of choice)
-uv add dbt-snowflake dbt-postgres
 ```
 
 ## Check installation
@@ -53,6 +55,6 @@ dbt init --skip-profile-setup
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-08
+Last modified: 2026-07-19
 
 Back to top

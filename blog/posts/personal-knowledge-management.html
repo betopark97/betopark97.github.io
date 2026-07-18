@@ -45,7 +45,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-cb3688a6cf2847f8e94daf9bb1c1a79a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6f1411da052ef3106e3cf7a18e8e151f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,6 +73,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
+     bootstrap-icons), then reference any icon by name via
+     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
+     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
+<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
 <script>
@@ -217,8 +223,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p>I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.</p>
-<p>I like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable - not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.</p>
-<p>The frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These’s were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).</p>
+<p>I like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable. Not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.</p>
+<p>The frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).</p>
 <div class="callout callout-style-default callout-titled" data-callout="note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -289,7 +295,8 @@ Note
 <li><p>Reflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.</p></li>
 <li><p>Engage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is <code>Command + Shift + F</code> and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a <code>Command + Shift + K</code> in Notion, which I can free from my brain now.</p></li>
 </ol>
-<p>In conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details - you just have to remember the location, which you put effort to structure so it’s easier to remember. Also it’s managing an external brain where knowledge compounds over time, adding value.</p>
+<p>In conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details; you just have to remember the location, which you put effort to structure so it’s easier to remember. Also, it’s managing an external brain where knowledge compounds over time, adding value.</p>
+<p>p.s. From time to time, I think sometimes I’m overengineering stuff, which is bad for productivity. For example, when I spend time restructure the folders and files and how to divide the contents and stuff. However, I think I enjoy doing this and also it makes me understand what I want to document better so do what’s good for you! Good luck!</p>
 
 
 
@@ -311,6 +318,83 @@ Note
       }
     }
   });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar section icons. The map (folder path segment -> Iconify id) is
+     regenerated by scripts/sync_notes.py from each nested section's `icon:`
+     frontmatter; the injector below is static. Quarto's auto-sidebar has no
+     per-item template hook, so we inject the <iconify-icon> web component (the
+     same reliable one the gallery cards use) into each section header on load.
+     Matching is by folder path segment, present in the href both before and
+     after Quarto's on-load href rewrite. -->
+<!-- >>> sidebar-icons (regenerated by scripts/sync_notes.py) -->
+<script>window.__SIDEBAR_ICONS__ = {
+  "/003-data-engineering/002-snowflake/": "logos:snowflake-icon",
+  "/003-data-engineering/003-dlt/": "simple-icons:dlthub",
+  "/003-data-engineering/004-dbt/": "logos:dbt-icon",
+  "/003-data-engineering/005-fastapi/": "logos:fastapi-icon"
+};</script>
+<!-- <<< sidebar-icons -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-item-section > .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        for (var seg in MAP) {
+          if (href.indexOf(seg) === -1) continue;
+          var menu = link.querySelector('.menu-text');
+          if (menu && !menu.querySelector('iconify-icon.sidebar-section-icon')) {
+            var ic = document.createElement('iconify-icon');
+            ic.className = 'sidebar-section-icon';
+            ic.setAttribute('icon', MAP[seg]);
+            ic.setAttribute('aria-hidden', 'true');
+            menu.insertBefore(ic, menu.firstChild);
+          }
+          break;
+        }
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inject);
+    } else {
+      inject();
+    }
+  })();
 </script>
 
 <!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
