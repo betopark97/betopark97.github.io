@@ -1,0 +1,66 @@
+/*-- scss:rules --*/
+
+// Custom "content tabs" for the Obsidian Tabs plugin syntax, emitted by
+// assets/filters/obsidian-tabs.lua and switched by the script in
+// assets/html/custom_body.html. Styled after the per-OS install tabs common
+// in documentation sites (MkDocs Material / Docusaurus): a flat button strip
+// with an accent underline on the active tab, sitting over a shared rule.
+
+.doc-tabs {
+  margin: 1.4rem 0;
+}
+
+.doc-tabs__nav {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  overflow-x: auto;                 // many OS tabs -> scroll rather than wrap
+  border-bottom: 1px solid $ctp-surface1;
+  scrollbar-width: none;            // hide the scrollbar; tabs stay swipeable
+  &::-webkit-scrollbar { display: none; }
+}
+
+.doc-tabs__tab {
+  flex: 0 0 auto;
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;              // overlap the nav rule so the accent aligns
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: $ctp-subtext0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    color: $ctp-text;
+  }
+
+  &:focus-visible {
+    outline: none;
+    color: $ctp-text;
+    border-bottom-color: $ctp-surface2;
+  }
+
+  &.is-active {
+    color: $ctp-blue;
+    border-bottom-color: $ctp-blue;
+  }
+}
+
+.doc-tabs__panel {
+  padding-top: 0.9rem;
+
+  &[hidden] {
+    display: none;
+  }
+
+  // Collapse the leading/trailing margins of nested content so the panel's
+  // own padding controls the spacing (code blocks, callouts, paragraphs).
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
+}

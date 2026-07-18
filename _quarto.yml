@@ -10,6 +10,7 @@ project:
     - assets/_aboutme.md
 
 filters:
+  - assets/filters/obsidian-tabs.lua
   - assets/filters/obsidian-callouts.lua
   - assets/filters/term-codeblocks.lua
   - assets/filters/responsive-tables.lua
@@ -29,6 +30,7 @@ format:
       - assets/scss/catppuccin-mocha.scss
       - assets/scss/styles.scss
       - assets/scss/obsidian-callouts.scss
+      - assets/scss/obsidian-tabs.scss
     toc: true
     html-math-method: katex
     code-line-numbers: true
@@ -142,6 +144,7 @@ website:
         - notes/005-business-intelligence/001-intro.md
         - notes/005-business-intelligence/002-ui-ux.md
         - notes/005-business-intelligence/003-visualization.md
+        - notes/005-business-intelligence/004-streamlit.md
     - id: notes-006-machine-learning
       title: "Machine Learning"
       tools:
