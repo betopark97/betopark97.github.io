@@ -82,8 +82,13 @@ The full rules live in [conventions.md](conventions.md). In short:
   e.g. `001-terminal/`, `003-data-engineering/001-data-modeling/`.
 - **Every folder has an `index.md`** with `title` (all folders), plus
   `description` and `icon` for top-level categories (these feed the gallery
-  card). `icon:` is a [Bootstrap Icons](https://icons.getbootstrap.com/) name
-  minus the `bi-` prefix (e.g. `icon: diagram-3`). Keep emoji out of `title`.
+  card). A subsection's `icon:` also renders — as its sidebar section icon.
+  `icon:` is either a **bare [Bootstrap Icons](https://icons.getbootstrap.com/)
+  name** — no prefix needed, Bootstrap is native to Quarto (e.g.
+  `icon: diagram-3`) — or a **prefixed Iconify id** for brand logos etc. (e.g.
+  `icon: logos:snowflake-icon`). The colon is the switch; full rules and how to
+  pick are in [conventions.md](conventions.md#picking-an-icon). Keep emoji out
+  of `title`.
 - **Files** are named `NNN-slug.md`; each note's `title:` frontmatter sets its
   sidebar label, independent of filename.
 - The vault's **top-level `index.md`** body becomes the gallery's intro text.

@@ -75,21 +75,30 @@ Body text becomes the section's landing-page overview.
 |---|---|---|
 | `title` | every folder | sidebar label, gallery card title, page `<h1>` |
 | `description` | top-level categories | gallery card text + SEO `<meta>` (hidden as on-page subtitle) |
-| `icon` | top-level categories | gallery card icon |
+| `icon` | top-level categories; optional on subsections | gallery card icon (category) / sidebar section icon (subsection) |
 
 Notes:
 
 - **No emoji in `title`.** Titles are plain text; the visual icon comes from
   `icon:`. (Emoji in the title would leak into the sidebar and page heading.)
-- Subsections only need `title`. Adding `description`/`icon` to them is harmless
-  and future-proofs (e.g. if sub-galleries are ever added), but they aren't
-  rendered today.
+- Subsections need only `title`. An `icon:` on a subsection **is** rendered — as
+  that section's icon in the sidebar (same `icon:` rules as below). A
+  `description:` on a subsection is unused today.
 
 #### Picking an `icon:`
 
-`icon:` is a [Bootstrap Icons](https://icons.getbootstrap.com/) name **without
-the `bi-` prefix**. On that site, each icon shows as `<i class="bi bi-cloud">`
-— copy the part after `bi-`:
+Two icon systems are wired in, and the **shape of the value** decides which —
+the presence of a colon is the whole distinction:
+
+| Write | Renders via | Example |
+|---|---|---|
+| a **bare** name (no colon) | **Bootstrap Icons** — native to Quarto | `icon: diagram-3` |
+| a **`set:name`** id (has a colon) | **Iconify** — brand logos and any other set | `icon: logos:snowflake-icon` |
+
+**Bootstrap (bare name).** [Bootstrap Icons](https://icons.getbootstrap.com/) is
+the icon set Quarto **ships natively** — it bundles the font on every page — so
+you write the name with **no prefix at all** (not even `bi:`), just the part
+after `bi-` that the site shows:
 
 ```yaml
 icon: cloud          # ☁  → renders <i class="bi bi-cloud">
@@ -97,7 +106,36 @@ icon: diagram-3      # ⛓  pipelines / nodes
 icon: hdd-rack       # 🗄  server rack
 ```
 
-A misspelled or empty name simply renders no glyph — no breakage.
+These are free, instant, and offline — nothing is fetched.
+
+**Iconify / shadcn logos (`set:name`).** For anything Bootstrap lacks — brand
+logos especially — use a full **Iconify id**, which always has a set name, a
+colon, then the icon name. Quarto doesn't know these natively; the repo loads
+the [Iconify](https://iconify.design/) web component to render them (fetched
+from Iconify at load, then cached). Browse
+[icon-sets.iconify.design](https://icon-sets.iconify.design/) or shadcn.io — the
+brand-logo set is `logos`:
+
+```yaml
+icon: logos:snowflake-icon   # Snowflake brand mark
+icon: logos:dbt-icon         # dbt brand mark
+icon: logos:fastapi-icon     # FastAPI brand mark
+icon: simple-icons:duckdb    # other Iconify sets work too
+```
+
+Notes:
+
+- **The colon is the switch:** no colon → Bootstrap (native, bundled); a colon →
+  Iconify (fetched). Don't add `bi:` to a Bootstrap name — bare is what routes it
+  to the native font.
+- shadcn.io shows a logo as `logos-snowflake`; here you write it with a **colon**
+  (`logos:snowflake-icon`). The `-icon` square variants read best in the small
+  slot.
+- Sanity-check any Iconify id by opening
+  `https://api.iconify.design/logos/snowflake-icon.svg` — if it shows the logo,
+  it'll render.
+- A misspelled Bootstrap name or bad Iconify id simply renders nothing — no
+  breakage.
 
 ### 3. Files: numbered + kebab-case
 
