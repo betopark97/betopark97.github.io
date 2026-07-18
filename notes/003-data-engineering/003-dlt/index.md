@@ -1,5 +1,6 @@
 ---
 title: dlt
+icon: simple-icons:dlthub
 ---
 This dlt guide / note will be updated to follow the most stable version of the dlt package.
 This means that this section does not cover paid services like dltHub or paid features.

@@ -1,5 +1,6 @@
 ---
-title: "dbt"
+title: dbt
+icon: logos:dbt-icon
 ---
 This dbt guide / note will be updated to follow the most stable version of the dbt-core package.
 This means that this section does not cover paid services like dbt Cloud or paid features (or freemium) like dbt State.
