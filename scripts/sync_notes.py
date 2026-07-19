@@ -295,28 +295,49 @@ def to_iconify_id(icon: str) -> str:
     return icon if ":" in icon else f"bi:{icon}"
 
 
+def collect_icon_map(directory: Path, prefix: str, mapping: dict[str, str]) -> None:
+    """Recursively collect `icon:` frontmatter into `mapping`, keyed by the URL
+    path segment the injector matches against each sidebar href:
+
+      - a subsection folder -> `<prefix>/<name>/` (trailing slash), icon read
+        from the folder's index.md;
+      - a leaf note (`.md`/`.qmd`) -> `<prefix>/<stem>` (no slash, no
+        extension), icon read from the note's own frontmatter — so a single
+        file can carry a sidebar icon without needing a folder + index.md.
+
+    Both key shapes appear verbatim in the rendered href (`.../<stem>.html`,
+    `.../<name>/index.html`), so the injector's substring + longest-match logic
+    resolves each item to the most specific key."""
+    for child in sorted(directory.iterdir(), key=lambda p: p.name):
+        if child.name == "index.md" or child.name.startswith("."):
+            continue
+        if child.is_dir():
+            icon = read_frontmatter(child / "index.md").get("icon")
+            if icon:
+                mapping[f"{prefix}/{child.name}/"] = to_iconify_id(icon)
+            collect_icon_map(child, f"{prefix}/{child.name}", mapping)
+        elif child.suffix in (".md", ".qmd"):
+            icon = read_frontmatter(child).get("icon")
+            if icon:
+                mapping[f"{prefix}/{child.stem}"] = to_iconify_id(icon)
+
+
 def update_sidebar_icons(slugs: list[str]) -> None:
     """Regenerate the sidebar-icons data block in custom_body.html: a JSON map
-    of each nested section's folder path segment -> Iconify id, read from its
-    `icon:` frontmatter. A static script in custom_body.html injects an
-    <iconify-icon> into the matching sidebar section header on load -- the same
-    reliable Iconify web component the gallery cards use. Quarto's auto-sidebar
-    has no per-item template hook, so JS injection is the only way to place a
-    real element there. Matching is by folder path segment, which is present in
-    the href both before and after Quarto's on-load rewrite. Mirrors the
-    gallery-card convention (bare = Bootstrap, `set:name` = Iconify) one level
-    deeper in the tree."""
+    of each note/subsection's URL path segment -> Iconify id, read from its
+    `icon:` frontmatter (subsection folders via their index.md, leaf notes via
+    their own). A static script in custom_body.html injects an <iconify-icon>
+    into the matching sidebar item on load -- the same reliable Iconify web
+    component the gallery cards use. Quarto's auto-sidebar has no per-item
+    template hook, so JS injection is the only way to place a real element
+    there. Matching is by path segment, present in the href both before and
+    after Quarto's on-load rewrite. Mirrors the gallery-card convention (bare =
+    Bootstrap, `set:name` = Iconify) deeper in the tree."""
     mapping: dict[str, str] = {}
     for slug in sorted(slugs):
         cat_dir = NOTES_DIR / slug
-        if not cat_dir.is_dir():
-            continue
-        for child in sorted(cat_dir.iterdir(), key=lambda p: p.name):
-            if not child.is_dir():
-                continue
-            icon = read_frontmatter(child / "index.md").get("icon")
-            if icon:
-                mapping[f"/{slug}/{child.name}/"] = to_iconify_id(icon)
+        if cat_dir.is_dir():
+            collect_icon_map(cat_dir, f"/{slug}", mapping)
 
     payload = json.dumps(mapping, indent=2, sort_keys=True)
     block = "\n".join([

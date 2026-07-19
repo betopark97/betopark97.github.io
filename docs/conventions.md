@@ -75,7 +75,7 @@ Body text becomes the section's landing-page overview.
 |---|---|---|
 | `title` | every folder | sidebar label, gallery card title, page `<h1>` |
 | `description` | top-level categories | gallery card text + SEO `<meta>` (hidden as on-page subtitle) |
-| `icon` | top-level categories; optional on subsections | gallery card icon (category) / sidebar section icon (subsection) |
+| `icon` | top-level categories; optional on subsections and leaf notes | gallery card icon (category) / sidebar icon (subsection *and* leaf note) |
 
 Notes:
 
@@ -84,6 +84,11 @@ Notes:
 - Subsections need only `title`. An `icon:` on a subsection **is** rendered — as
   that section's icon in the sidebar (same `icon:` rules as below). A
   `description:` on a subsection is unused today.
+- **Leaf notes can carry an `icon:` too**, rendered next to their sidebar
+  entry — so a single note gets an icon without needing to be promoted to a
+  folder + `index.md`. Same `icon:` rules as below (see `009-devtools/`, where
+  each tool is a plain file with its own logo). If a note nested inside an
+  iconed subsection also sets `icon:`, the note's own icon wins for its row.
 
 #### Picking an `icon:`
 
