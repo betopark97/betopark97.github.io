@@ -129,8 +129,12 @@ This section is for managing the windows (splitting the terminal into multiple p
 > When SSH-ing into a server use the `kitten` command else the shell will be very buggy.  
 > For example, `kitten ssh user@xxx.xx.xx.xxx`
 
+> **NOTE:**
+>
+> When opening links, do `ctrl + click`.
+
 ------------------------------------------------------------------------
 
-Last modified: 2026-06-22
+Last modified: 2026-07-22
 
 Back to top

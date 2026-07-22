@@ -93,114 +93,130 @@
     ]
   },
   {
-    "objectID": "notes/009-devtools/003-dbeaver.html",
-    "href": "notes/009-devtools/003-dbeaver.html",
-    "title": "DBeaver",
+    "objectID": "notes/009-devtools/004-obsidian.html",
+    "href": "notes/009-devtools/004-obsidian.html",
+    "title": "Obsidian",
     "section": "",
-    "text": "driver properties\nname: private_key_file\nvalue: $PATH to rsa_key.p8\nUser Interfaces &gt; Keys:\n- move lines up - option up\n- move lines down - option down\n\nLast modified: 2026-06-27\n\n\n\n Back to top",
+    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
     "crumbs": [
-      "DBeaver"
+      "Obsidian"
     ]
   },
   {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html",
-    "href": "notes/009-devtools/001-kitty-terminal.html",
-    "title": "Kitty Terminal",
+    "objectID": "notes/009-devtools/002-vs-code.html",
+    "href": "notes/009-devtools/002-vs-code.html",
+    "title": "Visual Studio Code",
     "section": "",
-    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
+    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
     "crumbs": [
-      "Kitty Terminal"
+      "Visual Studio Code"
     ]
   },
   {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#intro",
-    "href": "notes/009-devtools/001-kitty-terminal.html#intro",
-    "title": "Kitty Terminal",
-    "section": "",
-    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#setup",
-    "href": "notes/009-devtools/001-kitty-terminal.html#setup",
-    "title": "Kitty Terminal",
-    "section": "Setup",
-    "text": "Setup\n\nBinary Install\n\ncurl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin\n\n\n\nBrew Install (Recommended)\n\nbrew install --cask kitty",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#configurations",
-    "href": "notes/009-devtools/001-kitty-terminal.html#configurations",
-    "title": "Kitty Terminal",
-    "section": "Configurations",
-    "text": "Configurations\nThe configurations that I’ve made to Kitty are as follows and it consists of only two files:\n\nmain configurations: ~/.config/kitty/kitty.conf\ntheme configurations: ~/.config/kitty/current-theme.conf\n\n\nkitty.conf\n\nFont\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nfont_size\n24.0\nBase font size\n\n\n\n\n\n\nWindow\n\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nremember_window_size\nyes\nReopen at last size\n\n\nremember_window_position\nyes\nReopen at last position\n\n\nenabled_layouts\ntall, grid\nSplitting layouts (multiplexing)\n\n\nwindow_border_width\n3pt\nBorder thickness\n\n\ndraw_minimal_borders\nno\nDraw full borders\n\n\nwindow_padding_width\n7\nInner padding\n\n\nactive_border_color\n#fab387\nFocused window border (peach)\n\n\ninactive_border_color\n#585b70\nUnfocused window border\n\n\n\n\n\n\nAppearance\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nbackground_opacity\n0.8\nTransparent background\n\n\nbackground_blur\n1\nBlur behind transparency\n\n\n\n\n\n\nKeybindings\n\n\n\n\n\n\nNote\n\n\n\ncmd+enter is mapped to no_op to disable kitty’s default new-window shortcut, so ctrl+shift+enter is the single binding for new panes.\n\n\n\n\n\n\nKeybinding\nAction\n\n\n\n\nctrl+shift+enter\nNew window (pane) in current dir\n\n\ncmd+t\nNew tab in current dir\n\n\ncmd+n\nNew OS window in current dir\n\n\n\n\nAll use launch --cwd=current so the new tab/window opens in the same directory as the active one. This is done because it’s way easier to go back to the root (which is default), but not to a specific project unless your project directory is easy to memorize.\n\n\n\ncurrent-theme.conf\nCatppuccin-Mocha (current-theme.conf).\nDark pastel palette:\n- foreground #CDD6F4\n- background #1E1E2E\n- accent lilac #CBA6F7 on active tab\n\n\n\n\n\n\nNote\n\n\n\nThis part can be configured with the kitten themes command.",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
-    "href": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
-    "title": "Kitty Terminal",
-    "section": "Keybindings",
-    "text": "Keybindings\nThe keybindings listed are more than enough in my honest opinion.\n\nTabs\nThis section is for managing the tabs that appear in the bottom.\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew Tab\ncommand + T\n\n\nRename Tab\ncommand + I\n\n\nSwitch Tab\ncommand + shift + []\n\n\nClose Tab\ncommand + W\n\n\n\n\n\n\nWindows (Panes)\nThis section is for managing the windows (splitting the terminal into multiple panes, i.e. multiplexing).\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew window\nctrl + shift + enter\n\n\nMove window\nctrl + shift + F\n\n\nSwitch window\nctrl + shift + []\n\n\nClose window\nctrl + shift + W",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#reminders",
-    "href": "notes/009-devtools/001-kitty-terminal.html#reminders",
-    "title": "Kitty Terminal",
-    "section": "Reminders",
-    "text": "Reminders\n\n\n\n\n\n\nWarning\n\n\n\nWhen SSH-ing into a server use the kitten command else the shell will be very buggy.\nFor example, kitten ssh user@xxx.xx.xx.xxx\n\n\n\nLast modified: 2026-06-22",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/index.html",
-    "href": "notes/008-domain-knowledge/001-scm/index.html",
-    "title": "SCM",
-    "section": "",
-    "text": "This is notes for Supply Chain Management.\n\n\n\n Back to top",
-    "crumbs": [
-      "SCM"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/001-definition.html",
-    "href": "notes/008-domain-knowledge/001-scm/001-definition.html",
-    "title": "Definition",
-    "section": "",
-    "text": "Supply Chain Management consists of different components:\n\nPlanning\n\nS&OP\nDemand Plan\nSupply Plan\nInventory\n\nSourcing\n\nProcurement\nSRM\nSupplier Negotiation\n\nManufacturing\n\nProduction Scheduling\nCapacity Planning\n\nLogistics\n\nWarehousing\nTransport\nLast-Mile\n\n\n\nLast modified: 2026-06-16\n\n\n\n Back to top",
-    "crumbs": [
-      "SCM",
-      "Definition"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/index.html",
-    "href": "notes/007-ai-engineering/001-ai-harness/index.html",
-    "title": "AI Harness",
-    "section": "",
-    "text": "Note\n\n\n\nThe harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.\n\n\nThere are various AI harnesses that I use, each with its own unique strengths.\nThe one that I think works the best out-of-the-box is Claude Code. It can be bloated, token-inefficient, and expensive, but this is the one I use at work and the company covers the subscription.\nThen I also use Antigravity CLI (formerly Gemini CLI) to fix, format, and organize text like this Obsidian vault (strictly for drafts, not stuff I post to the public, which I try my best to make it my own words and writing style).\nFinally, I also enjoy spending time tweaking and using Pi (pi-coding-agent) for hobby projects (along with Claude Code).\n\n\n\n Back to top",
-    "crumbs": [
-      "AI Harness"
-    ]
-  },
-  {
-    "objectID": "notes/006-machine-learning/index.html",
-    "href": "notes/006-machine-learning/index.html",
-    "title": "Machine Learning",
+    "objectID": "notes/008-domain-knowledge/index.html",
+    "href": "notes/008-domain-knowledge/index.html",
+    "title": "Domain Knowledge",
     "section": "",
     "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
-      "Machine Learning"
+      "Domain Knowledge"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "title": "SCOR DS",
+    "section": "Data Mart Core Architecture",
+    "text": "Data Mart Core Architecture\nTo build a scalable analytical layer, your fact tables should mirror the natural state transitions of an entity (e.g., an order or a batch of product) as it moves through the supply chain.\nThe data should be prepared using a Conformed Dimension Data Mart approach. This means that your fact tables directly around the 6 execution phases are wrapped tightly by an Orchestration (Log/Audit) dimension to track pipeline health and end-to-end latency.\n\n1. Orchestration & Lineage (The Dimension/Audit Layer)\nBefore analyzing the business, you must analyze the pipeline. This layer tracks data quality, ingestion latencies, and end-to-end processing times.\n\nCore Dimension/Fact: dim_pipeline_execution, fact_data_lineage\nKey Columns: dag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nDashboard Visual: Data pipeline health monitoring, source-to-target latency gauges, rows processed per hour.\n\n\n\n2. Plan (The Forecasting Mart)\n\nCore Fact Table: fact_demand_forecast\nGrain: One row per Product_ID per Location_ID per Forecast_Period_Month.\nKey Columns: forecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nDashboard Visual: Forecast Accuracy KPI (MAPE), Actual vs. Forecasted Demand trends, Capacity Utilization charts.\n\n\n\n3. Order (The Digital Transaction Mart)\n\nCore Fact Table: fact_order_lifecycle\nGrain: One row per Order_Line_Item.\nKey Columns: order_id, customer_id, order_status_code (Created, Approved, Invoiced), order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDashboard Visual: Daily/Monthly Revenue, Total Orders Placed, Order conversion rates, Average Order Value (AOV).\n\n\n\n4. Source (The Procurement Mart)\n\nCore Fact Table: fact_purchase_orders\nGrain: One row per Purchase_Order_Line_Item.\nKey Columns: po_number, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nDashboard Visual: Supplier Lead Time, Supplier OTIF (On-Time In-Full), Procurement spend analysis by vendor.\n\n\n\n5. Transform (The Manufacturing & Quality Mart)\n\nCore Fact Table: fact_production_runs\nGrain: One row per Production_Batch_ID or Work_Order_ID.\nKey Columns: work_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nDashboard Visual: First Pass Yield (FPY %), OEE (Overall Equipment Effectiveness), Defect Rate by product line, Production Downtime trends.\n\n\n\n6. Fulfill (The Logistics & Distribution Mart)\n\nCore Fact Table: fact_shipment_fulfillment\nGrain: One row per Shipment_ID / Waybill.\nKey Columns: shipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nDashboard Visual: Perfect Order Index (POI), Shipping/Last-Mile Cost per order, Warehouse processing time (Click-to-Ship latency).\n\n\n\n7. Return (The Reverse Logistics Mart)\n\nCore Fact Table: fact_order_returns\nGrain: One row per Return_Line_Item.\nKey Columns: return_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status (Restocked, Refurbished, Scrapped), refund_amount\nDashboard Visual: Return Rate % by product category, Top Reasons for Returns, Financial impact of refunds vs. scrap loss.\n\n\n\nConformed Dimensions (The “Glue”)\nTo build an executive dashboard that allows filtering the entire supply chain by a specific product, location, or date, these dimension tables must link seamlessly across all 6 fact tables above:\n\ndim_products — product_id, SKU, category, brand, cost_price, retail_price\ndim_locations — location_id, site_name, type (Warehouse, Plant, Store), region, country\ndim_date — date_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\n\n\n\nExecutive Dashboard Layout Strategy\nWhen setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it into three distinct operational layers:\n\nThe Executive Summary (High Level): Place 4–5 global KPIs at the very top: Total Revenue (Order), Global OTIF % (Fulfill), Forecast Accuracy (Plan), and Gross Margin %.\nThe Supply Chain Funnel (Process Flow): Build a chronological funnel visualization or linear timeline tracking an order’s lifecycle. Show the average duration (in hours/days) it takes to pass through each phase: Order Placed → PO Raised → Produced → Shipped → Delivered.\nThe Operational Drill-Downs (Tabbed Views): Create dedicated tabs for specific team playbooks (e.g., a “Procurement Tab” powered by the Source Mart, a “Plant Operations Tab” powered by the Transform Mart).\n\n\n\n\nQuick Reference\n\nProcess Marts\n\n\n\n\n\n\n\n\n\n\n\n\n#\nProcess\nCore Table\nGrain\nKey Columns\nDashboard\n\n\n\n\n0\nOrchestrate\ndim_pipeline_execution, fact_data_lineage\nPer DAG run\ndag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nPipeline health, source-to-target latency gauges, rows/hr\n\n\n1\nPlan\nfact_demand_forecast\nProduct × Location × Forecast month\nforecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nForecast Accuracy (MAPE), Actual vs Forecast, Capacity Utilization\n\n\n2\nOrder\nfact_order_lifecycle (sales)\nOrder line item\norder_id, customer_id, order_status_code, order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDaily/Monthly Revenue, Total Orders, AOV\n\n\n3\nSource\nfact_purchase_orders (orders / PO)\nPO line item (PO Number x Product)\npo_number, product_id, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nSupplier Lead Time, OTIF, Spend by vendor\n\n\n4\nTransform\nfact_production_runs\nProduction batch / Work order\nwork_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nFirst Pass Yield %, OEE, Defect Rate, Downtime trends\n\n\n5-a\nFulfill\nfact_shipment_fulfillment\nShipment / Waybill\nshipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nPerfect Order Index, Cost/order, Click-to-Ship latency\n\n\n5-b\nFulfill\nfact_warehouse_inventory_snapshot\nWarehouse x SKU x Day\nsnapshot_date, warehouse_id, product_id, ending_on_hand_quantity, daily_allocated_overhead_cost\nInventory Turnover Ratio, Days Sales of Inventory (DSI), Total Warehousing Carrying Cost\n\n\n6\nReturn\nfact_order_returns\nReturn line item\nreturn_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status, refund_amount\nReturn Rate %, Top reasons, Refund vs Scrap impact\n\n\n\n\n\n\nConformed Dimensions\n\n\n\n\n\n\n\n\n\nDimension\nKey Columns\nDescription / SCM Context\n\n\n\n\ndim_products\nproduct_id, SKU, category, brand, cost_price, retail_price\nMaster catalog for items. Updated with weight/material columns to calculate sustainability metrics (EV.1.1).\n\n\ndim_locations\nlocation_id, site_name, type (Warehouse/Plant/Store), region, country\nThe geographical backbone. Shared by fulfillment warehouses, production plants, and customer shipping zones.\n\n\ndim_date\ndate_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\nThe universal calendar heartbeat used to calculate cycle times, monthly revenue, and daily inventory snapshots.\n\n\ndim_supplier_profile\nsupplier_id, supplier_name, tier_ranking, risk_score, compliance_status, country\nThe master record for vendors. Used by fact_purchase_orders to slice spend and track supplier network risk.\n\n\ndim_bill_of_materials\nparent_sku, component_sku, required_quantity, effectivity_start_date, effectivity_end_date\nThe structural map of your products. Allows you to break down a finished item into its raw component parts.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "title": "SCOR DS",
+    "section": "Metrics",
+    "text": "Metrics\n\n\n\n\n\n\nInfo\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/index.html",
+    "href": "notes/007-ai-engineering/index.html",
+    "title": "AI Engineering",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Engineering"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "When setting up your own .agents directory, there are a lot of files to consider. However, I will curate a list of things I like to keep.",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
+    "title": "Setup",
+    "section": "Skills",
+    "text": "Skills",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
+    "title": "Setup",
+    "section": "Hooks",
+    "text": "Hooks\n\nLast modified: 2026-07-08",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/006-machine-learning/001-mlflow.html",
+    "href": "notes/006-machine-learning/001-mlflow.html",
+    "title": "MLflow",
+    "section": "",
+    "text": "Last modified: 2026-07-22\n\n\n\n Back to top",
+    "crumbs": [
+      "MLflow"
     ]
   },
   {
@@ -248,7 +264,7 @@
     "href": "notes/005-business-intelligence/004-streamlit.html#optimizations",
     "title": "Streamlit",
     "section": "Optimizations",
-    "text": "Optimizations\n@st.cache_data\n@st.cache_resource\n@st.fragment (parallel=True)\nst.form\nst.session_state + st.empty()\n\nLast modified: 2026-07-14",
+    "text": "Optimizations\n@st.cache_data\n@st.cache_resource\n@st.fragment (parallel=True)\nst.form\nst.session_state + st.empty()\n\nLast modified: 2026-07-22",
     "crumbs": [
       "Streamlit"
     ]
@@ -271,6 +287,16 @@
     "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
       "Data Analysis"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/006-ducklake/index.html",
+    "href": "notes/003-data-engineering/006-ducklake/index.html",
+    "title": "DuckLake",
+    "section": "",
+    "text": "DuckLake is part of DuckDB Labs. Its main purpose is to replace the complexity required to maintain Data Lake through more mature frameworks like Apache Iceberg. Traditional data lake catalogs maintain metadata through json and avro files; DuckLake makes the catalog in sql, making traversal searches on metadata way faster and simpler.\n\n\n\n Back to top",
+    "crumbs": [
+      "DuckLake"
     ]
   },
   {
@@ -420,7 +446,7 @@
     "href": "notes/003-data-engineering/003-dlt/001-setup.html",
     "title": "Setup",
     "section": "",
-    "text": "uv add dlt\n\n\nLast modified: 2026-07-10",
+    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
     "crumbs": [
       "dlt",
       "Setup"
@@ -431,7 +457,7 @@
     "href": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
     "title": "Setup",
     "section": "",
-    "text": "uv add dlt\n\n\nLast modified: 2026-07-10",
+    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
     "crumbs": [
       "dlt",
       "Setup"
@@ -567,128 +593,189 @@
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html",
-    "href": "notes/001-terminal/002-homebrew.html",
-    "title": "Homebrew",
+    "objectID": "notes/001-terminal/003-uv.html",
+    "href": "notes/001-terminal/003-uv.html",
+    "title": "uv",
     "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
     "crumbs": [
-      "Homebrew"
+      "uv"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#intro",
-    "href": "notes/001-terminal/002-homebrew.html#intro",
-    "title": "Homebrew",
+    "objectID": "notes/001-terminal/003-uv.html#intro",
+    "href": "notes/001-terminal/003-uv.html#intro",
+    "title": "uv",
     "section": "",
-    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
+    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
     "crumbs": [
-      "Homebrew"
+      "uv"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#installations",
-    "href": "notes/001-terminal/002-homebrew.html#installations",
-    "title": "Homebrew",
-    "section": "Installations",
-    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
+    "objectID": "notes/001-terminal/003-uv.html#installation",
+    "href": "notes/001-terminal/003-uv.html#installation",
+    "title": "uv",
+    "section": "Installation",
+    "text": "Installation\nHomebrew\n\nbrew install uv\n\nPip\n\npip install uv",
     "crumbs": [
-      "Homebrew"
+      "uv"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
-    "title": "Homebrew",
-    "section": "Useful Commands",
-    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
+    "objectID": "notes/001-terminal/003-uv.html#initialization",
+    "href": "notes/001-terminal/003-uv.html#initialization",
+    "title": "uv",
+    "section": "Initialization",
+    "text": "Initialization\nIf you don’t have a project directory run the following command:\n\nuv init &lt;project-title&gt;\n\nIf you already have a project directory cd into the directory and run the following command:\n\nuv init\n\nWhen initializing the project, there are a few files that will be populated: .python-version, hello.py, pyproject.toml, and uv.lock.\nLet’s go over what each one does:\n\n.python-version: this is the file used to manage the python version. For example, let’s say that it defaults to python version 3.13 because it’s your global python’s version but you want to use a different version, then you can modify it to 3.12.\nhello.py: this is just a basic Python template, so it doesn’t carry much meaning on its own and can safely be deleted.\npyproject.toml: this file is the core of setting up your coding environment. It will be explained further below, but it manages the Python version and can also take on the role of requirements.txt.\nuv.lock: there’s no need to touch this file directly.",
     "crumbs": [
-      "Homebrew"
+      "uv"
     ]
   },
   {
-    "objectID": "notes/001-terminal/002-homebrew.html#references",
-    "href": "notes/001-terminal/002-homebrew.html#references",
-    "title": "Homebrew",
+    "objectID": "notes/001-terminal/003-uv.html#virtual-environment",
+    "href": "notes/001-terminal/003-uv.html#virtual-environment",
+    "title": "uv",
+    "section": "Virtual Environment",
+    "text": "Virtual Environment\n\nCreating the virtual environment\nAfter initializing the project, running the command below will automatically do what python3 -m venv .venv used to do when creating a virtual environment manually:\n\nuv sync\n\nThis creates the .venv virtual environment and installs the dependencies by referencing the .python-version, pyproject.toml, and uv.lock files. In fact, you don’t even have to run it explicitly — running any Python script with uv run &lt;script.py&gt; will create the virtual environment the same way if it doesn’t exist yet.\n\n\nActivating and deactivating\n\n\n\n\n\n\nNote\n\n\n\nUse uv run for any scripts or packages as uv auto detects your virtual environment.\n\n\nNormally, every time you come back to a project you would have to activate the virtual environment before running anything:\n\nsource .venv/bin/activate\n\nYou would then see the terminal prompt change from username project-directory to (.venv) username project-directory, and when you’re done, deactivate it:\n\ndeactivate\n\nWith uv, none of this is necessary. uv run automatically detects the .venv in your project and runs your script inside it, so you never have to remember to activate the environment every time you return to the project. The commands above are only there in case you want to work inside an activated shell manually.",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#package-management",
+    "href": "notes/001-terminal/003-uv.html#package-management",
+    "title": "uv",
+    "section": "Package Management",
+    "text": "Package Management\nThis part is where uv truly shines. You no longer have to sit through long download times for large libraries or decipher cryptic error messages from version conflicts like you would with pip or conda.\n\nAdding and removing packages\n\n# Add a package\nuv add &lt;package-name==version&gt;\n\n# Remove a package\nuv remove &lt;package-name==version&gt;\n\nOccasionally a package name comes with extra options in square brackets. In that case, handle it as follows:\n\n# For example\npip install \"fastapi[standard]\"\n\n# The uv way\nuv add fastapi --extra standard\n\nThink of --extra as replacing the double quotes and square brackets.\n\n\nExporting dependencies\nPackages are automatically recorded in pyproject.toml along with their versions, but if you’re new to uv and find requirements.txt more comfortable, you can export them by running the following commands in the terminal:\n\nuv pip freeze &gt; requirements.txt\n\n# To install packages from requirements.txt\nuv pip install -r requirements.txt",
+    "crumbs": [
+      "uv"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/003-uv.html#references",
+    "href": "notes/001-terminal/003-uv.html#references",
+    "title": "uv",
     "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-05",
+    "text": "References\nIf you want to explore other features, check out the documentation on the uv homepage:\nhttps://docs.astral.sh/uv/\n\nLast modified: 2026-07-22",
     "crumbs": [
-      "Homebrew"
+      "uv"
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Roberto Park",
+    "objectID": "notes/001-terminal/001-zsh.html",
+    "href": "notes/001-terminal/001-zsh.html",
+    "title": "zsh",
     "section": "",
-    "text": "I |"
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "crumbs": [
+      "zsh"
+    ]
   },
   {
-    "objectID": "index.html#hi-there",
-    "href": "index.html#hi-there",
-    "title": "Roberto Park",
-    "section": "Hi there 👋",
-    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
-  },
-  {
-    "objectID": "index.html#explore",
-    "href": "index.html#explore",
-    "title": "Roberto Park",
-    "section": "Explore",
-    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
-  },
-  {
-    "objectID": "blog/index.html",
-    "href": "blog/index.html",
-    "title": "Blog",
+    "objectID": "notes/001-terminal/001-zsh.html#intro",
+    "href": "notes/001-terminal/001-zsh.html#intro",
+    "title": "zsh",
     "section": "",
-    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\n\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n\n\n2026-06-27\n\n7 min\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n7 min\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n2026-06-27\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
+    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
     "crumbs": [
-      "Blog"
+      "zsh"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html",
-    "href": "notes/002-devops/001-git-github/002-workflow.html",
-    "title": "Workflow",
+    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
+    "href": "notes/001-terminal/001-zsh.html#zshrc",
+    "title": "zsh",
+    "section": ".zshrc",
+    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
+    "href": "notes/001-terminal/001-zsh.html#zprofile",
+    "title": "zsh",
+    "section": ".zprofile",
+    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
+    "href": "notes/001-terminal/001-zsh.html#zshenv",
+    "title": "zsh",
+    "section": ".zshenv",
+    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-22",
+    "crumbs": [
+      "zsh"
+    ]
+  },
+  {
+    "objectID": "blog/posts/personal-knowledge-management.html",
+    "href": "blog/posts/personal-knowledge-management.html",
+    "title": "Personal Knowledge Management",
     "section": "",
-    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
+    "text": "I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.\nI like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable. Not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.\nThe frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).\n\n\n\n\n\n\nNote\n\n\n\nYes, the system I’ve built is also structured like PARA, but accustomed to my needs not something pre configured. While, Zettelkasten seems like a cool system, a big downside is that it’s hard to share with others meaning that it’s also hard to share with a future me.\n\n\nThat’s why I’ve chosen my own build to manage my knowledge. My personal workflow came to a more mature stage as I was making this personal website. And it is a mesh of MOC, PARA, and Zettelkasten along with some Obsidian native plugins like the BASE and CANVAS.\nThe architecture/structure consists of the following:\n\n/archive\n\nThis is the directory that is for anything that doesn’t seem to belong in any of the other directories.\n\n/blog\n\nThis is a directory for ideas that are shareable with the public.\n\n/clippings\n\nThis is for Obsidian clipping through a chrome extension to save articles that are worthy of being absorbed by my notes.\n\n/inbox\n\nThis is for sudden ideas that pop up and are mostly AI responses to structure my questions.\n\n/notes\n\nThis is the core of knowledge and place that absorbs ideas, clippings, to-dos, youtube content, etc. It is for having a structured, bite-sized documentation of things I study and apply.\n\n/portfolio\n\nThis is any documentation related to what goes into my career specs like the portfolio itself, CV and Resume.\n\n/projects\n\nThis brainstorming documentation for my projects, however it doesn’t store much because all project related documentation goes in the docs/ directory inside the project, code-as-documentation, and in my to-do application.\n\nOther parts of my personal knowledge management are YouTube where most of my knowledge comes from other than blog articles and textbooks; and to manage my schedule, ToDoist.\n\nThis will sound something similar to David Allen’s “Getting Things Done” (GTD) Philosophy. Not that I created my own system knowingly, but making a reference to his philosophy does help to clarify what my system is doing. Also kind of a mix of C(apture), O(rganize), D(istill), E(xpress) by Tiago Forte.\n\nCapture: Collect anything and everything that has your attention into an inbox.\nClarify: Determine if captured items are actionable. If not, trash them, incubate them, or file them as reference.\nOrganize: Sort actionable tasks into logically categorized lists (e.g., next actions, projects, waiting-for).\nReflect: Review and update your lists regularly to maintain clarity and trust in your system.\nEngage: Do the work based on your current context, time available, and energy levels.\n\nLet’s go over how we will manage to do each step.\n\nCapture: most of my capture happens within YouTube, blog articles, textbooks, LLM chats.\n\nYouTube -&gt; playlists (watch later, etc.)\nBlog articles -&gt; clippings\nTextbooks / LLM pinned chats -&gt; inbox\n\n\nHowever, this is almost never linear as it seems because in the end, everything passes through an LLM filter for formatting, structuring, and fact checks.\n\nClarify: from all the data that we have captured from different sources, these will differ in importance and maturity. If the data was a moments thing, which was captured but as an afterthought it’s not something I needed, doesn’t seem as important, or I’m not ready for it yet, it will be deleted/thrown away or it may just stay there as long as it needs and wait its turn to be digested to be part of my notes.\nOrganize: this I believe is the most important part as it’s what and how knowledge gets absorbed and structured; something like a long term memory. The core would be the /notes directory which absorbs clippings, youtube video informations, completed todo tasks, textbook information, tool documentations, and more. However be aware that everything starts as a small idea and therefore everything starts as a single file and when many related ideas start to clutter the single file it becomes a folder. And this will change a lot over time. Think lots on how to structure your knowledge, as you give more thought the higher the probability of it staying with you longer. The key is malleability, and space to change than it being too rigid as that’s not really how our brain works, which is plastic. Something to note when managing data is also the importance of metadata. That’s why every single folder should have a index.md which is not exactly an index of the ideas inside the folder in the orthodox way but more like an abstract version of what goes in that folder along with the workflow if needed. This is to prevent documentation staleness like what I experienced with the MOC. All files must include some kind of YAML metadata at the top because file names should default to snake casing and no symbols. More of the file naming and project structuring conventions will be provided below.\nReflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.\nEngage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is Command + Shift + F and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a Command + Shift + K in Notion, which I can free from my brain now.\n\nIn conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details; you just have to remember the location, which you put effort to structure so it’s easier to remember. Also, it’s managing an external brain where knowledge compounds over time, adding value.\np.s. From time to time, I think sometimes I’m overengineering stuff, which is bad for productivity. For example, when I spend time restructure the folders and files and how to divide the contents and stuff. However, I think I enjoy doing this and also it makes me understand what I want to document better so do what’s good for you! Good luck!\n\n\n\n Back to top",
     "crumbs": [
-      "Git & GitHub",
-      "Workflow"
+      "Blog",
+      "Personal Knowledge Management"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
-    "title": "Workflow",
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html",
+    "title": "RBAC",
     "section": "",
-    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
     "crumbs": [
-      "Git & GitHub",
-      "Workflow"
+      "Snowflake",
+      "RBAC"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
-    "title": "Workflow",
-    "section": "Choose a merge strategy",
-    "text": "Choose a merge strategy\nThere are three merge strategies that you can choose from: merge, rebase, and squash.",
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
+    "title": "RBAC",
+    "section": "",
+    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
     "crumbs": [
-      "Git & GitHub",
-      "Workflow"
+      "Snowflake",
+      "RBAC"
     ]
   },
   {
-    "objectID": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
-    "href": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
-    "title": "Workflow",
-    "section": "Workflow Details",
-    "text": "Workflow Details\nlet’s add what’s the whole process, something like doing a git status before anything to check if I’ve made a git commit WIP to reset if not just continue\nsometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop\nthen work, git commit\nthen open a PR: use a good PR template for other people to know what happened\nassign someone to review my code\nmerge the pr\nmake another feature branch and continue\n\nLast modified: 2026-07-08",
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
+    "title": "RBAC",
+    "section": "Custom Domain/Team Roles",
+    "text": "Custom Domain/Team Roles\nSnowflake recommends a two-tier pattern to keep permissions scalable.\n\n\n\n\n\n\n\n\n\nLayer\nExample\nPurpose\n\n\n\n\nAccess roles\ndb_sales_r, db_sales_rw\nGrant specific privileges on specific objects.\n\n\nFunctional roles\nanalyst, data_engineer\nBundle access roles by business function; granted to users.",
     "crumbs": [
-      "Git & GitHub",
-      "Workflow"
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
+    "title": "RBAC",
+    "section": "Handling dbt & Automation Roles",
+    "text": "Handling dbt & Automation Roles\nIn practice, you don’t run dbt as SYSADMIN. Instead, you create a dedicated role and “wire” it into the hierarchy.\n\nExample Setup\n\n-- 1. USERADMIN creates the role\nCREATE ROLE DBT_ROLE;\n\n-- 2. SECURITYADMIN grants object creation privileges\nGRANT USAGE ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT USAGE ON WAREHOUSE my_wh TO ROLE DBT_ROLE;\n\nGRANT CREATE SCHEMA ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;\n\n-- 3. THE KEY STEP: Wire it into the hierarchy\nGRANT ROLE DBT_ROLE TO ROLE SYSADMIN;\n\n\n\n\n\n\n\nThe #1 RBAC Mistake If DBT_ROLE is not granted to SYSADMIN, the objects become orphaned. SYSADMIN (and even ACCOUNTADMIN) will not be able to manage, modify, or drop those objects without manual intervention.",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
+    "title": "RBAC",
+    "section": "Role Hierarchy & Wiring",
+    "text": "Role Hierarchy & Wiring\n\nThe Relationship Chain\n\n\n\n\n\ngraph LR\n    AR[Access Roles] --&gt; FR[Functional Roles]\n    DBT[DBT_ROLE] --&gt; SA[SYSADMIN]\n    FR --&gt; SA\n    SA --&gt; AA[ACCOUNTADMIN]\n\n\n\n\n\n\n\n\nResponsibility Matrix\n\nUSERADMIN: Creates the custom roles.\nSECURITYADMIN: Grants privileges to access roles and wires functional roles to SYSADMIN.\nUsers/Service Accounts: Assigned functional roles or tool-specific roles (like DBT_ROLE).\n\n\n\n\n\n\n\nKey Takeaway Any role can create schemas/tables if granted CREATE privileges. The goal of RBAC is to ensure those roles are children of SYSADMIN so admins retain visibility and control.\n\n\n\n\nLast modified: 2026-06-23",
+    "crumbs": [
+      "Snowflake",
+      "RBAC"
     ]
   },
   {
@@ -762,189 +849,168 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html",
-    "title": "RBAC",
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html",
+    "href": "notes/002-devops/001-git-github/002-workflow.html",
+    "title": "Workflow",
     "section": "",
-    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
     "crumbs": [
-      "Snowflake",
-      "RBAC"
+      "Git & GitHub",
+      "Workflow"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#snowflake-rbac-best-practices",
-    "title": "RBAC",
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-flow",
+    "title": "Workflow",
     "section": "",
-    "text": "ACCOUNTADMIN (Top-level, use sparingly)\n\n\n\n- Should do: Account-level settings, billing/credit management, cross-region config, CREATE SNOWFLAKE INTELLIGENCE, enabling features.\n- Should NOT do: Create day-to-day objects (databases, tables, warehouses), run automated scripts.\nBest practice: Assign to 2+ users, require MFA, never set as anyone’s default role.\n\n\n\n\n\n\n\n\nSECURITYADMIN (Grants & Security)\n\n\n\n- Creates/manages: Privilege grants on all objects (has MANAGE GRANTS), role-to-role grants, role-to-user grants.\n- Inherits: USERADMIN. Use for: GRANT ... TO ROLE, future grants, managed access schema grants.\n\n\n\n\n\n\n\n\nUSERADMIN (Users & Roles)\n\n\n\n- Creates: Users (CREATE USER) and roles (CREATE ROLE).\n- Use for: Provisioning new users, creating custom access/functional roles.\n\n\n\n\n\n\n\n\nSYSADMIN (Infrastructure & Objects)\n\n\n\n- Creates: Warehouses, databases, schemas, and all database objects.\n- Clarification: While SYSADMIN can create these, any role with CREATE privileges can too.\n- Best practice: All custom roles (like those used by dbt) must roll up to SYSADMIN so it inherits ownership and can manage all objects in the account.",
+    "text": "There are a lot of different workflows.\nGit related workflows differ per person and community be it an open-source project or company.\nThe two that are well recognized like paradigms are Git Flow and GitHub Flow.\nI think the Git Flow is too complex for me so I will go with GitHub Flow. That is not because one is better than the other but you have to consider the size of your project and don’t over complicate stuff.\nGit Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    branch develop\n    checkout develop\n    commit id: \"dev start\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    checkout develop\n    merge feature id: \"feature done\"\n    branch release\n    checkout release\n    commit id: \"rc fixes\"\n    checkout main\n    merge release id: \"release\" tag: \"v1.0\"\n    checkout develop\n    merge release id: \"back to dev\"\n    checkout main\n    branch hotfix\n    checkout hotfix\n    commit id: \"urgent fix\"\n    checkout main\n    merge hotfix id: \"hotfix\" tag: \"v1.0.1\"\n    checkout develop\n    merge hotfix id: \"sync hotfix\"\n\n\n\n\n\n\nI will not go over the details as I’ve not used this flow so I’m no expert. Might cover it in the future if I get to work on more complex and big projects.\nGitHub Flow looks something like this:\n\n\n\n\n\ngitGraph\n    commit id: \"init\"\n    commit id: \"release\"\n    branch feature\n    checkout feature\n    commit id: \"work\"\n    commit id: \"more work\"\n    commit id: \"review fixes\"\n    checkout main\n    merge feature id: \"PR merged\" tag: \"deploy\"\n    commit id: \"next\"\n\n\n\n\n\n\nThe five steps, in words:\n\nBranch: make a feature branch off main.\nCommit: do the work, one commit at a time.\nPull Request: open a PR. Review is a loop, you assign a reviewer for feedback and fix if needed. Repeat until approved.\nMerge: merge the PR back into main.\nDeploy: main ships.\n\nThese five steps are all there is. This is quite simple and works for a solo or small dev team.",
     "crumbs": [
-      "Snowflake",
-      "RBAC"
+      "Git & GitHub",
+      "Workflow"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#custom-domainteam-roles",
-    "title": "RBAC",
-    "section": "Custom Domain/Team Roles",
-    "text": "Custom Domain/Team Roles\nSnowflake recommends a two-tier pattern to keep permissions scalable.\n\n\n\n\n\n\n\n\n\nLayer\nExample\nPurpose\n\n\n\n\nAccess roles\ndb_sales_r, db_sales_rw\nGrant specific privileges on specific objects.\n\n\nFunctional roles\nanalyst, data_engineer\nBundle access roles by business function; granted to users.",
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#choose-a-merge-strategy",
+    "title": "Workflow",
+    "section": "Choose a merge strategy",
+    "text": "Choose a merge strategy\nThere are three merge strategies that you can choose from: merge, rebase, and squash.",
     "crumbs": [
-      "Snowflake",
-      "RBAC"
+      "Git & GitHub",
+      "Workflow"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#handling-dbt-automation-roles",
-    "title": "RBAC",
-    "section": "Handling dbt & Automation Roles",
-    "text": "Handling dbt & Automation Roles\nIn practice, you don’t run dbt as SYSADMIN. Instead, you create a dedicated role and “wire” it into the hierarchy.\n\nExample Setup\n\n-- 1. USERADMIN creates the role\nCREATE ROLE DBT_ROLE;\n\n-- 2. SECURITYADMIN grants object creation privileges\nGRANT USAGE ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT USAGE ON WAREHOUSE my_wh TO ROLE DBT_ROLE;\n\nGRANT CREATE SCHEMA ON DATABASE my_db TO ROLE DBT_ROLE;\n\nGRANT ALL ON SCHEMA my_db.my_schema TO ROLE DBT_ROLE;\n\n-- 3. THE KEY STEP: Wire it into the hierarchy\nGRANT ROLE DBT_ROLE TO ROLE SYSADMIN;\n\n\n\n\n\n\n\nThe #1 RBAC Mistake If DBT_ROLE is not granted to SYSADMIN, the objects become orphaned. SYSADMIN (and even ACCOUNTADMIN) will not be able to manage, modify, or drop those objects without manual intervention.",
+    "objectID": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
+    "href": "notes/002-devops/001-git-github/002-workflow.html#workflow-details",
+    "title": "Workflow",
+    "section": "Workflow Details",
+    "text": "Workflow Details\nlet’s add what’s the whole process, something like doing a git status before anything to check if I’ve made a git commit WIP to reset if not just continue\nsometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop\nthen work, git commit\nthen open a PR: use a good PR template for other people to know what happened\nassign someone to review my code\nmerge the pr\nmake another feature branch and continue\n\nLast modified: 2026-07-08",
     "crumbs": [
-      "Snowflake",
-      "RBAC"
+      "Git & GitHub",
+      "Workflow"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
-    "href": "notes/003-data-engineering/002-snowflake/001-rbac.html#role-hierarchy-wiring",
-    "title": "RBAC",
-    "section": "Role Hierarchy & Wiring",
-    "text": "Role Hierarchy & Wiring\n\nThe Relationship Chain\n\n\n\n\n\ngraph LR\n    AR[Access Roles] --&gt; FR[Functional Roles]\n    DBT[DBT_ROLE] --&gt; SA[SYSADMIN]\n    FR --&gt; SA\n    SA --&gt; AA[ACCOUNTADMIN]\n\n\n\n\n\n\n\n\nResponsibility Matrix\n\nUSERADMIN: Creates the custom roles.\nSECURITYADMIN: Grants privileges to access roles and wires functional roles to SYSADMIN.\nUsers/Service Accounts: Assigned functional roles or tool-specific roles (like DBT_ROLE).\n\n\n\n\n\n\n\nKey Takeaway Any role can create schemas/tables if granted CREATE privileges. The goal of RBAC is to ensure those roles are children of SYSADMIN so admins retain visibility and control.\n\n\n\n\nLast modified: 2026-06-23",
-    "crumbs": [
-      "Snowflake",
-      "RBAC"
-    ]
-  },
-  {
-    "objectID": "blog/posts/personal-knowledge-management.html",
-    "href": "blog/posts/personal-knowledge-management.html",
-    "title": "Personal Knowledge Management",
+    "objectID": "blog/index.html",
+    "href": "blog/index.html",
+    "title": "Blog",
     "section": "",
-    "text": "I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.\nI like simplicity and minimalism, but tend to get overwhelmed easily and just make a mess. After years of trying different tools and frameworks, finally I’ve settled down to making my own workflow and this feels way too comfortable. Not to mention that I’m still migrating everything and I’ve come to realize what a huge mess I’ve made along the way.\nThe frameworks that I’ve tried until now were: MOC, PARA, Zettelkasten, respectively. These were either way too structured (PARA) or way too unstructured (Zettelkasten) or just tedious to manage (MOC), for me. Also, if moved from different platforms like Apple Notes -&gt; Notion -&gt; Obsidian -&gt; Notion -&gt; Obsidian. The reason I chose Obsidian is that the more I got into coding and the advancement of AI, it’s way easier to manage markdown files and I like the native Obsidian plugins, which solve most of the pain points I’ve had while using Notion (it’s the platform I’ve used the longest and customized the most).\n\n\n\n\n\n\nNote\n\n\n\nYes, the system I’ve built is also structured like PARA, but accustomed to my needs not something pre configured. While, Zettelkasten seems like a cool system, a big downside is that it’s hard to share with others meaning that it’s also hard to share with a future me.\n\n\nThat’s why I’ve chosen my own build to manage my knowledge. My personal workflow came to a more mature stage as I was making this personal website. And it is a mesh of MOC, PARA, and Zettelkasten along with some Obsidian native plugins like the BASE and CANVAS.\nThe architecture/structure consists of the following:\n\n/archive\n\nThis is the directory that is for anything that doesn’t seem to belong in any of the other directories.\n\n/blog\n\nThis is a directory for ideas that are shareable with the public.\n\n/clippings\n\nThis is for Obsidian clipping through a chrome extension to save articles that are worthy of being absorbed by my notes.\n\n/inbox\n\nThis is for sudden ideas that pop up and are mostly AI responses to structure my questions.\n\n/notes\n\nThis is the core of knowledge and place that absorbs ideas, clippings, to-dos, youtube content, etc. It is for having a structured, bite-sized documentation of things I study and apply.\n\n/portfolio\n\nThis is any documentation related to what goes into my career specs like the portfolio itself, CV and Resume.\n\n/projects\n\nThis brainstorming documentation for my projects, however it doesn’t store much because all project related documentation goes in the docs/ directory inside the project, code-as-documentation, and in my to-do application.\n\nOther parts of my personal knowledge management are YouTube where most of my knowledge comes from other than blog articles and textbooks; and to manage my schedule, ToDoist.\n\nThis will sound something similar to David Allen’s “Getting Things Done” (GTD) Philosophy. Not that I created my own system knowingly, but making a reference to his philosophy does help to clarify what my system is doing. Also kind of a mix of C(apture), O(rganize), D(istill), E(xpress) by Tiago Forte.\n\nCapture: Collect anything and everything that has your attention into an inbox.\nClarify: Determine if captured items are actionable. If not, trash them, incubate them, or file them as reference.\nOrganize: Sort actionable tasks into logically categorized lists (e.g., next actions, projects, waiting-for).\nReflect: Review and update your lists regularly to maintain clarity and trust in your system.\nEngage: Do the work based on your current context, time available, and energy levels.\n\nLet’s go over how we will manage to do each step.\n\nCapture: most of my capture happens within YouTube, blog articles, textbooks, LLM chats.\n\nYouTube -&gt; playlists (watch later, etc.)\nBlog articles -&gt; clippings\nTextbooks / LLM pinned chats -&gt; inbox\n\n\nHowever, this is almost never linear as it seems because in the end, everything passes through an LLM filter for formatting, structuring, and fact checks.\n\nClarify: from all the data that we have captured from different sources, these will differ in importance and maturity. If the data was a moments thing, which was captured but as an afterthought it’s not something I needed, doesn’t seem as important, or I’m not ready for it yet, it will be deleted/thrown away or it may just stay there as long as it needs and wait its turn to be digested to be part of my notes.\nOrganize: this I believe is the most important part as it’s what and how knowledge gets absorbed and structured; something like a long term memory. The core would be the /notes directory which absorbs clippings, youtube video informations, completed todo tasks, textbook information, tool documentations, and more. However be aware that everything starts as a small idea and therefore everything starts as a single file and when many related ideas start to clutter the single file it becomes a folder. And this will change a lot over time. Think lots on how to structure your knowledge, as you give more thought the higher the probability of it staying with you longer. The key is malleability, and space to change than it being too rigid as that’s not really how our brain works, which is plastic. Something to note when managing data is also the importance of metadata. That’s why every single folder should have a index.md which is not exactly an index of the ideas inside the folder in the orthodox way but more like an abstract version of what goes in that folder along with the workflow if needed. This is to prevent documentation staleness like what I experienced with the MOC. All files must include some kind of YAML metadata at the top because file names should default to snake casing and no symbols. More of the file naming and project structuring conventions will be provided below.\nReflect: this can happen on purpose, but mostly it should happen unconsciously in my opinion. The reflection should happen along with the engagement. If you have a well organized notes in your own words it should be documentation that you come back to frequently. Then you will realize if things need updates or deletion. And this would happen naturally.\nEngage: this is where we apply what we organized in the real world. The default key finding to search for a specific text in a file system in various tools is Command + Shift + F and that’s what works in Obsidian and that’s also what I’ve set on my personal website. This would be a Command + Shift + K in Notion, which I can free from my brain now.\n\nIn conclusion, I do know that this system might look a bit too overly complex, but like anything in life it’s only the beginning and it has become natural over time. That’s why this post is also something for myself, as a way to organize my thoughts kind of like a meta cognition. All in all, I would encourage anyone to make their own PKM as there are major benefits to managing a PKM. It reduces cognitive load to remember details; you just have to remember the location, which you put effort to structure so it’s easier to remember. Also, it’s managing an external brain where knowledge compounds over time, adding value.\np.s. From time to time, I think sometimes I’m overengineering stuff, which is bad for productivity. For example, when I spend time restructure the folders and files and how to divide the contents and stuff. However, I think I enjoy doing this and also it makes me understand what I want to document better so do what’s good for you! Good luck!\n\n\n\n Back to top",
+    "text": "“Writing is thinking. To write well is to think clearly. That’s why it’s so hard.” — David McCullough\n\n\n\nHalf-formed ideas, worked out in public — notes that grew up enough to share.\n\n\nListGrid\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n\n\n2026-06-27\n\n7 min\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n\nPersonal Knowledge Management\n\n7 min\n\n\nPKM\n\nObsidian\n\n\n\n\n\n\n\n2026-06-27\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Blog",
-      "Personal Knowledge Management"
+      "Blog"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html",
-    "href": "notes/001-terminal/001-zsh.html",
-    "title": "zsh",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Roberto Park",
     "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
-    "crumbs": [
-      "zsh"
-    ]
+    "text": "I |"
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#intro",
-    "href": "notes/001-terminal/001-zsh.html#intro",
-    "title": "zsh",
+    "objectID": "index.html#hi-there",
+    "href": "index.html#hi-there",
+    "title": "Roberto Park",
+    "section": "Hi there 👋",
+    "text": "Hi there 👋\nI’m Roberto, a Data Engineer / Data Analyst based in South Korea.\n\nMy main tech stack with work experience includes Snowflake, dbt, Prefect, and Streamlit.\nAs for my hobby projects, I like FastAPI with Postgres."
+  },
+  {
+    "objectID": "index.html#explore",
+    "href": "index.html#explore",
+    "title": "Roberto Park",
+    "section": "Explore",
+    "text": "Explore\n\n  \n     Portfolio\n    Résumé, experience, tech stack.\n  \n  \n     Projects\n    Case studies and code.\n  \n  \n     Notes\n    Technical notes across the data stack.\n  \n  \n     Blog\n    Long-form posts."
+  },
+  {
+    "objectID": "notes/001-terminal/002-homebrew.html",
+    "href": "notes/001-terminal/002-homebrew.html",
+    "title": "Homebrew",
     "section": "",
-    "text": "zsh is a type of shell among many others and the following will be a guide on organizing what goes into each of the zsh configuration files.\n\n\n\n\n\n\nNote\n\n\n\nThere are other components one of which is ~/.zlogin, which will not be covered here because I don’t think it’s as important.",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
     "crumbs": [
-      "zsh"
+      "Homebrew"
     ]
   },
   {
-    "objectID": "notes/001-terminal/001-zsh.html#zshrc",
-    "href": "notes/001-terminal/001-zsh.html#zshrc",
-    "title": "zsh",
-    "section": ".zshrc",
-    "text": ".zshrc\nThis is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the PATH but let’s do that in the ~/.zprofile.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#zprofile",
-    "href": "notes/001-terminal/001-zsh.html#zprofile",
-    "title": "zsh",
-    "section": ".zprofile",
-    "text": ".zprofile\nMacOS uses this to set up the shell for any new terminal window.\nHomebrew recommends setting the PATH variable here. There’s a reason it should be set here and not the ~/.zshenv file: macOS runs a utility path_helper (from /etc/zprofile) that sets the PATH order before ~/.zprofile is loaded.",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/001-zsh.html#zshenv",
-    "href": "notes/001-terminal/001-zsh.html#zshenv",
-    "title": "zsh",
-    "section": ".zshenv",
-    "text": ".zshenv\nThis is loaded universally for all types of shell sessions. MacOS overrides this for PATH settings for interactive shells.\nThis could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a .env.\n\nLast modified: 2026-07-05",
-    "crumbs": [
-      "zsh"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/003-uv.html",
-    "href": "notes/001-terminal/003-uv.html",
-    "title": "uv",
+    "objectID": "notes/001-terminal/002-homebrew.html#intro",
+    "href": "notes/001-terminal/002-homebrew.html#intro",
+    "title": "Homebrew",
     "section": "",
-    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
+    "text": "Homebrew is a package manager for macOS that lets you easily install, update, and manage software tools and applications through the terminal using simple CLI commands.\nIt is divided into three main components:\n\nFormulae (Formulas): Package definitions for command-line tools (e.g., brew install python or brew install wget).\nCasks: Extensions that let you install full macOS desktop applications, fonts, and plugins (e.g., brew install –cask google-chrome or brew install –cask visual-studio-code).\nThe Cellar: The local directory on your Mac where Homebrew actually stores all the installed files.\n\nFormulas and casks are what’s installed and the cellar is where it’s stored.",
     "crumbs": [
-      "uv"
+      "Homebrew"
     ]
   },
   {
-    "objectID": "notes/001-terminal/003-uv.html#intro",
-    "href": "notes/001-terminal/003-uv.html#intro",
-    "title": "uv",
-    "section": "",
-    "text": "UV is a modern, high-performance Python package manager written in Rust, designed as a fast alternative to pip or conda that simplifies dependency management independently of Python versions.",
+    "objectID": "notes/001-terminal/002-homebrew.html#installations",
+    "href": "notes/001-terminal/002-homebrew.html#installations",
+    "title": "Homebrew",
+    "section": "Installations",
+    "text": "Installations\nRun the command below to install Homebrew.\n\n\n\n\n\n\nNote\n\n\n\nThere will be follow-up prompts, which are very self explanatory.\n\n\n\n/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"\n\nCheck that Homebrew was installed successfully:\n\nbrew --version",
     "crumbs": [
-      "uv"
+      "Homebrew"
     ]
   },
   {
-    "objectID": "notes/001-terminal/003-uv.html#installation",
-    "href": "notes/001-terminal/003-uv.html#installation",
-    "title": "uv",
-    "section": "Installation",
-    "text": "Installation\nHomebrew\n\nbrew install uv\n\nPip\n\npip install uv",
+    "objectID": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "href": "notes/001-terminal/002-homebrew.html#useful-commands",
+    "title": "Homebrew",
+    "section": "Useful Commands",
+    "text": "Useful Commands\nThis is a compilation of some of the CLI commands that are useful when using Homebrew as your package manager.\n\nInstall Services\nSearch for the services that you want to install. For example, google something like “brew discord”.\n\n\n\n\n\n\nNote\n\n\n\nIf you are installing a Formulae (CLI Tool & Libraries) it’s different to when you are installing a Cask (GUI Applications)\n\n\n\n# Install a Formulae\nbrew install {formulae}\n\n# Example\nbrew install claude-code\n\n\n# Install a Cask\nbrew install --cask {cask}\n\n# Example\nbrew install --cask discord\n\n\n\nList Homebrew Services\nTo list all your brew Formulae and Casks:\n\nbrew list\n\nTo list only the top level services:\n\nbrew leaves\n\n\n\nUpdate Homebrew and services\nTo update Homebrew:\n\nbrew update\n\nTo upgrade a specific services:\n\nbrew upgrade [formula|cask]\n\n\n\nManage Backups\nFirst dump all your services into a file:\n\n# Dump your files to the path of your choice\nbrew bundle dump --file=\"~/path/to/your/Brewfile\"\n\n# If you need to overwrite the existing file (to sync new services)\nbrew bundle dump --force --file=\"~/path/to/your/Brewfile\"\n\nTo install or restore from your file:\n\n# To restore everything\nbrew bundle --file=\"~/path/to/your/Brewfile\"\n\n# To check what's missing without installing\nbrew bundle check --file=\"~/path/to/your/Brewfile\"\n\n# To install everything in the file and automatically uninstall any extra software in your machine not present in the file\nbrew bundle --cleanup --file=\"~/path/to/your/Brewfile\"",
     "crumbs": [
-      "uv"
+      "Homebrew"
     ]
   },
   {
-    "objectID": "notes/001-terminal/003-uv.html#initialization",
-    "href": "notes/001-terminal/003-uv.html#initialization",
-    "title": "uv",
-    "section": "Initialization",
-    "text": "Initialization\nIf you don’t have a project directory run the following command:\n\nuv init &lt;project-title&gt;\n\nIf you already have a project directory cd into the directory and run the following command:\n\nuv init\n\nWhen initializing the project, there are a few files that will be populated: .python-version, hello.py, pyproject.toml, and uv.lock.\nLet’s go over what each one does:\n\n.python-version: this is the file used to manage the python version. For example, let’s say that it defaults to python version 3.13 because it’s your global python’s version but you want to use a different version, then you can modify it to 3.12.\nhello.py: this is just a basic Python template, so it doesn’t carry much meaning on its own and can safely be deleted.\npyproject.toml: this file is the core of setting up your coding environment. It will be explained further below, but it manages the Python version and can also take on the role of requirements.txt.\nuv.lock: there’s no need to touch this file directly.",
-    "crumbs": [
-      "uv"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/003-uv.html#virtual-environment",
-    "href": "notes/001-terminal/003-uv.html#virtual-environment",
-    "title": "uv",
-    "section": "Virtual Environment",
-    "text": "Virtual Environment\n\nCreating the virtual environment\nAfter initializing the project, running the command below will automatically do what python3 -m venv .venv used to do when creating a virtual environment manually:\n\nuv sync\n\nThis creates the .venv virtual environment and installs the dependencies by referencing the .python-version, pyproject.toml, and uv.lock files. In fact, you don’t even have to run it explicitly — running any Python script with uv run &lt;script.py&gt; will create the virtual environment the same way if it doesn’t exist yet.\n\n\nActivating and deactivating\n\n\n\n\n\n\nNote\n\n\n\nUse uv run for any scripts or packages as uv auto detects your virtual environment.\n\n\nNormally, every time you come back to a project you would have to activate the virtual environment before running anything:\n\nsource .venv/bin/activate\n\nYou would then see the terminal prompt change from username project-directory to (.venv) username project-directory, and when you’re done, deactivate it:\n\ndeactivate\n\nWith uv, none of this is necessary. uv run automatically detects the .venv in your project and runs your script inside it, so you never have to remember to activate the environment every time you return to the project. The commands above are only there in case you want to work inside an activated shell manually.",
-    "crumbs": [
-      "uv"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/003-uv.html#package-management",
-    "href": "notes/001-terminal/003-uv.html#package-management",
-    "title": "uv",
-    "section": "Package Management",
-    "text": "Package Management\nThis part is where uv truly shines. You no longer have to sit through long download times for large libraries or decipher cryptic error messages from version conflicts like you would with pip or conda.\n\nAdding and removing packages\n\n# Add a package\nuv add &lt;package-name==version&gt;\n\n# Remove a package\nuv remove &lt;package-name==version&gt;\n\nOccasionally a package name comes with extra options in square brackets. In that case, handle it as follows:\n\n# For example\npip install \"fastapi[standard]\"\n\n# The uv way\nuv add fastapi --extra standard\n\nThink of --extra as replacing the double quotes and square brackets.\n\n\nExporting dependencies\nPackages are automatically recorded in pyproject.toml along with their versions, but if you’re new to uv and find requirements.txt more comfortable, you can export them by running the following commands in the terminal:\n\nuv pip freeze &gt; requirements.txt\n\n# To install packages from requirements.txt\nuv pip install -r requirements.txt",
-    "crumbs": [
-      "uv"
-    ]
-  },
-  {
-    "objectID": "notes/001-terminal/003-uv.html#references",
-    "href": "notes/001-terminal/003-uv.html#references",
-    "title": "uv",
+    "objectID": "notes/001-terminal/002-homebrew.html#references",
+    "href": "notes/001-terminal/002-homebrew.html#references",
+    "title": "Homebrew",
     "section": "References",
-    "text": "References\nIf you want to explore other features, check out the documentation on the uv homepage:\nhttps://docs.astral.sh/uv/\n\nLast modified: 2026-07-05",
+    "text": "References\nIf you want to explore other features, check out the documentation on the Homebrew homepage:\nhttps://docs.brew.sh/\n\nLast modified: 2026-07-22",
     "crumbs": [
-      "uv"
+      "Homebrew"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/005-herdr.html",
+    "href": "notes/001-terminal/005-herdr.html",
+    "title": "herdr",
+    "section": "",
+    "text": "herdr is a AI agent multiplexer CLI tool.",
+    "crumbs": [
+      "herdr"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/005-herdr.html#installation",
+    "href": "notes/001-terminal/005-herdr.html#installation",
+    "title": "herdr",
+    "section": "Installation",
+    "text": "Installation\n\nbrew install herdr",
+    "crumbs": [
+      "herdr"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/005-herdr.html#configurations",
+    "href": "notes/001-terminal/005-herdr.html#configurations",
+    "title": "herdr",
+    "section": "Configurations",
+    "text": "Configurations",
+    "crumbs": [
+      "herdr"
+    ]
+  },
+  {
+    "objectID": "notes/001-terminal/005-herdr.html#quick-start",
+    "href": "notes/001-terminal/005-herdr.html#quick-start",
+    "title": "herdr",
+    "section": "Quick Start",
+    "text": "Quick Start\nStart the Herdr server with:\n\nherdr\n\nTo detach the client do:\nctrl+b q\nTo actually stop the server:\n\nherdr server stop\n\n\nLast modified: 2026-07-22",
+    "crumbs": [
+      "herdr"
     ]
   },
   {
@@ -1200,7 +1266,7 @@
     "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
     "title": "Conventions",
     "section": "Project Directory Structure",
-    "text": "Project Directory Structure\nLet’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{domain}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{domain}__{entity}.sql\n│       └── mart/\n│           ├── _mart__models.yaml\n│           └── mart_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.",
+    "text": "Project Directory Structure\nLet’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{domain}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{domain}__{entity}.sql\n│       └── mart/\n│           ├── _mart__models.yaml\n│           └── mart_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.\n\n\n\n\n\n\nNote\n\n\n\nIf there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with models/{staging|intermediate|mart}.",
     "crumbs": [
       "dbt",
       "Conventions"
@@ -1211,7 +1277,7 @@
     "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
     "title": "Conventions",
     "section": "Project Level Meta Files",
-    "text": "Project Level Meta Files\n\ndbt_project.yml\n\n\npackages.yml\n\n\nprofiles.yml\n\nPostgresSnowflake\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    test:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    prod:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16\n    test:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: CICD_WH\n      threads: 16\n    prod:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16",
+    "text": "Project Level Meta Files\n\ndbt_project.yml\n\nname: '{project_name}'\nversion: '{version}'\nconfig-version: 2\n\nprofile: '{project_name}'\n\nmodel-paths: ['models']\nanalysis-paths: ['analyses']\ntest-paths: ['tests']\nseed-paths: ['seeds']\nmacro-paths: ['macros']\nsnapshot-paths: ['snapshots']\n\ntarget-path: \"target\"\nclean-targets:\n  - 'target'\n  - 'dbt_packages'\n\nmodels:\n  +persist_docs:\n    relation: true\n    columns: true\n  {project_name}:\n    {domain}: # repeat this block per domain (optional)\n      +schema: {SCHEMA}\n      +grants: # domain-level default grants (optional)\n        {privilege}: ['{ROLE}'] # e.g. select, references\n      staging:\n        +materialized: view\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#CD7F32\" # bronze color\n      intermediate:\n        +materialized: view # or table when heavy\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#A0A0A0\" # silver color\n      marts:\n        +materialized: table\n        +database: {MART_DB}\n        +docs:\n          node_color: \"#FFD700\" # gold color\n        +grants: # optional: override domain grants for marts\n          {privilege}: ['{ROLE}', '{ROLE}'] # e.g. select, references\n        +tags: ['{tag}'] # optional\n\nseeds:\n  {project_name}:\n    +database: {STAGE_DB}\n    {domain}: # repeat this block per domain\n      +schema: {SCHEMA}\n      +quote_columns: true # optional\n      +docs:\n        node_color: \"#008000\" # green color\n      +grants: # optional\n        {privilege}: ['{ROLE}'] # e.g. select, references\n\n\n\npackages.yml\n\npackages:\n    - package: dbt-labs/dbt_utils\n      version: 1.3.2\n    - package: godatadriven/dbt_state\n      version: 0.17.0\n    - package: Snowflake-Labs/dbt_semantic_view\n      version: 1.0.3\n\n\n\nprofiles.yml\n\nPostgresSnowflake\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    test:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    prod:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16\n    test:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: CICD_WH\n      threads: 16\n    prod:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16",
     "crumbs": [
       "dbt",
       "Conventions"
@@ -1284,11 +1350,22 @@
     ]
   },
   {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
+    "title": "Conventions",
+    "section": "Layers",
+    "text": "Layers\n\nstaging: normalization, data types, and column renames. Intra model joins and unions are okay.\nintermediate: all transformations, joins, and unions intra and inter model joins and unions.\nmart: star/snowflake schema.\n\n\n\n\n\n\n\nNote\n\n\n\nThe mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
     "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
     "href": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
     "title": "Conventions",
     "section": "Models",
-    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-07-18",
+    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-07-22",
     "crumbs": [
       "dbt",
       "Conventions"
@@ -1393,6 +1470,17 @@
     ]
   },
   {
+    "objectID": "notes/003-data-engineering/006-ducklake/001-setup.html",
+    "href": "notes/003-data-engineering/006-ducklake/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "Last modified: 2026-07-21\n\n\n\n Back to top",
+    "crumbs": [
+      "DuckLake",
+      "Setup"
+    ]
+  },
+  {
     "objectID": "notes/003-data-engineering/index.html",
     "href": "notes/003-data-engineering/index.html",
     "title": "Data Engineering",
@@ -1433,120 +1521,124 @@
     ]
   },
   {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "When setting up your own .agents directory, there are a lot of files to consider. However, I will curate a list of things I like to keep.",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
-    "title": "Setup",
-    "section": "Skills",
-    "text": "Skills",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
-    "title": "Setup",
-    "section": "Hooks",
-    "text": "Hooks\n\nLast modified: 2026-07-08",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/index.html",
-    "href": "notes/007-ai-engineering/index.html",
-    "title": "AI Engineering",
+    "objectID": "notes/006-machine-learning/index.html",
+    "href": "notes/006-machine-learning/index.html",
+    "title": "Machine Learning",
     "section": "",
     "text": "Overview coming soon.\n\n\n\n Back to top",
     "crumbs": [
-      "AI Engineering"
+      "Machine Learning"
     ]
   },
   {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
-    "title": "SCOR DS",
+    "objectID": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "title": "AI Harness",
     "section": "",
-    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "text": "Note\n\n\n\nThe harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.\n\n\nThere are various AI harnesses that I use, each with its own unique strengths.\nThe one that I think works the best out-of-the-box is Claude Code. It can be bloated, token-inefficient, and expensive, but this is the one I use at work and the company covers the subscription.\nThen I also use Antigravity CLI (formerly Gemini CLI) to fix, format, and organize text like this Obsidian vault (strictly for drafts, not stuff I post to the public, which I try my best to make it my own words and writing style).\nFinally, I also enjoy spending time tweaking and using Pi (pi-coding-agent) for hobby projects (along with Claude Code).\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Harness"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "href": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "title": "Definition",
+    "section": "",
+    "text": "Supply Chain Management consists of different components:\n\nPlanning\n\nS&OP\nDemand Plan\nSupply Plan\nInventory\n\nSourcing\n\nProcurement\nSRM\nSupplier Negotiation\n\nManufacturing\n\nProduction Scheduling\nCapacity Planning\n\nLogistics\n\nWarehousing\nTransport\nLast-Mile\n\n\n\nLast modified: 2026-06-16\n\n\n\n Back to top",
     "crumbs": [
       "SCM",
-      "SCOR DS"
+      "Definition"
     ]
   },
   {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
-    "title": "SCOR DS",
+    "objectID": "notes/008-domain-knowledge/001-scm/index.html",
+    "href": "notes/008-domain-knowledge/001-scm/index.html",
+    "title": "SCM",
     "section": "",
-    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "text": "This is notes for Supply Chain Management.\n\n\n\n Back to top",
     "crumbs": [
-      "SCM",
-      "SCOR DS"
+      "SCM"
     ]
   },
   {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
-    "title": "SCOR DS",
-    "section": "Data Mart Core Architecture",
-    "text": "Data Mart Core Architecture\nTo build a scalable analytical layer, your fact tables should mirror the natural state transitions of an entity (e.g., an order or a batch of product) as it moves through the supply chain.\nThe data should be prepared using a Conformed Dimension Data Mart approach. This means that your fact tables directly around the 6 execution phases are wrapped tightly by an Orchestration (Log/Audit) dimension to track pipeline health and end-to-end latency.\n\n1. Orchestration & Lineage (The Dimension/Audit Layer)\nBefore analyzing the business, you must analyze the pipeline. This layer tracks data quality, ingestion latencies, and end-to-end processing times.\n\nCore Dimension/Fact: dim_pipeline_execution, fact_data_lineage\nKey Columns: dag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nDashboard Visual: Data pipeline health monitoring, source-to-target latency gauges, rows processed per hour.\n\n\n\n2. Plan (The Forecasting Mart)\n\nCore Fact Table: fact_demand_forecast\nGrain: One row per Product_ID per Location_ID per Forecast_Period_Month.\nKey Columns: forecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nDashboard Visual: Forecast Accuracy KPI (MAPE), Actual vs. Forecasted Demand trends, Capacity Utilization charts.\n\n\n\n3. Order (The Digital Transaction Mart)\n\nCore Fact Table: fact_order_lifecycle\nGrain: One row per Order_Line_Item.\nKey Columns: order_id, customer_id, order_status_code (Created, Approved, Invoiced), order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDashboard Visual: Daily/Monthly Revenue, Total Orders Placed, Order conversion rates, Average Order Value (AOV).\n\n\n\n4. Source (The Procurement Mart)\n\nCore Fact Table: fact_purchase_orders\nGrain: One row per Purchase_Order_Line_Item.\nKey Columns: po_number, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nDashboard Visual: Supplier Lead Time, Supplier OTIF (On-Time In-Full), Procurement spend analysis by vendor.\n\n\n\n5. Transform (The Manufacturing & Quality Mart)\n\nCore Fact Table: fact_production_runs\nGrain: One row per Production_Batch_ID or Work_Order_ID.\nKey Columns: work_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nDashboard Visual: First Pass Yield (FPY %), OEE (Overall Equipment Effectiveness), Defect Rate by product line, Production Downtime trends.\n\n\n\n6. Fulfill (The Logistics & Distribution Mart)\n\nCore Fact Table: fact_shipment_fulfillment\nGrain: One row per Shipment_ID / Waybill.\nKey Columns: shipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nDashboard Visual: Perfect Order Index (POI), Shipping/Last-Mile Cost per order, Warehouse processing time (Click-to-Ship latency).\n\n\n\n7. Return (The Reverse Logistics Mart)\n\nCore Fact Table: fact_order_returns\nGrain: One row per Return_Line_Item.\nKey Columns: return_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status (Restocked, Refurbished, Scrapped), refund_amount\nDashboard Visual: Return Rate % by product category, Top Reasons for Returns, Financial impact of refunds vs. scrap loss.\n\n\n\nConformed Dimensions (The “Glue”)\nTo build an executive dashboard that allows filtering the entire supply chain by a specific product, location, or date, these dimension tables must link seamlessly across all 6 fact tables above:\n\ndim_products — product_id, SKU, category, brand, cost_price, retail_price\ndim_locations — location_id, site_name, type (Warehouse, Plant, Store), region, country\ndim_date — date_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\n\n\n\nExecutive Dashboard Layout Strategy\nWhen setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it into three distinct operational layers:\n\nThe Executive Summary (High Level): Place 4–5 global KPIs at the very top: Total Revenue (Order), Global OTIF % (Fulfill), Forecast Accuracy (Plan), and Gross Margin %.\nThe Supply Chain Funnel (Process Flow): Build a chronological funnel visualization or linear timeline tracking an order’s lifecycle. Show the average duration (in hours/days) it takes to pass through each phase: Order Placed → PO Raised → Produced → Shipped → Delivered.\nThe Operational Drill-Downs (Tabbed Views): Create dedicated tabs for specific team playbooks (e.g., a “Procurement Tab” powered by the Source Mart, a “Plant Operations Tab” powered by the Transform Mart).\n\n\n\n\nQuick Reference\n\nProcess Marts\n\n\n\n\n\n\n\n\n\n\n\n\n#\nProcess\nCore Table\nGrain\nKey Columns\nDashboard\n\n\n\n\n0\nOrchestrate\ndim_pipeline_execution, fact_data_lineage\nPer DAG run\ndag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nPipeline health, source-to-target latency gauges, rows/hr\n\n\n1\nPlan\nfact_demand_forecast\nProduct × Location × Forecast month\nforecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nForecast Accuracy (MAPE), Actual vs Forecast, Capacity Utilization\n\n\n2\nOrder\nfact_order_lifecycle (sales)\nOrder line item\norder_id, customer_id, order_status_code, order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDaily/Monthly Revenue, Total Orders, AOV\n\n\n3\nSource\nfact_purchase_orders (orders / PO)\nPO line item (PO Number x Product)\npo_number, product_id, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nSupplier Lead Time, OTIF, Spend by vendor\n\n\n4\nTransform\nfact_production_runs\nProduction batch / Work order\nwork_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nFirst Pass Yield %, OEE, Defect Rate, Downtime trends\n\n\n5-a\nFulfill\nfact_shipment_fulfillment\nShipment / Waybill\nshipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nPerfect Order Index, Cost/order, Click-to-Ship latency\n\n\n5-b\nFulfill\nfact_warehouse_inventory_snapshot\nWarehouse x SKU x Day\nsnapshot_date, warehouse_id, product_id, ending_on_hand_quantity, daily_allocated_overhead_cost\nInventory Turnover Ratio, Days Sales of Inventory (DSI), Total Warehousing Carrying Cost\n\n\n6\nReturn\nfact_order_returns\nReturn line item\nreturn_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status, refund_amount\nReturn Rate %, Top reasons, Refund vs Scrap impact\n\n\n\n\n\n\nConformed Dimensions\n\n\n\n\n\n\n\n\n\nDimension\nKey Columns\nDescription / SCM Context\n\n\n\n\ndim_products\nproduct_id, SKU, category, brand, cost_price, retail_price\nMaster catalog for items. Updated with weight/material columns to calculate sustainability metrics (EV.1.1).\n\n\ndim_locations\nlocation_id, site_name, type (Warehouse/Plant/Store), region, country\nThe geographical backbone. Shared by fulfillment warehouses, production plants, and customer shipping zones.\n\n\ndim_date\ndate_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\nThe universal calendar heartbeat used to calculate cycle times, monthly revenue, and daily inventory snapshots.\n\n\ndim_supplier_profile\nsupplier_id, supplier_name, tier_ranking, risk_score, compliance_status, country\nThe master record for vendors. Used by fact_purchase_orders to slice spend and track supplier network risk.\n\n\ndim_bill_of_materials\nparent_sku, component_sku, required_quantity, effectivity_start_date, effectivity_end_date\nThe structural map of your products. Allows you to break down a finished item into its raw component parts.",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
-    "title": "SCOR DS",
-    "section": "Metrics",
-    "text": "Metrics\n\n\n\n\n\n\nInfo\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/index.html",
-    "href": "notes/008-domain-knowledge/index.html",
-    "title": "Domain Knowledge",
+    "objectID": "notes/009-devtools/001-kitty-terminal.html",
+    "href": "notes/009-devtools/001-kitty-terminal.html",
+    "title": "Kitty Terminal",
     "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
     "crumbs": [
-      "Domain Knowledge"
+      "Kitty Terminal"
     ]
   },
   {
-    "objectID": "notes/009-devtools/002-vs-code.html",
-    "href": "notes/009-devtools/002-vs-code.html",
-    "title": "Visual Studio Code",
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#intro",
+    "href": "notes/009-devtools/001-kitty-terminal.html#intro",
+    "title": "Kitty Terminal",
     "section": "",
-    "text": "Last modified: 2026-06-21\n\n\n\n Back to top",
+    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
     "crumbs": [
-      "Visual Studio Code"
+      "Kitty Terminal"
     ]
   },
   {
-    "objectID": "notes/009-devtools/004-obsidian.html",
-    "href": "notes/009-devtools/004-obsidian.html",
-    "title": "Obsidian",
-    "section": "",
-    "text": "Last modified: 2026-07-06\n\n\n\n Back to top",
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#setup",
+    "href": "notes/009-devtools/001-kitty-terminal.html#setup",
+    "title": "Kitty Terminal",
+    "section": "Setup",
+    "text": "Setup\n\nBinary Install\n\ncurl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin\n\n\n\nBrew Install (Recommended)\n\nbrew install --cask kitty",
     "crumbs": [
-      "Obsidian"
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#configurations",
+    "href": "notes/009-devtools/001-kitty-terminal.html#configurations",
+    "title": "Kitty Terminal",
+    "section": "Configurations",
+    "text": "Configurations\nThe configurations that I’ve made to Kitty are as follows and it consists of only two files:\n\nmain configurations: ~/.config/kitty/kitty.conf\ntheme configurations: ~/.config/kitty/current-theme.conf\n\n\nkitty.conf\n\nFont\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nfont_size\n24.0\nBase font size\n\n\n\n\n\n\nWindow\n\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nremember_window_size\nyes\nReopen at last size\n\n\nremember_window_position\nyes\nReopen at last position\n\n\nenabled_layouts\ntall, grid\nSplitting layouts (multiplexing)\n\n\nwindow_border_width\n3pt\nBorder thickness\n\n\ndraw_minimal_borders\nno\nDraw full borders\n\n\nwindow_padding_width\n7\nInner padding\n\n\nactive_border_color\n#fab387\nFocused window border (peach)\n\n\ninactive_border_color\n#585b70\nUnfocused window border\n\n\n\n\n\n\nAppearance\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nbackground_opacity\n0.8\nTransparent background\n\n\nbackground_blur\n1\nBlur behind transparency\n\n\n\n\n\n\nKeybindings\n\n\n\n\n\n\nNote\n\n\n\ncmd+enter is mapped to no_op to disable kitty’s default new-window shortcut, so ctrl+shift+enter is the single binding for new panes.\n\n\n\n\n\n\nKeybinding\nAction\n\n\n\n\nctrl+shift+enter\nNew window (pane) in current dir\n\n\ncmd+t\nNew tab in current dir\n\n\ncmd+n\nNew OS window in current dir\n\n\n\n\nAll use launch --cwd=current so the new tab/window opens in the same directory as the active one. This is done because it’s way easier to go back to the root (which is default), but not to a specific project unless your project directory is easy to memorize.\n\n\n\ncurrent-theme.conf\nCatppuccin-Mocha (current-theme.conf).\nDark pastel palette:\n- foreground #CDD6F4\n- background #1E1E2E\n- accent lilac #CBA6F7 on active tab\n\n\n\n\n\n\nNote\n\n\n\nThis part can be configured with the kitten themes command.",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
+    "href": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
+    "title": "Kitty Terminal",
+    "section": "Keybindings",
+    "text": "Keybindings\nThe keybindings listed are more than enough in my honest opinion.\n\nTabs\nThis section is for managing the tabs that appear in the bottom.\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew Tab\ncommand + T\n\n\nRename Tab\ncommand + I\n\n\nSwitch Tab\ncommand + shift + []\n\n\nClose Tab\ncommand + W\n\n\n\n\n\n\nWindows (Panes)\nThis section is for managing the windows (splitting the terminal into multiple panes, i.e. multiplexing).\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew window\nctrl + shift + enter\n\n\nMove window\nctrl + shift + F\n\n\nSwitch window\nctrl + shift + []\n\n\nClose window\nctrl + shift + W",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "href": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "title": "Kitty Terminal",
+    "section": "Reminders",
+    "text": "Reminders\n\n\n\n\n\n\nWarning\n\n\n\nWhen SSH-ing into a server use the kitten command else the shell will be very buggy.\nFor example, kitten ssh user@xxx.xx.xx.xxx\n\n\n\n\n\n\n\n\nNote\n\n\n\nWhen opening links, do ctrl + click.\n\n\n\nLast modified: 2026-07-22",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/003-dbeaver.html",
+    "href": "notes/009-devtools/003-dbeaver.html",
+    "title": "DBeaver",
+    "section": "",
+    "text": "driver properties\nname: private_key_file\nvalue: $PATH to rsa_key.p8\nUser Interfaces &gt; Keys:\n- move lines up - option up\n- move lines down - option down\n- toggle line comment - command /\n- copy lines - option shift down\n\nLast modified: 2026-07-22\n\n\n\n Back to top",
+    "crumbs": [
+      "DBeaver"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/005-todoist.html",
+    "href": "notes/009-devtools/005-todoist.html",
+    "title": "Todoist",
+    "section": "",
+    "text": "Last modified: 2026-07-22\n\n\n\n Back to top",
+    "crumbs": [
+      "Todoist"
     ]
   },
   {

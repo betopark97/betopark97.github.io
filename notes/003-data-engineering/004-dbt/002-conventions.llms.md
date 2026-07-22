@@ -40,11 +40,84 @@ dbt_project/
 
 Below we’ll discuss what each component is and how to fill them in.
 
+> **NOTE:**
+>
+> If there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with `models/{staging|intermediate|mart}`.
+
 ## Project Level Meta Files
 
 ### dbt_project.yml
 
+``` numberSource
+name: '{project_name}'
+version: '{version}'
+config-version: 2
+
+profile: '{project_name}'
+
+model-paths: ['models']
+analysis-paths: ['analyses']
+test-paths: ['tests']
+seed-paths: ['seeds']
+macro-paths: ['macros']
+snapshot-paths: ['snapshots']
+
+target-path: "target"
+clean-targets:
+  - 'target'
+  - 'dbt_packages'
+
+models:
+  +persist_docs:
+    relation: true
+    columns: true
+  {project_name}:
+    {domain}: # repeat this block per domain (optional)
+      +schema: {SCHEMA}
+      +grants: # domain-level default grants (optional)
+        {privilege}: ['{ROLE}'] # e.g. select, references
+      staging:
+        +materialized: view
+        +database: {STAGE_DB}
+        +docs:
+          node_color: "#CD7F32" # bronze color
+      intermediate:
+        +materialized: view # or table when heavy
+        +database: {STAGE_DB}
+        +docs:
+          node_color: "#A0A0A0" # silver color
+      marts:
+        +materialized: table
+        +database: {MART_DB}
+        +docs:
+          node_color: "#FFD700" # gold color
+        +grants: # optional: override domain grants for marts
+          {privilege}: ['{ROLE}', '{ROLE}'] # e.g. select, references
+        +tags: ['{tag}'] # optional
+
+seeds:
+  {project_name}:
+    +database: {STAGE_DB}
+    {domain}: # repeat this block per domain
+      +schema: {SCHEMA}
+      +quote_columns: true # optional
+      +docs:
+        node_color: "#008000" # green color
+      +grants: # optional
+        {privilege}: ['{ROLE}'] # e.g. select, references
+```
+
 ### packages.yml
+
+``` numberSource
+packages:
+    - package: dbt-labs/dbt_utils
+      version: 1.3.2
+    - package: godatadriven/dbt_state
+      version: 0.17.0
+    - package: Snowflake-Labs/dbt_semantic_view
+      version: 1.0.3
+```
 
 ### profiles.yml
 
@@ -164,6 +237,16 @@ delete+insert checks for a set of keys that you define
 - shell environment overrides all
 - `.env` file is auto detected with the new dbt fusion
 
+## Layers
+
+- staging: normalization, data types, and column renames. Intra model joins and unions are okay.
+- intermediate: all transformations, joins, and unions intra and inter model joins and unions.
+- mart: star/snowflake schema.
+
+> **NOTE:**
+>
+> The mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.
+
 ## Models
 
 - all lower case
@@ -171,6 +254,6 @@ delete+insert checks for a set of keys that you define
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-18
+Last modified: 2026-07-22
 
 Back to top

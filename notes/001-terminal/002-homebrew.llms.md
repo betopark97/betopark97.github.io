@@ -118,6 +118,6 @@ If you want to explore other features, check out the documentation on the Homebr
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-05
+Last modified: 2026-07-22
 
 Back to top
