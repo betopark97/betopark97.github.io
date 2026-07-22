@@ -1,5 +1,6 @@
 ---
 title: DBeaver
+icon: devicon:dbeaver
 ---
 
 
@@ -11,7 +12,9 @@ value: $PATH to rsa_key.p8
 User Interfaces > Keys:
 - move lines up - option up
 - move lines down - option down
+- toggle line comment - command /
+- copy lines - option shift down
 
 ***
 
-[Last modified: 2026-06-27]{.note-modified}
+[Last modified: 2026-07-22]{.note-modified}

@@ -1,5 +1,6 @@
 ---
 title: Streamlit
+icon: devicon:streamlit
 ---
 ## Installation
 
@@ -39,4 +40,4 @@ st.session_state + st.empty()
 
 ***
 
-[Last modified: 2026-07-14]{.note-modified}
+[Last modified: 2026-07-22]{.note-modified}

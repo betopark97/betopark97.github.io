@@ -1,5 +1,6 @@
 ---
 title: Homebrew
+icon: logos:homebrew
 ---
 ## Intro
 
@@ -117,4 +118,4 @@ https://docs.brew.sh/
 
 ***
 
-[Last modified: 2026-07-05]{.note-modified}
+[Last modified: 2026-07-22]{.note-modified}

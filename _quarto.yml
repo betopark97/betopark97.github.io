@@ -97,6 +97,7 @@ website:
         - notes/001-terminal/002-homebrew.md
         - notes/001-terminal/003-uv.md
         - notes/001-terminal/004-chezmoi.qmd
+        - notes/001-terminal/005-herdr.md
     - id: notes-002-devops
       title: "DevOps"
       tools:
@@ -123,6 +124,7 @@ website:
         - auto: "notes/003-data-engineering/003-dlt/"
         - auto: "notes/003-data-engineering/004-dbt/"
         - auto: "notes/003-data-engineering/005-fastapi/"
+        - auto: "notes/003-data-engineering/006-ducklake/"
     - id: notes-004-data-analysis
       title: "Data Analysis"
       tools:
@@ -154,6 +156,7 @@ website:
       contents:
         - text: "Machine Learning"
           href: notes/006-machine-learning/index.md
+        - notes/006-machine-learning/001-mlflow.md
     - id: notes-007-ai-engineering
       title: "AI Engineering"
       tools:
@@ -187,6 +190,7 @@ website:
         - notes/009-devtools/002-vs-code.md
         - notes/009-devtools/003-dbeaver.md
         - notes/009-devtools/004-obsidian.md
+        - notes/009-devtools/005-todoist.md
     - id: notes-010-homelab
       title: "Homelab"
       tools:
