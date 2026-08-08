@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,10 +80,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-350b7d7b10ec36dce6ff64583a151400.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-db91bbc1c679d51dc608ee8fdbcaa356.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -216,19 +219,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-modeling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
+  <a href="../../../notes/003-data-engineering/001-data-architecture/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Architecture</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/002-snowflake/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snowflake</span></a>
+            <a href="../../../notes/003-data-engineering/001-data-modeling/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/001-data-modeling/001-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Types of Mart Tables</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/003-data-engineering/002-snowflake/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Snowflake</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notes/003-data-engineering/002-snowflake/001-rbac.html" class="sidebar-item-text sidebar-link">
@@ -265,11 +291,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notes/003-data-engineering/003-dlt/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">dlt</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
@@ -288,17 +314,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Normalization</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/004-sources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Sources</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/003-dlt/005-workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workflow</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">dbt</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
@@ -347,11 +385,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FastAPI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
@@ -370,14 +408,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="sidebar-item-container"> 
             <a href="../../../notes/003-data-engineering/006-ducklake/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DuckLake</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../notes/003-data-engineering/006-ducklake/001-setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/007-prefect/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefect</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/003-data-engineering/008-postgresql/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">PostgreSQL</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/008-postgresql/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
@@ -401,6 +462,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#pipelines" id="toc-pipelines" class="nav-link" data-scroll-target="#pipelines">Pipelines</a></li>
   <li><a href="#source" id="toc-source" class="nav-link" data-scroll-target="#source">Source</a></li>
+  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
+  <li><a href="#environments" id="toc-environments" class="nav-link" data-scroll-target="#environments">Environments</a></li>
+  <li><a href="#scripts" id="toc-scripts" class="nav-link" data-scroll-target="#scripts">Scripts</a></li>
   </ul>
 </nav>
     </div>
@@ -444,60 +508,60 @@ Note
 </div>
 </div>
 <div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1"></a>dlt_project/</span>
-<span id="cb1-2"><a href="#cb1-2"></a>├── .dlt/</span>
-<span id="cb1-3"><a href="#cb1-3"></a>│   ├── config.toml                 # non-secret config (log level, runtime, dataset names)</span>
-<span id="cb1-4"><a href="#cb1-4"></a>│   ├── secrets.toml                # gitignored — real credentials</span>
-<span id="cb1-5"><a href="#cb1-5"></a>│   └── secrets.toml.example        # committed template</span>
-<span id="cb1-6"><a href="#cb1-6"></a>│</span>
-<span id="cb1-7"><a href="#cb1-7"></a># &gt;&gt;&gt; custom sources &amp; destinations</span>
-<span id="cb1-8"><a href="#cb1-8"></a>├── sources/                        # EXTRACT layer — one package per source</span>
-<span id="cb1-9"><a href="#cb1-9"></a>│   ├── __init__.py</span>
-<span id="cb1-10"><a href="#cb1-10"></a>│   │</span>
-<span id="cb1-11"><a href="#cb1-11"></a>│   ├── {source_a}/</span>
-<span id="cb1-12"><a href="#cb1-12"></a>│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions</span>
-<span id="cb1-13"><a href="#cb1-13"></a>│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff</span>
-<span id="cb1-14"><a href="#cb1-14"></a>│   │   ├── settings.py             # constants: base URL, endpoints, default params</span>
-<span id="cb1-15"><a href="#cb1-15"></a>│   │   └── README.md               # what it pulls, quirks, rate limits</span>
-<span id="cb1-16"><a href="#cb1-16"></a>│   │</span>
-<span id="cb1-17"><a href="#cb1-17"></a>│   └── {source_b}/</span>
-<span id="cb1-18"><a href="#cb1-18"></a>│       ├── __init__.py</span>
-<span id="cb1-19"><a href="#cb1-19"></a>│       ├── helpers.py</span>
-<span id="cb1-20"><a href="#cb1-20"></a>│       ├── settings.py</span>
-<span id="cb1-21"><a href="#cb1-21"></a>│       └── README.md</span>
-<span id="cb1-22"><a href="#cb1-22"></a>│</span>
-<span id="cb1-23"><a href="#cb1-23"></a>├── destinations/                   # LOAD layer — one package per custom destination</span>
-<span id="cb1-24"><a href="#cb1-24"></a>│   ├── __init__.py</span>
-<span id="cb1-25"><a href="#cb1-25"></a>│   │</span>
-<span id="cb1-26"><a href="#cb1-26"></a>│   ├── {destination_a}/</span>
-<span id="cb1-27"><a href="#cb1-27"></a>│   │   ├── __init__.py             # @dlt.destination definitions</span>
-<span id="cb1-28"><a href="#cb1-28"></a>│   │   ├── helpers.py              # client, auth, write/flush logic</span>
-<span id="cb1-29"><a href="#cb1-29"></a>│   │   └── settings.py             # constants: endpoints, batch size, defaults</span>
-<span id="cb1-30"><a href="#cb1-30"></a>│   │</span>
-<span id="cb1-31"><a href="#cb1-31"></a>│   └── {destination_b}/</span>
-<span id="cb1-32"><a href="#cb1-32"></a>│       ├── __init__.py</span>
-<span id="cb1-33"><a href="#cb1-33"></a>│       ├── helpers.py</span>
-<span id="cb1-34"><a href="#cb1-34"></a>│       └── settings.py</span>
-<span id="cb1-35"><a href="#cb1-35"></a># &lt;&lt;&lt; custom sources &amp; destinations</span>
-<span id="cb1-36"><a href="#cb1-36"></a>│</span>
-<span id="cb1-37"><a href="#cb1-37"></a>├── pipelines/                      # LOAD/RUN layer — one runner per pipeline</span>
-<span id="cb1-38"><a href="#cb1-38"></a>│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())</span>
-<span id="cb1-39"><a href="#cb1-39"></a>│   └── {source_b}_pipeline.py</span>
-<span id="cb1-40"><a href="#cb1-40"></a>│</span>
-<span id="cb1-41"><a href="#cb1-41"></a>├── schemas/                        # optional — schema contracts</span>
-<span id="cb1-42"><a href="#cb1-42"></a>│   ├── export/                     # dlt writes inferred schemas here</span>
-<span id="cb1-43"><a href="#cb1-43"></a>│   └── import/                     # pin/edit schemas here to enforce them</span>
-<span id="cb1-44"><a href="#cb1-44"></a>│</span>
-<span id="cb1-45"><a href="#cb1-45"></a>├── tests/                          # mirror sources/ structure</span>
-<span id="cb1-46"><a href="#cb1-46"></a>│   ├── conftest.py</span>
-<span id="cb1-47"><a href="#cb1-47"></a>│   ├── test_{source_a}.py</span>
-<span id="cb1-48"><a href="#cb1-48"></a>│   └── test_{source_b}.py</span>
-<span id="cb1-49"><a href="#cb1-49"></a>│</span>
-<span id="cb1-50"><a href="#cb1-50"></a>├── pyproject.toml                  # deps: dlt[{destination}] + source libs</span>
-<span id="cb1-51"><a href="#cb1-51"></a>├── uv.lock</span>
-<span id="cb1-52"><a href="#cb1-52"></a>├── .python-version</span>
-<span id="cb1-53"><a href="#cb1-53"></a>├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.</span>
-<span id="cb1-54"><a href="#cb1-54"></a>└── README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>dlt_project/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a>├── .dlt/</span>
+<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a>│   ├── config.toml                 # non-secret config (log level, runtime, dataset names)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a>│   ├── secrets.toml                # gitignored — real credentials</span>
+<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a>│   └── secrets.toml.example        # committed template</span>
+<span id="cb1-6"><a href="#cb1-6" aria-label="6"></a>│</span>
+<span id="cb1-7"><a href="#cb1-7" aria-label="7"></a># &gt;&gt;&gt; custom sources &amp; destinations</span>
+<span id="cb1-8"><a href="#cb1-8" aria-label="8"></a>├── sources/                        # EXTRACT layer — one package per source</span>
+<span id="cb1-9"><a href="#cb1-9" aria-label="9"></a>│   ├── __init__.py</span>
+<span id="cb1-10"><a href="#cb1-10" aria-label="10"></a>│   │</span>
+<span id="cb1-11"><a href="#cb1-11" aria-label="11"></a>│   ├── {source_a}/</span>
+<span id="cb1-12"><a href="#cb1-12" aria-label="12"></a>│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions</span>
+<span id="cb1-13"><a href="#cb1-13" aria-label="13"></a>│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff</span>
+<span id="cb1-14"><a href="#cb1-14" aria-label="14"></a>│   │   ├── settings.py             # constants: base URL, endpoints, default params</span>
+<span id="cb1-15"><a href="#cb1-15" aria-label="15"></a>│   │   └── README.md               # what it pulls, quirks, rate limits</span>
+<span id="cb1-16"><a href="#cb1-16" aria-label="16"></a>│   │</span>
+<span id="cb1-17"><a href="#cb1-17" aria-label="17"></a>│   └── {source_b}/</span>
+<span id="cb1-18"><a href="#cb1-18" aria-label="18"></a>│       ├── __init__.py</span>
+<span id="cb1-19"><a href="#cb1-19" aria-label="19"></a>│       ├── helpers.py</span>
+<span id="cb1-20"><a href="#cb1-20" aria-label="20"></a>│       ├── settings.py</span>
+<span id="cb1-21"><a href="#cb1-21" aria-label="21"></a>│       └── README.md</span>
+<span id="cb1-22"><a href="#cb1-22" aria-label="22"></a>│</span>
+<span id="cb1-23"><a href="#cb1-23" aria-label="23"></a>├── destinations/                   # LOAD layer — one package per custom destination</span>
+<span id="cb1-24"><a href="#cb1-24" aria-label="24"></a>│   ├── __init__.py</span>
+<span id="cb1-25"><a href="#cb1-25" aria-label="25"></a>│   │</span>
+<span id="cb1-26"><a href="#cb1-26" aria-label="26"></a>│   ├── {destination_a}/</span>
+<span id="cb1-27"><a href="#cb1-27" aria-label="27"></a>│   │   ├── __init__.py             # @dlt.destination definitions</span>
+<span id="cb1-28"><a href="#cb1-28" aria-label="28"></a>│   │   ├── helpers.py              # client, auth, write/flush logic</span>
+<span id="cb1-29"><a href="#cb1-29" aria-label="29"></a>│   │   └── settings.py             # constants: endpoints, batch size, defaults</span>
+<span id="cb1-30"><a href="#cb1-30" aria-label="30"></a>│   │</span>
+<span id="cb1-31"><a href="#cb1-31" aria-label="31"></a>│   └── {destination_b}/</span>
+<span id="cb1-32"><a href="#cb1-32" aria-label="32"></a>│       ├── __init__.py</span>
+<span id="cb1-33"><a href="#cb1-33" aria-label="33"></a>│       ├── helpers.py</span>
+<span id="cb1-34"><a href="#cb1-34" aria-label="34"></a>│       └── settings.py</span>
+<span id="cb1-35"><a href="#cb1-35" aria-label="35"></a># &lt;&lt;&lt; custom sources &amp; destinations</span>
+<span id="cb1-36"><a href="#cb1-36" aria-label="36"></a>│</span>
+<span id="cb1-37"><a href="#cb1-37" aria-label="37"></a>├── pipelines/                      # LOAD/RUN layer — one runner per pipeline</span>
+<span id="cb1-38"><a href="#cb1-38" aria-label="38"></a>│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())</span>
+<span id="cb1-39"><a href="#cb1-39" aria-label="39"></a>│   └── {source_b}_pipeline.py</span>
+<span id="cb1-40"><a href="#cb1-40" aria-label="40"></a>│</span>
+<span id="cb1-41"><a href="#cb1-41" aria-label="41"></a>├── schemas/                        # optional — schema contracts</span>
+<span id="cb1-42"><a href="#cb1-42" aria-label="42"></a>│   ├── export/                     # dlt writes inferred schemas here</span>
+<span id="cb1-43"><a href="#cb1-43" aria-label="43"></a>│   └── import/                     # pin/edit schemas here to enforce them</span>
+<span id="cb1-44"><a href="#cb1-44" aria-label="44"></a>│</span>
+<span id="cb1-45"><a href="#cb1-45" aria-label="45"></a>├── tests/                          # mirror sources/ structure</span>
+<span id="cb1-46"><a href="#cb1-46" aria-label="46"></a>│   ├── conftest.py</span>
+<span id="cb1-47"><a href="#cb1-47" aria-label="47"></a>│   ├── test_{source_a}.py</span>
+<span id="cb1-48"><a href="#cb1-48" aria-label="48"></a>│   └── test_{source_b}.py</span>
+<span id="cb1-49"><a href="#cb1-49" aria-label="49"></a>│</span>
+<span id="cb1-50"><a href="#cb1-50" aria-label="50"></a>├── pyproject.toml                  # deps: dlt[{destination}] + source libs</span>
+<span id="cb1-51"><a href="#cb1-51" aria-label="51"></a>├── uv.lock</span>
+<span id="cb1-52"><a href="#cb1-52" aria-label="52"></a>├── .python-version</span>
+<span id="cb1-53"><a href="#cb1-53" aria-label="53"></a>├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.</span>
+<span id="cb1-54"><a href="#cb1-54" aria-label="54"></a>└── README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Below will be an explanation of each of the subdirectories and files in logical order. Meaning that this is the order I would fill in the code to run my pipelines.</p>
 <div class="callout callout-style-default callout-titled" data-callout="tip">
@@ -534,37 +598,58 @@ Note
 <h3 class="anchored" data-anchor-id="configs">Configs</h3>
 <p>The configurations are managed by the <code>config.toml</code>. This file is to handle non secret variables.</p>
 <div class="term" data-title="toml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">[runtime]</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="dt">log_level</span><span class="op">=</span><span class="st">"INFO"</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a></span>
-<span id="cb2-4"><a href="#cb2-4"></a><span class="co"># Do not compress files sent to the filesystem bucket</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">[normalize.data_writer]</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="dt">disable_compression</span><span class="op">=</span><span class="cn">true</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a></span>
-<span id="cb2-8"><a href="#cb2-8"></a><span class="co"># Recommended sections for the destination (destination.module)</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">[destination.filesystem]</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="dt">bucket_url</span> <span class="op">=</span> <span class="st">"s3://[your_bucket_name]"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="kw">[runtime]</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a><span class="dt">log_level</span><span class="op">=</span><span class="st">"INFO"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a><span class="co"># Do not compress files sent to the filesystem bucket</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a><span class="kw">[normalize.data_writer]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a><span class="dt">disable_compression</span><span class="op">=</span><span class="cn">true</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-label="8"></a><span class="co"># Recommended sections for the destination (destination.module)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-label="9"></a><span class="kw">[destination.filesystem]</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-label="10"></a><span class="dt">bucket_url</span> <span class="op">=</span> <span class="st">"s3://[your_bucket_name]"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-label="11"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-label="12"></a><span class="co"># Arrow/polars loads skip data-lineage columns by default.</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-label="13"></a><span class="co"># Turn them on so every row carries </span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-label="14"></a><span class="co"># _dlt_load_id (joins to _dlt_loads for auditing) and _dlt_id (unique row id).</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-label="15"></a><span class="kw">[normalize.parquet_normalizer]</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-label="16"></a><span class="dt">add_dlt_load_id</span> <span class="op">=</span> <span class="cn">true</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-label="17"></a><span class="dt">add_dlt_id</span> <span class="op">=</span> <span class="cn">true</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="secrets" class="level3">
 <h3 class="anchored" data-anchor-id="secrets">Secrets</h3>
 <p>The secrets are managed by the <code>secrets.toml</code>. This file will have the variables for sources and target. The thing is that there is no hard rules to manage these and the following conventions are “one” of the default ways, but also trying to keep it modular.</p>
 <div class="term" data-title="toml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">[sources.</span><span class="er">{</span><span class="dt">source_a</span><span class="er">}]</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="dt">api_key</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">[sources.</span><span class="er">{</span><span class="dt">source_b</span><span class="er">}</span><span class="dt">.credentials</span><span class="er">]</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="dt">username</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="dt">password</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">[destination.</span><span class="er">{</span><span class="dt">destination_a</span><span class="er">}]</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="dt">credentials</span> <span class="op">=</span> <span class="st">"db://user:password@service-account/database?warehouse=warehouse_name&amp;role=role"</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">[destination.</span><span class="er">{</span><span class="dt">destination_b</span><span class="er">}</span><span class="dt">.credentials</span><span class="er">]</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="dt">host</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="dt">username</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="dt">password</span> <span class="op">=</span> <span class="st">"..."</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="dt">database</span> <span class="op">=</span> <span class="st">"..."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="kw">[sources.</span><span class="er">{</span><span class="dt">source_a</span><span class="er">}]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="dt">api_key</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-label="4"></a><span class="kw">[sources.</span><span class="er">{</span><span class="dt">source_b</span><span class="er">}</span><span class="dt">.credentials</span><span class="er">]</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-label="5"></a><span class="dt">username</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-label="6"></a><span class="dt">password</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-label="7"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-label="8"></a><span class="kw">[destination.</span><span class="er">{</span><span class="dt">destination_a</span><span class="er">}]</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-label="9"></a><span class="dt">credentials</span> <span class="op">=</span> <span class="st">"db://user:password@service-account/database?warehouse=warehouse_name&amp;role=role"</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-label="10"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-label="11"></a><span class="kw">[destination.</span><span class="er">{</span><span class="dt">destination_b</span><span class="er">}</span><span class="dt">.credentials</span><span class="er">]</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-label="12"></a><span class="dt">host</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-label="13"></a><span class="dt">username</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-label="14"></a><span class="dt">password</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-label="15"></a><span class="dt">database</span> <span class="op">=</span> <span class="st">"..."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If the credentials have a predefined format like <code>SQL database</code> or <code>Object store &amp; filesystem</code>. You can separate by provider name / pipeline name.</p>
+<div class="term" data-title="toml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a><span class="kw">[</span><span class="er">{</span><span class="dt">provider</span><span class="er">}</span><span class="dt">.sources.filesystem.credentials</span><span class="er">]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a><span class="dt">client_email</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-label="3"></a><span class="dt">private_key</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-label="4"></a><span class="dt">project_id</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-label="5"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-label="6"></a><span class="kw">[</span><span class="er">{</span><span class="dt">provider</span><span class="er">}</span><span class="dt">.sources.sql_database.credentials</span><span class="er">]</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-label="7"></a><span class="dt">drivername</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-label="8"></a><span class="dt">database</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-label="9"></a><span class="dt">username</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-label="10"></a><span class="dt">host</span> <span class="op">=</span> <span class="st">"..."</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-label="11"></a><span class="dt">port</span> <span class="op">=</span> <span class="st">"..."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -573,33 +658,61 @@ Note
 <p>Normally pipeline files are the starting point. It calls a source and destination through the decorators <code>@dlt.source</code> and <code>@dlt.destination</code>. However, we wouldn’t make all the mess of using dlt for a project that wouldn’t scale. That’s why I plan to start with a scaffold that I’ve provided above in the directory structure part with the tree.</p>
 <p>The pipeline script should look something like the following:</p>
 <div class="term" data-title="python">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">import</span> dlt</span>
-<span id="cb4-2"><a href="#cb4-2"></a></span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="im">from</span> sources.{source_dir} <span class="im">import</span> {source_dir}</span>
-<span id="cb4-4"><a href="#cb4-4"></a></span>
-<span id="cb4-5"><a href="#cb4-5"></a></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">def</span> run() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
-<span id="cb4-7"><a href="#cb4-7"></a>    pipeline <span class="op">=</span> dlt.pipeline(</span>
-<span id="cb4-8"><a href="#cb4-8"></a>        pipeline_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9"></a>        destination<span class="op">=</span><span class="st">"</span><span class="sc">{destination}</span><span class="st">"</span>,</span>
-<span id="cb4-10"><a href="#cb4-10"></a>        dataset_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11"></a>    )</span>
-<span id="cb4-12"><a href="#cb4-12"></a>    load_info <span class="op">=</span> pipeline.run({source_dir}())</span>
-<span id="cb4-13"><a href="#cb4-13"></a>    <span class="cf">return</span> load_info</span>
-<span id="cb4-14"><a href="#cb4-14"></a>    </span>
-<span id="cb4-15"><a href="#cb4-15"></a></span>
-<span id="cb4-16"><a href="#cb4-16"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb4-17"><a href="#cb4-17"></a>    run()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a><span class="im">import</span> dlt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-label="2"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-label="3"></a><span class="im">from</span> sources.{source_dir} <span class="im">import</span> {source_dir}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-label="4"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-label="5"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-label="6"></a><span class="kw">def</span> run() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb5-7"><a href="#cb5-7" aria-label="7"></a>    pipeline <span class="op">=</span> dlt.pipeline(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-label="8"></a>        pipeline_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-label="9"></a>        destination<span class="op">=</span><span class="st">"</span><span class="sc">{destination}</span><span class="st">"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-label="10"></a>        dataset_name<span class="op">=</span><span class="st">"</span><span class="sc">{source_dir}</span><span class="st">"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-label="11"></a>    )</span>
+<span id="cb5-12"><a href="#cb5-12" aria-label="12"></a>    load_info <span class="op">=</span> pipeline.run({source_dir}())</span>
+<span id="cb5-13"><a href="#cb5-13" aria-label="13"></a>    <span class="cf">return</span> load_info</span>
+<span id="cb5-14"><a href="#cb5-14" aria-label="14"></a>    </span>
+<span id="cb5-15"><a href="#cb5-15" aria-label="15"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-label="16"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb5-17"><a href="#cb5-17" aria-label="17"></a>    run()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="source" class="level2">
 <h2 class="anchored" data-anchor-id="source">Source</h2>
 <p>let’s set the <code>@dlt.source</code>’s parameter to <code>max_table_nesting=0</code> so that it doesn’t do any normalization and we strictly do all transformations in <code>dbt</code> the right tool for transformation. we thus use dlt only for what it’s best: extraction and loading (normally dlt works in three steps under the hood: extraction, normalization, and loading).</p>
 <div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1"></a>@dlt.source(name="{source_name}", max_table_nesting=0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-label="1"></a>@dlt.source(name="{source_name}", max_table_nesting=0)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="variables" class="level2">
+<h2 class="anchored" data-anchor-id="variables">Variables</h2>
+<p>Okay, there are a lot of variables to manage, so let’s make a small bullet point list of what values to configure for each of the main variables.</p>
+<ul>
+<li>pipeline_name = the domain or source</li>
+<li>dataset_name = schema</li>
+<li>wrapper = <span class="citation" data-cites="dlt.source">@dlt.source</span>(name={}, section={})</li>
+<li>credentials [sources.{source}.filesystem.credentials]</li>
+</ul>
+</section>
+<section id="environments" class="level2">
+<h2 class="anchored" data-anchor-id="environments">Environments</h2>
+<p>To separate environments under <code>.dlt</code> make the following configurations:</p>
+<ul>
+<li><code>.workspace</code>: leave it an empty file, it’s to let dlt create its artifacts in this workspace rather than <code>~/.dlt</code>.</li>
+<li><code>dev.secrets.toml</code>: exclude variables under <code>secrets.toml</code> that belong to dev and add them here.</li>
+<li><code>prod.secrets.toml</code>: exclude variables under <code>secrets.toml</code> that belong to prod and add them here.</li>
+<li><code>profile-name</code> (Optional): just add a single text no quotations like: <code>dev</code> or <code>prod</code> to pin the runs to a specific profile. However, I’d recommend just using <code>WORKSPACE__PROFILE=prod</code> when running pipelines to prod instead. All runs default to dev.</li>
+</ul>
+</section>
+<section id="scripts" class="level2">
+<h2 class="anchored" data-anchor-id="scripts">Scripts</h2>
+<p>when running:<br>
+- <code>WORKSPACE__PROFILE=prod</code> # default: dev<br>
+- <code>INGESTION__{key}={value}</code> # e.g., INGESTION__MONTHS_BACK={int|all} (default: 3)<br>
+- <code>PROGRESS=log</code><br>
+- <code>PIPELINES__{pipeline_name}__REFRESH={drop_sources|drop_resources|drop_data}</code></p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-17</span></p>
+<p><span class="note-modified">Last modified: 2026-08-08</span></p>
 
 
 </section>
@@ -674,12 +787,15 @@ Note
   "/003-data-engineering/004-dbt/": "logos:dbt-icon",
   "/003-data-engineering/005-fastapi/": "logos:fastapi-icon",
   "/003-data-engineering/006-ducklake/": "devicon:duckdb",
+  "/003-data-engineering/007-prefect/": "simple-icons:prefect",
+  "/003-data-engineering/008-postgresql/": "logos:postgresql",
   "/005-business-intelligence/004-streamlit": "devicon:streamlit",
   "/006-machine-learning/001-mlflow": "simple-icons:mlflow",
   "/009-devtools/002-vs-code": "logos:visual-studio-code",
   "/009-devtools/003-dbeaver": "devicon:dbeaver",
   "/009-devtools/004-obsidian": "selfhst:obsidian",
-  "/009-devtools/005-todoist": "logos:todoist-icon"
+  "/009-devtools/005-todoist": "logos:todoist-icon",
+  "/009-devtools/006-raycast": "selfhst:raycast"
 };</script>
 <!-- <<< sidebar-icons -->
 <script>

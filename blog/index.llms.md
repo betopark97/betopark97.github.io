@@ -2,7 +2,7 @@
 
 > **NOTE:**
 
-Half-formed ideas, worked out in public — notes that grew up enough to share.  
+Half-formed ideas, worked out in public — notes that grew up enough to share.\
 
 ## List
 

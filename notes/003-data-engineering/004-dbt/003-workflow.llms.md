@@ -1,14 +1,14 @@
 # Workflow
 
-dbt commands  
-- dbt debug  
-- dbt clean  
-- dbt deps  
-- dbt run  
-- dbt test  
-- dbt build  
-- dbt seed  
-- dbt lint (requires .sqlfluff)  
+dbt commands\
+- dbt debug\
+- dbt clean\
+- dbt deps\
+- dbt run\
+- dbt test\
+- dbt build\
+- dbt seed\
+- dbt lint (requires .sqlfluff)\
 - dbt fmt (Coming soon…)
 
 Let’s use dbt fusion locally for faster build, run, compilation whatever times.

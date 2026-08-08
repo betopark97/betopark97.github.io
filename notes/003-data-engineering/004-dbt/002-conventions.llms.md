@@ -20,13 +20,13 @@ dbt_project/
 │       ├── staging/
 │       │   ├── _stg__sources.yaml     # Source db/schema + origin docs
 │       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions
-│       │   └── stg_{domain}__{entity}.sql
+│       │   └── stg_{source}__{entity}.sql
 │       ├── intermediate/
 │       │   ├── _int__models.yaml
-│       │   └── int_{domain}__{entity}.sql
-│       └── mart/
-│           ├── _mart__models.yaml
-│           └── mart_{domain}__{entity}.sql
+│       │   └── int_{entity}__{verb/attribute}.sql
+│       └── marts/
+│           ├── _marts__models.yaml
+│           └── {dim|fct}_{domain}__{entity}.sql
 ├── seeds/                             # Static CSV reference data
 ├── snapshots/                         # SCD type-2 snapshots
 ├── target/                            # Compiled SQL & artifacts (git-ignored)
@@ -211,9 +211,9 @@ The sources yaml file is needed only in the staging layer. It contains the sourc
 
 The models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.
 
-The data tests are generic (singular) tests and custom tests, package tests.  
-- singular tests include: `unique`, `not null`, `accepted_values`, `relationships`  
-- custom tests consist of macros  
+The data tests are generic (singular) tests and custom tests, package tests.\
+- singular tests include: `unique`, `not null`, `accepted_values`, `relationships`\
+- custom tests consist of macros\
 - package tests consist of `dbt_utils` and other community packages
 
 ## Model Names
@@ -226,10 +226,10 @@ The test sql files are for complex data quality tests that cannot be covered wit
 
 ## Incremental Models
 
-only use merge, it’s the only idempotent closes to “set-it-and-forget-it”.  
+only use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\
 remember to add the logic to erase orphaned data.
 
-if the data is too big for merge, then use delete+insert or insert_overwrite  
+if the data is too big for merge, then use delete+insert or insert_overwrite\
 delete+insert checks for a set of keys that you define
 
 ## Environment Variables
@@ -254,6 +254,6 @@ delete+insert checks for a set of keys that you define
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-22
+Last modified: 2026-08-07
 
 Back to top

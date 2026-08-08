@@ -247,7 +247,7 @@ dbt docs generate
 
 > **NOTE:**
 >
-> The command to generate the docs will change in future releases.  
+> The command to generate the docs will change in future releases.\
 > `dbt compile --write-index --static-analysis strict`
 
 ## Serve Documentations

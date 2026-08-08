@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -77,10 +80,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-350b7d7b10ec36dce6ff64583a151400.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-db91bbc1c679d51dc608ee8fdbcaa356.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -330,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1"></a>brew install chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>brew install chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="setup" class="level2">
@@ -338,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>By default chezmoi looks for source files in <code>~/.local/share/chezmoi</code>. If you want to keep your dotfiles repo somewhere else (e.g.&nbsp;alongside your other projects), you need to tell chezmoi where to look.</p>
 <p>Create <code>~/.config/chezmoi/chezmoi.toml</code>, substituting your actual path:</p>
 <div class="term" data-title="toml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">sourceDir</span> <span class="op">=</span> <span class="st">"~/path/to/your/chezmoi"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource toml number-lines code-with-copy"><code class="sourceCode toml"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="dt">sourceDir</span> <span class="op">=</span> <span class="st">"~/path/to/your/chezmoi"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-titled" data-callout="note">
 <div class="callout-header d-flex align-content-center">
@@ -357,13 +360,13 @@ This config file can itself be tracked by the repo (at <code>dot_config/chezmoi/
 </div>
 <p>Verify it’s wired up:</p>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1"></a>chezmoi source-path</span>
-<span id="cb3-2"><a href="#cb3-2"></a># → /path/to/your/chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a>chezmoi source-path</span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a># → /path/to/your/chezmoi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then preview and apply. Always diff before applying on a new machine as the source tree may contain files that would overwrite something already in <code>$HOME</code>:</p>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1"></a>chezmoi diff      # show changes against $HOME</span>
-<span id="cb4-2"><a href="#cb4-2"></a>chezmoi apply     # write to $HOME (overwrite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a>chezmoi diff      # show changes against $HOME</span>
+<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a>chezmoi apply     # write to $HOME (overwrite)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-titled" data-callout="warning">
 <div class="callout-header d-flex align-content-center">
@@ -384,20 +387,20 @@ Warning
 <section id="common-commands" class="level3">
 <h3 class="anchored" data-anchor-id="common-commands">Common commands</h3>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1"></a>chezmoi cd                # drop into the source dir (the repo)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>chezmoi diff              # show what apply would change in $HOME</span>
-<span id="cb5-3"><a href="#cb5-3"></a>chezmoi apply             # write chezmoi → $HOME</span>
-<span id="cb5-4"><a href="#cb5-4"></a>chezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)</span>
-<span id="cb5-5"><a href="#cb5-5"></a>chezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi</span>
-<span id="cb5-6"><a href="#cb5-6"></a>chezmoi status            # short status of pending changes</span>
-<span id="cb5-7"><a href="#cb5-7"></a>chezmoi managed           # list every file chezmoi manages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a>chezmoi cd                # drop into the source dir (the repo)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-label="2"></a>chezmoi diff              # show what apply would change in $HOME</span>
+<span id="cb5-3"><a href="#cb5-3" aria-label="3"></a>chezmoi apply             # write chezmoi → $HOME</span>
+<span id="cb5-4"><a href="#cb5-4" aria-label="4"></a>chezmoi add ~/.file       # start tracking a file (copy $HOME → chezmoi)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-label="5"></a>chezmoi re-add ~/.file    # pull edits made in $HOME back into chezmoi</span>
+<span id="cb5-6"><a href="#cb5-6" aria-label="6"></a>chezmoi status            # short status of pending changes</span>
+<span id="cb5-7"><a href="#cb5-7" aria-label="7"></a>chezmoi managed           # list every file chezmoi manages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="adding-a-new-dotfile" class="level3">
 <h3 class="anchored" data-anchor-id="adding-a-new-dotfile">Adding a new dotfile</h3>
 <p>To start tracking a file that currently only lives in <code>$HOME</code>:</p>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1"></a>chezmoi add ~/.some-config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href="#cb6-1" aria-label="1"></a>chezmoi add ~/.some-config</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Chezmoi copies it into the source tree, renaming it to its internal convention (e.g.&nbsp;<code>.some-config</code> → <code>dot_some-config</code>). Commit the new file from inside the repo.</p>
 </section>
@@ -410,7 +413,7 @@ Warning
 <li>Re-add the changes to track it with chezmoi:</li>
 </ol>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1"></a>chezmoi re-add ~/.edited-config # or just chezmoi re-add</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1" aria-label="1"></a>chezmoi re-add ~/.edited-config # or just chezmoi re-add</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ol start="2" type="1">
 <li>Check the differences in your editor of choice.</li>
@@ -438,16 +441,16 @@ Tip
 <h3 class="anchored" data-anchor-id="syncing-across-machines">Syncing across machines</h3>
 <p>On the machine where you made changes:</p>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>chezmoi cd</span>
-<span id="cb8-2"><a href="#cb8-2"></a>git add -p &amp;&amp; git commit -m "..."</span>
-<span id="cb8-3"><a href="#cb8-3"></a>git push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1" aria-label="1"></a>chezmoi cd</span>
+<span id="cb8-2"><a href="#cb8-2" aria-label="2"></a>git add -p &amp;&amp; git commit -m "..."</span>
+<span id="cb8-3"><a href="#cb8-3" aria-label="3"></a>git push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>On the other machine:</p>
 <div class="term" data-title="shell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a>chezmoi cd</span>
-<span id="cb9-2"><a href="#cb9-2"></a>git pull</span>
-<span id="cb9-3"><a href="#cb9-3"></a>chezmoi diff      # sanity-check</span>
-<span id="cb9-4"><a href="#cb9-4"></a>chezmoi apply</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a>chezmoi cd</span>
+<span id="cb9-2"><a href="#cb9-2" aria-label="2"></a>git pull</span>
+<span id="cb9-3"><a href="#cb9-3" aria-label="3"></a>chezmoi diff      # sanity-check</span>
+<span id="cb9-4"><a href="#cb9-4" aria-label="4"></a>chezmoi apply</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </section>
@@ -531,12 +534,15 @@ Tip
   "/003-data-engineering/004-dbt/": "logos:dbt-icon",
   "/003-data-engineering/005-fastapi/": "logos:fastapi-icon",
   "/003-data-engineering/006-ducklake/": "devicon:duckdb",
+  "/003-data-engineering/007-prefect/": "simple-icons:prefect",
+  "/003-data-engineering/008-postgresql/": "logos:postgresql",
   "/005-business-intelligence/004-streamlit": "devicon:streamlit",
   "/006-machine-learning/001-mlflow": "simple-icons:mlflow",
   "/009-devtools/002-vs-code": "logos:visual-studio-code",
   "/009-devtools/003-dbeaver": "devicon:dbeaver",
   "/009-devtools/004-obsidian": "selfhst:obsidian",
-  "/009-devtools/005-todoist": "logos:todoist-icon"
+  "/009-devtools/005-todoist": "logos:todoist-icon",
+  "/009-devtools/006-raycast": "selfhst:raycast"
 };</script>
 <!-- <<< sidebar-icons -->
 <script>

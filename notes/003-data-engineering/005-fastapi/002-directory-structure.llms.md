@@ -6,9 +6,9 @@ To be honest, I don’t think I will be ever using the second type of structure,
 
 > **NOTE:**
 >
-> **Best Practices**  
-> - **Keep `main.py` Thin:** Avoid putting route logic. Use it only to instantiate your app, configure CORS middleware, handle startup/shutdown lifespans, and attach routers via `app.include_router()`.  
-> - **Decouple Models and Schemas:** Always keep database ORM files (`models/`) distinct from Pydantic contract files (`schemas/`). Mixing them results in tight coupling, circular import loops, and data validation bottlenecks.  
+> **Best Practices**\
+> - **Keep `main.py` Thin:** Avoid putting route logic. Use it only to instantiate your app, configure CORS middleware, handle startup/shutdown lifespans, and attach routers via `app.include_router()`.\
+> - **Decouple Models and Schemas:** Always keep database ORM files (`models/`) distinct from Pydantic contract files (`schemas/`). Mixing them results in tight coupling, circular import loops, and data validation bottlenecks.\
 > - **Isolate Configuration:** Use `pydandic-settings` inside `core/config.py` to pull variables from your environment or `.env` files dynamically, allowing your code to remain secure and transportable.
 
 ## Structure 1: Organized by Layer (Best for Medium Apps)

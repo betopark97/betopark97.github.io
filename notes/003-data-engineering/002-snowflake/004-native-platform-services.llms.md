@@ -6,9 +6,9 @@ This is a curated list of features that I think are better handled inside of Sno
 
 ## Data Integration
 
-(powered by Apache NiFi)  
-Openflow  
-Snowpipe Streaming  
+(powered by Apache NiFi)\
+Openflow\
+Snowpipe Streaming\
 Streams and Tasks
 
 ## Data Transformation

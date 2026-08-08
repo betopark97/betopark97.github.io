@@ -11,11 +11,11 @@ When working in data engineering there are some dev packages that are useful.
 - ruff
 - ty
 - pytest
-- sqlfluff  
-  \## Pre-commit Hooks  
-  \`\`  
-  Built-in  
-  Formatters  
+- sqlfluff\
+  \## Pre-commit Hooks\
+  \`\`\
+  Built-in\
+  Formatters\
   Linters
 
 ------------------------------------------------------------------------

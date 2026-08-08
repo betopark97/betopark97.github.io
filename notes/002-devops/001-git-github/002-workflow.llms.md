@@ -2,7 +2,7 @@
 
 ## Choose a Flow
 
-There are a lot of different workflows.  
+There are a lot of different workflows.\
 Git related workflows differ per person and community be it an open-source project or company.
 
 The two that are well recognized like paradigms are **Git Flow** and **GitHub Flow**.

@@ -87,136 +87,150 @@
     "href": "notes/009-devtools/index.html",
     "title": "DevTools",
     "section": "",
-    "text": "Back to top",
+    "text": "These are tools that I use, not necessarily needed for development, but does help me in a way or two.\n\n\n\n Back to top",
     "crumbs": [
       "DevTools"
     ]
   },
   {
-    "objectID": "notes/009-devtools/004-obsidian.html",
-    "href": "notes/009-devtools/004-obsidian.html",
-    "title": "Obsidian",
+    "objectID": "notes/009-devtools/007-discord.html",
+    "href": "notes/009-devtools/007-discord.html",
+    "title": "Discord",
     "section": "",
-    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
+    "text": "Last modified: 2026-07-24\n\n\n\n Back to top",
     "crumbs": [
-      "Obsidian"
+      "Discord"
     ]
   },
   {
-    "objectID": "notes/009-devtools/002-vs-code.html",
-    "href": "notes/009-devtools/002-vs-code.html",
-    "title": "Visual Studio Code",
-    "section": "",
-    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
-    "crumbs": [
-      "Visual Studio Code"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/index.html",
-    "href": "notes/008-domain-knowledge/index.html",
-    "title": "Domain Knowledge",
-    "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
-    "crumbs": [
-      "Domain Knowledge"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
-    "title": "SCOR DS",
-    "section": "",
-    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
-    "title": "SCOR DS",
-    "section": "",
-    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
-    "title": "SCOR DS",
-    "section": "Data Mart Core Architecture",
-    "text": "Data Mart Core Architecture\nTo build a scalable analytical layer, your fact tables should mirror the natural state transitions of an entity (e.g., an order or a batch of product) as it moves through the supply chain.\nThe data should be prepared using a Conformed Dimension Data Mart approach. This means that your fact tables directly around the 6 execution phases are wrapped tightly by an Orchestration (Log/Audit) dimension to track pipeline health and end-to-end latency.\n\n1. Orchestration & Lineage (The Dimension/Audit Layer)\nBefore analyzing the business, you must analyze the pipeline. This layer tracks data quality, ingestion latencies, and end-to-end processing times.\n\nCore Dimension/Fact: dim_pipeline_execution, fact_data_lineage\nKey Columns: dag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nDashboard Visual: Data pipeline health monitoring, source-to-target latency gauges, rows processed per hour.\n\n\n\n2. Plan (The Forecasting Mart)\n\nCore Fact Table: fact_demand_forecast\nGrain: One row per Product_ID per Location_ID per Forecast_Period_Month.\nKey Columns: forecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nDashboard Visual: Forecast Accuracy KPI (MAPE), Actual vs. Forecasted Demand trends, Capacity Utilization charts.\n\n\n\n3. Order (The Digital Transaction Mart)\n\nCore Fact Table: fact_order_lifecycle\nGrain: One row per Order_Line_Item.\nKey Columns: order_id, customer_id, order_status_code (Created, Approved, Invoiced), order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDashboard Visual: Daily/Monthly Revenue, Total Orders Placed, Order conversion rates, Average Order Value (AOV).\n\n\n\n4. Source (The Procurement Mart)\n\nCore Fact Table: fact_purchase_orders\nGrain: One row per Purchase_Order_Line_Item.\nKey Columns: po_number, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nDashboard Visual: Supplier Lead Time, Supplier OTIF (On-Time In-Full), Procurement spend analysis by vendor.\n\n\n\n5. Transform (The Manufacturing & Quality Mart)\n\nCore Fact Table: fact_production_runs\nGrain: One row per Production_Batch_ID or Work_Order_ID.\nKey Columns: work_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nDashboard Visual: First Pass Yield (FPY %), OEE (Overall Equipment Effectiveness), Defect Rate by product line, Production Downtime trends.\n\n\n\n6. Fulfill (The Logistics & Distribution Mart)\n\nCore Fact Table: fact_shipment_fulfillment\nGrain: One row per Shipment_ID / Waybill.\nKey Columns: shipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nDashboard Visual: Perfect Order Index (POI), Shipping/Last-Mile Cost per order, Warehouse processing time (Click-to-Ship latency).\n\n\n\n7. Return (The Reverse Logistics Mart)\n\nCore Fact Table: fact_order_returns\nGrain: One row per Return_Line_Item.\nKey Columns: return_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status (Restocked, Refurbished, Scrapped), refund_amount\nDashboard Visual: Return Rate % by product category, Top Reasons for Returns, Financial impact of refunds vs. scrap loss.\n\n\n\nConformed Dimensions (The “Glue”)\nTo build an executive dashboard that allows filtering the entire supply chain by a specific product, location, or date, these dimension tables must link seamlessly across all 6 fact tables above:\n\ndim_products — product_id, SKU, category, brand, cost_price, retail_price\ndim_locations — location_id, site_name, type (Warehouse, Plant, Store), region, country\ndim_date — date_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\n\n\n\nExecutive Dashboard Layout Strategy\nWhen setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it into three distinct operational layers:\n\nThe Executive Summary (High Level): Place 4–5 global KPIs at the very top: Total Revenue (Order), Global OTIF % (Fulfill), Forecast Accuracy (Plan), and Gross Margin %.\nThe Supply Chain Funnel (Process Flow): Build a chronological funnel visualization or linear timeline tracking an order’s lifecycle. Show the average duration (in hours/days) it takes to pass through each phase: Order Placed → PO Raised → Produced → Shipped → Delivered.\nThe Operational Drill-Downs (Tabbed Views): Create dedicated tabs for specific team playbooks (e.g., a “Procurement Tab” powered by the Source Mart, a “Plant Operations Tab” powered by the Transform Mart).\n\n\n\n\nQuick Reference\n\nProcess Marts\n\n\n\n\n\n\n\n\n\n\n\n\n#\nProcess\nCore Table\nGrain\nKey Columns\nDashboard\n\n\n\n\n0\nOrchestrate\ndim_pipeline_execution, fact_data_lineage\nPer DAG run\ndag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nPipeline health, source-to-target latency gauges, rows/hr\n\n\n1\nPlan\nfact_demand_forecast\nProduct × Location × Forecast month\nforecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nForecast Accuracy (MAPE), Actual vs Forecast, Capacity Utilization\n\n\n2\nOrder\nfact_order_lifecycle (sales)\nOrder line item\norder_id, customer_id, order_status_code, order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDaily/Monthly Revenue, Total Orders, AOV\n\n\n3\nSource\nfact_purchase_orders (orders / PO)\nPO line item (PO Number x Product)\npo_number, product_id, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nSupplier Lead Time, OTIF, Spend by vendor\n\n\n4\nTransform\nfact_production_runs\nProduction batch / Work order\nwork_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nFirst Pass Yield %, OEE, Defect Rate, Downtime trends\n\n\n5-a\nFulfill\nfact_shipment_fulfillment\nShipment / Waybill\nshipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nPerfect Order Index, Cost/order, Click-to-Ship latency\n\n\n5-b\nFulfill\nfact_warehouse_inventory_snapshot\nWarehouse x SKU x Day\nsnapshot_date, warehouse_id, product_id, ending_on_hand_quantity, daily_allocated_overhead_cost\nInventory Turnover Ratio, Days Sales of Inventory (DSI), Total Warehousing Carrying Cost\n\n\n6\nReturn\nfact_order_returns\nReturn line item\nreturn_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status, refund_amount\nReturn Rate %, Top reasons, Refund vs Scrap impact\n\n\n\n\n\n\nConformed Dimensions\n\n\n\n\n\n\n\n\n\nDimension\nKey Columns\nDescription / SCM Context\n\n\n\n\ndim_products\nproduct_id, SKU, category, brand, cost_price, retail_price\nMaster catalog for items. Updated with weight/material columns to calculate sustainability metrics (EV.1.1).\n\n\ndim_locations\nlocation_id, site_name, type (Warehouse/Plant/Store), region, country\nThe geographical backbone. Shared by fulfillment warehouses, production plants, and customer shipping zones.\n\n\ndim_date\ndate_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\nThe universal calendar heartbeat used to calculate cycle times, monthly revenue, and daily inventory snapshots.\n\n\ndim_supplier_profile\nsupplier_id, supplier_name, tier_ranking, risk_score, compliance_status, country\nThe master record for vendors. Used by fact_purchase_orders to slice spend and track supplier network risk.\n\n\ndim_bill_of_materials\nparent_sku, component_sku, required_quantity, effectivity_start_date, effectivity_end_date\nThe structural map of your products. Allows you to break down a finished item into its raw component parts.",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
-    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
-    "title": "SCOR DS",
-    "section": "Metrics",
-    "text": "Metrics\n\n\n\n\n\n\nInfo\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
-    "crumbs": [
-      "SCM",
-      "SCOR DS"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/index.html",
-    "href": "notes/007-ai-engineering/index.html",
-    "title": "AI Engineering",
-    "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
-    "crumbs": [
-      "AI Engineering"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "When setting up your own .agents directory, there are a lot of files to consider. However, I will curate a list of things I like to keep.",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
-    "title": "Setup",
-    "section": "Skills",
-    "text": "Skills",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
-    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
-    "title": "Setup",
-    "section": "Hooks",
-    "text": "Hooks\n\nLast modified: 2026-07-08",
-    "crumbs": [
-      "AI Harness",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/006-machine-learning/001-mlflow.html",
-    "href": "notes/006-machine-learning/001-mlflow.html",
-    "title": "MLflow",
+    "objectID": "notes/009-devtools/005-todoist.html",
+    "href": "notes/009-devtools/005-todoist.html",
+    "title": "Todoist",
     "section": "",
     "text": "Last modified: 2026-07-22\n\n\n\n Back to top",
     "crumbs": [
-      "MLflow"
+      "Todoist"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/003-dbeaver.html",
+    "href": "notes/009-devtools/003-dbeaver.html",
+    "title": "DBeaver",
+    "section": "",
+    "text": "driver properties\nname: private_key_file\nvalue: $PATH to rsa_key.p8\nUser Interfaces &gt; Keys:\n- move lines up - option up\n- move lines down - option down\n- toggle line comment - command /\n- copy lines - option shift down\n\nLast modified: 2026-07-22\n\n\n\n Back to top",
+    "crumbs": [
+      "DBeaver"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html",
+    "href": "notes/009-devtools/001-kitty-terminal.html",
+    "title": "Kitty Terminal",
+    "section": "",
+    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#intro",
+    "href": "notes/009-devtools/001-kitty-terminal.html#intro",
+    "title": "Kitty Terminal",
+    "section": "",
+    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#setup",
+    "href": "notes/009-devtools/001-kitty-terminal.html#setup",
+    "title": "Kitty Terminal",
+    "section": "Setup",
+    "text": "Setup\n\nBinary Install\n\ncurl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin\n\n\n\nBrew Install (Recommended)\n\nbrew install --cask kitty",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#configurations",
+    "href": "notes/009-devtools/001-kitty-terminal.html#configurations",
+    "title": "Kitty Terminal",
+    "section": "Configurations",
+    "text": "Configurations\nThe configurations that I’ve made to Kitty are as follows and it consists of only two files:\n\nmain configurations: ~/.config/kitty/kitty.conf\ntheme configurations: ~/.config/kitty/current-theme.conf\n\n\nkitty.conf\n\nFont\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nfont_size\n24.0\nBase font size\n\n\n\n\n\n\nWindow\n\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nremember_window_size\nyes\nReopen at last size\n\n\nremember_window_position\nyes\nReopen at last position\n\n\nenabled_layouts\ntall, grid\nSplitting layouts (multiplexing)\n\n\nwindow_border_width\n3pt\nBorder thickness\n\n\ndraw_minimal_borders\nno\nDraw full borders\n\n\nwindow_padding_width\n7\nInner padding\n\n\nactive_border_color\n#fab387\nFocused window border (peach)\n\n\ninactive_border_color\n#585b70\nUnfocused window border\n\n\n\n\n\n\nAppearance\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nbackground_opacity\n0.8\nTransparent background\n\n\nbackground_blur\n1\nBlur behind transparency\n\n\n\n\n\n\nKeybindings\n\n\n\n\n\n\nNote\n\n\n\ncmd+enter is mapped to no_op to disable kitty’s default new-window shortcut, so ctrl+shift+enter is the single binding for new panes.\n\n\n\n\n\n\nKeybinding\nAction\n\n\n\n\nctrl+shift+enter\nNew window (pane) in current dir\n\n\ncmd+t\nNew tab in current dir\n\n\ncmd+n\nNew OS window in current dir\n\n\n\n\nAll use launch --cwd=current so the new tab/window opens in the same directory as the active one. This is done because it’s way easier to go back to the root (which is default), but not to a specific project unless your project directory is easy to memorize.\n\n\n\ncurrent-theme.conf\nCatppuccin-Mocha (current-theme.conf).\nDark pastel palette:\n- foreground #CDD6F4\n- background #1E1E2E\n- accent lilac #CBA6F7 on active tab\n\n\n\n\n\n\nNote\n\n\n\nThis part can be configured with the kitten themes command.",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
+    "href": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
+    "title": "Kitty Terminal",
+    "section": "Keybindings",
+    "text": "Keybindings\nThe keybindings listed are more than enough in my honest opinion.\n\nTabs\nThis section is for managing the tabs that appear in the bottom.\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew Tab\ncommand + T\n\n\nRename Tab\ncommand + I\n\n\nSwitch Tab\ncommand + shift + []\n\n\nClose Tab\ncommand + W\n\n\n\n\n\n\nWindows (Panes)\nThis section is for managing the windows (splitting the terminal into multiple panes, i.e. multiplexing).\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew window\nctrl + shift + enter\n\n\nMove window\nctrl + shift + F\n\n\nSwitch window\nctrl + shift + []\n\n\nClose window\nctrl + shift + W",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "href": "notes/009-devtools/001-kitty-terminal.html#reminders",
+    "title": "Kitty Terminal",
+    "section": "Reminders",
+    "text": "Reminders\n\n\n\n\n\n\nWarning\n\n\n\nWhen SSH-ing into a server use the kitten command else the shell will be very buggy.\nFor example, kitten ssh user@xxx.xx.xx.xxx\n\n\n\n\n\n\n\n\nNote\n\n\n\nWhen opening links, do ctrl + click.\n\n\n\nLast modified: 2026-07-22",
+    "crumbs": [
+      "Kitty Terminal"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/index.html",
+    "href": "notes/008-domain-knowledge/001-scm/index.html",
+    "title": "SCM",
+    "section": "",
+    "text": "This is notes for Supply Chain Management.\n\n\n\n Back to top",
+    "crumbs": [
+      "SCM"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "href": "notes/008-domain-knowledge/001-scm/001-definition.html",
+    "title": "Definition",
+    "section": "",
+    "text": "Supply Chain Management consists of different components:\n\nPlanning\n\nS&OP\nDemand Plan\nSupply Plan\nInventory\n\nSourcing\n\nProcurement\nSRM\nSupplier Negotiation\n\nManufacturing\n\nProduction Scheduling\nCapacity Planning\n\nLogistics\n\nWarehousing\nTransport\nLast-Mile\n\n\n\nLast modified: 2026-06-16\n\n\n\n Back to top",
+    "crumbs": [
+      "SCM",
+      "Definition"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/index.html",
+    "title": "AI Harness",
+    "section": "",
+    "text": "Note\n\n\n\nThe harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.\n\n\nThere are various AI harnesses that I use, each with its own unique strengths.\nThe one that I think works the best out-of-the-box is Claude Code. It can be bloated, token-inefficient, and expensive, but this is the one I use at work and the company covers the subscription.\nThen I also use Antigravity CLI (formerly Gemini CLI) to fix, format, and organize text like this Obsidian vault (strictly for drafts, not stuff I post to the public, which I try my best to make it my own words and writing style).\nFinally, I also enjoy spending time tweaking and using Pi (pi-coding-agent) for hobby projects (along with Claude Code).\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Harness"
+    ]
+  },
+  {
+    "objectID": "notes/006-machine-learning/index.html",
+    "href": "notes/006-machine-learning/index.html",
+    "title": "Machine Learning",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "objectID": "notes/005-business-intelligence/index.html",
+    "href": "notes/005-business-intelligence/index.html",
+    "title": "Business Intelligence",
+    "section": "",
+    "text": "This section is about Business Intelligence(BI). It will cover the theory and application of dashboards for data driven decisions.\n\n\n\n Back to top",
+    "crumbs": [
+      "Business Intelligence"
     ]
   },
   {
@@ -290,242 +304,525 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/006-ducklake/index.html",
-    "href": "notes/003-data-engineering/006-ducklake/index.html",
-    "title": "DuckLake",
+    "objectID": "notes/003-data-engineering/008-postgresql/index.html",
+    "href": "notes/003-data-engineering/008-postgresql/index.html",
+    "title": "PostgreSQL",
     "section": "",
-    "text": "DuckLake is part of DuckDB Labs. Its main purpose is to replace the complexity required to maintain Data Lake through more mature frameworks like Apache Iceberg. Traditional data lake catalogs maintain metadata through json and avro files; DuckLake makes the catalog in sql, making traversal searches on metadata way faster and simpler.\n\n\n\n Back to top",
+    "text": "This section to manage a PostgreSQL server will be tailored for a Ubuntu server, specially when you don’t have sudo command.\n\n\n\n Back to top",
     "crumbs": [
-      "DuckLake"
+      "PostgreSQL"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/005-fastapi/index.html",
-    "href": "notes/003-data-engineering/005-fastapi/index.html",
-    "title": "FastAPI",
+    "objectID": "notes/003-data-engineering/007-prefect/index.html",
+    "href": "notes/003-data-engineering/007-prefect/index.html",
+    "title": "Prefect",
     "section": "",
-    "text": "Yes, FastAPI is a backend. It feels weird to put FastAPI inside a data engineering section. However, these are notes to managing the backend for a data platform. The boundaries with an actual full blown app will be quite blurry, but it is a skill that I want to practice and put under my belt because Tableau and Streamlit gets you so far.\nThe frontend for this backend has a few choices. I used to just do HTML, CSS, and vanilla Javascript because of the advancements on AI making this easier to do. However, it bloats really fast and it’s hard to wrap your head around most of the features when the app grows. That’s why I think from now on I will choose to go with NiceGUI.\n\n\n\n Back to top",
+    "text": "Back to top",
     "crumbs": [
-      "FastAPI"
+      "Prefect"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/005-fastapi/001-setup.html",
-    "href": "notes/003-data-engineering/005-fastapi/001-setup.html",
+    "objectID": "notes/003-data-engineering/006-ducklake/001-setup.html",
+    "href": "notes/003-data-engineering/006-ducklake/001-setup.html",
     "title": "Setup",
     "section": "",
-    "text": "Coming soon…\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
+    "text": "Last modified: 2026-07-21\n\n\n\n Back to top",
+    "crumbs": [
+      "DuckLake",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
+    "title": "Directory Structure",
+    "section": "",
+    "text": "The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I’m not well versed with how an actual backend directory structure should look like, but let’s start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let’s write down both to consider when making or working on projects.\nTo be honest, I don’t think I will be ever using the second type of structure, so just rely on the first structure.",
     "crumbs": [
       "FastAPI",
-      "Setup"
+      "Directory Structure"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html",
-    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html",
-    "title": "Optimize Build Time",
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
+    "title": "Directory Structure",
+    "section": "Structure 1: Organized by Layer (Best for Medium Apps)",
+    "text": "Structure 1: Organized by Layer (Best for Medium Apps)\nThis approach is popular for small-to-medium APIs. It separates your application logic by architectural responsibility (routes, business logic, and database).\n\nmy_fastapi_project/\n├── alembic/                  # Database migration files (if using Alembic)\n├── app/                      # Main application package\n│   ├── api/                  # API layer (HTTP routers and endpoints)\n│   │   ├── v1/\n│   │   │   ├── auth.py\n│   │   │   └── users.py\n│   │   └── deps.py           # Common FastAPI dependencies (e.g., get_db, get_current_user)\n│   ├── core/                 # Application configuration & security setup\n│   │   ├── config.py         # Pydantic Settings for environment variables\n│   │   └── security.py       # Password hashing and JWT generation\n│   ├── crud/                 # Raw database interactions (Create, Read, Update, Delete)\n│   │   ├── crud_user.py\n│   │   └── crud_item.py\n│   ├── db/                   # Database setup\n│   │   ├── base.py           # Base model class for SQLAlchemy/SQLModel\n│   │   └── session.py        # Database engine and sessionmaker config\n│   ├── models/               # Database ORM models (SQLAlchemy, SQLModel, Tortoise, etc.)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── schemas/              # Pydantic data schemas (Request validation & Response serialization)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── services/             # Business logic layer (Glue code between routes and data access)\n│   │   └── payment.py\n│   ├── __init__.py\n│   └── main.py               # Application entrypoint (Initializes FastAPI and registers routers)\n├── tests/                    # Test suite (using pytest)\n│   ├── conftest.py          # Pytest shared fixtures\n│   ├── api/                  # API integration tests\n│   └── services/             # Unit tests for business logic\n├── .env                      # Local secret environment variables\n├── .gitignore\n├── .python-version           # Pins Python version for uv\n├── README.md\n├── pyproject.toml            # Project metadata & dependencies (uv-managed)\n└── uv.lock                   # Locked, reproducible dependency versions",
+    "crumbs": [
+      "FastAPI",
+      "Directory Structure"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
+    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
+    "title": "Directory Structure",
+    "section": "Structure 2: Organized by Domain/Feature (Best for Large Apps)",
+    "text": "Structure 2: Organized by Domain/Feature (Best for Large Apps)\nIf you are building a larger monolith, organizing by file type quickly becomes cluttered. Instead, keep everything related to a specific feature inside one self-contained domain folder.\n\nmy_fastapi_project/\n├── app/\n│   ├── core/                 # Shared configs, middleware, and core security\n│   │   ├── config.py\n│   │   └── database.py\n│   ├── users/                # All code related to users\n│   │   ├── router.py         # User endpoints\n│   │   ├── models.py         # User DB model\n│   │   ├── schemas.py        # User Pydantic data shapes\n│   │   ├── service.py        # User business rules\n│   │   └── dependencies.py   # User-specific route dependencies\n│   ├── products/             # All code related to products\n│   │   ├── router.py\n│   │   ├── models.py\n│   │   └── ...\n│   └── main.py\n└── ...\n\n\nLast modified: 2026-07-09",
+    "crumbs": [
+      "FastAPI",
+      "Directory Structure"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/index.html",
+    "href": "notes/003-data-engineering/004-dbt/index.html",
+    "title": "dbt",
     "section": "",
-    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
+    "text": "This dbt guide / note will be updated to follow the most stable version of the dbt-core package.\nThis means that this section does not cover paid services like dbt Cloud or paid features (or freemium) like dbt State.\nCurrent version: dbt Core v1.11\n\n\n\n Back to top",
     "crumbs": [
-      "dbt",
-      "Optimize Build Time"
+      "dbt"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#project-wide-optimizations",
-    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#project-wide-optimizations",
-    "title": "Optimize Build Time",
-    "section": "",
-    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
-    "crumbs": [
-      "dbt",
-      "Optimize Build Time"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#model-wide-optimizations",
-    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#model-wide-optimizations",
-    "title": "Optimize Build Time",
-    "section": "Model-wide Optimizations",
-    "text": "Model-wide Optimizations\nYou would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).\n\nLast modified: 2026-06-26",
-    "crumbs": [
-      "dbt",
-      "Optimize Build Time"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/006-ci-cd.html",
-    "href": "notes/003-data-engineering/004-dbt/006-ci-cd.html",
-    "title": "CI/CD",
-    "section": "",
-    "text": "Slim CI (Pull Requests)\n\nLast modified: 2026-07-13\n\n\n\n Back to top",
-    "crumbs": [
-      "dbt",
-      "CI/CD"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/003-workflow.html",
-    "href": "notes/003-data-engineering/004-dbt/003-workflow.html",
-    "title": "Workflow",
-    "section": "",
-    "text": "dbt commands\n- dbt debug\n- dbt clean\n- dbt deps\n- dbt run\n- dbt test\n- dbt build\n- dbt seed\n- dbt lint (requires .sqlfluff)\n- dbt fmt (Coming soon…)\nLet’s use dbt fusion locally for faster build, run, compilation whatever times.\n\n-t | --target\n-s | --select\n-x | --fail-fast\n\n+model = upstream\nmodel+ = downstream\n\n\nLast modified: 2026-06-26\n\n\n\n Back to top",
-    "crumbs": [
-      "dbt",
-      "Workflow"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html",
-    "href": "notes/003-data-engineering/004-dbt/001-setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "dbt coredbt Fusion\n\n\n\n# Pyproject.toml\nuv add dbt-core\n\n# Adapter package (of choice)\nuv add dbt-snowflake dbt-postgres\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
-    "crumbs": [
-      "dbt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#installation",
-    "href": "notes/003-data-engineering/004-dbt/001-setup.html#installation",
-    "title": "Setup",
-    "section": "",
-    "text": "dbt coredbt Fusion\n\n\n\n# Pyproject.toml\nuv add dbt-core\n\n# Adapter package (of choice)\nuv add dbt-snowflake dbt-postgres\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
-    "crumbs": [
-      "dbt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
-    "href": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
-    "title": "Setup",
-    "section": "Check installation",
-    "text": "Check installation\n\ndbt --version\n\ndbt init --skip-profile-setup",
-    "crumbs": [
-      "dbt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
-    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
-    "title": "Setup",
-    "section": "Useful dbt-packages",
-    "text": "Useful dbt-packages\n\ndbt-labs/dbt_utils\ngodatadriven/dbt_date\nSnowflake-Labs/dbt_semantic_view",
-    "crumbs": [
-      "dbt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
-    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
-    "title": "Setup",
-    "section": "Useful dbt related python packages",
-    "text": "Useful dbt related python packages\n\ndbt-{database adapter} (e.g., dbt-postgres, dbt-snowflake)\n\nadds support for a specific database.\n\ndbt-autofix\n\nofficial command-line utility designed to automate the refactoring and updating of dbt projects.\n\ndbt-osmosis\n\nstreamlines the management of YAML files by ensuring consistency and accuracy in dbt docs and the actual models.\n\ndbterd\n\ndetects entity relationships through test relationships, semantic entities, and model contract constraints to make an ERD.\n\ndbt-state (Coming soon…; On afterthought it seems like it’s a freemium feature…)\n\nsaves compute costs and development time by avoiding unnecessary model builds by comparing current definitions against past runs to skip execution if nothing has changed or cloning existing nodes.\n\n\n\nLast modified: 2026-07-19",
-    "crumbs": [
-      "dbt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/003-normalization.html",
-    "href": "notes/003-data-engineering/003-dlt/003-normalization.html",
-    "title": "Normalization",
-    "section": "",
-    "text": "dlt by default normalizes api responses.\nrule: lists -&gt; child tables, objects -&gt; flattened columns\nthis means that:\n[\nfoo: “bar”,]\nbecomes table__foo\n\nLast modified: 2026-07-14\n\n\n\n Back to top",
-    "crumbs": [
-      "dlt",
-      "Normalization"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html",
-    "href": "notes/003-data-engineering/003-dlt/001-setup.html",
-    "title": "Setup",
-    "section": "",
-    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
-    "crumbs": [
-      "dlt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
-    "href": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
-    "title": "Setup",
-    "section": "",
-    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
-    "crumbs": [
-      "dlt",
-      "Setup"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
-    "href": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
-    "title": "AI & ML",
-    "section": "",
-    "text": "The AI & ML services from Snowflake has been undergoing a lot of changes. That’s why the notes for this section might also change frequently.\nThe architecture in a nutshell looks something like:\n\nMake a semantic view -&gt; this becomes a Cortex Analyst\nMake an agent, go to Configuration &gt; Tools &gt; Query structured data -&gt; Add semantic view\n\nThat’s pretty much it. But you also have to configure your agent with other stuff like Instructions, Skills, and MCP if you want more harness for your agent.\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
-    "crumbs": [
-      "Snowflake",
-      "AI & ML"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
-    "title": "Create Snippets",
-    "section": "",
-    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
-    "crumbs": [
-      "Snowflake",
-      "Create Snippets"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
-    "title": "Create Snippets",
-    "section": "",
-    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
-    "crumbs": [
-      "Snowflake",
-      "Create Snippets"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
-    "title": "Create Snippets",
-    "section": "Create Role",
-    "text": "Create Role\n\nUSE ROLE useradmin;\nCREATE ROLE {{ DEFAULT_ROLE }};\nGRANT USAGE ON WAREHOUSE {{ DEFAULT_WH }} TO ROLE {{ DEFAULT_ROLE }};",
-    "crumbs": [
-      "Snowflake",
-      "Create Snippets"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
-    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
-    "title": "Create Snippets",
-    "section": "Create Agent",
-    "text": "Create Agent\n\nAlways have two roles for Agents (Snowflake Intelligence)\n\nsuperior manager of all agents (owner of all agent)\ninferior manager of a specific agent (reader of an agent)\n\n\n\ncreate the agent with sysadmin in the UI\n\n\n[[create_role]] for the specific agent.\nFor both superior and inferior roles there are 2 types of grants needed:\n\n\ngive grants on snowflake intelligence - agent, schema, database\n\n\nUSE ROLE securityadmin;\nGRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.{{ domain_agent }} TO ROLE {{ domain_agent_user_role }};\nGRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE {{ domain_agent_user_role }};\nGRANTE USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE {{ domain_agent_user_role }};\n\n\ngive grants on underlying tables that the semantic view/model is using\n[TODO: add link to having a dbt_project.yml and how to manage the SELECT and REFERENCES in dbt for all tables that are needed for the agent]\nremember that views need all underlying tables\n\n\nLast modified: 2026-07-01",
-    "crumbs": [
-      "Snowflake",
-      "Create Snippets"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/001-data-modeling/index.html",
-    "href": "notes/003-data-engineering/001-data-modeling/index.html",
+    "objectID": "notes/003-data-engineering/004-dbt/008-data-modeling.html",
+    "href": "notes/003-data-engineering/004-dbt/008-data-modeling.html",
     "title": "Data Modeling",
     "section": "",
-    "text": "This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.\nThere are a lot of different frameworks, but I am biased toward Kimball’s way of modeling.\n\n\n\n Back to top",
+    "text": "we will follow Kimball’s three layered data warehouse\nstaging, intermediate, marts\nbronze, silver, gold\nstaging is for renames, data types, and variant normalization only and a data contract will be applied to these\nthe intermediate is for all transformations\nthe gold stage is for dim and fact tables\nbi and semantics as views\na data contract is also applied to the gold stage\n\nLast modified: 2026-08-04\n\n\n\n Back to top",
     "crumbs": [
+      "dbt",
       "Data Modeling"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html",
+    "title": "Documentations",
+    "section": "",
+    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
+    "title": "Documentations",
+    "section": "",
+    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
+    "title": "Documentations",
+    "section": "Generate Documentations",
+    "text": "Generate Documentations\n\ndbt docs generate\n\n\n\n\n\n\n\nNote\n\n\n\nThe command to generate the docs will change in future releases.\ndbt compile --write-index --static-analysis strict",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
+    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
+    "title": "Documentations",
+    "section": "Serve Documentations",
+    "text": "Serve Documentations\n\ndbt docs serve\n\n\nLast modified: 2026-07-02",
+    "crumbs": [
+      "dbt",
+      "Documentations"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html",
+    "title": "Conventions",
+    "section": "",
+    "text": "This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
+    "title": "Conventions",
+    "section": "Project Directory Structure",
+    "text": "Project Directory Structure\nLet’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{source}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{entity}__{verb/attribute}.sql\n│       └── marts/\n│           ├── _marts__models.yaml\n│           └── {dim|fct}_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.\n\n\n\n\n\n\nNote\n\n\n\nIf there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with models/{staging|intermediate|mart}.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
+    "title": "Conventions",
+    "section": "Project Level Meta Files",
+    "text": "Project Level Meta Files\n\ndbt_project.yml\n\nname: '{project_name}'\nversion: '{version}'\nconfig-version: 2\n\nprofile: '{project_name}'\n\nmodel-paths: ['models']\nanalysis-paths: ['analyses']\ntest-paths: ['tests']\nseed-paths: ['seeds']\nmacro-paths: ['macros']\nsnapshot-paths: ['snapshots']\n\ntarget-path: \"target\"\nclean-targets:\n  - 'target'\n  - 'dbt_packages'\n\nmodels:\n  +persist_docs:\n    relation: true\n    columns: true\n  {project_name}:\n    {domain}: # repeat this block per domain (optional)\n      +schema: {SCHEMA}\n      +grants: # domain-level default grants (optional)\n        {privilege}: ['{ROLE}'] # e.g. select, references\n      staging:\n        +materialized: view\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#CD7F32\" # bronze color\n      intermediate:\n        +materialized: view # or table when heavy\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#A0A0A0\" # silver color\n      marts:\n        +materialized: table\n        +database: {MART_DB}\n        +docs:\n          node_color: \"#FFD700\" # gold color\n        +grants: # optional: override domain grants for marts\n          {privilege}: ['{ROLE}', '{ROLE}'] # e.g. select, references\n        +tags: ['{tag}'] # optional\n\nseeds:\n  {project_name}:\n    +database: {STAGE_DB}\n    {domain}: # repeat this block per domain\n      +schema: {SCHEMA}\n      +quote_columns: true # optional\n      +docs:\n        node_color: \"#008000\" # green color\n      +grants: # optional\n        {privilege}: ['{ROLE}'] # e.g. select, references\n\n\n\npackages.yml\n\npackages:\n    - package: dbt-labs/dbt_utils\n      version: 1.3.2\n    - package: godatadriven/dbt_state\n      version: 0.17.0\n    - package: Snowflake-Labs/dbt_semantic_view\n      version: 1.0.3\n\n\n\nprofiles.yml\n\nPostgresSnowflake\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    test:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    prod:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16\n    test:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: CICD_WH\n      threads: 16\n    prod:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
+    "title": "Conventions",
+    "section": "Directory Names",
+    "text": "Directory Names\nmodels/{domain}/{layer}",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
+    "title": "Conventions",
+    "section": "Meta Names",
+    "text": "Meta Names\n_{layer}__{sources|models}.yaml\nThe main characteristic of meta yaml files is that the naming starts with an underscore.\nThe sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.\nThe models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.\nThe data tests are generic (singular) tests and custom tests, package tests.\n- singular tests include: unique, not null, accepted_values, relationships\n- custom tests consist of macros\n- package tests consist of dbt_utils and other community packages",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
+    "title": "Conventions",
+    "section": "Model Names",
+    "text": "Model Names\n{layer}_{domain}__{entity}_{temp}.sql",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
+    "title": "Conventions",
+    "section": "Tests Names",
+    "text": "Tests Names\nThe test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
+    "title": "Conventions",
+    "section": "Incremental Models",
+    "text": "Incremental Models\nonly use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\nremember to add the logic to erase orphaned data.\nif the data is too big for merge, then use delete+insert or insert_overwrite\ndelete+insert checks for a set of keys that you define",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
+    "title": "Conventions",
+    "section": "Environment Variables",
+    "text": "Environment Variables\n\nshell environment overrides all\n.env file is auto detected with the new dbt fusion",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
+    "title": "Conventions",
+    "section": "Layers",
+    "text": "Layers\n\nstaging: normalization, data types, and column renames. Intra model joins and unions are okay.\nintermediate: all transformations, joins, and unions intra and inter model joins and unions.\nmart: star/snowflake schema.\n\n\n\n\n\n\n\nNote\n\n\n\nThe mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
+    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
+    "title": "Conventions",
+    "section": "Models",
+    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-08-07",
+    "crumbs": [
+      "dbt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/index.html",
+    "href": "notes/003-data-engineering/003-dlt/index.html",
+    "title": "dlt",
+    "section": "",
+    "text": "This dlt guide / note will be updated to follow the most stable version of the dlt package.\nThis means that this section does not cover paid services like dltHub or paid features.\nCurrent version: dlt 1.28.2\n\n\n\n Back to top",
+    "crumbs": [
+      "dlt"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/004-sources.html",
+    "href": "notes/003-data-engineering/003-dlt/004-sources.html",
+    "title": "Sources",
+    "section": "",
+    "text": "This section is so that I don’t spend too much time trying to re-read the official documentation as sometimes it’s cluttered with a lot of different ways to connect to source providers. It will hold sources that I have to connect to frequently either for my personal projects or work (but it will still be biased for work).",
+    "crumbs": [
+      "dlt",
+      "Sources"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/004-sources.html#google-sheets",
+    "href": "notes/003-data-engineering/003-dlt/004-sources.html#google-sheets",
+    "title": "Sources",
+    "section": "Google Sheets",
+    "text": "Google Sheets\n\nSetup credentials (Service account credentials)\n\nSign in to console.cloud.google.com.\nMake a project (match the name of the project repo if unsure).\nCreate a Service Account.\n\nJust enter the name of the project again and skip everything.\n\nGenerate credentials:\n\nNavigate to IAM & Admin and select Service Accounts.\nClick the Service Accounts that you just created.\nSearch for Keys, then create a JSON key.\nSave the credentials somewhere safe (e.g. Bitwarden).\n\nEnable “Google Sheets API”\n\n\n\ndlt credentials\nFrom the JSON key, there are three components that need to be added to the .dt/secrets.toml (project_id, client_email and private_key).\n\n[sources.google_sheets.credentials]\nproject_id = \"\"\nclient_email = \"\"\nprivate_key = \"\" # add the private key as is with the \\n escapes!!!\n\n\n\n\n\n\n\nNote\n\n\n\nIf you didn’t init dlt with Google Sheets as a source, you need to uv add google-auth.\n\n\n\nLast modified: 2026-07-27",
+    "crumbs": [
+      "dlt",
+      "Sources"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html",
+    "title": "Conventions",
+    "section": "",
+    "text": "There is not much to dlt as it’s more like a lightweight tool instead of a framework. That’s why the structure and conventions to setting up dlt is quite free to do as you want. However, there is a .dlt folder, which is a dlt-native way to manage dlt configurations.",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
+    "title": "Conventions",
+    "section": "Directory Structure",
+    "text": "Directory Structure\nThe directory structure will look like the following:\n\n\n\n\n\n\nNote\n\n\n\nI manage my dependencies with uv hence the pyprojects.yml, uv.lock, and .python-version files.\n\n\n\ndlt_project/\n├── .dlt/\n│   ├── config.toml                 # non-secret config (log level, runtime, dataset names)\n│   ├── secrets.toml                # gitignored — real credentials\n│   └── secrets.toml.example        # committed template\n│\n# &gt;&gt;&gt; custom sources & destinations\n├── sources/                        # EXTRACT layer — one package per source\n│   ├── __init__.py\n│   │\n│   ├── {source_a}/\n│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions\n│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff\n│   │   ├── settings.py             # constants: base URL, endpoints, default params\n│   │   └── README.md               # what it pulls, quirks, rate limits\n│   │\n│   └── {source_b}/\n│       ├── __init__.py\n│       ├── helpers.py\n│       ├── settings.py\n│       └── README.md\n│\n├── destinations/                   # LOAD layer — one package per custom destination\n│   ├── __init__.py\n│   │\n│   ├── {destination_a}/\n│   │   ├── __init__.py             # @dlt.destination definitions\n│   │   ├── helpers.py              # client, auth, write/flush logic\n│   │   └── settings.py             # constants: endpoints, batch size, defaults\n│   │\n│   └── {destination_b}/\n│       ├── __init__.py\n│       ├── helpers.py\n│       └── settings.py\n# &lt;&lt;&lt; custom sources & destinations\n│\n├── pipelines/                      # LOAD/RUN layer — one runner per pipeline\n│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())\n│   └── {source_b}_pipeline.py\n│\n├── schemas/                        # optional — schema contracts\n│   ├── export/                     # dlt writes inferred schemas here\n│   └── import/                     # pin/edit schemas here to enforce them\n│\n├── tests/                          # mirror sources/ structure\n│   ├── conftest.py\n│   ├── test_{source_a}.py\n│   └── test_{source_b}.py\n│\n├── pyproject.toml                  # deps: dlt[{destination}] + source libs\n├── uv.lock\n├── .python-version\n├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.\n└── README.md\n\nBelow will be an explanation of each of the subdirectories and files in logical order. Meaning that this is the order I would fill in the code to run my pipelines.\n\n\n\n\n\n\nTip\n\n\n\nA good way to build a robust pipeline is to think in enhancing the project in the following order: secrets, idempotency, error/retry handling, incremental optimizations, observability, scheduling, tests, schema drifts. This does not apply only for dlt, but for all data pipelines, too.",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
+    "title": "Conventions",
+    "section": "Configs & Secrets",
+    "text": "Configs & Secrets\nThere are various ways to set up configs and secrets. The one I prefer is to use the .dlt native features. Then use the dlt supported decorators to call them with @dlt.source, @dlt.resource and @dlt.destination.\n\n\n\n\n\n\nNote\n\n\n\nEnvironment variables override secrets.toml and config.toml. That’s why if you prefer setting up configs and secrets with environment variables you can do so.\n\n\n\nConfigs\nThe configurations are managed by the config.toml. This file is to handle non secret variables.\n\n[runtime]\nlog_level=\"INFO\"\n\n# Do not compress files sent to the filesystem bucket\n[normalize.data_writer]\ndisable_compression=true\n\n# Recommended sections for the destination (destination.module)\n[destination.filesystem]\nbucket_url = \"s3://[your_bucket_name]\"\n\n# Arrow/polars loads skip data-lineage columns by default.\n# Turn them on so every row carries \n# _dlt_load_id (joins to _dlt_loads for auditing) and _dlt_id (unique row id).\n[normalize.parquet_normalizer]\nadd_dlt_load_id = true\nadd_dlt_id = true\n\n\n\nSecrets\nThe secrets are managed by the secrets.toml. This file will have the variables for sources and target. The thing is that there is no hard rules to manage these and the following conventions are “one” of the default ways, but also trying to keep it modular.\n\n[sources.{source_a}]\napi_key = \"...\"\n\n[sources.{source_b}.credentials]\nusername = \"...\"\npassword = \"...\"\n\n[destination.{destination_a}]\ncredentials = \"db://user:password@service-account/database?warehouse=warehouse_name&role=role\"\n\n[destination.{destination_b}.credentials]\nhost = \"...\"\nusername = \"...\"\npassword = \"...\"\ndatabase = \"...\"\n\nIf the credentials have a predefined format like SQL database or Object store & filesystem. You can separate by provider name / pipeline name.\n\n[{provider}.sources.filesystem.credentials]\nclient_email = \"...\"\nprivate_key = \"...\"\nproject_id = \"...\"\n\n[{provider}.sources.sql_database.credentials]\ndrivername = \"...\"\ndatabase = \"...\"\nusername = \"...\"\nhost = \"...\"\nport = \"...\"",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#pipelines",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#pipelines",
+    "title": "Conventions",
+    "section": "Pipelines",
+    "text": "Pipelines\nNormally pipeline files are the starting point. It calls a source and destination through the decorators @dlt.source and @dlt.destination. However, we wouldn’t make all the mess of using dlt for a project that wouldn’t scale. That’s why I plan to start with a scaffold that I’ve provided above in the directory structure part with the tree.\nThe pipeline script should look something like the following:\n\nimport dlt\n\nfrom sources.{source_dir} import {source_dir}\n\n\ndef run() -&gt; None:\n    pipeline = dlt.pipeline(\n        pipeline_name=\"{source_dir}\",\n        destination=\"{destination}\",\n        dataset_name=\"{source_dir}\",\n    )\n    load_info = pipeline.run({source_dir}())\n    return load_info\n    \n\nif __name__ == \"__main__\":\n    run()",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#source",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#source",
+    "title": "Conventions",
+    "section": "Source",
+    "text": "Source\nlet’s set the @dlt.source’s parameter to max_table_nesting=0 so that it doesn’t do any normalization and we strictly do all transformations in dbt the right tool for transformation. we thus use dlt only for what it’s best: extraction and loading (normally dlt works in three steps under the hood: extraction, normalization, and loading).\n\n@dlt.source(name=\"{source_name}\", max_table_nesting=0)",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#variables",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#variables",
+    "title": "Conventions",
+    "section": "Variables",
+    "text": "Variables\nOkay, there are a lot of variables to manage, so let’s make a small bullet point list of what values to configure for each of the main variables.\n\npipeline_name = the domain or source\ndataset_name = schema\nwrapper = @dlt.source(name={}, section={})\ncredentials [sources.{source}.filesystem.credentials]",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#environments",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#environments",
+    "title": "Conventions",
+    "section": "Environments",
+    "text": "Environments\nTo separate environments under .dlt make the following configurations:\n\n.workspace: leave it an empty file, it’s to let dlt create its artifacts in this workspace rather than ~/.dlt.\ndev.secrets.toml: exclude variables under secrets.toml that belong to dev and add them here.\nprod.secrets.toml: exclude variables under secrets.toml that belong to prod and add them here.\nprofile-name (Optional): just add a single text no quotations like: dev or prod to pin the runs to a specific profile. However, I’d recommend just using WORKSPACE__PROFILE=prod when running pipelines to prod instead. All runs default to dev.",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#scripts",
+    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#scripts",
+    "title": "Conventions",
+    "section": "Scripts",
+    "text": "Scripts\nwhen running:\n- WORKSPACE__PROFILE=prod # default: dev\n- INGESTION__{key}={value} # e.g., INGESTION__MONTHS_BACK={int|all} (default: 3)\n- PROGRESS=log\n- PIPELINES__{pipeline_name}__REFRESH={drop_sources|drop_resources|drop_data}\n\nLast modified: 2026-08-08",
+    "crumbs": [
+      "dlt",
+      "Conventions"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/index.html",
+    "href": "notes/003-data-engineering/002-snowflake/index.html",
+    "title": "Snowflake",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Snowflake"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
+    "title": "Native Platform Services",
+    "section": "",
+    "text": "Snowflake, like many other data platforms, has a set of native services some of which are quite unique and ‘declarative’ instead of procedural with zero-ops. This means that there are many stages in the data engineering workflow where you don’t need a third-party tool for pipeline logic and orchestration.\nThis is a curated list of features that I think are better handled inside of Snowflake and serverless.",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
+    "title": "Native Platform Services",
+    "section": "Data Integration",
+    "text": "Data Integration\n(powered by Apache NiFi)\nOpenflow\nSnowpipe Streaming\nStreams and Tasks",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
+    "title": "Native Platform Services",
+    "section": "Data Transformation",
+    "text": "Data Transformation\nDynamic Tables",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
+    "title": "Native Platform Services",
+    "section": "Data Governance & Quality",
+    "text": "Data Governance & Quality\nData Metric Functions (DMFs)",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
+    "title": "Native Platform Services",
+    "section": "Intelligence Frameworks",
+    "text": "Intelligence Frameworks\nCortex AI\nSnowflake Intelligence\n\nLast modified: 2026-06-24",
+    "crumbs": [
+      "Snowflake",
+      "Native Platform Services"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html",
+    "title": "Authentication",
+    "section": "",
+    "text": "There are various ways to authenticate yourself to Snowflake, but when building data pipelines and automation, my recommendation would be to use the key-pair authentication.",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
+    "title": "Authentication",
+    "section": "1. Private Key Generation",
+    "text": "1. Private Key Generation\ncreate an unencrypted version of the private key\n\nopenssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt\n\nthis will create something that looks like:\n\n-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIE6T...\n-----END ENCRYPTED PRIVATE KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
+    "title": "Authentication",
+    "section": "2. Public Key Generation",
+    "text": "2. Public Key Generation\ncreate a public key from the private key\n\nopenssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub\n\nthis will create something that looks like:\n\n-----BEGIN PUBLIC KEY-----\nMIIBIj...\n-----END PUBLIC KEY-----",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
+    "title": "Authentication",
+    "section": "3. Snowflake User Key-Pair Assignment",
+    "text": "3. Snowflake User Key-Pair Assignment\ngive your key for the SECURITYADMIN to register to your user, you can register two RSA public keys\n\n-- Switch to Security Admin to manage user authentication credentials\nUSE ROLE securityadmin;\n\n-- RSA_PUBLIC_KEY for python data ingestion\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n-- RSA_PUBLIC_KEY for dbt connection + dbeaver\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY_2 = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n\nLast modified: 2026-06-17",
+    "crumbs": [
+      "Snowflake",
+      "Authentication"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html",
+    "href": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html",
+    "title": "Types of Mart Tables",
+    "section": "",
+    "text": "There are two types of big category tables in the mart layer",
+    "crumbs": [
+      "Data Modeling",
+      "Types of Mart Tables"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html#fact-tables",
+    "href": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html#fact-tables",
+    "title": "Types of Mart Tables",
+    "section": "Fact Tables",
+    "text": "Fact Tables\n\nTransaction\nPeriodic Snapshot\nAccumulating Snapshot\nFactless",
+    "crumbs": [
+      "Data Modeling",
+      "Types of Mart Tables"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html#dimension-tables",
+    "href": "notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html#dimension-tables",
+    "title": "Types of Mart Tables",
+    "section": "Dimension Tables",
+    "text": "Dimension Tables\n\nStandard\nDegenerate\nConformed\nJunk\nRole-Playing\nOutrigger\nShrunken\nSwappable\nStep\nSlowly Changing Dimension (SCD): Type 1~3\n\n\nLast modified: 2026-07-29",
+    "crumbs": [
+      "Data Modeling",
+      "Types of Mart Tables"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/001-data-architecture/index.html",
+    "href": "notes/003-data-engineering/001-data-architecture/index.html",
+    "title": "Data Architecture",
+    "section": "",
+    "text": "Before starting with any project it’s good to have a rough idea on how the architecture will look like for your data platform. However, it takes a lot of time to build up a stable data platform, hence the “rough idea,” and so you should iterate by building something, then testing, deploying to production, and finally optimize (mix up the order a bit if needed like optimizing before deploying, etc.).\nSome of the important building blocks to making a stable data platform is the good orchestration of the following:\n\nDAG design\ndependency management\nSLAs\ntask isolation\ntransformations\ntesting\nlineage\ndeployment\nidempotency\nretries\nenvironment promotion\nrecovery / health check (fail safely and recover cleanly)\nbackfills\nalerting\nlate arriving data\nstate management\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Architecture"
     ]
   },
   {
@@ -1077,406 +1374,329 @@
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html",
-    "title": "Authentication",
+    "objectID": "notes/003-data-engineering/001-data-modeling/001-intro.html",
+    "href": "notes/003-data-engineering/001-data-modeling/001-intro.html",
+    "title": "Introduction",
     "section": "",
-    "text": "There are various ways to authenticate yourself to Snowflake, but when building data pipelines and automation, my recommendation would be to use the key-pair authentication.",
+    "text": "Learning data modeling is a long journey.\n\nData Vault 2.0 (Hubs, Links, Satellites)\n\nbronze -&gt; silver\n\nDimensional Modeling (Star / Snowflake Schema) - by Ralph Kimball\n\nbronze -&gt; silver -&gt; gold\n\nNormalized Relational (3NF) - by Inmon\n\n\nLast modified: 2026-07-29\n\n\n\n Back to top",
     "crumbs": [
-      "Snowflake",
-      "Authentication"
+      "Data Modeling",
+      "Introduction"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#private-key-generation",
-    "title": "Authentication",
-    "section": "1. Private Key Generation",
-    "text": "1. Private Key Generation\ncreate an unencrypted version of the private key\n\nopenssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt\n\nthis will create something that looks like:\n\n-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIE6T...\n-----END ENCRYPTED PRIVATE KEY-----",
-    "crumbs": [
-      "Snowflake",
-      "Authentication"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#public-key-generation",
-    "title": "Authentication",
-    "section": "2. Public Key Generation",
-    "text": "2. Public Key Generation\ncreate a public key from the private key\n\nopenssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub\n\nthis will create something that looks like:\n\n-----BEGIN PUBLIC KEY-----\nMIIBIj...\n-----END PUBLIC KEY-----",
-    "crumbs": [
-      "Snowflake",
-      "Authentication"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
-    "href": "notes/003-data-engineering/002-snowflake/002-authentication.html#snowflake-user-key-pair-assignment",
-    "title": "Authentication",
-    "section": "3. Snowflake User Key-Pair Assignment",
-    "text": "3. Snowflake User Key-Pair Assignment\ngive your key for the SECURITYADMIN to register to your user, you can register two RSA public keys\n\n-- Switch to Security Admin to manage user authentication credentials\nUSE ROLE securityadmin;\n\n-- RSA_PUBLIC_KEY for python data ingestion\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n-- RSA_PUBLIC_KEY for dbt connection + dbeaver\nALTER USER {{ user }}\nSET RSA_PUBLIC_KEY_2 = '\n-----BEGIN PUBLIC KEY-----\nMIIBI...\n-----END PUBLIC KEY-----\n';\n\n\nLast modified: 2026-06-17",
-    "crumbs": [
-      "Snowflake",
-      "Authentication"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html",
-    "title": "Native Platform Services",
-    "section": "",
-    "text": "Snowflake, like many other data platforms, has a set of native services some of which are quite unique and ‘declarative’ instead of procedural with zero-ops. This means that there are many stages in the data engineering workflow where you don’t need a third-party tool for pipeline logic and orchestration.\nThis is a curated list of features that I think are better handled inside of Snowflake and serverless.",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-integration",
-    "title": "Native Platform Services",
-    "section": "Data Integration",
-    "text": "Data Integration\n(powered by Apache NiFi)\nOpenflow\nSnowpipe Streaming\nStreams and Tasks",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-transformation",
-    "title": "Native Platform Services",
-    "section": "Data Transformation",
-    "text": "Data Transformation\nDynamic Tables",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#data-governance-quality",
-    "title": "Native Platform Services",
-    "section": "Data Governance & Quality",
-    "text": "Data Governance & Quality\nData Metric Functions (DMFs)",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
-    "href": "notes/003-data-engineering/002-snowflake/004-native-platform-services.html#intelligence-frameworks",
-    "title": "Native Platform Services",
-    "section": "Intelligence Frameworks",
-    "text": "Intelligence Frameworks\nCortex AI\nSnowflake Intelligence\n\nLast modified: 2026-06-24",
-    "crumbs": [
-      "Snowflake",
-      "Native Platform Services"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/002-snowflake/index.html",
-    "href": "notes/003-data-engineering/002-snowflake/index.html",
-    "title": "Snowflake",
-    "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
-    "crumbs": [
-      "Snowflake"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html",
-    "href": "notes/003-data-engineering/003-dlt/002-conventions.html",
-    "title": "Conventions",
-    "section": "",
-    "text": "There is not much to dlt as it’s more like a lightweight tool instead of a framework. That’s why the structure and conventions to setting up dlt is quite free to do as you want. However, there is a .dlt folder, which is a dlt-native way to manage dlt configurations.",
-    "crumbs": [
-      "dlt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
-    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#directory-structure",
-    "title": "Conventions",
-    "section": "Directory Structure",
-    "text": "Directory Structure\nThe directory structure will look like the following:\n\n\n\n\n\n\nNote\n\n\n\nI manage my dependencies with uv hence the pyprojects.yml, uv.lock, and .python-version files.\n\n\n\ndlt_project/\n├── .dlt/\n│   ├── config.toml                 # non-secret config (log level, runtime, dataset names)\n│   ├── secrets.toml                # gitignored — real credentials\n│   └── secrets.toml.example        # committed template\n│\n# &gt;&gt;&gt; custom sources & destinations\n├── sources/                        # EXTRACT layer — one package per source\n│   ├── __init__.py\n│   │\n│   ├── {source_a}/\n│   │   ├── __init__.py             # @dlt.source + @dlt.resource definitions\n│   │   ├── helpers.py              # API client, pagination, auth, retry/backoff\n│   │   ├── settings.py             # constants: base URL, endpoints, default params\n│   │   └── README.md               # what it pulls, quirks, rate limits\n│   │\n│   └── {source_b}/\n│       ├── __init__.py\n│       ├── helpers.py\n│       ├── settings.py\n│       └── README.md\n│\n├── destinations/                   # LOAD layer — one package per custom destination\n│   ├── __init__.py\n│   │\n│   ├── {destination_a}/\n│   │   ├── __init__.py             # @dlt.destination definitions\n│   │   ├── helpers.py              # client, auth, write/flush logic\n│   │   └── settings.py             # constants: endpoints, batch size, defaults\n│   │\n│   └── {destination_b}/\n│       ├── __init__.py\n│       ├── helpers.py\n│       └── settings.py\n# &lt;&lt;&lt; custom sources & destinations\n│\n├── pipelines/                      # LOAD/RUN layer — one runner per pipeline\n│   ├── {source_a}_pipeline.py      # dlt.pipeline(...).run({source_a}())\n│   └── {source_b}_pipeline.py\n│\n├── schemas/                        # optional — schema contracts\n│   ├── export/                     # dlt writes inferred schemas here\n│   └── import/                     # pin/edit schemas here to enforce them\n│\n├── tests/                          # mirror sources/ structure\n│   ├── conftest.py\n│   ├── test_{source_a}.py\n│   └── test_{source_b}.py\n│\n├── pyproject.toml                  # deps: dlt[{destination}] + source libs\n├── uv.lock\n├── .python-version\n├── .gitignore                      # ignores .dlt/secrets.toml, .venv, etc.\n└── README.md\n\nBelow will be an explanation of each of the subdirectories and files in logical order. Meaning that this is the order I would fill in the code to run my pipelines.\n\n\n\n\n\n\nTip\n\n\n\nA good way to build a robust pipeline is to think in enhancing the project in the following order: secrets, idempotency, error/retry handling, incremental optimizations, observability, scheduling, tests, schema drifts. This does not apply only for dlt, but for all data pipelines, too.",
-    "crumbs": [
-      "dlt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
-    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#configs-secrets",
-    "title": "Conventions",
-    "section": "Configs & Secrets",
-    "text": "Configs & Secrets\nThere are various ways to set up configs and secrets. The one I prefer is to use the .dlt native features. Then use the dlt supported decorators to call them with @dlt.source, @dlt.resource and @dlt.destination.\n\n\n\n\n\n\nNote\n\n\n\nEnvironment variables override secrets.toml and config.toml. That’s why if you prefer setting up configs and secrets with environment variables you can do so.\n\n\n\nConfigs\nThe configurations are managed by the config.toml. This file is to handle non secret variables.\n\n[runtime]\nlog_level=\"INFO\"\n\n# Do not compress files sent to the filesystem bucket\n[normalize.data_writer]\ndisable_compression=true\n\n# Recommended sections for the destination (destination.module)\n[destination.filesystem]\nbucket_url = \"s3://[your_bucket_name]\"\n\n\n\nSecrets\nThe secrets are managed by the secrets.toml. This file will have the variables for sources and target. The thing is that there is no hard rules to manage these and the following conventions are “one” of the default ways, but also trying to keep it modular.\n\n[sources.{source_a}]\napi_key = \"...\"\n\n[sources.{source_b}.credentials]\nusername = \"...\"\npassword = \"...\"\n\n[destination.{destination_a}]\ncredentials = \"db://user:password@service-account/database?warehouse=warehouse_name&role=role\"\n\n[destination.{destination_b}.credentials]\nhost = \"...\"\nusername = \"...\"\npassword = \"...\"\ndatabase = \"...\"",
-    "crumbs": [
-      "dlt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#pipelines",
-    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#pipelines",
-    "title": "Conventions",
-    "section": "Pipelines",
-    "text": "Pipelines\nNormally pipeline files are the starting point. It calls a source and destination through the decorators @dlt.source and @dlt.destination. However, we wouldn’t make all the mess of using dlt for a project that wouldn’t scale. That’s why I plan to start with a scaffold that I’ve provided above in the directory structure part with the tree.\nThe pipeline script should look something like the following:\n\nimport dlt\n\nfrom sources.{source_dir} import {source_dir}\n\n\ndef run() -&gt; None:\n    pipeline = dlt.pipeline(\n        pipeline_name=\"{source_dir}\",\n        destination=\"{destination}\",\n        dataset_name=\"{source_dir}\",\n    )\n    load_info = pipeline.run({source_dir}())\n    return load_info\n    \n\nif __name__ == \"__main__\":\n    run()",
-    "crumbs": [
-      "dlt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/002-conventions.html#source",
-    "href": "notes/003-data-engineering/003-dlt/002-conventions.html#source",
-    "title": "Conventions",
-    "section": "Source",
-    "text": "Source\nlet’s set the @dlt.source’s parameter to max_table_nesting=0 so that it doesn’t do any normalization and we strictly do all transformations in dbt the right tool for transformation. we thus use dlt only for what it’s best: extraction and loading (normally dlt works in three steps under the hood: extraction, normalization, and loading).\n\n@dlt.source(name=\"{source_name}\", max_table_nesting=0)\n\n\nLast modified: 2026-07-17",
-    "crumbs": [
-      "dlt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/003-dlt/index.html",
-    "href": "notes/003-data-engineering/003-dlt/index.html",
-    "title": "dlt",
-    "section": "",
-    "text": "This dlt guide / note will be updated to follow the most stable version of the dlt package.\nThis means that this section does not cover paid services like dltHub or paid features.\nCurrent version: dlt 1.28.2\n\n\n\n Back to top",
-    "crumbs": [
-      "dlt"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html",
-    "title": "Conventions",
-    "section": "",
-    "text": "This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-directory-structure",
-    "title": "Conventions",
-    "section": "Project Directory Structure",
-    "text": "Project Directory Structure\nLet’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:\n\ndbt_project/\n├── .dbt/                              # Profiles dir (optional, project-local)\n│   └── profiles.yml                   # Connection profiles (git-ignored)\n├── analyses/                          # Ad-hoc analytical queries (not materialized)\n├── dbt_packages/                      # Installed packages (git-ignored)\n├── logs/                              # Run logs (git-ignored)\n├── macros/                            # Custom macros & generic tests\n│   └── generate_schema_name.sql\n├── models/\n│   └── {domain}/\n│       ├── staging/\n│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs\n│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions\n│       │   └── stg_{domain}__{entity}.sql\n│       ├── intermediate/\n│       │   ├── _int__models.yaml\n│       │   └── int_{domain}__{entity}.sql\n│       └── mart/\n│           ├── _mart__models.yaml\n│           └── mart_{domain}__{entity}.sql\n├── seeds/                             # Static CSV reference data\n├── snapshots/                         # SCD type-2 snapshots\n├── target/                            # Compiled SQL & artifacts (git-ignored)\n├── tests/                             # Singular (complex) data tests\n│   └── assert_{domain}__{condition}.sql\n├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)\n├── .gitignore\n├── dbt_project.yml                    # Project config\n└── packages.yml                       # Package dependencies\n\nBelow we’ll discuss what each component is and how to fill them in.\n\n\n\n\n\n\nNote\n\n\n\nIf there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with models/{staging|intermediate|mart}.",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#project-level-meta-files",
-    "title": "Conventions",
-    "section": "Project Level Meta Files",
-    "text": "Project Level Meta Files\n\ndbt_project.yml\n\nname: '{project_name}'\nversion: '{version}'\nconfig-version: 2\n\nprofile: '{project_name}'\n\nmodel-paths: ['models']\nanalysis-paths: ['analyses']\ntest-paths: ['tests']\nseed-paths: ['seeds']\nmacro-paths: ['macros']\nsnapshot-paths: ['snapshots']\n\ntarget-path: \"target\"\nclean-targets:\n  - 'target'\n  - 'dbt_packages'\n\nmodels:\n  +persist_docs:\n    relation: true\n    columns: true\n  {project_name}:\n    {domain}: # repeat this block per domain (optional)\n      +schema: {SCHEMA}\n      +grants: # domain-level default grants (optional)\n        {privilege}: ['{ROLE}'] # e.g. select, references\n      staging:\n        +materialized: view\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#CD7F32\" # bronze color\n      intermediate:\n        +materialized: view # or table when heavy\n        +database: {STAGE_DB}\n        +docs:\n          node_color: \"#A0A0A0\" # silver color\n      marts:\n        +materialized: table\n        +database: {MART_DB}\n        +docs:\n          node_color: \"#FFD700\" # gold color\n        +grants: # optional: override domain grants for marts\n          {privilege}: ['{ROLE}', '{ROLE}'] # e.g. select, references\n        +tags: ['{tag}'] # optional\n\nseeds:\n  {project_name}:\n    +database: {STAGE_DB}\n    {domain}: # repeat this block per domain\n      +schema: {SCHEMA}\n      +quote_columns: true # optional\n      +docs:\n        node_color: \"#008000\" # green color\n      +grants: # optional\n        {privilege}: ['{ROLE}'] # e.g. select, references\n\n\n\npackages.yml\n\npackages:\n    - package: dbt-labs/dbt_utils\n      version: 1.3.2\n    - package: godatadriven/dbt_state\n      version: 0.17.0\n    - package: Snowflake-Labs/dbt_semantic_view\n      version: 1.0.3\n\n\n\nprofiles.yml\n\nPostgresSnowflake\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    test:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n    prod:\n      type: {adapter_type}\n      host: \"{{ env_var('host') }}\"\n      user: \"{{ env_var('user') }}\"\n      password: \"{{ env_var('password') }}\"\n      port: \"{{ env_var('port') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      threads: 16\n\n\n\n\n{project_name}:\n  target: dev\n  outputs:\n    dev:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: DEV_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16\n    test:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: TEST_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: CICD_WH\n      threads: 16\n    prod:\n      type: {adapter_type}\n      account: \"{{ env_var('account') }}\"\n      authenticator: {auth_type}\n      user: \"{{ env_var('user') }}\"\n      private_key: \"{{ env_var('private_key') }}\" # use a key-pair auth if possible\n      role: \"{{ env_var('role') }}\"\n      database: PROD_STAGE\n      schema: {public} # default, macro will manage this\n      warehouse: {warehouse}\n      threads: 16",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#directory-names",
-    "title": "Conventions",
-    "section": "Directory Names",
-    "text": "Directory Names\nmodels/{domain}/{layer}",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#meta-names",
-    "title": "Conventions",
-    "section": "Meta Names",
-    "text": "Meta Names\n_{layer}__{sources|models}.yaml\nThe main characteristic of meta yaml files is that the naming starts with an underscore.\nThe sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.\nThe models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.\nThe data tests are generic (singular) tests and custom tests, package tests.\n- singular tests include: unique, not null, accepted_values, relationships\n- custom tests consist of macros\n- package tests consist of dbt_utils and other community packages",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#model-names",
-    "title": "Conventions",
-    "section": "Model Names",
-    "text": "Model Names\n{layer}_{domain}__{entity}_{temp}.sql",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#tests-names",
-    "title": "Conventions",
-    "section": "Tests Names",
-    "text": "Tests Names\nThe test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#incremental-models",
-    "title": "Conventions",
-    "section": "Incremental Models",
-    "text": "Incremental Models\nonly use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\nremember to add the logic to erase orphaned data.\nif the data is too big for merge, then use delete+insert or insert_overwrite\ndelete+insert checks for a set of keys that you define",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#environment-variables",
-    "title": "Conventions",
-    "section": "Environment Variables",
-    "text": "Environment Variables\n\nshell environment overrides all\n.env file is auto detected with the new dbt fusion",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#layers",
-    "title": "Conventions",
-    "section": "Layers",
-    "text": "Layers\n\nstaging: normalization, data types, and column renames. Intra model joins and unions are okay.\nintermediate: all transformations, joins, and unions intra and inter model joins and unions.\nmart: star/snowflake schema.\n\n\n\n\n\n\n\nNote\n\n\n\nThe mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
-    "href": "notes/003-data-engineering/004-dbt/002-conventions.html#models",
-    "title": "Conventions",
-    "section": "Models",
-    "text": "Models\n\nall lower case\nno select stars\n\n\nLast modified: 2026-07-22",
-    "crumbs": [
-      "dbt",
-      "Conventions"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html",
-    "href": "notes/003-data-engineering/004-dbt/004-documentations.html",
-    "title": "Documentations",
-    "section": "",
-    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
-    "crumbs": [
-      "dbt",
-      "Documentations"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
-    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#types-of-documentation",
-    "title": "Documentations",
-    "section": "",
-    "text": "The documentation that you can manage with dbt is vast. The goal is to make documentation for components of data governance: Data Catalog & Glossary, Data Contracts & Schema Registries, Data Lineage, Security & Acess Control Policies.\n\n\n\nBusiness Glossary: Define standard business terms (e.g., what exactly constitutes an “Active User”?).\n\nsemantic layer\n\nData Dictionary: Map columns, data types, and descriptions for every core table or collection.\n\n_model.yml\n\n\n\n\n\n\nData Contract: Open Data Contract Standard (ODCS)\n\ndbt model contracts\nFundamentals: Every data contract starts with its fundamentals: the version of the standard, unique identifier, name, data contract version number, and status. This metadata identifies the contract and enables versioning.\nSchema: The schema defines the structure and semantics of your data. Here we define the table structure with its columns. Each property includes technical details, business semantics, and governance attributes.\nData Quality: Data quality rules ensure that data meets expectations. Define checks like valid value constraints, row count thresholds, and custom SQL validation logic. These can be tested automatically with the Data Contract CLI.\nTeam: Document who owns and maintains the data contract. Include team name, description, and members with their roles. Add support channels, how data consumers can reach out to the owners.\nTerms of Use: Define the purpose, usage guidelines, and limitations for your data. This helps consumers understand what they can and cannot do with the data, establishing clear governance boundaries.\nSLAs: Service Level Agreements define non-functional guarantees. Data consumers can match these with their use-case requirements.\nServers: Finally, specify where the data lives. The server configuration includes connection details for different environments.\n\n\n\n# Fundamentals\napiVersion: v3.1.0\nkind: DataContract\nid: orders\nname: Orders\nversion: 1.0.0\nstatus: active\n\n# Terms of Use\ndescription:\n  purpose: \"Provides order and line item data for analytics and reporting\"\n  usage: \"Used by analytics team for sales analysis and business intelligence\"\n  limitations: \"Contains only the last 2 years of data\"\n  customProperties:\n    - property: \"sensitivity\"\n      value: \"secret\"\n      description: \"Data contains personally identifiable information\"\n  authoritativeDefinitions:\n    - url: \"https://entropy-data.com/policies/gdpr-compliance\"\n      type: \"businessDefinition\"\n      description: \"GDPR compliance policy for handling customer data\"\n\n# Schema & Quality\nschema:\n  - name: orders\n    physicalType: TABLE\n    description: All historic web shop orders since 2020-01-01. Includes successful and cancelled orders.\n    properties:\n      - name: order_id\n        logicalType: string\n        description: The internal order id for every orders. Do not show this to a customer.\n        businessName: Internal Order ID\n        physicalType: UUID\n        examples:\n          - 99e8bb10-3785-4634-9664-8dc79eb69d43\n        primaryKey: true\n        classification: internal\n        required: true\n        unique: true\n      - name: customer_id\n        logicalType: string\n        description: A reference to the customer number\n        businessName: Customer Number\n        physicalType: TEXT\n        examples:\n          - c123456789\n        required: true\n        unique: false\n        logicalTypeOptions:\n          minLength: 10\n          maxLength: 10\n        tags:\n          - pii:true\n        classification: internal\n        criticalDataElement: true\n      - name: order_total\n        logicalType: integer\n        description: The order total amount in cents, including tax, after discounts.\n          Includes shipping costs.\n        physicalType: INTEGER\n        examples:\n          - \"9999\"\n        quality:\n          - type: text\n            description: The order_total equals the sum of all related line items.\n        required: true\n        businessName: Order Amount\n      - name: order_timestamp\n        logicalType: timestamp\n        description: The time including timezone when the order payment was successfully\n          confirmed.\n        physicalType: TIMESTAMPTZ\n        businessName: Order Date\n        examples:\n          - \"2025-03-01 14:30:00+01\"\n      - name: order_status\n        businessName: Status\n        description: The business status of the order\n        logicalType: string\n        physicalType: TEXT\n        examples:\n          - shipped\n        quality:\n          - type: library\n            description: Ensure that there are no other status values.\n            metric: invalidValues\n            arguments:\n              validValues:\n                - pending\n                - paid\n                - processing\n                - shipped\n                - delivered\n                - cancelled\n                - refunded\n            mustBe: 0\n    quality:\n      - type: library\n        metric: rowCount\n        mustBeGreaterThan: 100000\n        description: If there are less than 100k rows, something is wrong.\n  - name: line_items\n    physicalType: table\n    description: Details for each item in an order\n    properties:\n      - name: line_item_id\n        logicalType: string\n        description: Unique identifier for the line item\n        physicalType: UUID\n        examples:\n          - 12c9ba21-0c44-4e29-ba72-b8fd01c1be30\n        logicalTypeOptions:\n          format: uuid\n        required: true\n        primaryKey: true\n      - name: sku\n        logicalType: string\n        businessName: Stock Keeping Unit\n        description: Identifier for the purchased product\n        physicalType: TEXT\n        examples:\n          - 111222333\n        required: true\n      - name: price\n        logicalType: integer\n        description: Price in cents for this line item including tax\n        physicalType: INTEGER\n        examples:\n          - 9999\n        required: true\n      - name: order_id\n        required: false\n        primaryKey: false\n        logicalType: string\n        physicalType: UUID\n        relationships:\n          - type: foreignKey\n            to: orders.order_id\n            \n# Servers\nservers:\n  - server: production\n    environment: prod\n    type: postgres\n    host: aws-1-eu-central-2.pooler.supabase.com\n    port: 6543\n    database: postgres\n    schema: dp_orders_v1\n    \n# Team\nteam:\n  name: sales\n  description: This data product is owned by the \"Sales\" team\n  members:\n    - username: john@example.com\n      name: John Doe\n      role: Owner\n  authoritativeDefinitions:\n    - type: slack\n      url: https://slack.example.com/teams/sales\nroles:\n  - role: analyst_us\n    description: Read access for analytics to US orders\n  - role: analyst_eu\n    description: Read access for analytics to EU orders\n    \n# SLAs\nslaProperties:\n  - property: availability\n    value: 99.9%\n    description: Data platform uptime guarantee\n  - property: retention\n    value: \"1\"\n    unit: year\n    description: Data will be deleted after 1 year\n  - property: freshness\n    value: \"24\"\n    unit: hours\n#    element: orders.order_timestamp # enable this to check freshness with Data Contract CLI\n    description: Within 24 hours of order placement\n  - property: support\n    value: business hours\n    description: Support only during business hours\nprice:\n  priceAmount: 0\n  priceCurrency: USD\n  priceUnit: monthly\ntags:\n  - e-commerce\n  - transactions\n  - pii\ncustomProperties:\n  - property: dataPlatformRole\n    value: role_orders_v1\ncontractCreatedTs: \"2025-01-15T10:00:00Z\"\n\n\n\n\n\nUpstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.\n\ndbt docs generate && dbt docs serve automatically does it, but let’s add on how to filter for these\n\n\n\n\n\n\nClassification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).\nRBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.\n\nlet’s make a preconfigured sql queries to make this happen (RBAC matrix queries)\ndbt_project.yml\n\n\n+grants:\n  select: ['ROLES']\n  references: ['ROLES']",
-    "crumbs": [
-      "dbt",
-      "Documentations"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
-    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#generate-documentations",
-    "title": "Documentations",
-    "section": "Generate Documentations",
-    "text": "Generate Documentations\n\ndbt docs generate\n\n\n\n\n\n\n\nNote\n\n\n\nThe command to generate the docs will change in future releases.\ndbt compile --write-index --static-analysis strict",
-    "crumbs": [
-      "dbt",
-      "Documentations"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
-    "href": "notes/003-data-engineering/004-dbt/004-documentations.html#serve-documentations",
-    "title": "Documentations",
-    "section": "Serve Documentations",
-    "text": "Serve Documentations\n\ndbt docs serve\n\n\nLast modified: 2026-07-02",
-    "crumbs": [
-      "dbt",
-      "Documentations"
-    ]
-  },
-  {
-    "objectID": "notes/003-data-engineering/004-dbt/008-data-modeling.html",
-    "href": "notes/003-data-engineering/004-dbt/008-data-modeling.html",
+    "objectID": "notes/003-data-engineering/001-data-modeling/index.html",
+    "href": "notes/003-data-engineering/001-data-modeling/index.html",
     "title": "Data Modeling",
     "section": "",
-    "text": "we will follow kimballs three layered data warehouse\nstaging, intermediate, marts\nbronze, silver, gold\nstaging is for renames and data types only and a data contract will be applied to these\nthe intermediate is for all transformations\nthe gold stage is for dim and fact tables\nbi and semantics as views\na data contract is also applied to the gold stage\n\nLast modified: 2026-07-01\n\n\n\n Back to top",
+    "text": "This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), however, as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.\nThere are a lot of different frameworks, but I am biased toward Kimball’s way of modeling. But, the other types of modeling will be covered for future purposes, meaning that there will be documentation on Inmon, OBT, and Data Vault (2.0) as well.\n\n\n\n Back to top",
     "crumbs": [
-      "dbt",
       "Data Modeling"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/004-dbt/index.html",
-    "href": "notes/003-data-engineering/004-dbt/index.html",
-    "title": "dbt",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html",
+    "title": "Create Snippets",
     "section": "",
-    "text": "This dbt guide / note will be updated to follow the most stable version of the dbt-core package.\nThis means that this section does not cover paid services like dbt Cloud or paid features (or freemium) like dbt State.\nCurrent version: dbt Core v1.11\n\n\n\n Back to top",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
-      "dbt"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
-    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html",
-    "title": "Directory Structure",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-user",
+    "title": "Create Snippets",
     "section": "",
-    "text": "The thing with using a tool is to get the grasp of the bigger picture. I like to know how the environment of the tool that I use usually looks like in dev / prod. I’m not well versed with how an actual backend directory structure should look like, but let’s start with something very simple. There seems to be two recommended ways: one for small to medium sized apps, and another for large apps. Let’s write down both to consider when making or working on projects.\nTo be honest, I don’t think I will be ever using the second type of structure, so just rely on the first structure.",
+    "text": "USE ROLE useradmin;\nCREATE USER {{ user }}\nPASSWORD = '{{ password }}'\nDEFAULT_ROLE = '{{ DEFAULT_ROLE }}'\nEMAIL = '{{ email }}'; -- Optional\n\nUSE ROLE securityadmin;\nGRANT ROLE {{ DEFAULT_ROLE }} TO USER {{ user }};",
     "crumbs": [
-      "FastAPI",
-      "Directory Structure"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
-    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-1-organized-by-layer-best-for-medium-apps",
-    "title": "Directory Structure",
-    "section": "Structure 1: Organized by Layer (Best for Medium Apps)",
-    "text": "Structure 1: Organized by Layer (Best for Medium Apps)\nThis approach is popular for small-to-medium APIs. It separates your application logic by architectural responsibility (routes, business logic, and database).\n\nmy_fastapi_project/\n├── alembic/                  # Database migration files (if using Alembic)\n├── app/                      # Main application package\n│   ├── api/                  # API layer (HTTP routers and endpoints)\n│   │   ├── v1/\n│   │   │   ├── auth.py\n│   │   │   └── users.py\n│   │   └── deps.py           # Common FastAPI dependencies (e.g., get_db, get_current_user)\n│   ├── core/                 # Application configuration & security setup\n│   │   ├── config.py         # Pydantic Settings for environment variables\n│   │   └── security.py       # Password hashing and JWT generation\n│   ├── crud/                 # Raw database interactions (Create, Read, Update, Delete)\n│   │   ├── crud_user.py\n│   │   └── crud_item.py\n│   ├── db/                   # Database setup\n│   │   ├── base.py           # Base model class for SQLAlchemy/SQLModel\n│   │   └── session.py        # Database engine and sessionmaker config\n│   ├── models/               # Database ORM models (SQLAlchemy, SQLModel, Tortoise, etc.)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── schemas/              # Pydantic data schemas (Request validation & Response serialization)\n│   │   ├── user.py\n│   │   └── item.py\n│   ├── services/             # Business logic layer (Glue code between routes and data access)\n│   │   └── payment.py\n│   ├── __init__.py\n│   └── main.py               # Application entrypoint (Initializes FastAPI and registers routers)\n├── tests/                    # Test suite (using pytest)\n│   ├── conftest.py          # Pytest shared fixtures\n│   ├── api/                  # API integration tests\n│   └── services/             # Unit tests for business logic\n├── .env                      # Local secret environment variables\n├── .gitignore\n├── .python-version           # Pins Python version for uv\n├── README.md\n├── pyproject.toml            # Project metadata & dependencies (uv-managed)\n└── uv.lock                   # Locked, reproducible dependency versions",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-role",
+    "title": "Create Snippets",
+    "section": "Create Role",
+    "text": "Create Role\n\nUSE ROLE useradmin;\nCREATE ROLE {{ DEFAULT_ROLE }};\nGRANT USAGE ON WAREHOUSE {{ DEFAULT_WH }} TO ROLE {{ DEFAULT_ROLE }};",
     "crumbs": [
-      "FastAPI",
-      "Directory Structure"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
-    "href": "notes/003-data-engineering/005-fastapi/002-directory-structure.html#structure-2-organized-by-domainfeature-best-for-large-apps",
-    "title": "Directory Structure",
-    "section": "Structure 2: Organized by Domain/Feature (Best for Large Apps)",
-    "text": "Structure 2: Organized by Domain/Feature (Best for Large Apps)\nIf you are building a larger monolith, organizing by file type quickly becomes cluttered. Instead, keep everything related to a specific feature inside one self-contained domain folder.\n\nmy_fastapi_project/\n├── app/\n│   ├── core/                 # Shared configs, middleware, and core security\n│   │   ├── config.py\n│   │   └── database.py\n│   ├── users/                # All code related to users\n│   │   ├── router.py         # User endpoints\n│   │   ├── models.py         # User DB model\n│   │   ├── schemas.py        # User Pydantic data shapes\n│   │   ├── service.py        # User business rules\n│   │   └── dependencies.py   # User-specific route dependencies\n│   ├── products/             # All code related to products\n│   │   ├── router.py\n│   │   ├── models.py\n│   │   └── ...\n│   └── main.py\n└── ...\n\n\nLast modified: 2026-07-09",
+    "objectID": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "href": "notes/003-data-engineering/002-snowflake/003-create-snippets.html#create-agent",
+    "title": "Create Snippets",
+    "section": "Create Agent",
+    "text": "Create Agent\n\nAlways have two roles for Agents (Snowflake Intelligence)\n\nsuperior manager of all agents (owner of all agent)\ninferior manager of a specific agent (reader of an agent)\n\n\n\ncreate the agent with sysadmin in the UI\n\n\n[[create_role]] for the specific agent.\nFor both superior and inferior roles there are 2 types of grants needed:\n\n\ngive grants on snowflake intelligence - agent, schema, database\n\n\nUSE ROLE securityadmin;\nGRANT USAGE ON AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.{{ domain_agent }} TO ROLE {{ domain_agent_user_role }};\nGRANT USAGE ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO ROLE {{ domain_agent_user_role }};\nGRANTE USAGE ON DATABASE SNOWFLAKE_INTELLIGENCE TO ROLE {{ domain_agent_user_role }};\n\n\ngive grants on underlying tables that the semantic view/model is using\n[TODO: add link to having a dbt_project.yml and how to manage the SELECT and REFERENCES in dbt for all tables that are needed for the agent]\nremember that views need all underlying tables\n\n\nLast modified: 2026-07-01",
     "crumbs": [
-      "FastAPI",
-      "Directory Structure"
+      "Snowflake",
+      "Create Snippets"
     ]
   },
   {
-    "objectID": "notes/003-data-engineering/006-ducklake/001-setup.html",
-    "href": "notes/003-data-engineering/006-ducklake/001-setup.html",
+    "objectID": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
+    "href": "notes/003-data-engineering/002-snowflake/005-ai-ml.html",
+    "title": "AI & ML",
+    "section": "",
+    "text": "The AI & ML services from Snowflake has been undergoing a lot of changes. That’s why the notes for this section might also change frequently.\nThe architecture in a nutshell looks something like:\n\nMake a semantic view -&gt; this becomes a Cortex Analyst\nMake an agent, go to Configuration &gt; Tools &gt; Query structured data -&gt; Add semantic view\n\nThat’s pretty much it. But you also have to configure your agent with other stuff like Instructions, Skills, and MCP if you want more harness for your agent.\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
+    "crumbs": [
+      "Snowflake",
+      "AI & ML"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html",
+    "href": "notes/003-data-engineering/003-dlt/001-setup.html",
     "title": "Setup",
     "section": "",
-    "text": "Last modified: 2026-07-21\n\n\n\n Back to top",
+    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
     "crumbs": [
-      "DuckLake",
+      "dlt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
+    "href": "notes/003-data-engineering/003-dlt/001-setup.html#installation",
+    "title": "Setup",
+    "section": "",
+    "text": "uv add dlt\n\nTo have a way to visualize your dlt pipelines in marimo install the following packages. Let’s add it to your dev packages with a --dev flag as it’s helpful for development not production.\n\nuv add --dev \"dlt[hub]\" marimo pyarrow ibis-framework numpy\n\n\nLast modified: 2026-07-21",
+    "crumbs": [
+      "dlt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/003-normalization.html",
+    "href": "notes/003-data-engineering/003-dlt/003-normalization.html",
+    "title": "Normalization",
+    "section": "",
+    "text": "dlt by default normalizes api responses.\nrule: lists -&gt; child tables, objects -&gt; flattened columns\nthis means that:\n[\nfoo: “bar”,]\nbecomes table__foo\n\nLast modified: 2026-07-14\n\n\n\n Back to top",
+    "crumbs": [
+      "dlt",
+      "Normalization"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/005-workflow.html",
+    "href": "notes/003-data-engineering/003-dlt/005-workflow.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "dlt pipeline\nwhen dev testing and you want to only drop a pipeline\ndlt pipeline {source} drop {table}\n\nLast modified: 2026-07-28",
+    "crumbs": [
+      "dlt",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/003-dlt/005-workflow.html#command-line-interface",
+    "href": "notes/003-data-engineering/003-dlt/005-workflow.html#command-line-interface",
+    "title": "Workflow",
+    "section": "",
+    "text": "dlt pipeline\nwhen dev testing and you want to only drop a pipeline\ndlt pipeline {source} drop {table}\n\nLast modified: 2026-07-28",
+    "crumbs": [
+      "dlt",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "dbt coredbt Fusion\n\n\n\n# Pyproject.toml\nuv add dbt-core\n\n# Adapter package (of choice)\nuv add dbt-snowflake dbt-postgres\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#installation",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#installation",
+    "title": "Setup",
+    "section": "",
+    "text": "dbt coredbt Fusion\n\n\n\n# Pyproject.toml\nuv add dbt-core\n\n# Adapter package (of choice)\nuv add dbt-snowflake dbt-postgres\n\n\n\n\n\n\n\n\n\nWarning\n\n\n\nWe are sticking with the stable dbt core for now because dbt Fusion is still under active development and causes compatibility issues with our current workflows.\n\n\n\n# Curl install\ncurl -fsSL https://public.cdn.getdbt.com/fs/install/install.sh | sh -s -- --update\n\n# Brew install\nbrew install dbt",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#check-installation",
+    "title": "Setup",
+    "section": "Check installation",
+    "text": "Check installation\n\ndbt --version\n\ndbt init --skip-profile-setup",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-packages",
+    "title": "Setup",
+    "section": "Useful dbt-packages",
+    "text": "Useful dbt-packages\n\ndbt-labs/dbt_utils\ngodatadriven/dbt_date\nSnowflake-Labs/dbt_semantic_view",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "href": "notes/003-data-engineering/004-dbt/001-setup.html#useful-dbt-related-python-packages",
+    "title": "Setup",
+    "section": "Useful dbt related python packages",
+    "text": "Useful dbt related python packages\n\ndbt-{database adapter} (e.g., dbt-postgres, dbt-snowflake)\n\nadds support for a specific database.\n\ndbt-autofix\n\nofficial command-line utility designed to automate the refactoring and updating of dbt projects.\n\ndbt-osmosis\n\nstreamlines the management of YAML files by ensuring consistency and accuracy in dbt docs and the actual models.\n\ndbterd\n\ndetects entity relationships through test relationships, semantic entities, and model contract constraints to make an ERD.\n\ndbt-state (Coming soon…; On afterthought it seems like it’s a freemium feature…)\n\nsaves compute costs and development time by avoiding unnecessary model builds by comparing current definitions against past runs to skip execution if nothing has changed or cloning existing nodes.\n\n\n\nLast modified: 2026-07-19",
+    "crumbs": [
+      "dbt",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/003-workflow.html",
+    "href": "notes/003-data-engineering/004-dbt/003-workflow.html",
+    "title": "Workflow",
+    "section": "",
+    "text": "dbt commands\n- dbt debug\n- dbt clean\n- dbt deps\n- dbt run\n- dbt test\n- dbt build\n- dbt seed\n- dbt lint (requires .sqlfluff)\n- dbt fmt (Coming soon…)\nLet’s use dbt fusion locally for faster build, run, compilation whatever times.\n\n-t | --target\n-s | --select\n-x | --fail-fast\n\n+model = upstream\nmodel+ = downstream\n\n\nLast modified: 2026-06-26\n\n\n\n Back to top",
+    "crumbs": [
+      "dbt",
+      "Workflow"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/006-ci-cd.html",
+    "href": "notes/003-data-engineering/004-dbt/006-ci-cd.html",
+    "title": "CI/CD",
+    "section": "",
+    "text": "Slim CI (Pull Requests)\n\nLast modified: 2026-07-13\n\n\n\n Back to top",
+    "crumbs": [
+      "dbt",
+      "CI/CD"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html",
+    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html",
+    "title": "Optimize Build Time",
+    "section": "",
+    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
+    "crumbs": [
+      "dbt",
+      "Optimize Build Time"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#project-wide-optimizations",
+    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#project-wide-optimizations",
+    "title": "Optimize Build Time",
+    "section": "",
+    "text": "The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.\nFor the free way to do this would be to chain selectors like state:modified, source_status:fresher, config.materialized:view",
+    "crumbs": [
+      "dbt",
+      "Optimize Build Time"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#model-wide-optimizations",
+    "href": "notes/003-data-engineering/004-dbt/009-optimize-build-time.html#model-wide-optimizations",
+    "title": "Optimize Build Time",
+    "section": "Model-wide Optimizations",
+    "text": "Model-wide Optimizations\nYou would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).\n\nLast modified: 2026-06-26",
+    "crumbs": [
+      "dbt",
+      "Optimize Build Time"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/005-fastapi/001-setup.html",
+    "href": "notes/003-data-engineering/005-fastapi/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "Coming soon…\n\nLast modified: 2026-07-09\n\n\n\n Back to top",
+    "crumbs": [
+      "FastAPI",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/005-fastapi/index.html",
+    "href": "notes/003-data-engineering/005-fastapi/index.html",
+    "title": "FastAPI",
+    "section": "",
+    "text": "Yes, FastAPI is a backend. It feels weird to put FastAPI inside a data engineering section. However, these are notes to managing the backend for a data platform. The boundaries with an actual full blown app will be quite blurry, but it is a skill that I want to practice and put under my belt because Tableau and Streamlit gets you so far.\nThe frontend for this backend has a few choices. I used to just do HTML, CSS, and vanilla Javascript because of the advancements on AI making this easier to do. However, it bloats really fast and it’s hard to wrap your head around most of the features when the app grows. That’s why I think from now on I will choose to go with NiceGUI.\n\n\n\n Back to top",
+    "crumbs": [
+      "FastAPI"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/006-ducklake/index.html",
+    "href": "notes/003-data-engineering/006-ducklake/index.html",
+    "title": "DuckLake",
+    "section": "",
+    "text": "DuckLake is part of DuckDB Labs. Its main purpose is to replace the complexity required to maintain Data Lake through more mature frameworks like Apache Iceberg. Traditional data lake catalogs maintain metadata through json and avro files; DuckLake makes the catalog in sql, making traversal searches on metadata way faster and simpler.\n\n\n\n Back to top",
+    "crumbs": [
+      "DuckLake"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/008-postgresql/001-setup.html#locate-binaries",
+    "href": "notes/003-data-engineering/008-postgresql/001-setup.html#locate-binaries",
+    "title": "Setup",
+    "section": "Locate Binaries",
+    "text": "Locate Binaries\n\nls /usr/lib/postgresql\n\nAdd the binary path permanently to your shell config file.\n\necho 'export PATH=\"/usr/lib/postgresql/{version}/bin:$PATH\"' &gt;&gt; ~/.zshrc\nsource ~/.zshrc\n\nVerify the tools are active.\n\nwhich initdb pg_ctl psql",
+    "crumbs": [
+      "PostgreSQL",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/008-postgresql/001-setup.html#initialize-database",
+    "href": "notes/003-data-engineering/008-postgresql/001-setup.html#initialize-database",
+    "title": "Setup",
+    "section": "Initialize Database",
+    "text": "Initialize Database\nCreate a directory inside your home folder to hold and own the database files and initialize with your user as a superuser.\n\ninitdb -D $HOME/pgdata -U $USER -A trust",
+    "crumbs": [
+      "PostgreSQL",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/008-postgresql/001-setup.html#configure-the-port-socket-optional",
+    "href": "notes/003-data-engineering/008-postgresql/001-setup.html#configure-the-port-socket-optional",
+    "title": "Setup",
+    "section": "Configure the Port & Socket (Optional)",
+    "text": "Configure the Port & Socket (Optional)\nBy default, PostgreSQL tries to bind to port 5432 and write sockets to system directories requiring sudo. You can update configuration to use the port of your liking and Unix socket folder /tmp.\n\n# Change port\nsed -i 's/#port = 5432/port = {port}/' $HOME/pgdata/postgresql.conf\n\n# Set socket directory to /tmp\nsed -i \"s|^#*unix_socket_directories = .*|unix_socket_directories = '/tmp'|\" $HOME/pgdata/postgresql.conf\n\n# Direct psql to the /tmp\necho 'export PGHOST=/tmp' &gt;&gt; ~/.bashrc\nsource ~/.bashrc",
+    "crumbs": [
+      "PostgreSQL",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/008-postgresql/001-setup.html#start-the-server",
+    "href": "notes/003-data-engineering/008-postgresql/001-setup.html#start-the-server",
+    "title": "Setup",
+    "section": "Start the Server",
+    "text": "Start the Server\nStart the server process in the background (-D) using pg_ctl and direct logs to a dedicated file.\n\npg_ctl -D $HOME/pgdata -l $HOME/pgdata/server.log start\n\nCheck it’s working.\n\n# Verify status of server\npg_ctl -D $HOME/pgdata status\n\n# Check live logs\ntail -f $HOME/pgdata/server.log",
+    "crumbs": [
+      "PostgreSQL",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/003-data-engineering/008-postgresql/001-setup.html#connect-to-the-server",
+    "href": "notes/003-data-engineering/008-postgresql/001-setup.html#connect-to-the-server",
+    "title": "Setup",
+    "section": "Connect to the Server",
+    "text": "Connect to the Server\n\npsql -p 5432 -d postgres\n\n\nLast modified: 2026-08-06",
+    "crumbs": [
+      "PostgreSQL",
       "Setup"
     ]
   },
@@ -1511,134 +1731,180 @@
     ]
   },
   {
-    "objectID": "notes/005-business-intelligence/index.html",
-    "href": "notes/005-business-intelligence/index.html",
-    "title": "Business Intelligence",
+    "objectID": "notes/005-business-intelligence/005-frontend/index.html",
+    "href": "notes/005-business-intelligence/005-frontend/index.html",
+    "title": "Frontend",
     "section": "",
-    "text": "This section is about Business Intelligence(BI). It will cover the theory and application of dashboards for data driven decisions.\n\n\n\n Back to top",
+    "text": "As someone with zero frontend experience, the following is a note so that I get a grasp on the concepts. It feels like the frontend ecosystem and Javascript as a whole feels chaotic (compared to Python).",
     "crumbs": [
-      "Business Intelligence"
+      "Frontend"
     ]
   },
   {
-    "objectID": "notes/006-machine-learning/index.html",
-    "href": "notes/006-machine-learning/index.html",
-    "title": "Machine Learning",
-    "section": "",
-    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "objectID": "notes/005-business-intelligence/005-frontend/index.html#the-core-stack",
+    "href": "notes/005-business-intelligence/005-frontend/index.html#the-core-stack",
+    "title": "Frontend",
+    "section": "The Core Stack",
+    "text": "The Core Stack\nEverything in JavaScript relies on two core layers:\n\nLanguage: JavaScript / TypeScript\nRuntime: Node.js (or Bun/Deno)\n\nThe runtime allows JavaScript to run outside the browser (on your terminal/server) to run build tools, dev servers, or backend scripts.",
     "crumbs": [
-      "Machine Learning"
+      "Frontend"
     ]
   },
   {
-    "objectID": "notes/007-ai-engineering/001-ai-harness/index.html",
-    "href": "notes/007-ai-engineering/001-ai-harness/index.html",
-    "title": "AI Harness",
-    "section": "",
-    "text": "Note\n\n\n\nThe harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.\n\n\nThere are various AI harnesses that I use, each with its own unique strengths.\nThe one that I think works the best out-of-the-box is Claude Code. It can be bloated, token-inefficient, and expensive, but this is the one I use at work and the company covers the subscription.\nThen I also use Antigravity CLI (formerly Gemini CLI) to fix, format, and organize text like this Obsidian vault (strictly for drafts, not stuff I post to the public, which I try my best to make it my own words and writing style).\nFinally, I also enjoy spending time tweaking and using Pi (pi-coding-agent) for hobby projects (along with Claude Code).\n\n\n\n Back to top",
+    "objectID": "notes/005-business-intelligence/005-frontend/index.html#the-ui-frameworks",
+    "href": "notes/005-business-intelligence/005-frontend/index.html#the-ui-frameworks",
+    "title": "Frontend",
+    "section": "The UI Frameworks",
+    "text": "The UI Frameworks\nThese are frontend libraries that handle component rendering and state management. These replace raw HTML/JS with reactive components.\n\nReact: The most popular library, which uses JSX (mixing HTML inside JavaScript functions). It relies on explicit hooks (useState) to track updates.\nVue (or Vue.js): It uses Single-File Components (.vue files) separating HTML &lt;template&gt;, JS &lt;script&gt;, and CSS &lt;style&gt;.",
     "crumbs": [
-      "AI Harness"
+      "Frontend"
     ]
   },
   {
-    "objectID": "notes/008-domain-knowledge/001-scm/001-definition.html",
-    "href": "notes/008-domain-knowledge/001-scm/001-definition.html",
-    "title": "Definition",
-    "section": "",
-    "text": "Supply Chain Management consists of different components:\n\nPlanning\n\nS&OP\nDemand Plan\nSupply Plan\nInventory\n\nSourcing\n\nProcurement\nSRM\nSupplier Negotiation\n\nManufacturing\n\nProduction Scheduling\nCapacity Planning\n\nLogistics\n\nWarehousing\nTransport\nLast-Mile\n\n\n\nLast modified: 2026-06-16\n\n\n\n Back to top",
-    "crumbs": [
-      "SCM",
-      "Definition"
-    ]
-  },
-  {
-    "objectID": "notes/008-domain-knowledge/001-scm/index.html",
-    "href": "notes/008-domain-knowledge/001-scm/index.html",
-    "title": "SCM",
-    "section": "",
-    "text": "This is notes for Supply Chain Management.\n\n\n\n Back to top",
-    "crumbs": [
-      "SCM"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html",
-    "href": "notes/009-devtools/001-kitty-terminal.html",
-    "title": "Kitty Terminal",
-    "section": "",
-    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#intro",
-    "href": "notes/009-devtools/001-kitty-terminal.html#intro",
-    "title": "Kitty Terminal",
-    "section": "",
-    "text": "Kitty is a free, open-source, and GPU-accelerated terminal emulator designed for Linux, macOS, and BSD systems.\nThe key features are:\n- GPU Rendering: Offloads text rendering to the graphic card, making it fast and smooth compared to traditional CPU-based terminal emulators.\n- Built-in Tiling & Tabs: Features an internal window manager that lets you split screens (horizontally/vertically) and use tabs without needing external tools like tmux.\n- Scriptable & Extensible: Fully controlled via keyboard shortcuts and supports “Kittens” (small extensions) to do things like view images in the terminal or search for URLs.\n- Modern Display Support: Supports TrueColor, ligatures, and specialized protocols for image rendering and keyboard input extensions.\nWhat caught my interest was the GPU rendering, and built-in tiling and tabs.",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#setup",
-    "href": "notes/009-devtools/001-kitty-terminal.html#setup",
-    "title": "Kitty Terminal",
-    "section": "Setup",
-    "text": "Setup\n\nBinary Install\n\ncurl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin\n\n\n\nBrew Install (Recommended)\n\nbrew install --cask kitty",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#configurations",
-    "href": "notes/009-devtools/001-kitty-terminal.html#configurations",
-    "title": "Kitty Terminal",
-    "section": "Configurations",
-    "text": "Configurations\nThe configurations that I’ve made to Kitty are as follows and it consists of only two files:\n\nmain configurations: ~/.config/kitty/kitty.conf\ntheme configurations: ~/.config/kitty/current-theme.conf\n\n\nkitty.conf\n\nFont\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nfont_size\n24.0\nBase font size\n\n\n\n\n\n\nWindow\n\n\n\n\n\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nremember_window_size\nyes\nReopen at last size\n\n\nremember_window_position\nyes\nReopen at last position\n\n\nenabled_layouts\ntall, grid\nSplitting layouts (multiplexing)\n\n\nwindow_border_width\n3pt\nBorder thickness\n\n\ndraw_minimal_borders\nno\nDraw full borders\n\n\nwindow_padding_width\n7\nInner padding\n\n\nactive_border_color\n#fab387\nFocused window border (peach)\n\n\ninactive_border_color\n#585b70\nUnfocused window border\n\n\n\n\n\n\nAppearance\n\n\n\n\nSetting\nValue\nNotes\n\n\n\n\nbackground_opacity\n0.8\nTransparent background\n\n\nbackground_blur\n1\nBlur behind transparency\n\n\n\n\n\n\nKeybindings\n\n\n\n\n\n\nNote\n\n\n\ncmd+enter is mapped to no_op to disable kitty’s default new-window shortcut, so ctrl+shift+enter is the single binding for new panes.\n\n\n\n\n\n\nKeybinding\nAction\n\n\n\n\nctrl+shift+enter\nNew window (pane) in current dir\n\n\ncmd+t\nNew tab in current dir\n\n\ncmd+n\nNew OS window in current dir\n\n\n\n\nAll use launch --cwd=current so the new tab/window opens in the same directory as the active one. This is done because it’s way easier to go back to the root (which is default), but not to a specific project unless your project directory is easy to memorize.\n\n\n\ncurrent-theme.conf\nCatppuccin-Mocha (current-theme.conf).\nDark pastel palette:\n- foreground #CDD6F4\n- background #1E1E2E\n- accent lilac #CBA6F7 on active tab\n\n\n\n\n\n\nNote\n\n\n\nThis part can be configured with the kitten themes command.",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
-    "href": "notes/009-devtools/001-kitty-terminal.html#keybindings-1",
-    "title": "Kitty Terminal",
-    "section": "Keybindings",
-    "text": "Keybindings\nThe keybindings listed are more than enough in my honest opinion.\n\nTabs\nThis section is for managing the tabs that appear in the bottom.\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew Tab\ncommand + T\n\n\nRename Tab\ncommand + I\n\n\nSwitch Tab\ncommand + shift + []\n\n\nClose Tab\ncommand + W\n\n\n\n\n\n\nWindows (Panes)\nThis section is for managing the windows (splitting the terminal into multiple panes, i.e. multiplexing).\n\n\n\n\nAction\nKeybinding\n\n\n\n\nNew window\nctrl + shift + enter\n\n\nMove window\nctrl + shift + F\n\n\nSwitch window\nctrl + shift + []\n\n\nClose window\nctrl + shift + W",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/001-kitty-terminal.html#reminders",
-    "href": "notes/009-devtools/001-kitty-terminal.html#reminders",
-    "title": "Kitty Terminal",
-    "section": "Reminders",
-    "text": "Reminders\n\n\n\n\n\n\nWarning\n\n\n\nWhen SSH-ing into a server use the kitten command else the shell will be very buggy.\nFor example, kitten ssh user@xxx.xx.xx.xxx\n\n\n\n\n\n\n\n\nNote\n\n\n\nWhen opening links, do ctrl + click.\n\n\n\nLast modified: 2026-07-22",
-    "crumbs": [
-      "Kitty Terminal"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/003-dbeaver.html",
-    "href": "notes/009-devtools/003-dbeaver.html",
-    "title": "DBeaver",
-    "section": "",
-    "text": "driver properties\nname: private_key_file\nvalue: $PATH to rsa_key.p8\nUser Interfaces &gt; Keys:\n- move lines up - option up\n- move lines down - option down\n- toggle line comment - command /\n- copy lines - option shift down\n\nLast modified: 2026-07-22\n\n\n\n Back to top",
-    "crumbs": [
-      "DBeaver"
-    ]
-  },
-  {
-    "objectID": "notes/009-devtools/005-todoist.html",
-    "href": "notes/009-devtools/005-todoist.html",
-    "title": "Todoist",
+    "objectID": "notes/006-machine-learning/001-mlflow.html",
+    "href": "notes/006-machine-learning/001-mlflow.html",
+    "title": "MLflow",
     "section": "",
     "text": "Last modified: 2026-07-22\n\n\n\n Back to top",
     "crumbs": [
-      "Todoist"
+      "MLflow"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html",
+    "title": "Setup",
+    "section": "",
+    "text": "When setting up your own .agents directory, there are a lot of files to consider. However, I will curate a list of things I like to keep.",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#skills",
+    "title": "Setup",
+    "section": "Skills",
+    "text": "Skills",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
+    "href": "notes/007-ai-engineering/001-ai-harness/001-setup.html#hooks",
+    "title": "Setup",
+    "section": "Hooks",
+    "text": "Hooks\n\nLast modified: 2026-07-08",
+    "crumbs": [
+      "AI Harness",
+      "Setup"
+    ]
+  },
+  {
+    "objectID": "notes/007-ai-engineering/index.html",
+    "href": "notes/007-ai-engineering/index.html",
+    "title": "AI Engineering",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "AI Engineering"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#intro",
+    "title": "SCOR DS",
+    "section": "",
+    "text": "The Supply Chain Operations Reference (SCOR) Model.\nSCOR DS compared to it’s previous state, is not a linear supply chain model anymore but a synchronous network.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#data-mart-core-architecture",
+    "title": "SCOR DS",
+    "section": "Data Mart Core Architecture",
+    "text": "Data Mart Core Architecture\nTo build a scalable analytical layer, your fact tables should mirror the natural state transitions of an entity (e.g., an order or a batch of product) as it moves through the supply chain.\nThe data should be prepared using a Conformed Dimension Data Mart approach. This means that your fact tables directly around the 6 execution phases are wrapped tightly by an Orchestration (Log/Audit) dimension to track pipeline health and end-to-end latency.\n\n1. Orchestration & Lineage (The Dimension/Audit Layer)\nBefore analyzing the business, you must analyze the pipeline. This layer tracks data quality, ingestion latencies, and end-to-end processing times.\n\nCore Dimension/Fact: dim_pipeline_execution, fact_data_lineage\nKey Columns: dag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nDashboard Visual: Data pipeline health monitoring, source-to-target latency gauges, rows processed per hour.\n\n\n\n2. Plan (The Forecasting Mart)\n\nCore Fact Table: fact_demand_forecast\nGrain: One row per Product_ID per Location_ID per Forecast_Period_Month.\nKey Columns: forecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nDashboard Visual: Forecast Accuracy KPI (MAPE), Actual vs. Forecasted Demand trends, Capacity Utilization charts.\n\n\n\n3. Order (The Digital Transaction Mart)\n\nCore Fact Table: fact_order_lifecycle\nGrain: One row per Order_Line_Item.\nKey Columns: order_id, customer_id, order_status_code (Created, Approved, Invoiced), order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDashboard Visual: Daily/Monthly Revenue, Total Orders Placed, Order conversion rates, Average Order Value (AOV).\n\n\n\n4. Source (The Procurement Mart)\n\nCore Fact Table: fact_purchase_orders\nGrain: One row per Purchase_Order_Line_Item.\nKey Columns: po_number, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nDashboard Visual: Supplier Lead Time, Supplier OTIF (On-Time In-Full), Procurement spend analysis by vendor.\n\n\n\n5. Transform (The Manufacturing & Quality Mart)\n\nCore Fact Table: fact_production_runs\nGrain: One row per Production_Batch_ID or Work_Order_ID.\nKey Columns: work_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nDashboard Visual: First Pass Yield (FPY %), OEE (Overall Equipment Effectiveness), Defect Rate by product line, Production Downtime trends.\n\n\n\n6. Fulfill (The Logistics & Distribution Mart)\n\nCore Fact Table: fact_shipment_fulfillment\nGrain: One row per Shipment_ID / Waybill.\nKey Columns: shipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nDashboard Visual: Perfect Order Index (POI), Shipping/Last-Mile Cost per order, Warehouse processing time (Click-to-Ship latency).\n\n\n\n7. Return (The Reverse Logistics Mart)\n\nCore Fact Table: fact_order_returns\nGrain: One row per Return_Line_Item.\nKey Columns: return_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status (Restocked, Refurbished, Scrapped), refund_amount\nDashboard Visual: Return Rate % by product category, Top Reasons for Returns, Financial impact of refunds vs. scrap loss.\n\n\n\nConformed Dimensions (The “Glue”)\nTo build an executive dashboard that allows filtering the entire supply chain by a specific product, location, or date, these dimension tables must link seamlessly across all 6 fact tables above:\n\ndim_products — product_id, SKU, category, brand, cost_price, retail_price\ndim_locations — location_id, site_name, type (Warehouse, Plant, Store), region, country\ndim_date — date_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\n\n\n\nExecutive Dashboard Layout Strategy\nWhen setting up your BI tool (Tableau, Power BI, Looker, etc.), structure it into three distinct operational layers:\n\nThe Executive Summary (High Level): Place 4–5 global KPIs at the very top: Total Revenue (Order), Global OTIF % (Fulfill), Forecast Accuracy (Plan), and Gross Margin %.\nThe Supply Chain Funnel (Process Flow): Build a chronological funnel visualization or linear timeline tracking an order’s lifecycle. Show the average duration (in hours/days) it takes to pass through each phase: Order Placed → PO Raised → Produced → Shipped → Delivered.\nThe Operational Drill-Downs (Tabbed Views): Create dedicated tabs for specific team playbooks (e.g., a “Procurement Tab” powered by the Source Mart, a “Plant Operations Tab” powered by the Transform Mart).\n\n\n\n\nQuick Reference\n\nProcess Marts\n\n\n\n\n\n\n\n\n\n\n\n\n#\nProcess\nCore Table\nGrain\nKey Columns\nDashboard\n\n\n\n\n0\nOrchestrate\ndim_pipeline_execution, fact_data_lineage\nPer DAG run\ndag_run_id, source_system_status, ingestion_timestamp, transformation_latency_seconds, data_quality_score\nPipeline health, source-to-target latency gauges, rows/hr\n\n\n1\nPlan\nfact_demand_forecast\nProduct × Location × Forecast month\nforecast_quantity, historical_actual_quantity, capacity_limit_units, safety_stock_threshold\nForecast Accuracy (MAPE), Actual vs Forecast, Capacity Utilization\n\n\n2\nOrder\nfact_order_lifecycle (sales)\nOrder line item\norder_id, customer_id, order_status_code, order_placement_timestamp, gross_amount, tax_amount, discount_amount\nDaily/Monthly Revenue, Total Orders, AOV\n\n\n3\nSource\nfact_purchase_orders (orders / PO)\nPO line item (PO Number x Product)\npo_number, product_id, supplier_id, po_creation_timestamp, expected_delivery_date, actual_received_date, ordered_quantity, received_quantity, unit_cost\nSupplier Lead Time, OTIF, Spend by vendor\n\n\n4\nTransform\nfact_production_runs\nProduction batch / Work order\nwork_order_id, product_id, production_start_timestamp, production_end_timestamp, total_units_produced, defective_units_count, machine_downtime_minutes\nFirst Pass Yield %, OEE, Defect Rate, Downtime trends\n\n\n5-a\nFulfill\nfact_shipment_fulfillment\nShipment / Waybill\nshipment_id, order_id, warehouse_id, carrier_id, allocated_timestamp, shipped_timestamp, delivered_timestamp, promised_delivery_date, shipping_cost\nPerfect Order Index, Cost/order, Click-to-Ship latency\n\n\n5-b\nFulfill\nfact_warehouse_inventory_snapshot\nWarehouse x SKU x Day\nsnapshot_date, warehouse_id, product_id, ending_on_hand_quantity, daily_allocated_overhead_cost\nInventory Turnover Ratio, Days Sales of Inventory (DSI), Total Warehousing Carrying Cost\n\n\n6\nReturn\nfact_order_returns\nReturn line item\nreturn_id, original_order_id, return_request_timestamp, return_reason_code, disposition_status, refund_amount\nReturn Rate %, Top reasons, Refund vs Scrap impact\n\n\n\n\n\n\nConformed Dimensions\n\n\n\n\n\n\n\n\n\nDimension\nKey Columns\nDescription / SCM Context\n\n\n\n\ndim_products\nproduct_id, SKU, category, brand, cost_price, retail_price\nMaster catalog for items. Updated with weight/material columns to calculate sustainability metrics (EV.1.1).\n\n\ndim_locations\nlocation_id, site_name, type (Warehouse/Plant/Store), region, country\nThe geographical backbone. Shared by fulfillment warehouses, production plants, and customer shipping zones.\n\n\ndim_date\ndate_id, calendar_date, day_of_week, month, quarter, year, fiscal_period\nThe universal calendar heartbeat used to calculate cycle times, monthly revenue, and daily inventory snapshots.\n\n\ndim_supplier_profile\nsupplier_id, supplier_name, tier_ranking, risk_score, compliance_status, country\nThe master record for vendors. Used by fact_purchase_orders to slice spend and track supplier network risk.\n\n\ndim_bill_of_materials\nparent_sku, component_sku, required_quantity, effectivity_start_date, effectivity_end_date\nThe structural map of your products. Allows you to break down a finished item into its raw component parts.",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "href": "notes/008-domain-knowledge/001-scm/002-scor-ds.html#metrics",
+    "title": "SCOR DS",
+    "section": "Metrics",
+    "text": "Metrics\n\n\n\n\n\n\nInfo\n\n\n\nThree overarching focus areas, spread across 8 performance attributes.\n\n\n\n\n\n\n\n\nWarning\n\n\n\nThese are not all the metrics. These top metric are the level 1 metrics, but they can funnel down until level 3 metrics (so start with top metrics and dive as you get mature).\n\n\n\n1. Resilience Focus (Customer-Facing)\n\nReliability (RL): Measures process predictability and execution quality.\n\nTop Metric: Perfect Order Fulfillment (RL.1.1)\n\nResponsiveness (RS): Measures operational execution speed and cycle times.\n\nTop Metric: Order Fulfillment Cycle Time (RS.1.1)\n\nAgility (AG): Measures system adaptability and capacity to handle unexpected external shifts or disruptions.\n\nTop Metric: Supply Chain Agility (AG.1.1)\n\n\n\n\n2. Economic Focus (Internal Business)\n\nCosts (CO): Measures total operational expenditures incurred across the pipeline.\n\nTop Metric: Total Supply Chain Management Costs (CO.1.1)\n\nProfit (PR): Measures the direct bottom-line financial outcome generated by the supply chain.\n\nTop Metric: Earnings Before Interest and Taxes (EBIT) as a Percent of Revenue (PR.1.1)\n\nAsset Management Efficiency (AM): Measures capital utilization and asset turn speeds.\n\nTop Metric: Cash-to-Cash Cycle Time (AM.1.1)\n\n\n\n\n3. Sustainability Focus (Outward Impact)\n\nEnvironmental (EV): Measures resource footprints, waste generation, and green performance.\n\nTop Metric: Materials Used / Total Footprint (EV.1.1)\n\nSocial (SC): Measures corporate responsibility, labor compliance, and governance safety protocols.\n\nTop Metric: Diversity and Inclusion / Policy Compliance Score (SC.1.1)\n\n\n\nLast modified: 2026-06-16",
+    "crumbs": [
+      "SCM",
+      "SCOR DS"
+    ]
+  },
+  {
+    "objectID": "notes/008-domain-knowledge/index.html",
+    "href": "notes/008-domain-knowledge/index.html",
+    "title": "Domain Knowledge",
+    "section": "",
+    "text": "Overview coming soon.\n\n\n\n Back to top",
+    "crumbs": [
+      "Domain Knowledge"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/002-vs-code.html",
+    "href": "notes/009-devtools/002-vs-code.html",
+    "title": "Visual Studio Code",
+    "section": "",
+    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
+    "crumbs": [
+      "Visual Studio Code"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/004-obsidian.html",
+    "href": "notes/009-devtools/004-obsidian.html",
+    "title": "Obsidian",
+    "section": "",
+    "text": "Last modified: 2026-07-19\n\n\n\n Back to top",
+    "crumbs": [
+      "Obsidian"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/006-raycast.html",
+    "href": "notes/009-devtools/006-raycast.html",
+    "title": "Raycast",
+    "section": "",
+    "text": "Raycast is a fast, highly customizable productivity launcher for macOS, first, designed to replace Apple’s native Spotlight. It lets you search files, launch apps, manage clipboard history, run custom scripts, and execute AI tasks using quick keyboard shortcuts.\nThe main advantage of using Raycast for me, is that there is a [Store (Raycast)] where you can download extensions that the community has made.\nNow one caveat would be that installing an extension brings a lot of clutter to Raycast when you press command + space, that’s why you have to go to [Extensions (Raycast Settings)] and de-select what seems best for you.\nThe ones that I use and recommend are:\n\nBrew\n\nClean up\nManage Services\nServices Menu Bar\nUpgrade\n\nCoffee\n\nCaffeinate Status Menu Bar\nToggle Caffeinate\n\nVisual Studio Code\n\n\n\n\n\nLast modified: 2026-07-24\n\n\n\n Back to top",
+    "crumbs": [
+      "Raycast"
+    ]
+  },
+  {
+    "objectID": "notes/009-devtools/008-marimo.html",
+    "href": "notes/009-devtools/008-marimo.html",
+    "title": "Marimo",
+    "section": "",
+    "text": "marimo edit --watch so that you can change the files and it gets updated also in the marimo server.\n\nLast modified: 2026-08-08\n\n\n\n Back to top",
+    "crumbs": [
+      "Marimo"
     ]
   },
   {

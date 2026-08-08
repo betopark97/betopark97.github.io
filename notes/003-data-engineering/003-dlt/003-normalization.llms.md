@@ -2,10 +2,10 @@
 
 dlt by default normalizes api responses.
 
-rule: lists -\> child tables, objects -\> flattened columns  
-this means that:  
-\[  
-foo: “bar”,\]  
+rule: lists -\> child tables, objects -\> flattened columns\
+this means that:\
+\[\
+foo: “bar”,\]\
 becomes table\_\_foo
 
 ------------------------------------------------------------------------

@@ -6,24 +6,24 @@
 
 > **NOTE:**
 >
-> \- **Should do:** Account-level settings, billing/credit management, cross-region config, `CREATE SNOWFLAKE INTELLIGENCE`, enabling features.  
-> - **Should NOT do:** Create day-to-day objects (databases, tables, warehouses), run automated scripts.  
+> \- **Should do:** Account-level settings, billing/credit management, cross-region config, `CREATE SNOWFLAKE INTELLIGENCE`, enabling features.\
+> - **Should NOT do:** Create day-to-day objects (databases, tables, warehouses), run automated scripts.\
 > **Best practice:** Assign to 2+ users, require MFA, never set as anyone’s default role.
 
 > **NOTE:**
 >
-> \- **Creates/manages:** Privilege grants on all objects (has `MANAGE GRANTS`), role-to-role grants, role-to-user grants.  
+> \- **Creates/manages:** Privilege grants on all objects (has `MANAGE GRANTS`), role-to-role grants, role-to-user grants.\
 > - **Inherits:** `USERADMIN`. **Use for:** `GRANT ... TO ROLE`, future grants, managed access schema grants.
 
 > **NOTE:**
 >
-> \- **Creates:** Users (`CREATE USER`) and roles (`CREATE ROLE`).  
+> \- **Creates:** Users (`CREATE USER`) and roles (`CREATE ROLE`).\
 > - **Use for:** Provisioning new users, creating custom access/functional roles.
 
 > **NOTE:**
 >
-> \- **Creates:** Warehouses, databases, schemas, and all database objects.  
-> - **Clarification:** While `SYSADMIN` can create these, **any role** with `CREATE` privileges can too.  
+> \- **Creates:** Warehouses, databases, schemas, and all database objects.\
+> - **Clarification:** While `SYSADMIN` can create these, **any role** with `CREATE` privileges can too.\
 > - **Best practice:** All custom roles (like those used by dbt) must roll up to `SYSADMIN` so it inherits ownership and can manage all objects in the account.
 
 ## Custom Domain/Team Roles

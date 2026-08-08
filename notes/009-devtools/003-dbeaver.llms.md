@@ -1,13 +1,13 @@
 # DBeaver
 
-driver properties  
-name: private_key_file  
+driver properties\
+name: private_key_file\
 value: \$PATH to rsa_key.p8
 
-User Interfaces \> Keys:  
-- move lines up - option up  
-- move lines down - option down  
-- toggle line comment - command /  
+User Interfaces \> Keys:\
+- move lines up - option up\
+- move lines down - option down\
+- toggle line comment - command /\
 - copy lines - option shift down
 
 ------------------------------------------------------------------------
