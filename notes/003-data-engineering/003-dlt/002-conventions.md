@@ -94,6 +94,13 @@ disable_compression=true
 # Recommended sections for the destination (destination.module)
 [destination.filesystem]
 bucket_url = "s3://[your_bucket_name]"
+
+# Arrow/polars loads skip data-lineage columns by default.
+# Turn them on so every row carries 
+# _dlt_load_id (joins to _dlt_loads for auditing) and _dlt_id (unique row id).
+[normalize.parquet_normalizer]
+add_dlt_load_id = true
+add_dlt_id = true
 ```
 
 ### Secrets
@@ -116,6 +123,22 @@ host = "..."
 username = "..."
 password = "..."
 database = "..."
+```
+
+If the credentials have a predefined format like `SQL database` or `Object store & filesystem`. You can separate by provider name / pipeline name.
+
+```TOML
+[{provider}.sources.filesystem.credentials]
+client_email = "..."
+private_key = "..."
+project_id = "..."
+
+[{provider}.sources.sql_database.credentials]
+drivername = "..."
+database = "..."
+username = "..."
+host = "..."
+port = "..."
 ```
 
 ## Pipelines
@@ -153,6 +176,32 @@ let's set the `@dlt.source`'s parameter to `max_table_nesting=0` so that it does
 
 ```
 
+## Variables
+
+Okay, there are a lot of variables to manage, so let's make a small bullet point list of what values to configure for each of the main variables.
+
+- pipeline_name = the domain or source
+- dataset_name = schema
+- wrapper = @dlt.source(name={}, section={})
+- credentials [sources.{source}.filesystem.credentials]
+
+## Environments
+
+To separate environments under `.dlt` make the following configurations:
+
+- `.workspace`: leave it an empty file, it's to let dlt create its artifacts in this workspace rather than `~/.dlt`.
+- `dev.secrets.toml`: exclude variables under `secrets.toml` that belong to dev and add them here.
+- `prod.secrets.toml`: exclude variables under `secrets.toml` that belong to prod and add them here.
+- `profile-name` (Optional): just add a single text no quotations like: `dev` or `prod` to pin the runs to a specific profile. However, I'd recommend just using `WORKSPACE__PROFILE=prod` when running pipelines to prod instead. All runs default to dev.
+
+## Scripts
+
+when running:
+- `WORKSPACE__PROFILE=prod` # default: dev
+- `INGESTION__{key}={value}` # e.g., INGESTION__MONTHS_BACK={int|all} (default: 3)
+- `PROGRESS=log`
+- `PIPELINES__{pipeline_name}__REFRESH={drop_sources|drop_resources|drop_data}`
+
 ***
 
-[Last modified: 2026-07-17]{.note-modified}
+[Last modified: 2026-08-08]{.note-modified}

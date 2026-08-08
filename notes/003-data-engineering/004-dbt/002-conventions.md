@@ -21,13 +21,13 @@ dbt_project/
 │       ├── staging/
 │       │   ├── _stg__sources.yaml     # Source db/schema + origin docs
 │       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions
-│       │   └── stg_{domain}__{entity}.sql
+│       │   └── stg_{source}__{entity}.sql
 │       ├── intermediate/
 │       │   ├── _int__models.yaml
-│       │   └── int_{domain}__{entity}.sql
-│       └── mart/
-│           ├── _mart__models.yaml
-│           └── mart_{domain}__{entity}.sql
+│       │   └── int_{entity}__{verb/attribute}.sql
+│       └── marts/
+│           ├── _marts__models.yaml
+│           └── {dim|fct}_{domain}__{entity}.sql
 ├── seeds/                             # Static CSV reference data
 ├── snapshots/                         # SCD type-2 snapshots
 ├── target/                            # Compiled SQL & artifacts (git-ignored)
@@ -257,4 +257,4 @@ delete+insert checks for a set of keys that you define
 
 ***
 
-[Last modified: 2026-07-22]{.note-modified}
+[Last modified: 2026-08-07]{.note-modified}

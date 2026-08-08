@@ -119,12 +119,15 @@ website:
       contents:
         - text: "Data Engineering"
           href: notes/003-data-engineering/index.md
+        - auto: "notes/003-data-engineering/001-data-architecture/"
         - auto: "notes/003-data-engineering/001-data-modeling/"
         - auto: "notes/003-data-engineering/002-snowflake/"
         - auto: "notes/003-data-engineering/003-dlt/"
         - auto: "notes/003-data-engineering/004-dbt/"
         - auto: "notes/003-data-engineering/005-fastapi/"
         - auto: "notes/003-data-engineering/006-ducklake/"
+        - auto: "notes/003-data-engineering/007-prefect/"
+        - auto: "notes/003-data-engineering/008-postgresql/"
     - id: notes-004-data-analysis
       title: "Data Analysis"
       tools:
@@ -147,6 +150,7 @@ website:
         - notes/005-business-intelligence/002-ui-ux.md
         - notes/005-business-intelligence/003-visualization.md
         - notes/005-business-intelligence/004-streamlit.md
+        - auto: "notes/005-business-intelligence/005-frontend/"
     - id: notes-006-machine-learning
       title: "Machine Learning"
       tools:
@@ -191,6 +195,9 @@ website:
         - notes/009-devtools/003-dbeaver.md
         - notes/009-devtools/004-obsidian.md
         - notes/009-devtools/005-todoist.md
+        - notes/009-devtools/006-raycast.md
+        - notes/009-devtools/007-discord.md
+        - notes/009-devtools/008-marimo.md
     - id: notes-010-homelab
       title: "Homelab"
       tools:
