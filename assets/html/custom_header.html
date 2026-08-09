@@ -5,6 +5,20 @@
      on every page — was removed. Iconify is still where the artwork comes
      from; scripts/sync_notes.py just fetches it once at build instead. -->
 
+<!-- Bootstrap Icons webfont, fetched up front. Every `bi` glyph on the site --
+     the navbar's GitHub mark, the sidebar's collapse chevrons and "back to
+     Notes" arrow, code-block copy buttons -- is a character in this font, and
+     it ships `font-display: block`, meaning those glyphs render as *nothing*
+     until it arrives. The browser only discovers it midway through parsing
+     bootstrap-icons.css, so it starts ~200ms in and the icons blink into
+     existence afterwards. Preloading moves the fetch to the head of the queue.
+
+     The `?hash` must match the one in site_libs/bootstrap/bootstrap-icons.css
+     or the browser fetches the font twice; re-check it after a Quarto upgrade
+     (a "preloaded but not used" console warning is the tell). -->
+<link rel="preload" as="font" type="font/woff" crossorigin
+      href="/site_libs/bootstrap/bootstrap-icons.woff?e34853135f9e39acf64315236852cd5a">
+
 <!-- Sidebar icon artwork, baked in by scripts/sync_notes.py and injected by
      custom_body.html. Deliberately a blocking <script> in the head rather than
      inline or deferred: the sidebar is above the fold, so the map has to exist
