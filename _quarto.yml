@@ -8,6 +8,9 @@ project:
     - "!docs/"
   resources:
     - assets/_aboutme.md
+    # Referenced only from a <script src> in custom_header.html, so Quarto
+    # doesn't discover it the way it does assets linked from markdown.
+    - assets/js/sidebar-icons.js
 
 filters:
   - assets/filters/obsidian-tabs.lua

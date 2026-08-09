@@ -39,6 +39,7 @@ import os
 import re
 import shutil
 import sys
+import urllib.request
 from datetime import datetime
 from pathlib import Path
 
@@ -49,13 +50,28 @@ QUARTO_YML = REPO_ROOT / "_quarto.yml"
 SIDEBAR_BEGIN = "# >>> auto-notes"
 SIDEBAR_END = "# <<< auto-notes"
 
-# update_sidebar_icons() regenerates a data block in custom_body.html mapping
-# each nested section's folder path segment -> Iconify id; a static script
-# there injects the <iconify-icon> web component into the matching sidebar
-# section header on load (the same reliable component the gallery cards use).
+# update_sidebar_icons() regenerates assets/js/sidebar-icons.js: a map of each
+# nested section's folder path segment -> that icon's SVG markup, baked in at
+# sync time. A static script in custom_body.html injects the SVG into the
+# matching sidebar item.
+#
+# The SVG is baked rather than fetched at runtime because the sidebar is
+# above the fold on every page. The <iconify-icon> web component this used to
+# use resolves its artwork over the network ~400ms after insertion, and until
+# it does the element has no size — so every iconed label sat flush left and
+# then snapped right when the icons landed, a visible sidebar-wide jump on
+# every navigation. Baking makes the markup available before first paint.
+#
+# The map lives in its own .js file (not inlined into custom_body.html, which
+# Quarto includes in *every* rendered page) so the ~35KB of SVG is fetched and
+# HTTP-cached once instead of duplicated across the whole site.
 CUSTOM_BODY = REPO_ROOT / "assets/html/custom_body.html"
-SIDEBAR_ICONS_BEGIN = "<!-- >>> sidebar-icons"
-SIDEBAR_ICONS_END = "<!-- <<< sidebar-icons -->"
+SIDEBAR_ICONS_JS = REPO_ROOT / "assets/js/sidebar-icons.js"
+
+# id -> SVG markup for every icon ever baked. Consulted before the network, so
+# a re-sync only fetches genuinely new icons and works offline otherwise.
+ICON_CACHE = REPO_ROOT / "scripts/icon_cache.json"
+ICONIFY_API = "https://api.iconify.design"
 
 # Markers in notes/index.md (the hand-authored gallery shell) bracketing the
 # intro prose, which is sourced from the vault's Notes index.md.
@@ -322,43 +338,98 @@ def collect_icon_map(directory: Path, prefix: str, mapping: dict[str, str]) -> N
                 mapping[f"{prefix}/{child.stem}"] = to_iconify_id(icon)
 
 
+def fetch_icon_svgs(icon_ids: set[str]) -> dict[str, str]:
+    """Return `icon_id -> <svg>...</svg>` markup for every requested icon.
+
+    Cached ids are served from ICON_CACHE; the rest are fetched from the
+    Iconify API one request per set (`/logos.json?icons=a,b,c`), which returns
+    each icon's raw path data plus the viewBox dimensions to wrap it in. The
+    cache is then rewritten so the next sync — and anyone running this offline
+    — needs no network at all.
+
+    A fetch failure is a warning, not an error: the affected icons are simply
+    dropped from the map, so the sidebar renders without them rather than the
+    sync aborting midway."""
+    cache: dict[str, str] = {}
+    if ICON_CACHE.exists():
+        cache = json.loads(ICON_CACHE.read_text())
+
+    missing = sorted(icon_ids - cache.keys())
+    by_set: dict[str, list[str]] = {}
+    for icon_id in missing:
+        prefix, _, name = icon_id.partition(":")
+        by_set.setdefault(prefix, []).append(name)
+
+    for prefix, names in by_set.items():
+        url = f"{ICONIFY_API}/{prefix}.json?icons={','.join(names)}"
+        try:
+            # Default urllib User-Agent is rejected by the API with a 403.
+            req = urllib.request.Request(url, headers={"User-Agent": "sync_notes.py"})
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read().decode())
+        except Exception as exc:  # noqa: BLE001 - network/parse, same handling
+            print(f"warning: could not fetch '{prefix}' icons ({exc})", file=sys.stderr)
+            continue
+        # Per-icon width/height override the set-wide default when present.
+        set_w, set_h = data.get("width", 16), data.get("height", 16)
+        for name in names:
+            icon = data.get("icons", {}).get(name)
+            if icon is None:
+                print(f"warning: icon '{prefix}:{name}' not found", file=sys.stderr)
+                continue
+            w, h = icon.get("width", set_w), icon.get("height", set_h)
+            # No class here: the sidebar and the gallery cards each add their
+            # own after injecting, so one cached SVG serves both.
+            cache[f"{prefix}:{name}"] = (
+                f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}"'
+                f' width="1em" height="1em" aria-hidden="true">{icon["body"]}</svg>'
+            )
+
+    ICON_CACHE.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n")
+    return {i: cache[i] for i in sorted(icon_ids) if i in cache}
+
+
 def update_sidebar_icons(slugs: list[str]) -> None:
-    """Regenerate the sidebar-icons data block in custom_body.html: a JSON map
-    of each note/subsection's URL path segment -> Iconify id, read from its
+    """Regenerate assets/js/sidebar-icons.js: a JSON map of each
+    note/subsection's URL path segment -> that icon's SVG markup, read from its
     `icon:` frontmatter (subsection folders via their index.md, leaf notes via
-    their own). A static script in custom_body.html injects an <iconify-icon>
-    into the matching sidebar item on load -- the same reliable Iconify web
-    component the gallery cards use. Quarto's auto-sidebar has no per-item
-    template hook, so JS injection is the only way to place a real element
-    there. Matching is by path segment, present in the href both before and
-    after Quarto's on-load rewrite. Mirrors the gallery-card convention (bare =
-    Bootstrap, `set:name` = Iconify) deeper in the tree."""
+    their own) and baked in by fetch_icon_svgs(). A static script in
+    custom_body.html injects the SVG into the matching sidebar item. Quarto's
+    auto-sidebar has no per-item template hook, so JS injection is the only way
+    to place a real element there. Matching is by path segment, present in the
+    href both before and after Quarto's on-load rewrite. Mirrors the
+    gallery-card convention (bare = Bootstrap, `set:name` = Iconify) deeper in
+    the tree."""
     mapping: dict[str, str] = {}
     for slug in sorted(slugs):
         cat_dir = NOTES_DIR / slug
         if cat_dir.is_dir():
             collect_icon_map(cat_dir, f"/{slug}", mapping)
 
-    payload = json.dumps(mapping, indent=2, sort_keys=True)
-    block = "\n".join([
-        f"{SIDEBAR_ICONS_BEGIN} (regenerated by scripts/sync_notes.py) -->",
-        f"<script>window.__SIDEBAR_ICONS__ = {payload};</script>",
-        SIDEBAR_ICONS_END,
-    ])
+    # The gallery cards on notes/index.md are iconed from each category's own
+    # index.md — a level collect_icon_map() deliberately skips — and they sit
+    # above the fold too, so their artwork is baked from the same cache.
+    card_icons: dict[str, str] = {}
+    for slug in sorted(slugs):
+        icon = read_frontmatter(NOTES_DIR / slug / "index.md").get("icon")
+        if icon:
+            card_icons[slug] = to_iconify_id(icon)
 
-    lines = CUSTOM_BODY.read_text().splitlines()
-    begin = next((i for i, ln in enumerate(lines) if SIDEBAR_ICONS_BEGIN in ln), None)
-    end = next((i for i, ln in enumerate(lines) if SIDEBAR_ICONS_END in ln), None)
-    if begin is None or end is None:
-        print(
-            f"warning: sidebar-icons markers not found in {CUSTOM_BODY.name}; "
-            f"expected '{SIDEBAR_ICONS_BEGIN}' / '{SIDEBAR_ICONS_END}' — "
-            "skipping sidebar icon update",
-            file=sys.stderr,
-        )
-        return
-    new_lines = lines[:begin] + block.splitlines() + lines[end + 1 :]
-    CUSTOM_BODY.write_text("\n".join(new_lines) + "\n")
+    svgs = fetch_icon_svgs(set(mapping.values()) | set(card_icons.values()))
+    # Keyed by icon id, not by path: several notes share an icon, and storing
+    # the artwork once keeps the file from ballooning as the tree grows.
+    used = sorted({i for i in [*mapping.values(), *card_icons.values()] if i in svgs})
+    blocks = [
+        "// Generated by scripts/sync_notes.py -- do not edit.",
+        "// Injected before first paint by assets/html/custom_body.html.",
+        "// Iconify id -> inline SVG markup.",
+        f"window.__ICON_SVGS__ = {json.dumps({i: svgs[i] for i in used}, indent=2)};",
+        "// Sidebar URL path segment -> Iconify id.",
+        f"window.__SIDEBAR_ICONS__ = {json.dumps({p: i for p, i in sorted(mapping.items()) if i in svgs}, indent=2)};",
+    ]
+
+    SIDEBAR_ICONS_JS.parent.mkdir(parents=True, exist_ok=True)
+    SIDEBAR_ICONS_JS.write_text("\n".join(blocks) + "\n")
 
 
 def strip_frontmatter(text: str) -> str:

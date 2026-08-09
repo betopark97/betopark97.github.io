@@ -49,9 +49,10 @@
 }
 
 // Brand/icon mark injected before a sidebar section's name (assets/html/
-// custom_body.html, from the section index's `icon:` frontmatter). The
-// Iconify web component scales with font-size; monochrome icons inherit the
-// link colour via currentColor, brand logos keep their own.
+// custom_body.html, from the section index's `icon:` frontmatter). The SVG is
+// baked into assets/js/sidebar-icons.js and carries width/height="1em", so it
+// scales with the font-size set here; monochrome icons inherit the link colour
+// via currentColor, brand logos keep their own.
 .sidebar-section-icon {
   margin-right: 0.5em;
   font-size: 1.1em;
@@ -446,13 +447,28 @@ body:has(.hero) #title-block-header {
       color: $ctp-blue; // accent the icon
     }
 
-    // Brand icon (Iconify web component) rendered from a category's `icon:`
-    // frontmatter. Scales with font-size like the Bootstrap `i` icon; brand
-    // marks carry their own colours, so no `color` override here.
+    // A span the injector fills with baked SVG (see custom_body.html). Sized
+    // here rather than by the artwork so the slot holds its 1em square even in
+    // the no-JS case, and the title never reflows around a late icon.
+    //
+    // `color` is the accent the `i` rule above used to give these — it applies
+    // to monochrome sets (Bootstrap, simple-icons), whose paths are filled with
+    // `currentColor`. Brand marks from `logos`/`devicon` carry their own hard-
+    // coded fills and ignore it, which is what we want.
     .gallery-card-icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
       margin-right: 0.5rem;
       font-size: 1.15em;
       vertical-align: -0.18em;
+      color: $ctp-blue;
+
+      > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 

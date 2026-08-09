@@ -1,8 +1,17 @@
-<!-- Iconify web component: load the shadcn/Iconify icon catalog once (like
-     bootstrap-icons), then reference any icon by name via
-     <iconify-icon icon="logos:snowflake-icon">. Used by the Notes gallery
-     cards (assets/ejs/gallery-card.ejs) for each category's `icon:` field. -->
-<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+<!-- The Iconify web component used to be loaded here for the gallery cards and
+     sidebar. Both now render artwork baked in at sync time (see
+     assets/js/sidebar-icons.js), so nothing on the site constructs an
+     <iconify-icon> any more and the CDN script — render-blocking, third-party,
+     on every page — was removed. Iconify is still where the artwork comes
+     from; scripts/sync_notes.py just fetches it once at build instead. -->
+
+<!-- Sidebar icon artwork, baked in by scripts/sync_notes.py and injected by
+     custom_body.html. Deliberately a blocking <script> in the head rather than
+     inline or deferred: the sidebar is above the fold, so the map has to exist
+     before the injector runs (and before first paint) or the icons pop in late
+     and shove every label sideways. One file, fetched and HTTP-cached once,
+     instead of ~35KB repeated in every rendered page. -->
+<script src="/assets/js/sidebar-icons.js"></script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>

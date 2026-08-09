@@ -111,13 +111,12 @@ icon: diagram-3      # ⛓  pipelines / nodes
 icon: hdd-rack       # 🗄  server rack
 ```
 
-These are free, instant, and offline — nothing is fetched.
+These are free and offline in prose — but see the note on baking below, which
+applies to bare names too wherever the icon lands in a sidebar or gallery card.
 
 **Iconify / shadcn logos (`set:name`).** For anything Bootstrap lacks — brand
 logos especially — use a full **Iconify id**, which always has a set name, a
-colon, then the icon name. Quarto doesn't know these natively; the repo loads
-the [Iconify](https://iconify.design/) web component to render them (fetched
-from Iconify at load, then cached). Browse
+colon, then the icon name. Browse
 [icon-sets.iconify.design](https://icon-sets.iconify.design/) or shadcn.io — the
 brand-logo set is `logos`:
 
@@ -128,11 +127,22 @@ icon: logos:fastapi-icon     # FastAPI brand mark
 icon: simple-icons:duckdb    # other Iconify sets work too
 ```
 
+**How they actually reach the page.** Sidebar items and gallery cards don't
+resolve icons at runtime. `sync_notes.py` downloads each SVG once into
+`scripts/icon_cache.json` and writes `assets/js/sidebar-icons.js`, which
+`custom_body.html` injects before the page paints. Both surfaces are above the
+fold, and fetching artwork at load made every label jump sideways when the icons
+landed a few hundred ms in. Two consequences:
+
+- a new icon needs a `sync_notes.py` run (and one network call) before it shows;
+- bare Bootstrap names are baked as SVG too, so a card icon no longer depends on
+  the Bootstrap webfont.
+
 Notes:
 
-- **The colon is the switch:** no colon → Bootstrap (native, bundled); a colon →
-  Iconify (fetched). Don't add `bi:` to a Bootstrap name — bare is what routes it
-  to the native font.
+- **The colon is the switch:** no colon → Bootstrap; a colon → any other Iconify
+  set. Don't add `bi:` to a Bootstrap name in frontmatter — bare is what routes
+  it (`sync_notes.py` normalises it to `bi:` internally).
 - shadcn.io shows a logo as `logos-snowflake`; here you write it with a **colon**
   (`logos:snowflake-icon`). The `-icon` square variants read best in the small
   slot.
