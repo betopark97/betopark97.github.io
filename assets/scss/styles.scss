@@ -7,6 +7,38 @@
   border-bottom: 1px solid $ctp-surface0;
 }
 
+// Quarto emits #quarto-search as an empty <div> and its search JS builds the
+// ~40px detached search button into it after load. Until that runs the div is
+// zero-width, so the right-hand nav links (ms-auto) are laid out 40px too far
+// right and snap left when the button appears — a visible navbar jump on every
+// navigation. Reserving the button's width keeps the links put. Same fix the
+// sidebar icons needed, for the same reason: nothing that lands after the
+// first paint may claim layout space it hasn't already reserved.
+#quarto-search {
+  min-width: 40px;
+
+  // Reserving the space stops the jump but leaves the box visibly empty until
+  // the button is built. `:empty` matches only in that pre-JS window — it stops
+  // matching the instant Quarto inserts a child — so this paints a stand-in
+  // magnifier that the real button silently takes over from.
+  //
+  // The geometry mirrors what Quarto's own search CSS lays down, so the
+  // handover is invisible:
+  //   .navbar #quarto-search.type-overlay … svg.aa-SubmitIcon
+  //     { width: 26px; height: 26px; color: rgb(193,194,199) }
+  // Note 26px, *not* the 20px the SVG's own width/height attributes claim —
+  // the stylesheet overrides them, and drawing this at 20px left a visible
+  // pop as the real icon swapped in bigger. currentColor can't cross into a
+  // data: URI, so that same grey is inlined into the fill below.
+  &:empty {
+    height: 28.5px;
+    background-repeat: no-repeat;
+    background-position: 6px center;
+    background-size: 26px 26px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c1c2c7'%3E%3Cpath d='M16.041 15.856c-.034.026-.067.055-.099.087s-.06.064-.087.099c-1.258 1.213-2.969 1.958-4.855 1.958-1.933 0-3.682-.782-4.95-2.05s-2.05-3.017-2.05-4.95.782-3.682 2.05-4.95 3.017-2.05 4.95-2.05 3.682.782 4.95 2.05 2.05 3.017 2.05 4.95c0 1.886-.745 3.597-1.959 4.856zM21.707 20.293l-3.675-3.675c1.231-1.54 1.968-3.493 1.968-5.618 0-2.485-1.008-4.736-2.636-6.364s-3.879-2.636-6.364-2.636-4.736 1.008-6.364 2.636-2.636 3.879-2.636 6.364 1.008 4.736 2.636 6.364 3.879 2.636 6.364 2.636c2.125 0 4.078-.737 5.618-1.968l3.675 3.675c.391.391 1.024.391 1.414 0s.391-1.024 0-1.414z'/%3E%3C/svg%3E");
+  }
+}
+
 .sidebar {
   border-right: 1px solid $ctp-surface0;
 }
