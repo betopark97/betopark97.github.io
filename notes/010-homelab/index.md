@@ -5,7 +5,7 @@ description: Design and manage a personal server environment to self-host servic
 ---
 ## Preface 
 
-There a lot of different hardwares for homelabs. This section will cover homelabbing with Raspberry Pis
+There a lot of different hardwares for homelabs. This section will cover homelabbing with an old computer collecting dust.
 
 OS: Ubuntu Server LTS 
 Orchestrator: Kubernetes k3s

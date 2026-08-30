@@ -1,5 +1,5 @@
 ---
-title: Documentations
+title: Documentation
 ---
 ## Types of Documentation
 
@@ -224,13 +224,12 @@ contractCreatedTs: "2025-01-15T10:00:00Z"
 ### Data Lineage
 
 - Upstream & Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.
-	- `dbt docs generate && dbt docs serve` automatically does it, but let's add on how to filter for these
+	- `dbt docs generate && dbt docs serve` automatically does it
 
 ### Security & Access Control Policies
 
 - Classification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).
 - RBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.
-	- let's make a preconfigured sql queries to make this happen (RBAC matrix queries)
 	- `dbt_project.yml`
 ```
 +grants:
@@ -254,6 +253,11 @@ dbt docs generate
 dbt docs serve
 ```
 
+## Open
+
+- [ ] add on how to filter the lineage graph for upstream / downstream mapping
+- [ ] make a set of preconfigured sql queries for the RBAC matrix
+
 ***
 
-[Last modified: 2026-07-02]{.note-modified}
+[Last modified: 2026-08-29]{.note-modified}

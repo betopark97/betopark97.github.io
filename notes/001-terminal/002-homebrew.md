@@ -14,6 +14,9 @@ It is divided into three main components:
 
 Formulas and casks are what’s installed and the cellar is where it’s stored.
 
+> [!note]
+> Through `Brewfile` support, Homebrew Bundle can track and manage package installations across `brew`, `cask`, `tap`, `mas`, `vscode`, `go`, `cargo`, `uv`, `npm`, `flatpak`, `winget`, and `krew`.
+
 ## Installations
 
 Run the command below to install Homebrew.
@@ -118,4 +121,4 @@ https://docs.brew.sh/
 
 ***
 
-[Last modified: 2026-07-22]{.note-modified}
+[Last modified: 2026-08-25]{.note-modified}

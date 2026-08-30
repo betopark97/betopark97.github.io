@@ -28,7 +28,8 @@ window.__ICON_SVGS__ = {
   "selfhst:raycast": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" width=\"1em\" height=\"1em\" aria-hidden=\"true\" class=\"sidebar-section-icon\"><path fill=\"#ff6363\" fill-rule=\"evenodd\" d=\"M128.1 330.5v53.4L0 255.8l26.8-26.7zm53.4 53.4h-53.4L256.2 512l26.7-26.7zm303.8-101.3l26.7-26.7L256.1 0l-26.7 26.7L330.5 128h-61.1l-70.6-70.5L172 84.1l44 44h-30.6v198.6H384v-30.6l44 44l26.7-26.7l-70.7-70.8v-61.1zm-343.9-168l-26.7 26.7l28.6 28.6l26.7-26.7zm227.3 227.3l-26.6 26.7l28.6 28.6l26.7-26.7zm-284.6-170l-26.7 26.7l70.7 70.7v-53.5zm212 212h-53.4l70.7 70.7l26.7-26.7z\"/></svg>",
   "simple-icons:dlthub": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" aria-hidden=\"true\" class=\"sidebar-section-icon\"><path fill=\"currentColor\" d=\"M24 11.498h-1.008v3.01H24Zm-3.024 0h2.016v-1.004h-2.016V8.487h-1.008v7.025h3.024v-1.004h-2.016zm-2.986 3.01h-2.016v1.004h3.024v-5.017H17.99zm-2.016-4.013h-1.008v4.014h1.008zm-2.985 1.003h-2.016v-3.01H9.965v7.024h1.008v-3.01h2.016v3.01h1.008V8.488h-1.008zm-11.981 0H0v3.01h1.008zm2.016-1.003H1.008v1.003h2.016v3.01H1.008v1.004h3.024V8.488H3.024zM5 15.512h1.01V8.488H5.001Zm2.986-7.024H6.98v6.02h1.008v-3.01h1.008v-1.003H7.987zm1.008 6.02H7.987v1.004h1.008z\"/></svg>",
   "simple-icons:mlflow": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" aria-hidden=\"true\" class=\"sidebar-section-icon\"><path fill=\"currentColor\" d=\"M11.883.002a12.044 12.044 0 0 0-9.326 19.463l3.668-2.694A7.573 7.573 0 0 1 12.043 4.45v2.867l6.908-5.14A12 12 0 0 0 11.883.002m9.562 4.533L17.777 7.23a7.573 7.573 0 0 1-5.818 12.322v-2.867l-6.908 5.14a12.046 12.046 0 0 0 16.394-17.29\"/></svg>",
-  "simple-icons:prefect": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" aria-hidden=\"true\" class=\"sidebar-section-icon\"><path fill=\"currentColor\" d=\"M12 8.003L4.288 4.002L12 0l7.713 4v8.004L12 16v8l-7.71-4v-8L12 16z\"/></svg>"
+  "simple-icons:prefect": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" aria-hidden=\"true\" class=\"sidebar-section-icon\"><path fill=\"currentColor\" d=\"M12 8.003L4.288 4.002L12 0l7.713 4v8.004L12 16v8l-7.71-4v-8L12 16z\"/></svg>",
+  "simple-icons:quarto": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" width=\"1em\" height=\"1em\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12.65 12.854V24c6.042-.325 10.923-5.105 11.33-11.125H12.65Zm-1.504 0H.02c.427 5.94 5.166 10.699 11.105 11.105V12.854Zm1.505-1.505H24C23.675 5.247 18.753.325 12.65 0Zm-1.505 0V0C5.106.427.326 5.308 0 11.35Z\"/></svg>"
 };
 // Sidebar URL path segment -> Iconify id.
 window.__SIDEBAR_ICONS__ = {
@@ -48,5 +49,6 @@ window.__SIDEBAR_ICONS__ = {
   "/009-devtools/003-dbeaver": "devicon:dbeaver",
   "/009-devtools/004-obsidian": "selfhst:obsidian",
   "/009-devtools/005-todoist": "logos:todoist-icon",
-  "/009-devtools/006-raycast": "selfhst:raycast"
+  "/009-devtools/006-raycast": "selfhst:raycast",
+  "/009-devtools/009-quarto/": "simple-icons:quarto"
 };

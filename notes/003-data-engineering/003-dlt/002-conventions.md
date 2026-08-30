@@ -202,6 +202,9 @@ when running:
 - `PROGRESS=log`
 - `PIPELINES__{pipeline_name}__REFRESH={drop_sources|drop_resources|drop_data}`
 
+> [!note] 
+> These environment variables in the config file are for automations (so bots running your pipelines). For humans running scripts, it's recommended to use cli flags.
+
 ***
 
-[Last modified: 2026-08-08]{.note-modified}
+[Last modified: 2026-08-26]{.note-modified}

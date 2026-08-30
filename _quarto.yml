@@ -183,6 +183,7 @@ website:
         - text: "Domain Knowledge"
           href: notes/008-domain-knowledge/index.md
         - auto: "notes/008-domain-knowledge/001-scm/"
+        - auto: "notes/008-domain-knowledge/004-networking/"
     - id: notes-009-devtools
       title: "DevTools"
       tools:
@@ -200,6 +201,7 @@ website:
         - notes/009-devtools/006-raycast.md
         - notes/009-devtools/007-discord.md
         - notes/009-devtools/008-marimo.md
+        - auto: "notes/009-devtools/009-quarto/"
     - id: notes-010-homelab
       title: "Homelab"
       tools:
@@ -212,6 +214,7 @@ website:
         - notes/010-homelab/001-preface.md
         - notes/010-homelab/002-hardware-requirements.md
         - notes/010-homelab/003-software-requirements.md
+        - notes/010-homelab/004-setup.md
     # <<< auto-notes
 
   page-footer:
