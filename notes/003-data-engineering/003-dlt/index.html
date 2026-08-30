@@ -104,26 +104,47 @@ ul.task-list li input[type="checkbox"] {
      instead of ~35KB repeated in every rendered page. -->
 <script src="../../../assets/js/sidebar-icons.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
+<!-- Analytics -- production host only.
+
+     The tag is gated on the hostname because `make preview` serves the very
+     same rendered pages from localhost, and an ungated tag counts every dev
+     session as a real visit. The check is deliberately at run time rather than
+     build time: CI publishes the identical `_site/` output that gets built
+     locally, so a build-time flag would require the two builds to differ. One
+     artifact, correct in both places.
+
+     SCOPE -- this excludes *dev* traffic only. Browsing the live site from my
+     own phone or laptop still registers, since the hostname matches there.
+     Accepted deliberately: that reads as one returning user rather than as
+     inflated traffic, so the reports still answer "does anyone else read this".
+
+     A GTM container (GTM-5J63Z9M7) used to load alongside this. Its published
+     config -- readable at googletagmanager.com/gtm.js?id=GTM-5J63Z9M7 -- held
+     zero tags and zero triggers, so it shipped 116KB gzipped on every pageview
+     to run nothing. Removed. If tag-management without a redeploy is ever
+     wanted, paste the snippet back from the GTM console. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+  (function () {
+    if (location.hostname !== 'betopark97.github.io') return;
 
-  gtag('config', 'G-VL4M0BGJWE');
+    // Google tag (gtag.js). `gtag` is assigned onto window rather than declared
+    // as a bare `function gtag()`: a function declaration nested inside a block
+    // has inconsistent scoping across engines, and GA's own code looks the
+    // helper up as a global. Called back as `window.gtag` for the same reason --
+    // the unqualified name only resolves because `window` happens to be the
+    // global object, which is true but not worth depending on.
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+
+    var tag = document.createElement('script');
+    tag.async = true;
+    tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE';
+    document.head.appendChild(tag);
+
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-VL4M0BGJWE');
+  })();
 </script>
-
-<!-- Google Tag Manager -->
-<script>(function (w, d, s, l, i) {
-    w[l] = w[l] || []; w[l].push({
-      'gtm.start':
-        new Date().getTime(), event: 'gtm.js'
-    }); var f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', 'GTM-5J63Z9M7');</script>
-<!-- End Google Tag Manager -->
 
 
 </head>
@@ -510,10 +531,6 @@ This means that this section does not cover paid services like dltHub or paid fe
 
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J63Z9M7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <!-- Cmd/Ctrl + Shift + F to open Quarto search -->
 <script>
   document.addEventListener('keydown', function (e) {
