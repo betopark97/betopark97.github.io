@@ -21,6 +21,6 @@ Supply Chain Management consists of different components:
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-06-16
+Last modified: 2026-08-13
 
 Back to top

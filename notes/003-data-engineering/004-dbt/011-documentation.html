@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Documentations – Roberto Park</title>
+<title>Documentation – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" rel="next">
-<link href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" rel="prev">
+<link href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" rel="next">
+<link href="../../../notes/003-data-engineering/004-dbt/010-tests.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html">Documentations</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html">Documentation</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -367,38 +367,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conventions</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/002-project-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/003-naming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/004-styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/005-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Layers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/006-staging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Staging</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/007-intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-marts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/009-materializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materializations &amp; Build Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/010-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Documentations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI/CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Optimize Build Time</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orchestration</span></a>
   </div>
 </li>
       </ul>
@@ -485,15 +527,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#generate-documentations" id="toc-generate-documentations" class="nav-link" data-scroll-target="#generate-documentations">Generate Documentations</a></li>
   <li><a href="#serve-documentations" id="toc-serve-documentations" class="nav-link" data-scroll-target="#serve-documentations">Serve Documentations</a></li>
+  <li><a href="#open" id="toc-open" class="nav-link" data-scroll-target="#open">Open</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html">Documentations</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html">Documentation</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Documentations</h1>
+<h1 class="title">Documentation</h1>
 </div>
 
 
@@ -744,7 +787,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>Upstream &amp; Downstream Mapping: Visual or code-based mapping showing exactly how data flows from your source backend APIs, through orchestration pipelines (like Airflow), to final analytical tables or LLM embedding stores.
 <ul>
-<li><code>dbt docs generate &amp;&amp; dbt docs serve</code> automatically does it, but let’s add on how to filter for these</li>
+<li><code>dbt docs generate &amp;&amp; dbt docs serve</code> automatically does it</li>
 </ul></li>
 </ul>
 </section>
@@ -754,7 +797,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Classification: Tag data assets by sensitivity (e.g., Public, Internal, Confidential, PII).</li>
 <li>RBAC/ABAC Matrix: Document who has access to what, and enforce masking or tokenization for sensitive fields.
 <ul>
-<li>let’s make a preconfigured sql queries to make this happen (RBAC matrix queries)</li>
 <li><code>dbt_project.yml</code></li>
 </ul>
 <div class="term" data-title="text">
@@ -790,8 +832,15 @@ Note
 <div class="term" data-title="shell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a>dbt docs serve</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+</section>
+<section id="open" class="level2">
+<h2 class="anchored" data-anchor-id="open">Open</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">add on how to filter the lineage graph for upstream / downstream mapping</label></li>
+<li><label><input type="checkbox">make a set of preconfigured sql queries for the RBAC matrix</label></li>
+</ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-02</span></p>
+<p><span class="note-modified">Last modified: 2026-08-29</span></p>
 
 
 </section>
@@ -1340,13 +1389,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="pagination-link" aria-label="Workflow">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workflow</span>
+      <a href="../../../notes/003-data-engineering/004-dbt/010-tests.html" class="pagination-link" aria-label="Tests">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Tests</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="pagination-link" aria-label="CI/CD">
-        <span class="nav-page-text">CI/CD</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" class="pagination-link" aria-label="Workflow">
+        <span class="nav-page-text">Workflow</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

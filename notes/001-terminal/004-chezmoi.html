@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -292,6 +292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#adding-a-new-dotfile" id="toc-adding-a-new-dotfile" class="nav-link" data-scroll-target="#adding-a-new-dotfile">Adding a new dotfile</a></li>
   <li><a href="#editing-a-tracked-file" id="toc-editing-a-tracked-file" class="nav-link" data-scroll-target="#editing-a-tracked-file">Editing a tracked file</a></li>
   <li><a href="#syncing-across-machines" id="toc-syncing-across-machines" class="nav-link" data-scroll-target="#syncing-across-machines">Syncing across machines</a></li>
+  <li><a href="#scoping-an-apply" id="toc-scoping-an-apply" class="nav-link" data-scroll-target="#scoping-an-apply">Scoping an apply</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -475,13 +476,32 @@ Tip
 <span id="cb9-4"><a href="#cb9-4" aria-label="4"></a>chezmoi apply</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
+<section id="scoping-an-apply" class="level3">
+<h3 class="anchored" data-anchor-id="scoping-an-apply">Scoping an apply</h3>
+<p><code>chezmoi apply</code> with no arguments walks the whole tree, and it stops at the first<br>
+target that changed on disk since chezmoi last wrote it — asking what to do. In a<br>
+non-interactive shell (an agent, a script, CI) there is no TTY to answer with, so<br>
+it fails outright:</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href="#cb10-1" aria-label="1"></a>.claude/statusline-command.sh has changed since chezmoi last wrote it?</span>
+<span id="cb10-2"><a href="#cb10-2" aria-label="2"></a>chezmoi: could not open a new TTY: open /dev/tty: device not configured</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Nothing after that point gets applied. Pass explicit target paths so unrelated<br>
+drift can’t block the files you actually changed:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href="#cb11-1" aria-label="1"></a>chezmoi apply ~/.zshenv ~/.zprofile ~/.zshrc</span>
+<span id="cb11-2"><a href="#cb11-2" aria-label="2"></a>chezmoi diff ~/.zshenv ~/.zprofile ~/.zshrc   # empty output = in sync</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Scoping is also the safer habit generally: it makes the blast radius of an apply<br>
+exactly the files you name, instead of everything the source tree happens to hold.</p>
+</section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>If you want to explore other features, check out the documentation on the chezmoi homepage:<br>
 <a href="https://www.chezmoi.io/" class="uri">https://www.chezmoi.io/</a></p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-06</span></p>
+<p><span class="note-modified">Last modified: 2026-08-30</span></p>
 
 
 </section>

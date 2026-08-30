@@ -4,20 +4,12 @@
 
 Half-formed ideas, worked out in public — notes that grew up enough to share.\
 
-## List
+All 1
 
-### [Personal Knowledge Management](../blog/posts/personal-knowledge-management.llms.md)
+Obsidian 1
 
-2026-06-27
+PKM 1
 
-7 min
-
-## Grid
-
-##### Personal Knowledge Management
-
-7 min
-
-2026-06-27
+[ 2026-06-27 7 min read Personal Knowledge Management PKMObsidian](../blog/posts/personal-knowledge-management.llms.md)
 
 Back to top

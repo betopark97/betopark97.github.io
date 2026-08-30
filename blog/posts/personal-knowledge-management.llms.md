@@ -6,7 +6,7 @@ Obsidian
 
 Published
 
-2026-06-27
+2026-06-27 7 min read
 
 I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me. However, I think that everyone has different ways to solve problems and different ways to study that suit them best.
 

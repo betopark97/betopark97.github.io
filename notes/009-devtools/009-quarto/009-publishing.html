@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Optimize Build Time – Roberto Park</title>
+<title>Publishing – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -36,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/005-fastapi/index.html" rel="next">
-<link href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" rel="prev">
+<link href="../../../notes/009-devtools/009-quarto/008-directory-metadata.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -48,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -183,7 +217,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html">Optimize Build Time</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/009-devtools/009-quarto/index.html">Quarto</a></li><li class="breadcrumb-item"><a href="../../../notes/009-devtools/009-quarto/009-publishing.html">Publishing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -200,233 +234,119 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Engineering</span></a>
+  <a href="../../../notes/009-devtools/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DevTools</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-architecture/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Architecture</span></a>
+  <a href="../../../notes/009-devtools/001-kitty-terminal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kitty Terminal</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/001-data-modeling/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-modeling/001-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Types of Mart Tables</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/002-snowflake/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Snowflake</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/001-rbac.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">RBAC</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/002-authentication.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Authentication</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/003-create-snippets.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Create Snippets</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/004-native-platform-services.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Native Platform Services</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/005-ai-ml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">AI &amp; ML</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/003-dlt/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dlt</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conventions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Normalization</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/004-sources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Sources</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/005-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflow</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">dbt</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conventions</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Workflow</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Documentations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">CI/CD</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Optimize Build Time</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">FastAPI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/005-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Directory Structure</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/006-ducklake/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DuckLake</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/006-ducklake/001-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/007-prefect/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Prefect</span></a>
+  <a href="../../../notes/009-devtools/002-vs-code.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visual Studio Code</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/003-dbeaver.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DBeaver</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/004-obsidian.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Obsidian</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/005-todoist.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Todoist</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/006-raycast.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Raycast</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/007-discord.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Discord</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/008-marimo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marimo</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/008-postgresql/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">PostgreSQL</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <a href="../../../notes/009-devtools/009-quarto/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Quarto</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/008-postgresql/001-setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
+  <a href="../../../notes/009-devtools/009-quarto/001-project-config.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Config</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/002-format-and-dialect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Format and Dialect</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/003-theming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Theming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/004-navigation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Navigation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/005-listings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Listings</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/006-lua-filters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lua Filters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/007-diagrams.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Diagrams</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/008-directory-metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Directory Metadata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/009-devtools/009-quarto/009-publishing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Publishing</span></a>
   </div>
 </li>
       </ul>
@@ -441,17 +361,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-wide-optimizations" id="toc-project-wide-optimizations" class="nav-link active" data-scroll-target="#project-wide-optimizations">Project-wide Optimizations</a></li>
-  <li><a href="#model-wide-optimizations" id="toc-model-wide-optimizations" class="nav-link" data-scroll-target="#model-wide-optimizations">Model-wide Optimizations</a></li>
+  <li><a href="#local" id="toc-local" class="nav-link active" data-scroll-target="#local">Local</a></li>
+  <li><a href="#github-pages" id="toc-github-pages" class="nav-link" data-scroll-target="#github-pages">GitHub Pages</a></li>
+  <li><a href="#deploying-only-when-something-changed" id="toc-deploying-only-when-something-changed" class="nav-link" data-scroll-target="#deploying-only-when-something-changed">Deploying only when something changed</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html">Optimize Build Time</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/009-devtools/009-quarto/index.html">Quarto</a></li><li class="breadcrumb-item"><a href="../../../notes/009-devtools/009-quarto/009-publishing.html">Publishing</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Optimize Build Time</h1>
+<h1 class="title">Publishing</h1>
 </div>
 
 
@@ -468,16 +389,60 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="project-wide-optimizations" class="level2">
-<h2 class="anchored" data-anchor-id="project-wide-optimizations">Project-wide Optimizations</h2>
-<p>The project-wide optimizations would require something like dbt State if you’re willing to go for a freemium or premium subscription.</p>
-<p>For the free way to do this would be to chain selectors like <code>state:modified</code>, <code>source_status:fresher</code>, <code>config.materialized:view</code></p>
+<section id="local" class="level2">
+<h2 class="anchored" data-anchor-id="local">Local</h2>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>quarto render</code></td>
+<td>build the project once into <code>output-dir</code> and exit</td>
+</tr>
+<tr class="even">
+<td><code>quarto preview</code></td>
+<td>build, serve on localhost, watch for changes and rebuild</td>
+</tr>
+<tr class="odd">
+<td><code>quarto check</code></td>
+<td>environment diagnostics — versions, Pandoc, engines</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>preview</code> is <code>render</code> plus a dev server and file watcher; the output is identical. Both accept a single file path to limit work to one document.</p>
+<p>Renders are incremental. Deleting <code>output-dir</code> and the <code>.quarto/</code> cache forces a full rebuild, which is what is needed when the change is in an included file that Quarto does not track as a dependency.</p>
 </section>
-<section id="model-wide-optimizations" class="level2">
-<h2 class="anchored" data-anchor-id="model-wide-optimizations">Model-wide Optimizations</h2>
-<p>You would start with a view (which the build time would be fast), move to table (which the query time would be fast), and later to incremental materializations (which the build time is moderate and the query time would be fast).</p>
+<section id="github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="github-pages">GitHub Pages</h2>
+<p><code>quarto publish gh-pages</code> renders and pushes the result to a <code>gh-pages</code> branch. The branch is machine-generated and should never be edited by hand.</p>
+<p>In CI, the same thing is done with the official actions:</p>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a><span class="kw">-</span><span class="at"> </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/publish@v2</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a><span class="at">  </span><span class="fu">with</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a><span class="at">    </span><span class="fu">target</span><span class="kw">:</span><span class="at"> gh-pages</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-label="6"></a><span class="at">  </span><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-label="7"></a><span class="at">    </span><span class="fu">GITHUB_TOKEN</span><span class="kw">:</span><span class="at"> ${{ secrets.GITHUB_TOKEN }}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The job needs <code>permissions: contents: write</code> to push the branch. <code>setup@v2</code> accepts a <code>version</code> input to pin Quarto; without it the latest release is installed, so a render that passes locally can fail in CI on a version difference.</p>
+<p>Other <code>target</code> values are <code>netlify</code>, <code>posit-connect</code>, <code>confluence</code>, and <code>quarto-pub</code>.</p>
+</section>
+<section id="deploying-only-when-something-changed" class="level2">
+<h2 class="anchored" data-anchor-id="deploying-only-when-something-changed">Deploying only when something changed</h2>
+<p>Because <code>render</code> is the expensive step, a scheduled workflow can compare the current inputs against what is already deployed and skip the render when they match — fetch the deployed copy of the generated file, diff it against a freshly generated one, and gate the remaining steps on the result. This keeps a daily refresh job cheap when most runs are no-ops.</p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-06-26</span></p>
+<p><span class="note-modified">Last modified: 2026-08-30</span></p>
 
 
 </section>
@@ -1026,14 +991,11 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="pagination-link" aria-label="Data Modeling">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Modeling</span>
+      <a href="../../../notes/009-devtools/009-quarto/008-directory-metadata.html" class="pagination-link" aria-label="Directory Metadata">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Directory Metadata</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="pagination-link" aria-label="FastAPI">
-        <span class="nav-page-text">FastAPI</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

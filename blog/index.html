@@ -36,7 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../blog/posts/personal-knowledge-management.html" rel="next">
 <link href="../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-listing/list.min.js"></script>
 <script src="../site_libs/quarto-listing/quarto-listing.js"></script>
@@ -49,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,48 +79,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-blog-list .list');
+    const listingTargetEl = window.document.querySelector('#listing-blog-posts .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-date','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-date','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-project","listing-filters","listing-date-format","listing-format","listing-website","listing-engines","listing-language","listing-body-classes","listing-title","listing-date","listing-draft","listing-categories","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-description","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-blog-list'] = new List('listing-blog-list', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-blog-grid .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-date','listing-reading-time','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-blog-grid'] = new List('listing-blog-grid', options);
+    window['quarto-listings']['listing-blog-posts'] = new List('listing-blog-posts', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -229,7 +200,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -279,43 +250,12 @@ window.Quarto = {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../blog/index.html">Blog</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../blog/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Blog</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../blog/posts/personal-knowledge-management.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Personal Knowledge Management</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="T2JzaWRpYW4=">Obsidian <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UEtN">PKM <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -351,76 +291,58 @@ window.Quarto = {
 </div>
 <p>Half-formed ideas, worked out in public — notes that grew up enough to share.<br>
 <!-- <<< blog-intro --></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">List</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Grid</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="listing-blog-list" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UEtNJTJDT2JzaWRpYW4=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1786261134873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1306">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../blog/posts/personal-knowledge-management.html" class="no-external">Personal Knowledge Management</a>
-</h3>
-<div class="listing-categories">
+<div id="listing-blog-posts" class="quarto-listing quarto-listing-container-custom">
 
-<div class="listing-category" onclick="window.quartoListingCategory('UEtN'); return false;">PKM</div>
+<div class="post-filter" role="group" aria-label="Filter posts by category">
+  <button type="button" class="post-filter-pill is-active" data-cat="*">All <span class="post-filter-count">1</span></button>
+  
+  <button type="button" class="post-filter-pill" data-cat="Obsidian">Obsidian <span class="post-filter-count">1</span></button>
+  
+  <button type="button" class="post-filter-pill" data-cat="PKM">PKM <span class="post-filter-count">1</span></button>
+  
+</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('T2JzaWRpYW4='); return false;">Obsidian</div>
+<div class="post-list">
 
-</div>
-<div class="delink listing-description"><a href="../blog/posts/personal-knowledge-management.html" class="no-external">
-I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me.…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../blog/posts/personal-knowledge-management.html" class="no-external">
-<div class="listing-date">
-2026-06-27
-</div>
-<div class="listing-reading-time">7 min</div>
-</a>
-</div>
-</div>
+  <a class="post-card" href="../blog/posts/personal-knowledge-management.html" data-cats="|PKM|Obsidian|">
+    <span class="post-card-meta">
+      <time class="post-card-date">2026-06-27</time>
+      <span class="post-card-read">7 min read</span>
+    </span>
+    <span class="post-card-title">Personal Knowledge Management</span>
+    <span class="post-card-desc">I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me.…</span>
+    
+    <span class="post-card-cats"><span class="post-card-cat">PKM</span><span class="post-card-cat">Obsidian</span></span>
+    
+  </a>
+
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="listing-blog-grid" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UEtNJTJDT2JzaWRpYW4=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1786261134873" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1306">
-<a href="../blog/posts/personal-knowledge-management.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Personal Knowledge Management
-</h5>
-<div class="listing-reading-time card-text text-muted">7 min</div>
-<div class="listing-categories">
+<script>
+(function () {
+  // Category filter for the post cards. The pills and each card's `data-cats`
+  // are emitted by assets/ejs/post-card.ejs; Quarto's own filter UI is off, so
+  // this is the only thing driving visibility.
+  var pills = document.querySelectorAll('.post-filter-pill');
+  var cards = document.querySelectorAll('.post-card');
+  if (!pills.length) return;
 
-<div class="listing-category" onclick="window.quartoListingCategory('UEtN'); return false;">PKM</div>
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      var cat = pill.dataset.cat;
+      pills.forEach(function (p) { p.classList.toggle('is-active', p === pill); });
 
-<div class="listing-category" onclick="window.quartoListingCategory('T2JzaWRpYW4='); return false;">Obsidian</div>
-
-</div>
-<div class="card-text listing-description delink">
-I’ve tried a lot of different ways to manage my knowledge. I spent at least years trying to figure out what works best for me. Frameworks that other people have set, not me.…
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-2026-06-27
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</div>
-</div>
-</div>
+      cards.forEach(function (card) {
+        // data-cats is pipe-delimited *and* pipe-wrapped ("|PKM|Obsidian|"),
+        // so a bare indexOf can't match a category that is only a prefix of
+        // another one.
+        card.hidden = !(cat === '*' || card.dataset.cats.indexOf('|' + cat + '|') !== -1);
+      });
+    });
+  });
+})();
+</script>
 
 
 
@@ -967,15 +889,6 @@ I’ve tried a lot of different ways to manage my knowledge. I spent at least ye
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../blog/posts/personal-knowledge-management.html" class="pagination-link" aria-label="Personal Knowledge Management">
-        <span class="nav-page-text">Personal Knowledge Management</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

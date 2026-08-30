@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Conventions – Roberto Park</title>
+<title>Workflow – Roberto Park</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,8 +71,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" rel="next">
-<link href="../../../notes/003-data-engineering/004-dbt/001-setup.html" rel="prev">
+<link href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" rel="next">
+<link href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -83,7 +83,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html">Conventions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html">Workflow</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -367,38 +367,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Conventions</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/002-project-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/003-naming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/004-styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/005-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Layers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/006-staging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Staging</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/007-intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-marts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/009-materializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materializations &amp; Build Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/010-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Documentations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI/CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Optimize Build Time</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orchestration</span></a>
   </div>
 </li>
       </ul>
@@ -476,30 +518,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-directory-structure" id="toc-project-directory-structure" class="nav-link active" data-scroll-target="#project-directory-structure">Project Directory Structure</a></li>
-  <li><a href="#project-level-meta-files" id="toc-project-level-meta-files" class="nav-link" data-scroll-target="#project-level-meta-files">Project Level Meta Files</a>
-  <ul class="collapse">
-  <li><a href="#dbt_project.yml" id="toc-dbt_project.yml" class="nav-link" data-scroll-target="#dbt_project.yml">dbt_project.yml</a></li>
-  <li><a href="#packages.yml" id="toc-packages.yml" class="nav-link" data-scroll-target="#packages.yml">packages.yml</a></li>
-  <li><a href="#profiles.yml" id="toc-profiles.yml" class="nav-link" data-scroll-target="#profiles.yml">profiles.yml</a></li>
-  </ul></li>
-  <li><a href="#directory-names" id="toc-directory-names" class="nav-link" data-scroll-target="#directory-names">Directory Names</a></li>
-  <li><a href="#meta-names" id="toc-meta-names" class="nav-link" data-scroll-target="#meta-names">Meta Names</a></li>
-  <li><a href="#model-names" id="toc-model-names" class="nav-link" data-scroll-target="#model-names">Model Names</a></li>
-  <li><a href="#tests-names" id="toc-tests-names" class="nav-link" data-scroll-target="#tests-names">Tests Names</a></li>
-  <li><a href="#incremental-models" id="toc-incremental-models" class="nav-link" data-scroll-target="#incremental-models">Incremental Models</a></li>
-  <li><a href="#environment-variables" id="toc-environment-variables" class="nav-link" data-scroll-target="#environment-variables">Environment Variables</a></li>
-  <li><a href="#layers" id="toc-layers" class="nav-link" data-scroll-target="#layers">Layers</a></li>
-  <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
+  <li><a href="#commands" id="toc-commands" class="nav-link active" data-scroll-target="#commands">Commands</a></li>
+  <li><a href="#linting-and-formatting" id="toc-linting-and-formatting" class="nav-link" data-scroll-target="#linting-and-formatting">Linting and Formatting</a></li>
+  <li><a href="#flags" id="toc-flags" class="nav-link" data-scroll-target="#flags">Flags</a></li>
+  <li><a href="#graph-operators" id="toc-graph-operators" class="nav-link" data-scroll-target="#graph-operators">Graph Operators</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html">Conventions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/index.html">dbt</a></li><li class="breadcrumb-item"><a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html">Workflow</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Conventions</h1>
+<h1 class="title">Workflow</h1>
 </div>
 
 
@@ -516,279 +547,94 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.</p>
-<section id="project-directory-structure" class="level2">
-<h2 class="anchored" data-anchor-id="project-directory-structure">Project Directory Structure</h2>
-<p>Let’s first get a grasp of the bigger picture by looking at how the full directory structure looks like:</p>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
+<div class="table-responsive">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>dbt debug</code></td>
+<td>validates the connection, profile, and project config</td>
+</tr>
+<tr class="even">
+<td><code>dbt clean</code></td>
+<td>deletes everything in <code>clean-targets</code> (<code>target/</code>, <code>dbt_packages/</code>)</td>
+</tr>
+<tr class="odd">
+<td><code>dbt deps</code></td>
+<td>installs the packages pinned in <code>packages.yml</code></td>
+</tr>
+<tr class="even">
+<td><code>dbt run</code></td>
+<td>materializes models</td>
+</tr>
+<tr class="odd">
+<td><code>dbt test</code></td>
+<td>runs data tests</td>
+</tr>
+<tr class="even">
+<td><code>dbt build</code></td>
+<td><code>run</code> + <code>test</code> + <code>seed</code> + <code>snapshot</code> in dependency order, per node</td>
+</tr>
+<tr class="odd">
+<td><code>dbt seed</code></td>
+<td>loads the CSVs in <code>seeds/</code></td>
+</tr>
+<tr class="even">
+<td><code>dbt docs generate</code></td>
+<td>builds the catalog, see <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html">Documentation</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>dbt build</code> is the one to reach for by default. It interleaves tests with runs node by node, so a failing test stops the downstream models instead of letting them build on bad data.</p>
+</section>
+<section id="linting-and-formatting" class="level2">
+<h2 class="anchored" data-anchor-id="linting-and-formatting">Linting and Formatting</h2>
+<p>dbt Core has no lint or format command. <a href="https://sqlfluff.com/">sqlfluff</a> does both, invoked directly:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>sqlfluff lint models/</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a>sqlfluff fix models/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The rules it enforces and the <code>.sqlfluff</code> / <code>.sqlfluffignore</code> setup live in <a href="../../../notes/003-data-engineering/004-dbt/004-styling.html">Styling</a>.</p>
+<div class="callout callout-style-default callout-titled" data-callout="warning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Fusion only, revisit later
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>dbt lint</code> (requires <code>.sqlfluff</code>) and <code>dbt fmt</code> are dbt Fusion commands. We are on Core, so neither exists here. Worth revisiting if Fusion ever becomes the main engine — see the Fusion note in <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html">Setup</a>.</p>
+</div>
+</div>
+</section>
+<section id="flags" class="level2">
+<h2 class="anchored" data-anchor-id="flags">Flags</h2>
 <div class="term" data-title="text">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>dbt_project/</span>
-<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a>├── .dbt/                              # Profiles dir (optional, project-local)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a>│   └── profiles.yml                   # Connection profiles (git-ignored)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a>├── analyses/                          # Ad-hoc analytical queries (not materialized)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a>├── dbt_packages/                      # Installed packages (git-ignored)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-label="6"></a>├── logs/                              # Run logs (git-ignored)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-label="7"></a>├── macros/                            # Custom macros &amp; generic tests</span>
-<span id="cb1-8"><a href="#cb1-8" aria-label="8"></a>│   └── generate_schema_name.sql</span>
-<span id="cb1-9"><a href="#cb1-9" aria-label="9"></a>├── models/</span>
-<span id="cb1-10"><a href="#cb1-10" aria-label="10"></a>│   └── {domain}/</span>
-<span id="cb1-11"><a href="#cb1-11" aria-label="11"></a>│       ├── staging/</span>
-<span id="cb1-12"><a href="#cb1-12" aria-label="12"></a>│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs</span>
-<span id="cb1-13"><a href="#cb1-13" aria-label="13"></a>│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions</span>
-<span id="cb1-14"><a href="#cb1-14" aria-label="14"></a>│       │   └── stg_{source}__{entity}.sql</span>
-<span id="cb1-15"><a href="#cb1-15" aria-label="15"></a>│       ├── intermediate/</span>
-<span id="cb1-16"><a href="#cb1-16" aria-label="16"></a>│       │   ├── _int__models.yaml</span>
-<span id="cb1-17"><a href="#cb1-17" aria-label="17"></a>│       │   └── int_{entity}__{verb/attribute}.sql</span>
-<span id="cb1-18"><a href="#cb1-18" aria-label="18"></a>│       └── marts/</span>
-<span id="cb1-19"><a href="#cb1-19" aria-label="19"></a>│           ├── _marts__models.yaml</span>
-<span id="cb1-20"><a href="#cb1-20" aria-label="20"></a>│           └── {dim|fct}_{domain}__{entity}.sql</span>
-<span id="cb1-21"><a href="#cb1-21" aria-label="21"></a>├── seeds/                             # Static CSV reference data</span>
-<span id="cb1-22"><a href="#cb1-22" aria-label="22"></a>├── snapshots/                         # SCD type-2 snapshots</span>
-<span id="cb1-23"><a href="#cb1-23" aria-label="23"></a>├── target/                            # Compiled SQL &amp; artifacts (git-ignored)</span>
-<span id="cb1-24"><a href="#cb1-24" aria-label="24"></a>├── tests/                             # Singular (complex) data tests</span>
-<span id="cb1-25"><a href="#cb1-25" aria-label="25"></a>│   └── assert_{domain}__{condition}.sql</span>
-<span id="cb1-26"><a href="#cb1-26" aria-label="26"></a>├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-label="27"></a>├── .gitignore</span>
-<span id="cb1-28"><a href="#cb1-28" aria-label="28"></a>├── dbt_project.yml                    # Project config</span>
-<span id="cb1-29"><a href="#cb1-29" aria-label="29"></a>└── packages.yml                       # Package dependencies</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Below we’ll discuss what each component is and how to fill them in.</p>
-<div class="callout callout-style-default callout-titled" data-callout="note">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with <code>models/{staging|intermediate|mart}</code>.</p>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a>-t | --target      # which profiles.yml output to run against</span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a>-s | --select      # which nodes to run</span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a>-x | --fail-fast   # stop on the first failure</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="project-level-meta-files" class="level2">
-<h2 class="anchored" data-anchor-id="project-level-meta-files">Project Level Meta Files</h2>
-<section id="dbt_project.yml" class="level3">
-<h3 class="anchored" data-anchor-id="dbt_project.yml">dbt_project.yml</h3>
-<div class="term" data-title="yaml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">'{project_name}'</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="st">'{version}'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a><span class="fu">config-version</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a><span class="fu">profile</span><span class="kw">:</span><span class="at"> </span><span class="st">'{project_name}'</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a><span class="fu">model-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'models'</span><span class="kw">]</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-label="8"></a><span class="fu">analysis-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'analyses'</span><span class="kw">]</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-label="9"></a><span class="fu">test-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'tests'</span><span class="kw">]</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-label="10"></a><span class="fu">seed-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'seeds'</span><span class="kw">]</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-label="11"></a><span class="fu">macro-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'macros'</span><span class="kw">]</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-label="12"></a><span class="fu">snapshot-paths</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'snapshots'</span><span class="kw">]</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-label="13"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-label="14"></a><span class="fu">target-path</span><span class="kw">:</span><span class="at"> </span><span class="st">"target"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-label="15"></a><span class="fu">clean-targets</span><span class="kw">:</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-label="16"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">'target'</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-label="17"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="st">'dbt_packages'</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-label="18"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-label="19"></a><span class="fu">models</span><span class="kw">:</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-label="20"></a><span class="at">  </span><span class="fu">+persist_docs</span><span class="kw">:</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-label="21"></a><span class="at">    </span><span class="fu">relation</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-label="22"></a><span class="at">    </span><span class="fu">columns</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-label="23"></a><span class="at">  </span><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-label="24"></a><span class="at">    </span><span class="kw">{</span><span class="at">domain</span><span class="kw">}:</span><span class="co"> # repeat this block per domain (optional)</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-label="25"></a><span class="at">      </span><span class="fu">+schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">SCHEMA</span><span class="kw">}</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-label="26"></a><span class="at">      </span><span class="fu">+grants</span><span class="kw">:</span><span class="co"> # domain-level default grants (optional)</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-label="27"></a><span class="at">        </span><span class="kw">{</span><span class="at">privilege</span><span class="kw">}:</span><span class="at"> </span><span class="kw">[</span><span class="st">'{ROLE}'</span><span class="kw">]</span><span class="co"> # e.g. select, references</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-label="28"></a><span class="at">      </span><span class="fu">staging</span><span class="kw">:</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-label="29"></a><span class="at">        </span><span class="fu">+materialized</span><span class="kw">:</span><span class="at"> view</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-label="30"></a><span class="at">        </span><span class="fu">+database</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">STAGE_DB</span><span class="kw">}</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-label="31"></a><span class="at">        </span><span class="fu">+docs</span><span class="kw">:</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-label="32"></a><span class="at">          </span><span class="fu">node_color</span><span class="kw">:</span><span class="at"> </span><span class="st">"#CD7F32"</span><span class="co"> # bronze color</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-label="33"></a><span class="at">      </span><span class="fu">intermediate</span><span class="kw">:</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-label="34"></a><span class="at">        </span><span class="fu">+materialized</span><span class="kw">:</span><span class="at"> view</span><span class="co"> # or table when heavy</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-label="35"></a><span class="at">        </span><span class="fu">+database</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">STAGE_DB</span><span class="kw">}</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-label="36"></a><span class="at">        </span><span class="fu">+docs</span><span class="kw">:</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-label="37"></a><span class="at">          </span><span class="fu">node_color</span><span class="kw">:</span><span class="at"> </span><span class="st">"#A0A0A0"</span><span class="co"> # silver color</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-label="38"></a><span class="at">      </span><span class="fu">marts</span><span class="kw">:</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-label="39"></a><span class="at">        </span><span class="fu">+materialized</span><span class="kw">:</span><span class="at"> table</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-label="40"></a><span class="at">        </span><span class="fu">+database</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">MART_DB</span><span class="kw">}</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-label="41"></a><span class="at">        </span><span class="fu">+docs</span><span class="kw">:</span></span>
-<span id="cb2-42"><a href="#cb2-42" aria-label="42"></a><span class="at">          </span><span class="fu">node_color</span><span class="kw">:</span><span class="at"> </span><span class="st">"#FFD700"</span><span class="co"> # gold color</span></span>
-<span id="cb2-43"><a href="#cb2-43" aria-label="43"></a><span class="at">        </span><span class="fu">+grants</span><span class="kw">:</span><span class="co"> # optional: override domain grants for marts</span></span>
-<span id="cb2-44"><a href="#cb2-44" aria-label="44"></a><span class="at">          </span><span class="kw">{</span><span class="at">privilege</span><span class="kw">}:</span><span class="at"> </span><span class="kw">[</span><span class="st">'{ROLE}'</span><span class="kw">,</span><span class="at"> </span><span class="st">'{ROLE}'</span><span class="kw">]</span><span class="co"> # e.g. select, references</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-label="45"></a><span class="at">        </span><span class="fu">+tags</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">'{tag}'</span><span class="kw">]</span><span class="co"> # optional</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-label="46"></a></span>
-<span id="cb2-47"><a href="#cb2-47" aria-label="47"></a><span class="fu">seeds</span><span class="kw">:</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-label="48"></a><span class="at">  </span><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-label="49"></a><span class="at">    </span><span class="fu">+database</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">STAGE_DB</span><span class="kw">}</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-label="50"></a><span class="at">    </span><span class="kw">{</span><span class="at">domain</span><span class="kw">}:</span><span class="co"> # repeat this block per domain</span></span>
-<span id="cb2-51"><a href="#cb2-51" aria-label="51"></a><span class="at">      </span><span class="fu">+schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">SCHEMA</span><span class="kw">}</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-label="52"></a><span class="at">      </span><span class="fu">+quote_columns</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # optional</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-label="53"></a><span class="at">      </span><span class="fu">+docs</span><span class="kw">:</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-label="54"></a><span class="at">        </span><span class="fu">node_color</span><span class="kw">:</span><span class="at"> </span><span class="st">"#008000"</span><span class="co"> # green color</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-label="55"></a><span class="at">      </span><span class="fu">+grants</span><span class="kw">:</span><span class="co"> # optional</span></span>
-<span id="cb2-56"><a href="#cb2-56" aria-label="56"></a><span class="at">        </span><span class="kw">{</span><span class="at">privilege</span><span class="kw">}:</span><span class="at"> </span><span class="kw">[</span><span class="st">'{ROLE}'</span><span class="kw">]</span><span class="co"> # e.g. select, references</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="graph-operators" class="level2">
+<h2 class="anchored" data-anchor-id="graph-operators">Graph Operators</h2>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a>+model    # the model and everything upstream of it</span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a>model+    # the model and everything downstream of it</span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a>+model+   # both directions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="packages.yml" class="level3">
-<h3 class="anchored" data-anchor-id="packages.yml">packages.yml</h3>
-<div class="term" data-title="yaml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="fu">packages</span><span class="kw">:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">package</span><span class="kw">:</span><span class="at"> dbt-labs/dbt_utils</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a><span class="at">      </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.3.2</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-label="4"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">package</span><span class="kw">:</span><span class="at"> godatadriven/dbt_state</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-label="5"></a><span class="at">      </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">0.17.0</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-label="6"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">package</span><span class="kw">:</span><span class="at"> Snowflake-Labs/dbt_semantic_view</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-label="7"></a><span class="at">      </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0.3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="profiles.yml" class="level3">
-<h3 class="anchored" data-anchor-id="profiles.yml">profiles.yml</h3>
-<div class="doc-tabs">
-<div class="doc-tabs__nav" role="tablist"><button type="button" class="doc-tabs__tab is-active" id="dtab-1-1-label" role="tab" aria-controls="dtab-1-1" aria-selected="true" tabindex="0">Postgres</button><button type="button" class="doc-tabs__tab" id="dtab-1-2-label" role="tab" aria-controls="dtab-1-2" aria-selected="false" tabindex="-1">Snowflake</button></div>
-<div class="doc-tabs__panels">
-<div id="dtab-1-1" class="doc-tabs__panel is-active" role="tabpanel" aria-labelledby="dtab-1-1-label">
-<div class="term" data-title="yaml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a><span class="at">  </span><span class="fu">target</span><span class="kw">:</span><span class="at"> dev</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-label="3"></a><span class="at">  </span><span class="fu">outputs</span><span class="kw">:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-label="4"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-label="5"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-label="6"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-label="7"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-label="8"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-label="9"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-label="10"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> DEV_STAGE</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-label="11"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-label="12"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-label="13"></a><span class="at">    </span><span class="fu">test</span><span class="kw">:</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-label="14"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-label="15"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-label="16"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-label="17"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-label="18"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-label="19"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> TEST_STAGE</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-label="20"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-label="21"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-label="22"></a><span class="at">    </span><span class="fu">prod</span><span class="kw">:</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-label="23"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-label="24"></a><span class="at">      </span><span class="fu">host</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('host') }}"</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-label="25"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-label="26"></a><span class="at">      </span><span class="fu">password</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('password') }}"</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-label="27"></a><span class="at">      </span><span class="fu">port</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('port') }}"</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-label="28"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> PROD_STAGE</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-label="29"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-label="30"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-<div id="dtab-1-2" class="doc-tabs__panel" role="tabpanel" aria-labelledby="dtab-1-2-label" hidden="">
-<div class="term" data-title="yaml">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a><span class="kw">{</span><span class="at">project_name</span><span class="kw">}:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-label="2"></a><span class="at">  </span><span class="fu">target</span><span class="kw">:</span><span class="at"> dev</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-label="3"></a><span class="at">  </span><span class="fu">outputs</span><span class="kw">:</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-label="4"></a><span class="at">    </span><span class="fu">dev</span><span class="kw">:</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-label="5"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-label="6"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-label="7"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-label="8"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-label="9"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-label="10"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-label="11"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> DEV_STAGE</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-label="12"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-label="13"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">warehouse</span><span class="kw">}</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-label="14"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-label="15"></a><span class="at">    </span><span class="fu">test</span><span class="kw">:</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-label="16"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-label="17"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-label="18"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-label="19"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-label="20"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-label="21"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-label="22"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> TEST_STAGE</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-label="23"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-label="24"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> CICD_WH</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-label="25"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-label="26"></a><span class="at">    </span><span class="fu">prod</span><span class="kw">:</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-label="27"></a><span class="at">      </span><span class="fu">type</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">adapter_type</span><span class="kw">}</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-label="28"></a><span class="at">      </span><span class="fu">account</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('account') }}"</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-label="29"></a><span class="at">      </span><span class="fu">authenticator</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">auth_type</span><span class="kw">}</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-label="30"></a><span class="at">      </span><span class="fu">user</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('user') }}"</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-label="31"></a><span class="at">      </span><span class="fu">private_key</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('private_key') }}"</span><span class="co"> # use a key-pair auth if possible</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-label="32"></a><span class="at">      </span><span class="fu">role</span><span class="kw">:</span><span class="at"> </span><span class="st">"{{ env_var('role') }}"</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-label="33"></a><span class="at">      </span><span class="fu">database</span><span class="kw">:</span><span class="at"> PROD_STAGE</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-label="34"></a><span class="at">      </span><span class="fu">schema</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">public</span><span class="kw">}</span><span class="co"> # default, macro will manage this</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-label="35"></a><span class="at">      </span><span class="fu">warehouse</span><span class="kw">:</span><span class="at"> </span><span class="kw">{</span><span class="at">warehouse</span><span class="kw">}</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-label="36"></a><span class="at">      </span><span class="fu">threads</span><span class="kw">:</span><span class="at"> </span><span class="dv">16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
-</div></div>
-</section>
-</section>
-<section id="directory-names" class="level2">
-<h2 class="anchored" data-anchor-id="directory-names">Directory Names</h2>
-<p><code>models/{domain}/{layer}</code></p>
-</section>
-<section id="meta-names" class="level2">
-<h2 class="anchored" data-anchor-id="meta-names">Meta Names</h2>
-<p><code>_{layer}__{sources|models}.yaml</code></p>
-<p>The main characteristic of meta yaml files is that the naming starts with an underscore.</p>
-<p>The sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.</p>
-<p>The models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.</p>
-<p>The data tests are generic (singular) tests and custom tests, package tests.<br>
-- singular tests include: <code>unique</code>, <code>not null</code>, <code>accepted_values</code>, <code>relationships</code><br>
-- custom tests consist of macros<br>
-- package tests consist of <code>dbt_utils</code> and other community packages</p>
-</section>
-<section id="model-names" class="level2">
-<h2 class="anchored" data-anchor-id="model-names">Model Names</h2>
-<p><code>{layer}_{domain}__{entity}_{temp}.sql</code></p>
-</section>
-<section id="tests-names" class="level2">
-<h2 class="anchored" data-anchor-id="tests-names">Tests Names</h2>
-<p>The test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.</p>
-</section>
-<section id="incremental-models" class="level2">
-<h2 class="anchored" data-anchor-id="incremental-models">Incremental Models</h2>
-<p>only use merge, it’s the only idempotent closes to “set-it-and-forget-it”.<br>
-remember to add the logic to erase orphaned data.</p>
-<p>if the data is too big for merge, then use delete+insert or insert_overwrite<br>
-delete+insert checks for a set of keys that you define</p>
-</section>
-<section id="environment-variables" class="level2">
-<h2 class="anchored" data-anchor-id="environment-variables">Environment Variables</h2>
-<ul>
-<li>shell environment overrides all</li>
-<li><code>.env</code> file is auto detected with the new dbt fusion</li>
-</ul>
-</section>
-<section id="layers" class="level2">
-<h2 class="anchored" data-anchor-id="layers">Layers</h2>
-<ul>
-<li>staging: normalization, data types, and column renames. Intra model joins and unions are okay.</li>
-<li>intermediate: all transformations, joins, and unions intra and inter model joins and unions.</li>
-<li>mart: star/snowflake schema.</li>
-</ul>
-<div class="callout callout-style-default callout-titled" data-callout="note">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.</p>
-</div>
-</div>
-</section>
-<section id="models" class="level2">
-<h2 class="anchored" data-anchor-id="models">Models</h2>
-<ul>
-<li>all lower case</li>
-<li>no select stars</li>
-</ul>
+<p>Selectors compose, which is what makes the build-time optimizations in <a href="../../../notes/003-data-engineering/004-dbt/009-materializations.html">Materializations &amp; Build Time</a> possible.</p>
 <hr>
-<p><span class="note-modified">Last modified: 2026-08-07</span></p>
+<p><span class="note-modified">Last modified: 2026-08-29</span></p>
 
 
 </section>
@@ -1337,13 +1183,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="pagination-link" aria-label="Setup">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup</span>
+      <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" class="pagination-link" aria-label="Documentation">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Documentation</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="pagination-link" aria-label="Workflow">
-        <span class="nav-page-text">Workflow</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" class="pagination-link" aria-label="CI/CD">
+        <span class="nav-page-text">CI/CD</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

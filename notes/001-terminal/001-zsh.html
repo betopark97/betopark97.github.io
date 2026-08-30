@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -48,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -245,9 +280,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro">Intro</a></li>
-  <li><a href="#zshrc" id="toc-zshrc" class="nav-link" data-scroll-target="#zshrc">.zshrc</a></li>
-  <li><a href="#zprofile" id="toc-zprofile" class="nav-link" data-scroll-target="#zprofile">.zprofile</a></li>
+  <li><a href="#load-order" id="toc-load-order" class="nav-link" data-scroll-target="#load-order">Load Order</a></li>
   <li><a href="#zshenv" id="toc-zshenv" class="nav-link" data-scroll-target="#zshenv">.zshenv</a></li>
+  <li><a href="#zprofile" id="toc-zprofile" class="nav-link" data-scroll-target="#zprofile">.zprofile</a></li>
+  <li><a href="#zshrc" id="toc-zshrc" class="nav-link" data-scroll-target="#zshrc">.zshrc</a></li>
   </ul>
 </nav>
     </div>
@@ -290,21 +326,52 @@ Note
 </div>
 </div>
 </section>
-<section id="zshrc" class="level2">
-<h2 class="anchored" data-anchor-id="zshrc">.zshrc</h2>
-<p>This is the configuration file for the zsh shell. Use it to set aliases and customize the terminal prompt. Most people also use this one script to also set the <code>PATH</code> but let’s do that in the <code>~/.zprofile</code>.</p>
-</section>
-<section id="zprofile" class="level2">
-<h2 class="anchored" data-anchor-id="zprofile">.zprofile</h2>
-<p>MacOS uses this to set up the shell for any new terminal window.</p>
-<p>Homebrew recommends setting the <code>PATH</code> variable here. There’s a reason it should be set here and not the <code>~/.zshenv</code> file: macOS runs a utility <code>path_helper</code> (from <code>/etc/zprofile</code>) that sets the <code>PATH</code> order before <code>~/.zprofile</code> is loaded.</p>
+<section id="load-order" class="level2">
+<h2 class="anchored" data-anchor-id="load-order">Load Order</h2>
+<p>This is the whole reason the files differ. zsh reads them in this order:</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>~/.zshenv  →  /etc/zprofile (path_helper)  →  ~/.zprofile  →  ~/.zshrc  →  ~/.zlogin</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a>   always            login only              login only     interactive</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Two consequences do all the work:</p>
+<ul>
+<li><code>~/.zshenv</code> is the only file a <strong>non-interactive, non-login</strong> shell reads — scripts with a zsh shebang, cron, tools spawning <code>zsh -c</code>.</li>
+<li><code>path_helper</code> runs <strong>after</strong> <code>~/.zshenv</code>. It rebuilds <code>PATH</code> from <code>/etc/paths</code> and <code>/etc/paths.d</code>, putting those first, then appends whatever was already set.</li>
+</ul>
 </section>
 <section id="zshenv" class="level2">
 <h2 class="anchored" data-anchor-id="zshenv">.zshenv</h2>
-<p>This is loaded universally for all types of shell sessions. MacOS overrides this for <code>PATH</code> settings for interactive shells.</p>
-<p>This could be used to configure the shell for automated processes like cron jobs. However, it is not used as most variables are best to stay within the project directory with a <code>.env</code>.</p>
+<p>Loaded for every zsh invocation. Put <strong>plain environment variables</strong> here — they survive untouched, because <code>path_helper</code> only rewrites <code>PATH</code>. Reason why you shouldn’t set <code>PATH</code> here as MacOS overrides it.</p>
+<p>Because <code>path_helper</code> demotes it, <code>/opt/homebrew/bin</code> set here would lose to <code>/usr/bin</code>, and Apple’s <code>python3</code> would shadow the Homebrew one.</p>
+</section>
+<section id="zprofile" class="level2">
+<h2 class="anchored" data-anchor-id="zprofile">.zprofile</h2>
+<p>macOS starts a login shell for each new terminal window, so this runs in practice for every session. It loads after <code>path_helper</code>, so prepends stick.</p>
+<p><code>PATH</code> goes here — Homebrew’s own install instructions say the same:</p>
+<div class="term" data-title="shell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource shell number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a>eval "$(/opt/homebrew/bin/brew shellenv)"   # prepends bin+sbin, sets HOMEBREW_*/MANPATH/INFOPATH</span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a>export PATH="$HOME/.local/bin:$PATH"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The tradeoff: non-login shells don’t read this, so a zsh script gets the system <code>PATH</code>. If that ever matters, re-prepend inside <code>~/.zprofile</code> — don’t move <code>PATH</code> to <code>~/.zshenv</code>.</p>
+</section>
+<section id="zshrc" class="level2">
+<h2 class="anchored" data-anchor-id="zshrc">.zshrc</h2>
+<p>Interactive-only: aliases, prompt, completions, and tools needing <code>zle</code> (e.g., fzf, zoxide, nvm). It also loads after <code>path_helper</code>, so <code>PATH</code> set here <em>works</em> — but it’s wrong on principle, since a non-interactive login shell would miss it.</p>
+<div class="callout callout-style-default callout-titled" data-callout="note">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>An interactive shell reads commands directly from user input (TTY), while a non-interactive shell runs scripts or automated tasks in the backround without user interaction.</p>
+</div>
+</div>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-22</span></p>
+<p><span class="note-modified">Last modified: 2026-08-30</span></p>
 
 
 </section>

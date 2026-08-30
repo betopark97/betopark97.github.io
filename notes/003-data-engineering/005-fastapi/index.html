@@ -37,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" rel="next">
-<link href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" rel="prev">
+<link href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -332,38 +332,80 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/002-conventions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Conventions</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/002-project-structure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/003-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/003-naming.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Naming</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/004-styling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Styling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/005-layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Layers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/006-staging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Staging</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/007-intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/008-marts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Marts</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/009-materializations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Materializations &amp; Build Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/010-tests.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tests</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Documentation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/004-documentations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Documentations</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-ci-cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI/CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/008-data-modeling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Modeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Optimize Build Time</span></a>
+  <a href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Orchestration</span></a>
   </div>
 </li>
       </ul>
@@ -1010,8 +1052,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/003-data-engineering/004-dbt/009-optimize-build-time.html" class="pagination-link" aria-label="Optimize Build Time">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Optimize Build Time</span>
+      <a href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" class="pagination-link" aria-label="Orchestration">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Orchestration</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

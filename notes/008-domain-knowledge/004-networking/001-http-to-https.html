@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>HTTP to HTTPS – Roberto Park</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../notes/008-domain-knowledge/004-networking/index.html" rel="prev">
+<link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- The Iconify web component used to be loaded here for the gallery cards and
+     sidebar. Both now render artwork baked in at sync time (see
+     assets/js/sidebar-icons.js), so nothing on the site constructs an
+     <iconify-icon> any more and the CDN script — render-blocking, third-party,
+     on every page — was removed. Iconify is still where the artwork comes
+     from; scripts/sync_notes.py just fetches it once at build instead. -->
+
+<!-- Bootstrap Icons webfont, fetched up front. Every `bi` glyph on the site --
+     the navbar's GitHub mark, the sidebar's collapse chevrons and "back to
+     Notes" arrow, code-block copy buttons -- is a character in this font, and
+     it ships `font-display: block`, meaning those glyphs render as *nothing*
+     until it arrives. The browser only discovers it midway through parsing
+     bootstrap-icons.css, so it starts ~200ms in and the icons blink into
+     existence afterwards. Preloading moves the fetch to the head of the queue.
+
+     The `?hash` must match the one in site_libs/bootstrap/bootstrap-icons.css
+     or the browser fetches the font twice; re-check it after a Quarto upgrade
+     (a "preloaded but not used" console warning is the tell). -->
+<link rel="preload" as="font" type="font/woff" crossorigin="" href="../../../site_libs/bootstrap/bootstrap-icons.woff?e34853135f9e39acf64315236852cd5a">
+
+<!-- Sidebar icon artwork, baked in by scripts/sync_notes.py and injected by
+     custom_body.html. Deliberately a blocking <script> in the head rather than
+     inline or deferred: the sidebar is above the fold, so the map has to exist
+     before the injector runs (and before first paint) or the icons pop in late
+     and shove every label sideways. One file, fetched and HTTP-cached once,
+     instead of ~35KB repeated in every rendered page. -->
+<script src="../../../assets/js/sidebar-icons.js"></script>
+
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-VL4M0BGJWE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-VL4M0BGJWE');
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-5J63Z9M7');</script>
+<!-- End Google Tag Manager -->
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">bp-pkm</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/betopark97"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../portfolio.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../projects/projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../notes/index.html" aria-current="page"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/008-domain-knowledge/004-networking/index.html">Networking</a></li><li class="breadcrumb-item"><a href="../../../notes/008-domain-knowledge/004-networking/001-http-to-https.html">HTTP to HTTPS</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="sidebar-tools-main">
+    <a href="../../../notes/index.html" title="Notes" class="quarto-navigation-tool px-1" aria-label="Notes"><i class="bi bi-arrow-left-circle"></i></a>
+</div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/008-domain-knowledge/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Domain Knowledge</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/008-domain-knowledge/001-scm/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SCM</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/008-domain-knowledge/001-scm/001-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/008-domain-knowledge/001-scm/002-scor-ds.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SCOR DS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/008-domain-knowledge/001-scm/003-costs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Costs</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../../../notes/008-domain-knowledge/004-networking/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Networking</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/008-domain-knowledge/004-networking/001-http-to-https.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">HTTP to HTTPS</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-https-actually-is" id="toc-what-https-actually-is" class="nav-link active" data-scroll-target="#what-https-actually-is">What HTTPS Actually Is</a></li>
+  <li><a href="#what-you-need-before-anything-works" id="toc-what-you-need-before-anything-works" class="nav-link" data-scroll-target="#what-you-need-before-anything-works">What You Need Before Anything Works</a></li>
+  <li><a href="#why-you-do-not-add-tls-to-the-app-container" id="toc-why-you-do-not-add-tls-to-the-app-container" class="nav-link" data-scroll-target="#why-you-do-not-add-tls-to-the-app-container">Why You Do Not Add TLS to the App Container</a></li>
+  <li><a href="#the-lazy-default-caddy" id="toc-the-lazy-default-caddy" class="nav-link" data-scroll-target="#the-lazy-default-caddy">The Lazy Default: Caddy</a></li>
+  <li><a href="#nginx-certbot" id="toc-nginx-certbot" class="nav-link" data-scroll-target="#nginx-certbot">Nginx + Certbot</a></li>
+  <li><a href="#traefik" id="toc-traefik" class="nav-link" data-scroll-target="#traefik">Traefik</a></li>
+  <li><a href="#no-public-port-80-dns-01" id="toc-no-public-port-80-dns-01" class="nav-link" data-scroll-target="#no-public-port-80-dns-01">No Public Port 80: DNS-01</a></li>
+  <li><a href="#local-development" id="toc-local-development" class="nav-link" data-scroll-target="#local-development">Local Development</a></li>
+  <li><a href="#making-the-app-behave-behind-a-proxy" id="toc-making-the-app-behave-behind-a-proxy" class="nav-link" data-scroll-target="#making-the-app-behave-behind-a-proxy">Making the App Behave Behind a Proxy</a></li>
+  <li><a href="#checklist-and-gotchas" id="toc-checklist-and-gotchas" class="nav-link" data-scroll-target="#checklist-and-gotchas">Checklist and Gotchas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/008-domain-knowledge/004-networking/index.html">Networking</a></li><li class="breadcrumb-item"><a href="../../../notes/008-domain-knowledge/004-networking/001-http-to-https.html">HTTP to HTTPS</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">HTTP to HTTPS</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="what-https-actually-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-https-actually-is">What HTTPS Actually Is</h2>
+<p>HTTPS is not a different protocol. It is the same HTTP request and response, wrapped in a TLS tunnel before it leaves the machine. Two things happen inside that wrap:</p>
+<ul>
+<li><strong>Encryption</strong> — nobody between the browser and the server can read or modify the bytes.</li>
+<li><strong>Identity</strong> — the server proves it really is <code>example.com</code> by presenting a <strong>certificate</strong> signed by a <strong>Certificate Authority (CA)</strong> the browser already trusts.</li>
+</ul>
+<p>The encryption is the easy part; any process can generate a key pair in a second. The identity part is the whole problem. A certificate is a CA’s signed statement that “whoever holds this private key controls this domain name”. You cannot manufacture that yourself — you have to prove domain control to a CA, and the CA hands back a certificate that expires (Let’s Encrypt: 90 days).</p>
+<p>So “turn on HTTPS” really means three separate jobs:</p>
+<ol type="1">
+<li>Get a domain name that resolves to your public IP.</li>
+<li>Prove to a CA that you control it, and receive a certificate.</li>
+<li>Terminate TLS on port 443 with that certificate, and keep renewing it forever.</li>
+</ol>
+</section>
+<section id="what-you-need-before-anything-works" class="level2">
+<h2 class="anchored" data-anchor-id="what-you-need-before-anything-works">What You Need Before Anything Works</h2>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Requirement</th>
+<th>Why</th>
+<th>How to check</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A real domain name</td>
+<td>Certificates are issued for names, never for bare IPs. <code>https://203.0.113.5</code> cannot be made valid.</td>
+<td><code>dig +short app.example.com</code></td>
+</tr>
+<tr class="even">
+<td>DNS A/AAAA record pointing at your public IP</td>
+<td>The CA connects back to that name to verify you.</td>
+<td><code>dig +short app.example.com</code> matches <code>curl -s ifconfig.me</code></td>
+</tr>
+<tr class="odd">
+<td>Ports 80 and 443 reachable from the internet</td>
+<td>Port 80 is used for the ACME HTTP-01 challenge and for the HTTP→HTTPS redirect. 443 serves the real traffic.</td>
+<td><code>curl -I http://app.example.com</code> from outside your network</td>
+</tr>
+<tr class="even">
+<td>Router port-forward / cloud firewall rule</td>
+<td>Home servers need 80 and 443 forwarded to the host; cloud VMs need the security group opened.</td>
+<td>Same as above</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-style-default callout-titled" data-callout="warning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Many residential ISPs block inbound port 80 and 443, and CGNAT means you may not own your public IP at all. If <code>curl</code> from outside times out, no amount of Docker configuration will fix it — see <a href="#no-public-port-80-dns-01">No Public Port 80</a> below.</p>
+</div>
+</div>
+</section>
+<section id="why-you-do-not-add-tls-to-the-app-container" class="level2">
+<h2 class="anchored" data-anchor-id="why-you-do-not-add-tls-to-the-app-container">Why You Do Not Add TLS to the App Container</h2>
+<p>The instinct is to make the application itself speak HTTPS. Almost always wrong:</p>
+<ul>
+<li>Every app then needs its own certificate logic, its own renewal cron, and its own copy of the private key.</li>
+<li>Renewal usually needs a restart, so the app goes down every 60 days.</li>
+<li>Only one container can bind port 443. A second service means a second host or a second port.</li>
+<li>Application servers (gunicorn, uvicorn, the Streamlit dev server, <code>node</code>) are not hardened for direct internet exposure.</li>
+</ul>
+<p>The standard pattern instead: <strong>the app keeps speaking plain HTTP, and a reverse proxy in front of it terminates TLS.</strong></p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a>internet --443/TLS--&gt; [ reverse proxy ] --80/plain HTTP--&gt; [ app container ]</span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a>                       (owns the cert)     (docker network, never published)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This is safe because the plain-HTTP leg never leaves the Docker bridge network. Traffic between containers on the same user-defined network does not touch the host’s NIC or the internet.</p>
+<p>The key Docker consequence: <strong>stop publishing the app’s port.</strong> Use <code>expose</code> (or nothing at all — containers on the same network reach each other by service name regardless) instead of <code>ports</code>. If you leave <code>ports: - "8000:8000"</code> in place, anyone can bypass your proxy and hit the app over plain HTTP.</p>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> myapp:latest</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a><span class="at">    </span><span class="fu">expose</span><span class="kw">:</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8000"</span><span class="co">        # visible to other containers only</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a><span class="co">    # ports:          # &lt;- delete this; it publishes to the host</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-label="7"></a><span class="co">    #   - "8000:8000"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="the-lazy-default-caddy" class="level2">
+<h2 class="anchored" data-anchor-id="the-lazy-default-caddy">The Lazy Default: Caddy</h2>
+<p>Caddy gets a certificate from Let’s Encrypt on first boot, redirects HTTP to HTTPS, and renews in the background, with no cron job and no extra container. For a new setup this is the shortest path that is also correct.</p>
+<p><code>Caddyfile</code>:</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a>app.example.com {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a>    reverse_proxy app:8000</span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>docker-compose.yml</code>:</p>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-label="2"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-label="3"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> myapp:latest</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-label="4"></a><span class="at">    </span><span class="fu">expose</span><span class="kw">:</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-label="5"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8000"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-label="6"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-label="7"></a><span class="at">  </span><span class="fu">caddy</span><span class="kw">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-label="8"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> caddy:2-alpine</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-label="9"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-label="10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-label="11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"80:80"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-label="12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"443:443"</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-label="13"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-label="14"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./Caddyfile:/etc/caddy/Caddyfile:ro</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-label="15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> caddy_data:/data</span><span class="co">      # certificates live here — must persist</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-label="16"></a><span class="at">      </span><span class="kw">-</span><span class="at"> caddy_config:/config</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-label="17"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-label="18"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-label="19"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-label="20"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-label="21"></a><span class="at">  </span><span class="fu">caddy_data</span><span class="kw">:</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-label="22"></a><span class="at">  </span><span class="fu">caddy_config</span><span class="kw">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>docker compose up -d</code>, then <code>https://app.example.com</code> works. That is the whole setup.</p>
+<p>Two details that matter:</p>
+<ul>
+<li><strong><code>caddy_data</code> must be a named volume.</strong> Certificates and the ACME account key are stored there. Lose it and every <code>docker compose up</code> requests fresh certificates, which walks straight into Let’s Encrypt’s rate limit (5 duplicate certificates per week).</li>
+<li><strong>The upstream is <code>app:8000</code>, not <code>localhost:8000</code>.</strong> Inside a container, <code>localhost</code> is that container itself. Docker’s embedded DNS resolves the Compose service name.</li>
+</ul>
+<p>Multiple services are one block each:</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-label="1"></a>app.example.com {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-label="2"></a>    reverse_proxy app:8000</span>
+<span id="cb5-3"><a href="#cb5-3" aria-label="3"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-label="4"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-label="5"></a>dashboard.example.com {</span>
+<span id="cb5-6"><a href="#cb5-6" aria-label="6"></a>    reverse_proxy streamlit:8501</span>
+<span id="cb5-7"><a href="#cb5-7" aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="nginx-certbot" class="level2">
+<h2 class="anchored" data-anchor-id="nginx-certbot">Nginx + Certbot</h2>
+<p>Use this when nginx is already in the stack or the config has to stay nginx-shaped. It is more moving parts: nginx does not speak ACME, so certbot fetches certificates into a shared volume and nginx reads them from disk.</p>
+<p>The chicken-and-egg problem: nginx will not start with a <code>ssl_certificate</code> path that does not exist yet, but certbot needs nginx serving port 80 to answer the HTTP-01 challenge. Solution — start with an HTTP-only config, issue the certificate, then add the TLS server block and reload.</p>
+<p><code>docker-compose.yml</code>:</p>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-label="1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-label="2"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-label="3"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> myapp:latest</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-label="4"></a><span class="at">    </span><span class="fu">expose</span><span class="kw">:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-label="5"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"8000"</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-label="6"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-label="7"></a><span class="at">  </span><span class="fu">nginx</span><span class="kw">:</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-label="8"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> nginx:alpine</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-label="9"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-label="10"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-label="11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"80:80"</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-label="12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"443:443"</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-label="13"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-label="14"></a><span class="at">      </span><span class="kw">-</span><span class="at"> ./nginx.conf:/etc/nginx/conf.d/default.conf:ro</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-label="15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> certs:/etc/letsencrypt</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-label="16"></a><span class="at">      </span><span class="kw">-</span><span class="at"> acme:/var/www/certbot</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-label="17"></a><span class="at">    </span><span class="fu">depends_on</span><span class="kw">:</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-label="18"></a><span class="at">      </span><span class="kw">-</span><span class="at"> app</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-label="19"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-label="20"></a><span class="at">  </span><span class="fu">certbot</span><span class="kw">:</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-label="21"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> certbot/certbot</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-label="22"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-label="23"></a><span class="at">      </span><span class="kw">-</span><span class="at"> certs:/etc/letsencrypt</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-label="24"></a><span class="at">      </span><span class="kw">-</span><span class="at"> acme:/var/www/certbot</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-label="25"></a><span class="co">    # renew twice a day; certbot no-ops until the cert is within 30 days of expiry</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-label="26"></a><span class="fu">    entrypoint</span><span class="kw">: </span><span class="ch">&gt;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-label="27"></a>      sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot --quiet; sleep 12h; done"</span>
+<span id="cb6-28"><a href="#cb6-28" aria-label="28"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-label="29"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-label="30"></a><span class="at">  </span><span class="fu">certs</span><span class="kw">:</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-label="31"></a><span class="at">  </span><span class="fu">acme</span><span class="kw">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Step 1 — HTTP-only <code>nginx.conf</code>, enough to answer the challenge:</p>
+<div class="term" data-title="nginx">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource nginx number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href="#cb7-1" aria-label="1"></a>server {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-label="2"></a>    listen 80;</span>
+<span id="cb7-3"><a href="#cb7-3" aria-label="3"></a>    server_name app.example.com;</span>
+<span id="cb7-4"><a href="#cb7-4" aria-label="4"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-label="5"></a>    location /.well-known/acme-challenge/ {</span>
+<span id="cb7-6"><a href="#cb7-6" aria-label="6"></a>        root /var/www/certbot;</span>
+<span id="cb7-7"><a href="#cb7-7" aria-label="7"></a>    }</span>
+<span id="cb7-8"><a href="#cb7-8" aria-label="8"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-label="9"></a>    location / {</span>
+<span id="cb7-10"><a href="#cb7-10" aria-label="10"></a>        proxy_pass http://app:8000;</span>
+<span id="cb7-11"><a href="#cb7-11" aria-label="11"></a>    }</span>
+<span id="cb7-12"><a href="#cb7-12" aria-label="12"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Step 2 — bring it up and issue the certificate once:</p>
+<div class="term" data-title="bash">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-label="1"></a><span class="ex">docker</span> compose up <span class="at">-d</span> nginx</span>
+<span id="cb8-2"><a href="#cb8-2" aria-label="2"></a><span class="ex">docker</span> compose run <span class="at">--rm</span> certbot certonly <span class="dt">\</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-label="3"></a>    <span class="at">--webroot</span> <span class="at">-w</span> /var/www/certbot <span class="dt">\</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-label="4"></a>    <span class="at">-d</span> app.example.com <span class="dt">\</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-label="5"></a>    <span class="at">--email</span> you@example.com <span class="at">--agree-tos</span> <span class="at">--no-eff-email</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Step 3 — final <code>nginx.conf</code>: port 80 redirects (except the challenge path), port 443 serves.</p>
+<div class="term" data-title="nginx">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource nginx number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1" aria-label="1"></a>server {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-label="2"></a>    listen 80;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-label="3"></a>    server_name app.example.com;</span>
+<span id="cb9-4"><a href="#cb9-4" aria-label="4"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-label="5"></a>    location /.well-known/acme-challenge/ {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-label="6"></a>        root /var/www/certbot;      # keep this — renewals use it</span>
+<span id="cb9-7"><a href="#cb9-7" aria-label="7"></a>    }</span>
+<span id="cb9-8"><a href="#cb9-8" aria-label="8"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-label="9"></a>    location / {</span>
+<span id="cb9-10"><a href="#cb9-10" aria-label="10"></a>        return 301 https://$host$request_uri;</span>
+<span id="cb9-11"><a href="#cb9-11" aria-label="11"></a>    }</span>
+<span id="cb9-12"><a href="#cb9-12" aria-label="12"></a>}</span>
+<span id="cb9-13"><a href="#cb9-13" aria-label="13"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-label="14"></a>server {</span>
+<span id="cb9-15"><a href="#cb9-15" aria-label="15"></a>    listen 443 ssl;</span>
+<span id="cb9-16"><a href="#cb9-16" aria-label="16"></a>    http2 on;</span>
+<span id="cb9-17"><a href="#cb9-17" aria-label="17"></a>    server_name app.example.com;</span>
+<span id="cb9-18"><a href="#cb9-18" aria-label="18"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-label="19"></a>    ssl_certificate     /etc/letsencrypt/live/app.example.com/fullchain.pem;</span>
+<span id="cb9-20"><a href="#cb9-20" aria-label="20"></a>    ssl_certificate_key /etc/letsencrypt/live/app.example.com/privkey.pem;</span>
+<span id="cb9-21"><a href="#cb9-21" aria-label="21"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-label="22"></a>    location / {</span>
+<span id="cb9-23"><a href="#cb9-23" aria-label="23"></a>        proxy_pass http://app:8000;</span>
+<span id="cb9-24"><a href="#cb9-24" aria-label="24"></a>        proxy_set_header Host              $host;</span>
+<span id="cb9-25"><a href="#cb9-25" aria-label="25"></a>        proxy_set_header X-Real-IP         $remote_addr;</span>
+<span id="cb9-26"><a href="#cb9-26" aria-label="26"></a>        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;</span>
+<span id="cb9-27"><a href="#cb9-27" aria-label="27"></a>        proxy_set_header X-Forwarded-Proto $scheme;</span>
+<span id="cb9-28"><a href="#cb9-28" aria-label="28"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-label="29"></a>        # needed for websockets (Streamlit, Jupyter, socket.io, HMR)</span>
+<span id="cb9-30"><a href="#cb9-30" aria-label="30"></a>        proxy_http_version 1.1;</span>
+<span id="cb9-31"><a href="#cb9-31" aria-label="31"></a>        proxy_set_header Upgrade    $http_upgrade;</span>
+<span id="cb9-32"><a href="#cb9-32" aria-label="32"></a>        proxy_set_header Connection "upgrade";</span>
+<span id="cb9-33"><a href="#cb9-33" aria-label="33"></a>    }</span>
+<span id="cb9-34"><a href="#cb9-34" aria-label="34"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Step 4 — <code>docker compose up -d</code> to start certbot’s renewal loop, and reload nginx after each renewal. Nginx caches certificates in memory at startup, so a renewed certificate on disk changes nothing until reload. Simplest fix is a nightly restart:</p>
+<div class="term" data-title="bash">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-label="1"></a><span class="ex">0</span> 4 <span class="pp">*</span> <span class="pp">*</span> <span class="pp">*</span> cd /srv/myapp <span class="kw">&amp;&amp;</span> <span class="ex">docker</span> compose exec <span class="at">-T</span> nginx nginx <span class="at">-s</span> reload</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="traefik" class="level2">
+<h2 class="anchored" data-anchor-id="traefik">Traefik</h2>
+<p>Worth it when containers come and go and you do not want to edit proxy config for each one. Traefik reads the Docker socket and configures itself from labels on each service.</p>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a href="#cb11-1" aria-label="1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-label="2"></a><span class="at">  </span><span class="fu">traefik</span><span class="kw">:</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-label="3"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> traefik:v3</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-label="4"></a><span class="at">    </span><span class="fu">restart</span><span class="kw">:</span><span class="at"> unless-stopped</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-label="5"></a><span class="at">    </span><span class="fu">command</span><span class="kw">:</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-label="6"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --providers.docker=true</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-label="7"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --providers.docker.exposedbydefault=false</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-label="8"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --entrypoints.web.address=:80</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-label="9"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --entrypoints.web.http.redirections.entrypoint.to=websecure</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-label="10"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --entrypoints.web.http.redirections.entrypoint.scheme=https</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-label="11"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --entrypoints.websecure.address=:443</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-label="12"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --certificatesresolvers.le.acme.email=you@example.com</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-label="13"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-label="14"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --certificatesresolvers.le.acme.httpchallenge=true</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-label="15"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --certificatesresolvers.le.acme.httpchallenge.entrypoint=web</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-label="16"></a><span class="at">    </span><span class="fu">ports</span><span class="kw">:</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-label="17"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"80:80"</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-label="18"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="st">"443:443"</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-label="19"></a><span class="at">    </span><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-label="20"></a><span class="at">      </span><span class="kw">-</span><span class="at"> /var/run/docker.sock:/var/run/docker.sock:ro</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-label="21"></a><span class="at">      </span><span class="kw">-</span><span class="at"> letsencrypt:/letsencrypt</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-label="22"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-label="23"></a><span class="at">  </span><span class="fu">app</span><span class="kw">:</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-label="24"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> myapp:latest</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-label="25"></a><span class="at">    </span><span class="fu">labels</span><span class="kw">:</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-label="26"></a><span class="at">      </span><span class="kw">-</span><span class="at"> traefik.enable=true</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-label="27"></a><span class="at">      </span><span class="kw">-</span><span class="at"> traefik.http.routers.app.rule=Host(`app.example.com`)</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-label="28"></a><span class="at">      </span><span class="kw">-</span><span class="at"> traefik.http.routers.app.entrypoints=websecure</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-label="29"></a><span class="at">      </span><span class="kw">-</span><span class="at"> traefik.http.routers.app.tls.certresolver=le</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-label="30"></a><span class="at">      </span><span class="kw">-</span><span class="at"> traefik.http.services.app.loadbalancer.server.port=8000</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-label="31"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-label="32"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-label="33"></a><span class="at">  </span><span class="fu">letsencrypt</span><span class="kw">:</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-titled" data-callout="warning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mounting <code>/var/run/docker.sock</code> gives that container root-equivalent control of the host. Mount it read-only, and do not do it on a box where the proxy is also running untrusted workloads.</p>
+</div>
+</div>
+</section>
+<section id="no-public-port-80-dns-01" class="level2">
+<h2 class="anchored" data-anchor-id="no-public-port-80-dns-01">No Public Port 80: DNS-01</h2>
+<p>If port 80 is blocked, the machine is behind CGNAT, or the service is internal-only, the HTTP-01 challenge cannot work. Use the <strong>DNS-01</strong> challenge instead: the CA asks you to publish a specific TXT record, and the proxy creates it through your DNS provider’s API. This also works for <code>*.example.com</code> wildcards.</p>
+<p>Caddy needs a provider-specific build, e.g.&nbsp;Cloudflare:</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb12-1"><a href="#cb12-1" aria-label="1"></a>{</span>
+<span id="cb12-2"><a href="#cb12-2" aria-label="2"></a>    acme_dns cloudflare {env.CF_API_TOKEN}</span>
+<span id="cb12-3"><a href="#cb12-3" aria-label="3"></a>}</span>
+<span id="cb12-4"><a href="#cb12-4" aria-label="4"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-label="5"></a>app.internal.example.com {</span>
+<span id="cb12-6"><a href="#cb12-6" aria-label="6"></a>    reverse_proxy app:8000</span>
+<span id="cb12-7"><a href="#cb12-7" aria-label="7"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="term" data-title="yaml">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-label="1"></a><span class="fu">services</span><span class="kw">:</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-label="2"></a><span class="at">  </span><span class="fu">caddy</span><span class="kw">:</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-label="3"></a><span class="at">    </span><span class="fu">image</span><span class="kw">:</span><span class="at"> caddy:2-alpine</span><span class="co">   # replace with a build including the cloudflare dns module</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-label="4"></a><span class="at">    </span><span class="fu">environment</span><span class="kw">:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-label="5"></a><span class="at">      </span><span class="fu">CF_API_TOKEN</span><span class="kw">:</span><span class="at"> ${CF_API_TOKEN}</span><span class="co">   # scoped to Zone:DNS:Edit on one zone only</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The domain still has to exist and be under your DNS control, but it never needs to resolve to a public IP — a name pointing at <code>10.0.0.5</code> gets a fully trusted certificate this way.</p>
+</section>
+<section id="local-development" class="level2">
+<h2 class="anchored" data-anchor-id="local-development">Local Development</h2>
+<p>For <code>localhost</code> and LAN work there is no CA that will issue you a certificate. Two options:</p>
+<ul>
+<li><p><strong><code>mkcert</code></strong> — creates a local CA, installs it into the OS and browser trust stores, and issues certificates for any name. No warnings, no public DNS.</p>
+<div class="term" data-title="bash">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-label="1"></a><span class="ex">mkcert</span> <span class="at">-install</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-label="2"></a><span class="ex">mkcert</span> app.localhost localhost 127.0.0.1</span>
+<span id="cb14-3"><a href="#cb14-3" aria-label="3"></a><span class="co"># mount app.localhost+2.pem and app.localhost+2-key.pem into the proxy</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+<li><p><strong>Caddy’s internal CA</strong> — <code>tls internal</code> in a site block issues a self-signed certificate automatically. Zero setup, but browsers warn until you trust Caddy’s root manually.</p>
+<div class="term" data-title="text">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource default numberLines number-lines code-with-copy"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-label="1"></a>app.localhost {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-label="2"></a>  tls internal</span>
+<span id="cb15-3"><a href="#cb15-3" aria-label="3"></a>  reverse_proxy app:8000</span>
+<span id="cb15-4"><a href="#cb15-4" aria-label="4"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div></li>
+</ul>
+<p>Never reuse a development certificate in production, and never disable certificate verification in clients to work around a warning — that removes the identity guarantee that is the entire point.</p>
+</section>
+<section id="making-the-app-behave-behind-a-proxy" class="level2">
+<h2 class="anchored" data-anchor-id="making-the-app-behave-behind-a-proxy">Making the App Behave Behind a Proxy</h2>
+<p>Once TLS terminates at the proxy, the app receives plain HTTP and — unless told otherwise — thinks the request was insecure. Symptoms: redirect loops, <code>http://</code> links in generated pages, login cookies rejected, every client IP logged as the proxy’s.</p>
+<p>The proxy must send the forwarding headers (Caddy and Traefik do it by default; nginx needs the <code>proxy_set_header</code> lines above), and the app must be configured to trust them:</p>
+<div class="table-responsive">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Framework</th>
+<th>Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Django</td>
+<td><code>SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")</code>, plus the public hostname in <code>ALLOWED_HOSTS</code> and <code>CSRF_TRUSTED_ORIGINS</code></td>
+</tr>
+<tr class="even">
+<td>FastAPI / uvicorn</td>
+<td><code>--proxy-headers --forwarded-allow-ips="*"</code></td>
+</tr>
+<tr class="odd">
+<td>Flask</td>
+<td><code>werkzeug.middleware.proxy_fix.ProxyFix(app.wsgi_app, x_proto=1, x_for=1)</code></td>
+</tr>
+<tr class="even">
+<td>Streamlit</td>
+<td><code>--server.headless true</code>; proxy must forward websocket upgrade headers or the page loads and then hangs on “Connecting…”</td>
+</tr>
+<tr class="odd">
+<td>Express</td>
+<td><code>app.set("trust proxy", 1)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout callout-style-default callout-titled" data-callout="warning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Only trust forwarding headers when a proxy you control is actually in front. A directly-exposed app that trusts <code>X-Forwarded-For</code> lets any client spoof its own IP past rate limits and IP allowlists.</p>
+</div>
+</div>
+</section>
+<section id="checklist-and-gotchas" class="level2">
+<h2 class="anchored" data-anchor-id="checklist-and-gotchas">Checklist and Gotchas</h2>
+<ul>
+<li><strong>Delete <code>ports:</code> from every app service.</strong> Anything still published bypasses TLS.</li>
+<li><strong>Persist the certificate volume</strong> (<code>caddy_data</code>, <code>/etc/letsencrypt</code>, <code>acme.json</code>). Otherwise every rebuild re-issues and hits Let’s Encrypt’s rate limit — 5 duplicate certificates per exact name set per week.</li>
+<li><strong>Test against the staging CA first.</strong> Let’s Encrypt staging issues untrusted certificates but has generous limits: Caddy <code>acme_ca https://acme-staging-v02.api.letsencrypt.org/directory</code>, certbot <code>--staging</code>. Switch to production only after the flow works end to end, and delete the staging certificates when you do.</li>
+<li><strong>Point DNS before the first start.</strong> Requesting a certificate for a name that does not yet resolve to you burns a failed-validation attempt.</li>
+<li><strong><code>acme.json</code> needs mode 600</strong> if bind-mounted; Traefik refuses to start otherwise. A named volume avoids the issue.</li>
+<li><strong>Add HSTS only when HTTPS is stable.</strong> <code>Strict-Transport-Security</code> tells browsers to refuse plain HTTP for that domain for the stated duration, and it is cached client-side — you cannot take it back by removing the header. Start with a short <code>max-age</code>, and leave <code>includeSubDomains</code>/<code>preload</code> alone until certain.</li>
+<li><strong>Renewal is the part that breaks.</strong> It fails months later, silently, usually because port 80 got closed or the webroot mount changed. Check expiry from outside: <code>echo | openssl s_client -connect app.example.com:443 2&gt;/dev/null | openssl x509 -noout -dates</code>.</li>
+</ul>
+<hr>
+<p><span class="note-modified">Last modified: 2026-08-28</span></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5J63Z9M7" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Cmd/Ctrl + Shift + F to open Quarto search -->
+<script>
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'F' || e.key === 'f')) {
+      var btn = document.querySelector('#quarto-search .aa-DetachedSearchButton')
+             || document.querySelector('#quarto-search button')
+             || document.querySelector('#quarto-search');
+      if (btn) {
+        e.preventDefault();
+        btn.click();
+      }
+    }
+  });
+</script>
+
+<!-- Content-tab switcher for .doc-tabs blocks (assets/filters/obsidian-tabs.lua) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.doc-tabs').forEach(function (root) {
+      var tabs = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__tab'));
+      var panels = Array.prototype.slice.call(root.querySelectorAll('.doc-tabs__panel'));
+      function activate(i) {
+        tabs.forEach(function (t, j) {
+          var on = j === i;
+          t.classList.toggle('is-active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          panels[j].classList.toggle('is-active', on);
+          panels[j].hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { activate(i); });
+        t.addEventListener('keydown', function (e) {
+          var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+          if (!d) return;
+          e.preventDefault();
+          var n = (i + d + tabs.length) % tabs.length;
+          tabs[n].focus();
+          activate(n);
+        });
+      });
+    });
+  });
+</script>
+
+<!-- Sidebar item icons. The map (URL path segment -> inline SVG markup) lives
+     in assets/js/sidebar-icons.js, regenerated by scripts/sync_notes.py from
+     each item's `icon:` frontmatter (subsection folders via their index.md,
+     leaf notes via their own) with the artwork baked in; the injector below is
+     static. Quarto's auto-sidebar has no per-item template hook, so we inject
+     the SVG into each matching item. Matching is by path segment (present in
+     the href both before and after Quarto's on-load href rewrite); when
+     several keys match one href — e.g. a note nested in an iconed subsection —
+     the longest (most specific) key wins.
+
+     Timing matters here: the map is loaded by a blocking <script> in the head
+     and this injector runs synchronously (the sidebar markup precedes it in
+     the document), so the icons are in place before the first paint. The
+     previous <iconify-icon> version resolved its artwork over the network
+     ~400ms after insertion, which shifted every iconed label sideways once it
+     landed. -->
+<script>
+  (function () {
+    var MAP = window.__SIDEBAR_ICONS__ || {};
+    var SVGS = window.__ICON_SVGS__ || {};
+    // Gallery cards (assets/ejs/gallery-card.ejs) name their icon in
+    // data-icon and are filled from the same baked artwork, for the same
+    // reason: the cards are the whole content of notes/index.md, so a late
+    // icon is the most visible thing on the page.
+    function injectCards() {
+      document.querySelectorAll('.gallery-card-icon[data-icon]').forEach(function (slot) {
+        var svg = SVGS[slot.getAttribute('data-icon')];
+        if (svg && !slot.firstChild) slot.innerHTML = svg;
+      });
+    }
+    function inject() {
+      var links = document.querySelectorAll(
+        '.sidebar-menu-container .sidebar-item-container > .sidebar-link'
+      );
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        var li = link.closest('li');
+        var isSection = !!(li && li.classList.contains('sidebar-item-section'));
+        // A folder key (trailing slash) is the icon for a subsection and must
+        // land ONLY on that subsection's collapsible header row — its slash-
+        // terminated segment is also a substring of every child note's href,
+        // so without this gate the folder icon would leak onto every file in
+        // it. A leaf key (no trailing slash) is a single note's own icon and
+        // must land ONLY on a plain (non-section) row.
+        var best = null;
+        for (var seg in MAP) {
+          var isFolderKey = seg.charAt(seg.length - 1) === '/';
+          if (isFolderKey !== isSection) continue;
+          if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
+            best = seg;
+          }
+        }
+        if (best === null) return;
+        var svg = SVGS[MAP[best]];
+        var menu = link.querySelector('.menu-text');
+        if (svg && menu && !menu.querySelector('svg.sidebar-section-icon')) {
+          menu.insertAdjacentHTML('afterbegin', svg);
+          menu.firstElementChild.setAttribute('class', 'sidebar-section-icon');
+        }
+      });
+    }
+    inject();
+    injectCards();
+  })();
+</script>
+
+<!-- Fill <span class="time-since" data-start="YYYY-MM" [data-end="YYYY-MM"]> with "(Xy Ymo)" -->
+<script>
+  (function () {
+    function parseYM(s) {
+      if (!s) return null;
+      var parts = s.split('-').map(Number);
+      return new Date(parts[0], parts[1] - 1, 1);
+    }
+    function fmt(years, months) {
+      if (years === 0 && months === 0) return '(<1mo)';
+      if (years === 0) return '(' + months + 'mo)';
+      if (months === 0) return '(' + years + 'y)';
+      return '(' + years + 'y ' + months + 'mo)';
+    }
+    document.querySelectorAll('.time-since').forEach(function (el) {
+      var start = parseYM(el.dataset.start);
+      if (!start) return;
+      var end = parseYM(el.dataset.end) || new Date();
+      var months = (end.getFullYear() - start.getFullYear()) * 12
+                 + (end.getMonth() - start.getMonth());
+      if (months < 0) months = 0;
+      el.textContent = fmt(Math.floor(months / 12), months % 12);
+    });
+  })();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/betopark97\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../notes/008-domain-knowledge/004-networking/index.html" class="pagination-link" aria-label="Networking">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Networking</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Copyright 2024, Roberto Park</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/betopark97">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

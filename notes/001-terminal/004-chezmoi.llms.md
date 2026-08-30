@@ -131,6 +131,29 @@ chezmoi diff      # sanity-check
 chezmoi apply
 ```
 
+### Scoping an apply
+
+`chezmoi apply` with no arguments walks the whole tree, and it stops at the first\
+target that changed on disk since chezmoi last wrote it — asking what to do. In a\
+non-interactive shell (an agent, a script, CI) there is no TTY to answer with, so\
+it fails outright:
+
+``` numberSource
+.claude/statusline-command.sh has changed since chezmoi last wrote it?
+chezmoi: could not open a new TTY: open /dev/tty: device not configured
+```
+
+Nothing after that point gets applied. Pass explicit target paths so unrelated\
+drift can’t block the files you actually changed:
+
+``` numberSource
+chezmoi apply ~/.zshenv ~/.zprofile ~/.zshrc
+chezmoi diff ~/.zshenv ~/.zprofile ~/.zshrc   # empty output = in sync
+```
+
+Scoping is also the safer habit generally: it makes the blast radius of an apply\
+exactly the files you name, instead of everything the source tree happens to hold.
+
 ## References
 
 If you want to explore other features, check out the documentation on the chezmoi homepage:\
@@ -138,6 +161,6 @@ If you want to explore other features, check out the documentation on the chezmo
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-06
+Last modified: 2026-08-30
 
 Back to top

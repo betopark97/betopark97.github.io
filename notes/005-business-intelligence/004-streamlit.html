@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-ff6f84f6b6d5e36ab1c687d6bb41cee9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-fd5075a7eab325385eb90782fcbf55ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -250,6 +250,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#multi-pages" id="toc-multi-pages" class="nav-link" data-scroll-target="#multi-pages">Multi-pages</a></li>
   <li><a href="#filters-components" id="toc-filters-components" class="nav-link" data-scroll-target="#filters-components">Filters &amp; Components</a></li>
   <li><a href="#optimizations" id="toc-optimizations" class="nav-link" data-scroll-target="#optimizations">Optimizations</a></li>
+  <li><a href="#conventions" id="toc-conventions" class="nav-link" data-scroll-target="#conventions">Conventions</a></li>
   </ul>
 </nav>
     </div>
@@ -318,8 +319,16 @@ Note
 <span class="citation" data-cites="st.fragment">@st.fragment</span> (parallel=True)<br>
 st.form<br>
 st.session_state + st.empty()</p>
+</section>
+<section id="conventions" class="level2">
+<h2 class="anchored" data-anchor-id="conventions">Conventions</h2>
+<ul>
+<li>When making dynamic titles, add the variables (filters) as badges. (e.g., date/range, metrics, etc.)</li>
+<li>When changing the x-axis labels like dates into string format, check that the lexicographic sort equals chronological order. The formats should be YYYY, YYYY-QQ, YYYY-MM, YYYY-MM-DD (ISO 8601).</li>
+<li></li>
+</ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-22</span></p>
+<p><span class="note-modified">Last modified: 2026-08-12</span></p>
 
 
 </section>

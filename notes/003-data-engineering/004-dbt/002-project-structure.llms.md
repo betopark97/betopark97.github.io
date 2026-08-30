@@ -1,6 +1,6 @@
-# Conventions
+# Project Structure
 
-This page will cover conventions that I’ve set up when working with dbt, but also boiler plates on getting started.
+This page covers the shape of the project on disk and the three meta files that configure it. Naming rules for the files inside `models/` live in [Naming](../../../notes/003-data-engineering/004-dbt/003-naming.llms.md).
 
 ## Project Directory Structure
 
@@ -23,16 +23,16 @@ dbt_project/
 │       │   └── stg_{source}__{entity}.sql
 │       ├── intermediate/
 │       │   ├── _int__models.yaml
-│       │   └── int_{entity}__{verb/attribute}.sql
+│       │   └── int_{domain}__{entity}.sql
 │       └── marts/
 │           ├── _marts__models.yaml
-│           └── {dim|fct}_{domain}__{entity}.sql
+│           └── {dim|fct|bridge}_{domain}__{entity}.sql
 ├── seeds/                             # Static CSV reference data
 ├── snapshots/                         # SCD type-2 snapshots
 ├── target/                            # Compiled SQL & artifacts (git-ignored)
 ├── tests/                             # Singular (complex) data tests
 │   └── assert_{domain}__{condition}.sql
-├── .env                               # Env vars (dbt fusion auto-detect, git-ignored)
+├── .env                               # Env vars (git-ignored, see the warning below)
 ├── .gitignore
 ├── dbt_project.yml                    # Project config
 └── packages.yml                       # Package dependencies
@@ -113,7 +113,7 @@ seeds:
 packages:
     - package: dbt-labs/dbt_utils
       version: 1.3.2
-    - package: godatadriven/dbt_state
+    - package: godatadriven/dbt_date
       version: 0.17.0
     - package: Snowflake-Labs/dbt_semantic_view
       version: 1.0.3
@@ -197,63 +197,25 @@ Snowflake
       threads: 16
 ```
 
-## Directory Names
-
-`models/{domain}/{layer}`
-
-## Meta Names
-
-`_{layer}__{sources|models}.yaml`
-
-The main characteristic of meta yaml files is that the naming starts with an underscore.
-
-The sources yaml file is needed only in the staging layer. It contains the source database and schema. Also a brief documentation of the origin of the data.
-
-The models yaml file is needed in every layer. It contains models, columns, data tests along with descriptions where needed.
-
-The data tests are generic (singular) tests and custom tests, package tests.\
-- singular tests include: `unique`, `not null`, `accepted_values`, `relationships`\
-- custom tests consist of macros\
-- package tests consist of `dbt_utils` and other community packages
-
-## Model Names
-
-`{layer}_{domain}__{entity}_{temp}.sql`
-
-## Tests Names
-
-The test sql files are for complex data quality tests that cannot be covered with generic (built-in) tests also called singular tests. This includes tests like data conservation inter-intra layers.
-
-## Incremental Models
-
-only use merge, it’s the only idempotent closes to “set-it-and-forget-it”.\
-remember to add the logic to erase orphaned data.
-
-if the data is too big for merge, then use delete+insert or insert_overwrite\
-delete+insert checks for a set of keys that you define
-
 ## Environment Variables
 
 - shell environment overrides all
-- `.env` file is auto detected with the new dbt fusion
-
-## Layers
-
-- staging: normalization, data types, and column renames. Intra model joins and unions are okay.
-- intermediate: all transformations, joins, and unions intra and inter model joins and unions.
-- mart: star/snowflake schema.
+- every credential in `profiles.yml` is read through `env_var()`, never hardcoded
 
 > **NOTE:**
 >
-> The mentioned details above may be confusing because it seems like staging also makes some transformations but the main difference with the intermediate level is business logic. The transformations in staging doesn’t handle business logic and keeps every single detail and data from the raw source.
+> A `.env` file gets auto detected by dbt Fusion. Core does not read one, so export the variables in the shell (or wrap the command in something like `dotenv`) before running dbt. Revisit if Fusion ever becomes the main engine — see the Fusion note in [Setup](../../../notes/003-data-engineering/004-dbt/001-setup.llms.md).
 
-## Models
+## Seeds
 
-- all lower case
-- no select stars
+Avoid seeds like if it were the plague. The only time I’d ever use a seed is for patch work. When some mapping table is so small that setting up a source to ingest later (writing code to pipeline the map table) is the better choice in that moment.
+
+Even if you do use seeds, always make sure to make a source for the table and build or update a pipeline for it.
+
+The reason I don’t like seeds is because it’s easy to get stale. Also, it can be the cause of errors when building in different environments.
 
 ------------------------------------------------------------------------
 
-Last modified: 2026-08-07
+Last modified: 2026-08-29
 
 Back to top

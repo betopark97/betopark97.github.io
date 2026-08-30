@@ -32,8 +32,14 @@ Use a segmented control when you want to toggle between views like timeframes or
 st.form\
 st.session_state + st.empty()
 
+## Conventions
+
+- When making dynamic titles, add the variables (filters) as badges. (e.g., date/range, metrics, etc.)
+- When changing the x-axis labels like dates into string format, check that the lexicographic sort equals chronological order. The formats should be YYYY, YYYY-QQ, YYYY-MM, YYYY-MM-DD (ISO 8601).
+- 
+
 ------------------------------------------------------------------------
 
-Last modified: 2026-07-22
+Last modified: 2026-08-12
 
 Back to top
