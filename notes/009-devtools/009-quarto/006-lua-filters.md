@@ -54,7 +54,7 @@ end
 Two behaviours that are easy to get wrong:
 
 - **Quarto's own filters run on the initial AST.** Elements a user filter creates afterwards are never seen by them. Emitting a Quarto construct — a callout, a tabset — by producing the div that Quarto's filter *would* have produced does not work; the markup that filter generates has to be emitted directly.
-- **Some frontmatter keys never reach `doc.meta`.** Quarto lifts certain keys into template variables before user filters run, so a filter gating on one of them reads an empty value. Gate on the input path instead.
+- **Some frontmatter keys never reach `doc.meta`.** Quarto lifts certain keys into template variables before user filters run, so a filter gating on one of them reads an empty value. `body-classes` is one — set it in a `_metadata.yml` to scope CSS to a folder and it still reads as empty from Lua. Gate on the input path instead.
 
 Quarto's Lua API is documented at [quarto.org/docs/extensions/lua-api](https://quarto.org/docs/extensions/lua-api.html); the Pandoc module is documented at [pandoc.org/lua-filters](https://pandoc.org/lua-filters.html).
 

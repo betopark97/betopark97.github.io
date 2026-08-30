@@ -66,6 +66,15 @@ website:
 
 Mixing explicit entries and `auto:` in one `contents` list is allowed, which is what makes a generated sidebar possible while keeping a hand-written entry at the top.
 
+### The sidebar drives more than the sidebar
+
+Two page features are derived from it, which makes turning a sidebar off more destructive than it looks:
+
+- **`page-navigation` walks the sidebar order.** Prev/next is not chronological or filesystem order — it is the flattened sidebar contents. Set `sidebar: false` on a page and its prev/next links disappear entirely; list the same page twice under different sections and paging through the site visits it twice.
+- **Breadcrumbs are the sidebar ancestry**, and a section's crumb is its `section:` string *verbatim*. There is no per-item badge, so anything decorative added to a section title — a count, an emoji — shows up in the breadcrumb above the page's `<h1>` too.
+
+`page-navigation: false` also works per page, which is how a listing page opts out: the listing *is* the page, so there is nothing sensible to page to, and Quarto would otherwise emit a lone unstyled link to whichever entry sorts first.
+
 ***
 
 [Last modified: 2026-08-30]{.note-modified}
