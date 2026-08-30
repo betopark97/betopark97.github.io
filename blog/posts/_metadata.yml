@@ -1,0 +1,11 @@
+# Options applied to every post in this folder — Quarto merges _metadata.yml
+# into each document's frontmatter. Posts are mirrored one-way from Obsidian by
+# scripts/sync_blog.py (which only ever writes .md/.qmd here, so this file is
+# safe from its pruning pass), so anything not authored in the vault belongs
+# here rather than in the posts themselves.
+
+# Scopes the blog reading view in assets/scss/blog.scss. Note this key never
+# reaches Lua filters — Quarto lifts it into template variables first — so
+# assets/filters/reading-time.lua gates on the input path instead.
+body-classes: blog-post
+

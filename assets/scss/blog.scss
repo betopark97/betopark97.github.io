@@ -1,0 +1,408 @@
+/*-- scss:rules --*/
+
+// Blog: the listing page's filter + post cards, and the reading view on a post.
+// Palette variables come from catppuccin-mocha.scss (Quarto merges
+// scss:defaults across theme files).
+//
+// Everything here is deliberately built on the same card vocabulary as the home
+// page's .explore-card and the Notes gallery's .gallery-card — mantle fill,
+// surface1 hairline, 2px hover lift, mauve accent — so the blog reads as the
+// same site rather than as Quarto's stock listing.
+
+// ---- Listing page ----
+
+// The listing is the page's content, so the stock title block ("Blog" + an
+// empty meta grid) is just a header for a header. Keep the H1, drop the meta.
+body:has(.post-list) #title-block-header .quarto-title-meta {
+  display: none;
+}
+
+.post-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.75rem 0 1.5rem;
+}
+
+.post-filter-pill {
+  padding: 0.28rem 0.75rem;
+  border: 1px solid $ctp-surface1;
+  border-radius: 999px;
+  background: transparent;
+  color: $ctp-subtext0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    color: $ctp-text;
+    border-color: $ctp-surface2;
+  }
+
+  &.is-active {
+    color: $ctp-mauve;
+    border-color: $ctp-mauve;
+    background: rgba(203, 166, 247, 0.12);
+
+    .post-filter-count { color: $ctp-mauve; }
+  }
+}
+
+.post-filter-count {
+  font-size: 0.78em;
+  color: $ctp-overlay1;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-list {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.post-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  // Extra padding on the left leaves room for the accent strip below.
+  padding: 1.15rem 1.3rem 1.2rem 1.5rem;
+  border: 1px solid $ctp-surface1;
+  border-radius: 10px;
+  background: $ctp-mantle;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+  // Accent strip down the left edge — the one flourish that tells a post apart
+  // from the navigation cards on Home/Notes. Kept collapsed until hover so the
+  // resting list stays quiet; scaleY animates on the compositor, so wiping it
+  // in costs no layout.
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, $ctp-mauve, $ctp-blue);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $ctp-mauve;
+    background: $ctp-surface0;
+
+    &::before { transform: scaleY(1); }
+
+    .post-card-title { color: $ctp-mauve; }
+  }
+}
+
+.post-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-family: $font-family-monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  color: $ctp-overlay1;
+
+  // Only a middle dot between the two stats — never a leading one, since a
+  // post can in principle render with just the date.
+  .post-card-date + .post-card-read::before {
+    content: '·';
+    margin-right: 0.5rem;
+    color: $ctp-surface2;
+  }
+}
+
+.post-card-title {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.2rem;
+  font-weight: 650;
+  line-height: 1.35;
+  color: $ctp-text;
+  transition: color 0.15s ease;
+}
+
+.post-card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.94rem;
+  line-height: 1.55;
+  color: $ctp-subtext0;
+}
+
+.post-card-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.7rem;
+}
+
+// Category chip. Shared look between the listing cards and a post's own title
+// block (.quarto-category, below) so a tag is the same object in both places.
+.post-card-cat,
+body.blog-post #title-block-header .quarto-categories .quarto-category {
+  padding: 0.12rem 0.55rem;
+  border: 1px solid $ctp-surface1;
+  border-radius: 4px;
+  background: $ctp-surface0;
+  color: $ctp-subtext1;
+  font-size: 0.73rem;
+  line-height: 1.6;
+  // Quarto ships .quarto-category uppercased and half-faded; both have to go
+  // for a post's own tags to read as the same chip its listing card shows.
+  text-transform: none;
+  opacity: 1;
+}
+
+// ---- Post pages ----
+// Scoped by `body-classes: blog-post`, set for the whole folder in
+// blog/posts/_metadata.yml.
+
+body.blog-post #title-block-header.quarto-title-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+
+  // Quarto nests the H1 and the category row together inside .quarto-title,
+  // which sits *above* .quarto-title-meta in the DOM — so flex `order` alone
+  // can't put the date between them. `display: contents` dissolves the wrapper
+  // and promotes both children into the header's own flex line, where the
+  // orders below can interleave them: title, date, tags.
+  > .quarto-title { display: contents; }
+
+  h1.title {
+    order: 0;
+    margin-bottom: 0.55rem;
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    line-height: 1.2;
+  }
+
+  .quarto-title-meta { order: 1; }
+  .quarto-categories { order: 2; }
+
+  // Hairline under the header, fading out to the right.
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: linear-gradient(to right, $ctp-mauve, $ctp-blue 30%, transparent 85%);
+  }
+}
+
+// Flatten Quarto's labelled two-column meta grid ("Published" over the date,
+// "Reading time" over the count) into one mono byline: `2026-06-27 · 7 min`.
+body.blog-post #title-block-header .quarto-title-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 0.6rem;
+  margin: 0;
+  font-family: $font-family-monospace;
+  font-size: 0.85rem;
+  color: $ctp-overlay1;
+
+  .quarto-title-meta-heading { display: none; }
+
+  .quarto-title-meta-contents p {
+    margin: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  > div + div::before {
+    content: '·';
+    margin-right: 0.6rem;
+    color: $ctp-surface2;
+  }
+
+  // Folded into the date by assets/filters/reading-time.lua — Quarto has no
+  // slot of its own for it. The separator lives here so the filter stays
+  // presentation-free.
+  .reading-time::before {
+    content: '·';
+    margin-right: 0.4rem;
+    color: $ctp-surface2;
+  }
+}
+
+body.blog-post #title-block-header .quarto-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.9rem;
+  padding-top: 0;
+}
+
+// Long-form reading measure: looser leading than the note pages, which are
+// scannable reference material rather than prose.
+body.blog-post main.content {
+  p, li {
+    line-height: 1.75;
+  }
+
+  h2 {
+    margin-top: 2.5rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid $ctp-surface0;
+  }
+
+  h3 {
+    margin-top: 1.9rem;
+  }
+}
+
+// ---- Post footer: prev/next ----
+// Quarto emits `.page-navigation` as two bare `.pagination-link`s at the foot
+// of the page, styled as nothing but blue text — so a post trailed off into
+// default markup. These give them the same card the listing uses.
+//
+// Scoped to blog posts: the Notes sections use the same markup and their rail
+// is a reference hierarchy, where a plain link is the right weight.
+
+body.blog-post .page-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  // Mirrors the gradient hairline under the title block, so the post opens and
+  // closes on the same line.
+  border-top: 1px solid transparent;
+  border-image: linear-gradient(to right, $ctp-mauve, $ctp-blue 30%, transparent 85%) 1;
+
+  // Either side can be empty (the newest post has no next), and an empty grid
+  // cell would leave the remaining card stretched across the wrong column.
+  .nav-page:empty { display: none; }
+  .nav-page-next:not(:empty) { grid-column: 2; }
+}
+
+body.blog-post .page-navigation .pagination-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  // Quarto centres this link's contents; as a card each side should sit on the
+  // edge its arrow points away from. `align-items` is the lever, not
+  // `text-align` — these are flex items, so the cross axis wins.
+  align-items: flex-start;
+  height: 100%;
+  padding: 0.9rem 1.15rem 1rem;
+  border: 1px solid $ctp-surface1;
+  border-radius: 10px;
+  background: $ctp-mantle;
+  color: $ctp-text;
+  text-decoration: none !important;
+  transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: $ctp-mauve;
+    background: $ctp-surface0;
+    // styles.scss recolors this link's hover blue site-wide; on a card the
+    // title should read like a post title, so take the listing's mauve back.
+    color: $ctp-mauve;
+  }
+
+  // Quarto ships no "Previous"/"Next" label — only the arrow glyph — so the
+  // kicker is generated here, in the same mono voice as the card byline.
+  &::before {
+    font-family: $font-family-monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $ctp-overlay1;
+  }
+
+  .nav-page-text {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  // The arrow is decorative next to a generated kicker that already says which
+  // direction this is.
+  i.bi { display: none; }
+}
+
+body.blog-post .nav-page-previous .pagination-link {
+  text-align: left;
+  &::before { content: '← Previous'; margin-bottom: 0.3rem; }
+}
+
+body.blog-post .nav-page-next .pagination-link {
+  align-items: flex-end;
+  text-align: right;
+  &::before { content: 'Next →'; margin-bottom: 0.3rem; }
+}
+
+// One card alone shouldn't span half the page with dead space beside it.
+@media (max-width: 575.98px) {
+  body.blog-post .page-navigation {
+    grid-template-columns: 1fr;
+    .nav-page-next:not(:empty) { grid-column: 1; }
+  }
+}
+
+// ---- Post TOC ----
+// Stock Quarto against this theme: an unstyled "On this page" heading, and
+// long entries running flush into the column edge instead of wrapping clear
+// of it.
+
+body.blog-post #TOC {
+  padding-right: 0.75rem;
+
+  #toc-title {
+    margin-bottom: 0.7rem;
+    font-family: $font-family-monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $ctp-overlay1;
+  }
+
+  .nav-link {
+    padding: 0.2rem 0 0.2rem 0.7rem;
+    border-left: 2px solid $ctp-surface0;
+    color: $ctp-subtext0;
+    font-size: 0.86rem;
+    line-height: 1.45;
+    // Headings are prose, not identifiers — let a long one wrap rather than
+    // ride into the margin.
+    overflow-wrap: anywhere;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: $ctp-text;
+      border-left-color: $ctp-surface2;
+    }
+
+    &.active {
+      color: $ctp-mauve;
+      border-left-color: $ctp-mauve;
+    }
+  }
+
+  // Subsections read as subordinate: smaller, dimmer, indented past their parent.
+  ul ul .nav-link {
+    padding-left: 1.4rem;
+    font-size: 0.81rem;
+    color: $ctp-overlay1;
+  }
+}

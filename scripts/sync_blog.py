@@ -111,6 +111,33 @@ def read_scalars(path: Path) -> dict[str, str]:
     return out
 
 
+def read_categories(text: str) -> list[str]:
+    """Categories from already-translated frontmatter, in author order. Handles
+    both the inline (`categories: [a, b]`) and block forms, since `translate`
+    emits the block form but a post may have been authored with `categories`
+    directly rather than via `tags`."""
+    lines = text.splitlines()
+    bounds = frontmatter_bounds(lines)
+    if bounds is None:
+        return []
+    body = lines[bounds[0] + 1 : bounds[1]]
+    for i, ln in enumerate(body):
+        m = KEY_RE.match(ln)
+        if not m or m.group(1) != "categories":
+            continue
+        val = m.group(2).strip()
+        if val:
+            return [c.strip().strip("\"'") for c in val.strip("[]").split(",") if c.strip()]
+        out = []
+        for nxt in body[i + 1 :]:
+            li = LIST_ITEM_RE.match(nxt)
+            if not li:
+                break
+            out.append(li.group(1).strip().strip("\"'"))
+        return out
+    return []
+
+
 def translate(text: str) -> str:
     """Rewrite a post's frontmatter: `tags` -> `categories`, drop empty optional
     scalars, pass everything else through. See the module docstring."""
@@ -198,13 +225,13 @@ def check_dividers(path: Path) -> list[str]:
     return issues
 
 
-def sync_posts(posts_src: Path) -> list[tuple[str, str]]:
+def sync_posts(posts_src: Path) -> list[tuple[str, str, list[str]]]:
     """Translate every publishable post from the vault into blog/posts/, prune
-    posts with no vault counterpart, and return (filename, date) pairs. A post
-    missing a required field is skipped (never reaches Quarto)."""
+    posts with no vault counterpart, and return (filename, date, categories)
+    triples. A post missing a required field is skipped (never reaches Quarto)."""
     POSTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    synced: list[tuple[str, str]] = []
+    synced: list[tuple[str, str, list[str]]] = []
     for src in sorted(posts_src.iterdir()):
         if src.suffix != ".md" or src.name == "index.md" or src.name.startswith("."):
             continue
@@ -220,9 +247,9 @@ def sync_posts(posts_src: Path) -> list[tuple[str, str]]:
             out_name = src.stem + ".qmd"
         (POSTS_DIR / out_name).write_text(text)
         log(f"syncing {src.name} → blog/posts/{out_name}")
-        synced.append((out_name, fm["date"]))
+        synced.append((out_name, fm["date"], read_categories(text)))
 
-    expected = {name for name, _ in synced}
+    expected = {name for name, _, _ in synced}
     for existing in POSTS_DIR.iterdir():
         if existing.suffix in (".md", ".qmd") and existing.name not in expected:
             log(f"removing stale post: blog/posts/{existing.name}")
@@ -231,10 +258,22 @@ def sync_posts(posts_src: Path) -> list[tuple[str, str]]:
     return synced
 
 
-def update_quarto_sidebar(posts: list[tuple[str, str]]) -> None:
-    """Regenerate the auto-blog block in _quarto.yml: the blog landing first,
-    then every post newest-first (by date) to match the listing order — pinning
-    the sequence rather than leaving it to Quarto's FS traversal."""
+def update_quarto_sidebar(posts: list[tuple[str, str, list[str]]]) -> None:
+    """Regenerate the auto-blog block in _quarto.yml as a collapsed category
+    tree: an "All posts" link to the listing, then one collapsed section per
+    category, each holding its posts newest-first.
+
+    A flat list of every post was the obvious shape and the wrong one — it grows
+    without bound, gives no sense of *where* you are, and long titles wrap to
+    five or six lines apiece. Grouping keeps the rail a fixed handful of rows
+    however many posts exist, and reuses the same category vocabulary as the
+    listing page's filter pills.
+
+    A post is filed under its FIRST category only. Filing it under each would
+    duplicate it in the sidebar order, and Quarto's prev/next pagination walks
+    that order — so a multi-category post would be visited twice while paging
+    through the blog. The listing's filter still finds it under any of its
+    categories; the rail just picks one home for it."""
     lines = QUARTO_YML.read_text().splitlines()
     begin = next((i for i, ln in enumerate(lines) if SIDEBAR_BEGIN in ln), None)
     end = next((i for i, ln in enumerate(lines) if SIDEBAR_END in ln), None)
@@ -246,17 +285,38 @@ def update_quarto_sidebar(posts: list[tuple[str, str]]) -> None:
         )
         return
 
+    newest_first = sorted(posts, key=lambda p: p[1], reverse=True)
+    grouped: dict[str, list[str]] = {}
+    loose: list[str] = []
+    for name, _, cats in newest_first:
+        if cats:
+            grouped.setdefault(cats[0], []).append(name)
+        else:
+            loose.append(name)
+
     indent = lines[begin][: len(lines[begin]) - len(lines[begin].lstrip())]
     block = [
         lines[begin],
         f"{indent}- id: blog",
         f'{indent}  title: "Blog"',
+        # Sections start folded; Quarto opens the one holding the current post.
+        f"{indent}  collapse-level: 1",
         f"{indent}  contents:",
-        f'{indent}    - text: "Blog"',
+        f'{indent}    - text: "All posts"',
         f"{indent}      href: blog/index.md",
     ]
-    for name, _ in sorted(posts, key=lambda p: p[1], reverse=True):
-        block.append(f"{indent}    - blog/posts/{name}")
+    for cat in sorted(grouped):
+        names = grouped[cat]
+        # No post count on the section title: Quarto builds the page breadcrumb
+        # from this same string, and there is no per-item badge to put a count
+        # in instead — so a count here reads as "Data (1) > Data" above the H1.
+        # The listing page's filter pills carry the counts.
+        block.append(f'{indent}    - section: "{cat}"')
+        block.append(f"{indent}      contents:")
+        block.extend(f"{indent}        - blog/posts/{n}" for n in names)
+    # Uncategorised posts would vanish inside a category tree, so they sit at the
+    # top level rather than being dropped or given a fake section.
+    block.extend(f"{indent}    - blog/posts/{n}" for n in loose)
     block.append(lines[end])
 
     QUARTO_YML.write_text("\n".join(lines[:begin] + block + lines[end + 1 :]) + "\n")

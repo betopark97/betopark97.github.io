@@ -1,0 +1,35 @@
+```{=html}
+<%
+// Every category used by at least one post, in alphabetical order, with the
+// number of posts carrying it. Drives the filter row below; the filtering
+// itself is the small script at the bottom of blog/index.md.
+const catCounts = {};
+for (const item of items) {
+  for (const c of (item.categories || [])) catCounts[c] = (catCounts[c] || 0) + 1;
+}
+const cats = Object.keys(catCounts).sort();
+%>
+<% if (cats.length) { %>
+<div class="post-filter" role="group" aria-label="Filter posts by category">
+  <button type="button" class="post-filter-pill is-active" data-cat="*">All <span class="post-filter-count"><%= items.length %></span></button>
+  <% for (const c of cats) { %>
+  <button type="button" class="post-filter-pill" data-cat="<%= c %>"><%= c %> <span class="post-filter-count"><%= catCounts[c] %></span></button>
+  <% } %>
+</div>
+<% } %>
+<div class="post-list">
+<% for (const item of items) { %>
+  <a class="post-card" href="<%= item.path %>" data-cats="|<%= (item.categories || []).join('|') %>|">
+    <span class="post-card-meta">
+      <% if (item.date) { %><time class="post-card-date"><%= item.date %></time><% } %>
+      <% if (item['reading-time']) { %><span class="post-card-read"><%= item['reading-time'] %> read</span><% } %>
+    </span>
+    <span class="post-card-title"><%= item.title %></span>
+    <% if (item.description) { %><span class="post-card-desc"><%= item.description %></span><% } %>
+    <% if ((item.categories || []).length) { %>
+    <span class="post-card-cats"><% for (const c of item.categories) { %><span class="post-card-cat"><%= c %></span><% } %></span>
+    <% } %>
+  </a>
+<% } %>
+</div>
+```
