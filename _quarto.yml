@@ -5,7 +5,6 @@ project:
     - "*.qmd"
     - "*.md"
     - "!README.md"
-    - "!docs/"
   resources:
     - assets/_aboutme.md
     # Referenced only from a <script src> in custom_header.html, so Quarto

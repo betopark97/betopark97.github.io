@@ -9,7 +9,7 @@ notes/ — author in Obsidian and run this script).
 Strict convention gate
 -----------------------
 This is not a blind mirror: a node is synced only if it satisfies the
-conventions in docs/conventions.md, so a malformed note never reaches Quarto
+conventions below, so a malformed note never reaches Quarto
 (and the render can't fail on it). The gate and the `--report` check share one
 rule set, so they never drift:
 
@@ -83,7 +83,7 @@ INTRO_END = "<!-- <<< notes-intro -->"
 CONTENTS_BEGIN = "# >>> auto-contents"
 CONTENTS_END = "# <<< auto-contents"
 
-# Naming convention (see docs/conventions.md): a 3-digit zero-padded number
+# Naming convention: a 3-digit zero-padded number
 # prefix + lowercase kebab-case slug. Folders use it bare; files add `.md`.
 FOLDER_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*$")
 FILE_RE = re.compile(r"^\d{3}-[a-z0-9]+(?:-[a-z0-9]+)*\.md$")
@@ -133,7 +133,10 @@ def index_issues(index: Path, top_level: bool) -> list[str]:
     if top_level and not fm.get("description"):
         issues.append("missing 'description' (feeds the gallery card)")
     if top_level and not fm.get("icon"):
-        issues.append("missing 'icon' (Bootstrap icon name; see docs/conventions.md)")
+        issues.append(
+            "missing 'icon' (a bare Bootstrap name like `diagram-3`, "
+            "or an Iconify id like `logos:dbt-icon`)"
+        )
     issues.extend(check_dividers(index))
     return issues
 
@@ -561,7 +564,7 @@ def read_frontmatter(path: Path) -> dict[str, str]:
 
 def check_dividers(path: Path) -> list[str]:
     """Flag bare `---` horizontal-rule dividers in the body that aren't fenced by
-    blank lines (see docs/conventions.md §5). The leading frontmatter `---`/`---`
+    blank lines. The leading frontmatter `---`/`---`
     pair is exempt — that's the metadata block. A divider with no blank line
     *after* it makes Quarto parse the following prose as a second YAML block and
     the render dies; no blank line *before* it turns the previous line into a
@@ -645,7 +648,7 @@ def print_validation_report(results: list) -> None:
     ok, bad = paint("32", "PASS"), paint("31", "FAIL")
 
     print("\n" + "─" * 64)
-    print("Convention check (vault) — see docs/conventions.md")
+    print("Convention check (vault)")
     print("─" * 64)
     for path, issues in results:
         if issues:

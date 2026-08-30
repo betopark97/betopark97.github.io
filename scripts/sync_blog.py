@@ -169,7 +169,7 @@ def strip_frontmatter(text: str) -> str:
 
 def check_dividers(path: Path) -> list[str]:
     """Flag bare `---` horizontal-rule dividers in the body that aren't fenced by
-    blank lines (see docs/conventions.md). The leading frontmatter pair is
+    blank lines. The leading frontmatter pair is
     exempt. A divider with no blank line after it makes Quarto parse the next
     lines as a second YAML block and the render dies."""
     try:
@@ -324,7 +324,7 @@ def print_validation_report(results: list) -> None:
     ok, bad = paint("32", "PASS"), paint("31", "FAIL")
 
     print("\n" + "─" * 64)
-    print("Convention check (vault blog) — see docs/conventions.md")
+    print("Convention check (vault blog)")
     print("─" * 64)
     for path, issues in results:
         if issues:
