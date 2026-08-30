@@ -182,6 +182,39 @@ def copy_leaf_with_footer(src: Path, dst: Path) -> None:
     dst.write_text(f"{text}\n\n***\n\n[Last modified: {stamp}]{{.note-modified}}\n")
 
 
+# Links are authored in the vault, where every note really is a .md, so a link
+# to a mermaid-bearing note points at a file that only exists under that name
+# upstream — downstream it was published as .qmd (see copy_leaf_with_footer).
+# Quarto then emits "Unable to resolve link target: …" and drops the link.
+# Repoint those targets after the tree is settled, so authors keep writing
+# plain .md links and never have to know which notes carry a diagram.
+LINK_RE = re.compile(r"\]\(([^)\s#]+\.md)(#[^)\s]*)?\)")
+
+
+def retarget_qmd_links(root: Path) -> int:
+    """Rewrite `](…​.md)` links that now resolve to a published .qmd. Targets
+    are resolved relative to the linking file, so cross-folder links are
+    handled too. Returns the number of files changed."""
+    published_qmd = {p.with_suffix(".md").resolve() for p in root.rglob("*.qmd")}
+    if not published_qmd:
+        return 0
+
+    changed = 0
+    for doc in [*root.rglob("*.md"), *root.rglob("*.qmd")]:
+
+        def repoint(m: re.Match) -> str:
+            if (doc.parent / m.group(1)).resolve() not in published_qmd:
+                return m.group(0)
+            return f"]({m.group(1)[:-3]}.qmd{m.group(2) or ''})"
+
+        text = doc.read_text()
+        rewritten = LINK_RE.sub(repoint, text)
+        if rewritten != text:
+            doc.write_text(rewritten)
+            changed += 1
+    return changed
+
+
 def copy_tree_gated(src: Path, dst: Path, top_level: bool, src_root: Path) -> int:
     """Copy a folder already validated as compliant: its index.md plus every
     compliant child (compliant leaf files and compliant subsections, recursively).
@@ -693,6 +726,10 @@ def main() -> int:
             continue
         log(f"removing notes/{existing.name}/ (absent from vault or non-compliant)")
         shutil.rmtree(existing)
+
+    retargeted = retarget_qmd_links(NOTES_DIR)
+    if retargeted:
+        log(f"repointed .md links to .qmd in {retargeted} file(s)")
 
     suffix = "" if _VERBOSE else " — run `make sync-notes` for details"
     print(f"notes: synced {len(synced)} categories, skipped {skipped} node(s){suffix}")
