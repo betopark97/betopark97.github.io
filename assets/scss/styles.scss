@@ -268,6 +268,16 @@ body:has(.hero) #title-block-header {
 }
 
 .hero {
+  // Weather palette: overridden per condition by applyWash() in index.md.
+  // The defaults are the site's signature mesh and stand when the weather is
+  // ordinary (plain cloud) or the fetch never lands.
+  --blob-1: #{$ctp-mauve};
+  --blob-2: #{$ctp-blue};
+  --blob-3: #{$ctp-pink};
+  --blob-4: #{$ctp-teal};
+  --blob-5: #{$ctp-peach};
+  --blob-opacity: 0.5;
+
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -309,37 +319,39 @@ body:has(.hero) #title-block-header {
     position: absolute;
     border-radius: 50%;
     filter: blur(70px);
-    opacity: 0.5;
+    opacity: var(--blob-opacity);
     pointer-events: none;
     will-change: transform;
+    // Cross-fade when a cached reading is replaced by a fresh one.
+    transition: background 1.2s ease, opacity 1.2s ease;
   }
   .mesh-blob-1 {
     width: 320px; height: 320px;
-    background: $ctp-mauve;
+    background: var(--blob-1);
     top: -60px; left: -60px;
     animation: hero-blob-1 14s ease-in-out infinite;
   }
   .mesh-blob-2 {
     width: 280px; height: 280px;
-    background: $ctp-blue;
+    background: var(--blob-2);
     bottom: -80px; right: -40px;
     animation: hero-blob-2 18s ease-in-out infinite;
   }
   .mesh-blob-3 {
     width: 220px; height: 220px;
-    background: $ctp-pink;
+    background: var(--blob-3);
     top: 40%; left: 55%;
     animation: hero-blob-3 16s ease-in-out infinite;
   }
   .mesh-blob-4 {
     width: 260px; height: 260px;
-    background: $ctp-teal;
+    background: var(--blob-4);
     top: -40px; right: -50px;
     animation: hero-blob-4 20s ease-in-out infinite;
   }
   .mesh-blob-5 {
     width: 240px; height: 240px;
-    background: $ctp-peach;
+    background: var(--blob-5);
     bottom: -60px; left: -30px;
     animation: hero-blob-5 22s ease-in-out infinite;
   }
@@ -367,6 +379,114 @@ body:has(.hero) #title-block-header {
     color: $ctp-mauve;
     margin-left: 2px;
     animation: hero-blink 1s steps(1) infinite;
+  }
+
+  // Weather readout: a frosted pill in the bottom-right corner. At rest it
+  // shows only the temperature; hovering the hero expands it to the condition
+  // and city, so the banner stays quiet until someone looks at it. The frosted
+  // backdrop is what keeps it legible as the coloured blobs drift underneath.
+  .hero-wx {
+    position: absolute;
+    right: 1.15rem;
+    bottom: 1.05rem;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    padding: 0.38rem 0.75rem 0.38rem 0.6rem;
+    border: 1px solid rgba(69, 71, 90, 0.9);
+    border-radius: 999px;
+    background: rgba(49, 50, 68, 0.42);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-family: $font-family-monospace;
+    font-size: 0.76rem;
+    font-variant-numeric: tabular-nums;
+    color: $ctp-text;
+    user-select: none;
+    // Hidden until the fetch lands, so a failed or blocked request leaves the
+    // banner exactly as it was rather than showing an empty pill.
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, border-color 0.3s ease, background 0.3s ease;
+
+    &.is-ready {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  // Only the icon carries colour; the reading itself stays neutral.
+  .hero-wx-icon {
+    color: $ctp-sky;
+
+    &.is-clear { color: $ctp-yellow; }
+    &.is-rain  { color: $ctp-blue; }
+    &.is-snow  { color: $ctp-teal; }
+    &.is-fog   { color: $ctp-overlay2; }
+    &.is-storm { color: $ctp-mauve; }
+  }
+
+  .hero-wx-temp {
+    margin-left: 0.45rem;
+  }
+
+  // A step below the reading, but no darker: surface2 disappears entirely
+  // against the frosted pill once a bright blob drifts behind it.
+  .hero-wx-sep {
+    color: $ctp-overlay1;
+
+    // The pill itself has no gap, so the temperature would butt straight up
+    // against the first separator. Space it from inside the collapsing half,
+    // where overflow clips the margin away at rest.
+    &:first-child {
+      margin-left: 0.45rem;
+    }
+  }
+
+  .hero-wx-more {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: $ctp-subtext0;
+    transition: max-width 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+  }
+
+  &:hover .hero-wx {
+    border-color: rgba(203, 166, 247, 0.5);
+    background: rgba(49, 50, 68, 0.6);
+  }
+
+  &:hover .hero-wx-more {
+    max-width: 14rem;
+    opacity: 1;
+  }
+}
+
+// Reduced motion drops the animation, not the behaviour: the pill still opens
+// on hover, it just snaps instead of sliding.
+@media (prefers-reduced-motion: reduce) {
+  .hero .mesh-blob,
+  .hero .typed-cursor {
+    animation: none;
+  }
+  .hero::before,
+  .hero-wx,
+  .hero-wx-more {
+    transition: none;
+  }
+}
+
+// Touch has no hover, so the pill never expands there. Keep the temperature —
+// the condition and city are the expendable half.
+@media (max-width: 576px) {
+  .hero .hero-wx {
+    right: 0.8rem;
+    bottom: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
