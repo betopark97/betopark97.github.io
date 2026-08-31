@@ -4,6 +4,8 @@
 
 I \|
 
+· · Seoul
+
 ## Hi there 👋
 
 I’m Roberto, a Data Engineer / Data Analyst based in South Korea.
