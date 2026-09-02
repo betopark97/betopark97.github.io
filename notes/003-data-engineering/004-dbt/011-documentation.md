@@ -260,4 +260,4 @@ dbt docs serve
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}

@@ -13,8 +13,10 @@ Style rules taken from dbt Labs' [how we style our dbt projects](https://docs.ge
 	- most platforms use dots to separate `database.schema.object`, so underscores avoid quoting issues
 - same field name across models. a key to `customers` is `customer_id`, not `user_id` or `id`
 - no abbreviations or aliases. `customer` not `cust`, `orders` not `o`
-- avoid reserved words as column names
-- booleans prefixed with `is_` or `has_`
+- avoid reserved words as column names. the aliasing trick for a source column that is one is in [Staging](006-staging.md)
+- booleans prefixed with `is_` or `has_`, and never also suffixed `_flag`. `is_` for state, `has_` for possession: `is_accessed`, `is_ongoing`, `has_golden_hammer`
+	- a source `_flag` column keeps the prefix at the front of the whole name, ahead of any `{parent}__{child}` nesting: `boss_contents__complete_flag` becomes `is_boss_contents__completed`
+	- the rule assumes the column really is a boolean. how to check and cast is in [Staging](006-staging.md)
 - timestamps named `{event}_at` in UTC. non-UTC gets a suffix, like `created_at_pt`
 	- our project is KST so we use the `_kst` suffix
 - dates named `{event}_date`
@@ -302,4 +304,4 @@ models:
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-02]{.note-modified}

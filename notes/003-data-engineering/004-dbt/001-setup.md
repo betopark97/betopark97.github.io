@@ -60,4 +60,4 @@ dbt init --skip-profile-setup
 
 ***
 
-[Last modified: 2026-07-19]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}

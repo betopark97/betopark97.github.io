@@ -27,10 +27,10 @@ Table, moving to incremental once the build time justifies it. BI and semantic m
 ## Tests & Contracts
 
 - a data contract applies to this layer
-- `_marts__models.yaml` declares models, columns, data tests, and descriptions
+- `_marts__models.yml` declares models, columns, data tests, and descriptions
 - `+grants` is set per mart so the right roles can read it, see [Documentation](011-documentation.md)
 - conservation tests live here in practice, since this is where a wrong row count actually costs something. See [Tests](010-tests.md)
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}

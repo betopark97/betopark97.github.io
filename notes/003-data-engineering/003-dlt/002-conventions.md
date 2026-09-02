@@ -72,6 +72,41 @@ Below will be an explanation of each of the subdirectories and files in logical 
 > [!tip]
 > A good way to build a robust pipeline is to think in enhancing the project in the following order: secrets, idempotency, error/retry handling, incremental optimizations, observability, scheduling, tests, schema drifts. This does not apply only for dlt, but for all data pipelines, too.
 
+### Why a folder per source
+
+The folder-per-source layout is convention-by-example, *not* a hard rule — dlt has no docs page mandating it. It is reverse-engineered from dlt's own built-in sources (`dlt/sources/*`) and the [verified-sources](https://github.com/dlt-hub/verified-sources) repo. Verified against dlt 1.28.2.
+
+| File | Contains | Nature |
+|------|----------|--------|
+| `__init__.py` | the `@dlt.source` function; imports from the others | **wiring** — reads top-to-bottom as intent |
+| `settings.py` | static data: `BASE_URL`, endpoint catalog, defaults, constants | **data** — no logic |
+| `helpers.py` | pure functions: resource builders, custom paginators/auth, row transforms | **logic** — testable in isolation |
+
+How dlt's own shipped sources are laid out:
+
+| Source | Files | Notes |
+|--------|-------|-------|
+| `filesystem` | `__init__.py`, `settings.py`, `helpers.py`, `readers.py` | The full trio + extra. `settings.py` is literally `DEFAULT_CHUNK_SIZE = 100`. `readers.py` holds format-specific read fns. |
+| `sql_database` | `__init__.py`, `helpers.py`, `schema_types.py`, `arrow_helpers.py` | **No `settings.py`** — nothing static to hoist. Extra `schema_types.py` for type mapping. |
+| `rest_api` | `__init__.py`, `typing.py`, `config_setup.py`, `utils.py` | It's a *framework*, not a source: `typing.py` = config schema, `config_setup.py` = config→objects. |
+
+So the convention is loose — sources add, skip, and rename files as their needs demand. `settings.py` only appears when there are shared constants. Add a file **when a concern earns one**, not to fill a template; an empty `helpers.py` is fine as a reserved slot.
+
+> [!note]
+> `dlt init` scaffolds a single-file `*_pipeline.py` quickstart, not this folder layout. The folder pattern comes from the verified-sources repo.
+
+### Scaling: catalog + builder loop
+
+Past a handful of endpoints, stop hand-writing each resource and go data-driven:
+
+| File | Small source | Scaled source |
+|------|--------------|---------------|
+| `settings.py` | flat `ENDPOINTS` (name→path) | enriched catalog (name→`{path, params, write_disposition, primary_key}`) |
+| `helpers.py` | (empty) | `build_resource(name, spec)` + any custom paginator/transform |
+| `__init__.py` | hand-writes each resource | thin `@dlt.source`; loops the catalog through the builder |
+
+Adding an endpoint then costs one entry in `settings.py` and zero code change. If `__init__.py` imports a builder across the module boundary, make it public (`build_resource`, not `_build_resource`).
+
 ## Configs & Secrets
 
 There are various ways to set up configs and secrets. The one I prefer is to use the `.dlt` native features. Then use the dlt supported decorators to call them with `@dlt.source`, `@dlt.resource` and `@dlt.destination`.
@@ -194,6 +229,90 @@ To separate environments under `.dlt` make the following configurations:
 - `prod.secrets.toml`: exclude variables under `secrets.toml` that belong to prod and add them here.
 - `profile-name` (Optional): just add a single text no quotations like: `dev` or `prod` to pin the runs to a specific profile. However, I'd recommend just using `WORKSPACE__PROFILE=prod` when running pipelines to prod instead. All runs default to dev.
 
+### Put the non-secret half in `{profile}.config.toml`
+
+A profile overlay works for `config.toml` too, and that is usually the better
+file. dlt resolves a credential **field by field** across every provider, so a
+credential can be split: the part that identifies an environment goes in
+committed config, and only the actual secret stays in the gitignored file.
+
+```toml
+# .dlt/dev.config.toml  -- committed
+[destination.postgres.credentials]
+database = "dev_maplestory"
+```
+
+```toml
+# .dlt/secrets.toml  -- gitignored, shared by every profile
+[destination.postgres.credentials]
+host = "localhost"
+port = 5432
+username = "..."
+password = "..."
+```
+
+The point is reviewability: the environment-to-database map is in git and shows
+up in a diff, while nothing secret is. Only fields typed as secrets (`password`,
+API keys) are forced into `secrets.toml`; everything else resolves from config.
+
+### The built-in profiles
+
+`dev` (the default), `prod`, `tests`, and `access`. `dev` and `tests` are
+`LOCAL_PROFILES` — never synced to dltHub. `tests` is worth wiring even before
+there are tests: it exists so a test run cannot touch the data you work
+against, and pointing it at a real database rather than a local duckdb file is
+what lets it catch destination-specific failures.
+
+### State is per profile — this is the real payoff
+
+The workspace moves pipeline state out of `~/.dlt/pipelines/` and into
+`{run_dir}/.dlt/state/{profile}/pipelines/`. Without a workspace, a dev run and
+a prod run of the same `pipeline_name` **share one state directory** and its
+incremental cursors. That, not the config layering, is the reason to reach for
+workspaces rather than swapping `dataset_name` by hand.
+
+Consequence when retrofitting an existing project: the moment `.workspace`
+appears, dlt stops finding the old state. Destination-side state
+(`_dlt_pipeline_state`, `_dlt_loads`, `_dlt_version`) lives in the dataset and
+is re-synced automatically, so this is usually harmless — but copy
+`~/.dlt/pipelines/{name}` into the new location if the pipeline has incremental
+cursors you cannot afford to re-derive.
+
+### Gotchas
+
+- The marker file is the **only** trigger: dlt builds a `WorkspaceRunContext`
+  if and only if `.dlt/.workspace` exists. Its contents are never read.
+- Do **not** run `dlthub init` in a directory that already has a `.dlt/`. It
+  scaffolds a workspace and overwrites what is there. `touch .dlt/.workspace`
+  is the whole retrofit.
+- `dlt --help` hides the `profile` and `workspace` subcommands until a
+  workspace is initialized, which makes the feature look absent when it is not.
+- Commit `.workspace` and every `{profile}.config.toml`; gitignore
+  `.dlt/state/`, `.dlt/data/`, `.dlt/profile-name`, and `.dlt/*.secrets.toml`.
+
+Checking what a profile resolves to, without running a load:
+
+```bash
+WORKSPACE__PROFILE=tests python -c "
+from dlt.common.configuration.resolve import resolve_configuration
+from dlt.destinations.impl.postgres.configuration import PostgresCredentials
+print(resolve_configuration(PostgresCredentials(), sections=('destination','postgres')).database)
+"
+```
+
+### Name the environment in the database, not the dataset
+
+If the destination is Postgres, put the environment in the **database**
+(`dev_maplestory`, `prod_maplestory`) and keep `dataset_name` identical across
+profiles. Prefixing the dataset instead means every downstream source
+definition and query carries the environment as a string.
+
+One naming trap: dlt derives its staging dataset from
+`staging_dataset_name_layout`, default `%s_staging`. A dataset named `nexon`
+produces a schema `nexon_staging`, which collides in meaning with a dbt
+`staging` layer in the same database. Prefix raw datasets — `raw_nexon` gives
+`raw_nexon_staging`, which reads unambiguously.
+
 ## Scripts
 
 when running:
@@ -207,4 +326,4 @@ when running:
 
 ***
 
-[Last modified: 2026-08-26]{.note-modified}
+[Last modified: 2026-09-02]{.note-modified}

@@ -16,7 +16,7 @@ Each layer gets its own page. Read the matrix first, then the page for the layer
 | Database | `{STAGE_DB}` | `{STAGE_DB}` | `{MART_DB}` |
 | Data contract | yes | no | yes |
 | Naming | `stg_{source}__{entity}` | `int_{domain}__{entity}` | `{dim\|fct\|bridge}_{domain}__{entity}` |
-| Meta files | `_stg__sources.yaml`, `_stg__models.yaml` | `_int__models.yaml` | `_marts__models.yaml` |
+| Meta files | `_stg__sources.yml`, `_stg__models.yml` | `_int__models.yml` | `_marts__models.yml` |
 
 ## Where the Line Is
 
@@ -26,4 +26,4 @@ Contracts sit on the two boundaries that other people depend on: staging, becaus
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}
