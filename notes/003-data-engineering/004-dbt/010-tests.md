@@ -5,7 +5,7 @@ The four kinds of data test and where each one is declared are in [Naming](003-n
 
 ## Generic Tests
 
-Declared inline in `_{layer}__models.yaml`, on the column they apply to. `unique` and `not_null` on every primary key, `relationships` on every foreign key, `accepted_values` on anything enum-like that staging categorized. The yaml formatting for these is in [Styling](004-styling.md).
+Declared inline in `_{layer}__models.yml`, on the column they apply to. `unique` and `not_null` on every primary key, `relationships` on every foreign key, `accepted_values` on anything enum-like that staging categorized. The yaml formatting for these is in [Styling](004-styling.md).
 
 ## Singular Tests
 
@@ -26,4 +26,4 @@ Named `assert_{domain}__{condition}.sql`.
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}

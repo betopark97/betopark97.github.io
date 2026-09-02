@@ -1,5 +1,6 @@
 ---
 title: Personal Knowledge Management
+description: "\"Why I stopped adopting other people's PKM frameworks and built one a script can enforce.\""
 date: 2026-06-27
 draft: false
 categories:

@@ -8,11 +8,13 @@ Every naming rule in the project lives on this page. Field and column naming is 
 If it is a multi-domain project: `models/{domain}/{layer}`
 If it is a single-domain project: `models/{layer}`
 
-Schema names are singular, model names are plural.
+Schema names are singular, model names are plural. The one exception is the gold layer, which is `marts`, not `mart` — dbt's own best-practice guides name it that way and every dbt project reads it that way, so the convention wins over the singular rule. The directory, the schema, and the meta file all say `marts`.
+
+Meta files use the `.yml` extension, not `.yaml`. dbt's own docs and starter project use `.yml`.
 
 ## Meta Names
 
-`_{layer}__{sources|models}.yaml`
+`_{layer}__{sources|models}.yml`
 
 The main characteristic of meta yaml files is that the naming starts with an underscore.
 
@@ -53,13 +55,13 @@ Data tests come in four kinds and only one of them is a file you name:
 
 | Kind | Where it lives | Examples |
 | --- | --- | --- |
-| generic | `_{layer}__models.yaml` | `unique`, `not_null`, `accepted_values`, `relationships` |
+| generic | `_{layer}__models.yml` | `unique`, `not_null`, `accepted_values`, `relationships` |
 | custom generic | `macros/` | your own reusable test macros |
-| package | `_{layer}__models.yaml` | `dbt_utils` and other community tests |
+| package | `_{layer}__models.yml` | `dbt_utils` and other community tests |
 | singular | `tests/` | `assert_{domain}__{condition}.sql` |
 
 Singular tests are bespoke SQL for data quality checks that the generic tests cannot express, like data conservation inter-intra layers. What we use them for is in [Tests](010-tests.md).
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}

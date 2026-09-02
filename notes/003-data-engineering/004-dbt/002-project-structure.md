@@ -19,14 +19,14 @@ dbt_project/
 ├── models/
 │   └── {domain}/
 │       ├── staging/
-│       │   ├── _stg__sources.yaml     # Source db/schema + origin docs
-│       │   ├── _stg__models.yaml      # Models, columns, tests, descriptions
+│       │   ├── _stg__sources.yml     # Source db/schema + origin docs
+│       │   ├── _stg__models.yml      # Models, columns, tests, descriptions
 │       │   └── stg_{source}__{entity}.sql
 │       ├── intermediate/
-│       │   ├── _int__models.yaml
+│       │   ├── _int__models.yml
 │       │   └── int_{domain}__{entity}.sql
 │       └── marts/
-│           ├── _marts__models.yaml
+│           ├── _marts__models.yml
 │           └── {dim|fct|bridge}_{domain}__{entity}.sql
 ├── seeds/                             # Static CSV reference data
 ├── snapshots/                         # SCD type-2 snapshots
@@ -42,7 +42,7 @@ dbt_project/
 Below we'll discuss what each component is and how to fill them in.
 
 > [!note] 
-> If there is only one domain, there is no need to nest the staging, intermediate, and mart layer. Just simply go with `models/{staging|intermediate|mart}`.
+> If there is only one domain, there is no need to nest the staging, intermediate, and marts layer. Just simply go with `models/{staging|intermediate|marts}`.
 
 ## Project Level Meta Files
 
@@ -202,6 +202,47 @@ tab: Snowflake
 ~~~~
 
 
+### generate_schema_name
+
+The outputs above differ in `database` and nothing else. That is deliberate: the
+**environment is the database, the schema is the layer**, so a schema name is
+identical in every environment and nothing downstream carries the environment as
+a string. Every source, every `ref`, and every hand-written query against the
+warehouse stays byte-identical between targets, and switching environment is a
+change of connection only.
+
+The macro therefore has nothing to add to the name — but it still has to exist,
+because dbt's default prefixes the custom schema with the profile's `schema:`
+and would build `public_staging`:
+
+```sql
+{% macro generate_schema_name(custom_schema_name, node) -%}
+    {%- if custom_schema_name is not none -%}
+        {{ custom_schema_name | trim }}
+    {%- elif node is not none and node.resource_type == 'model' -%}
+        {{ exceptions.raise_compiler_error(
+            "No +schema configured for model '" ~ node.name ~ "'"
+        ) }}
+    {%- else -%}
+        {{ target.schema | trim }}
+    {%- endif -%}
+{%- endmacro %}
+```
+
+Two details in that body:
+
+- Raise **only** for models. dbt resolves a schema for every node it parses, and
+  tests carry no `+schema:` of their own, so raising unconditionally breaks
+  `dbt test`. The `else` branch is what tests land on.
+- Raising at all is worth it: a model whose directory has no matching `models:`
+  block in `dbt_project.yml` otherwise builds silently into the profile's
+  schema, which is the kind of thing you find weeks later.
+
+The alternative — one database, schemas prefixed `dev_` / `prod_` — reads worse
+(`dev_stage.dev_staging`) and puts the environment into every source definition.
+The only thing it buys is cross-environment queries in one connection, which on
+Postgres is impossible anyway.
+
 ## Environment Variables
 
 - shell environment overrides all
@@ -209,6 +250,12 @@ tab: Snowflake
 
 > [!warning] Fusion only, revisit later
 > A `.env` file gets auto detected by dbt Fusion. Core does not read one, so export the variables in the shell (or wrap the command in something like `dotenv`) before running dbt. Revisit if Fusion ever becomes the main engine — see the Fusion note in [Setup](001-setup.md).
+
+> [!warning] Quote the values
+> If a Makefile or script sources the `.env` (`set -a; . ./.env; set +a`), the
+> shell interprets the values. A password containing `&`, `^`, or `$` breaks the
+> run with a misleading `password authentication failed`, or a
+> `command not found` for a fragment of the password. Single-quote every value.
 
 ## Seeds
 
@@ -220,4 +267,4 @@ The reason I don't like seeds is because it's easy to get stale. Also, it can be
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-02]{.note-modified}

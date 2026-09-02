@@ -24,7 +24,7 @@ View by default, table when the model gets heavy. Set under `models.{project}.{d
 
 ## Tests & Contracts
 
-No data contract. This layer is internal, so it stays free to churn. `_int__models.yaml` still declares models, columns, data tests, and descriptions.
+No data contract. This layer is internal, so it stays free to churn. `_int__models.yml` still declares models, columns, data tests, and descriptions.
 
 ## Shape
 
@@ -32,4 +32,4 @@ Import CTEs at the top, one `ref()` each, then functional CTEs doing one logical
 
 ***
 
-[Last modified: 2026-08-29]{.note-modified}
+[Last modified: 2026-09-01]{.note-modified}
