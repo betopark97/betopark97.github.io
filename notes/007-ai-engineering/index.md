@@ -1,6 +1,6 @@
 ---
 title: AI Engineering
 icon: robot
-description: Artificial Intelligence for development and applications.
+description: "Building with AI models, starting with the coding agents used every day."
 ---
 _Overview coming soon._

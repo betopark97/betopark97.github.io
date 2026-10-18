@@ -1,7 +1,7 @@
 ---
 title: Terminal
 icon: terminal
-description: To build a productive local environment.
+description: "The local shell environment: zsh, packages, Python tooling and dotfiles."
 ---
 This section is designed for all things related to the terminal and local environment setup.
 

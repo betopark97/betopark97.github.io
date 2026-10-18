@@ -1,0 +1,205 @@
+---
+title: Merge Strategies
+---
+Three buttons sit on a GitHub pull request, and they do genuinely different
+things to history. Picking one is a decision you make once per repository, so it
+is worth understanding what each leaves behind.
+
+## The one Git has that GitHub does not
+
+A **fast-forward** creates nothing. `main` is just a pointer, and if every commit
+on `main` is already an ancestor of the branch, merging means sliding that
+pointer forward.
+
+```{mermaid}
+gitGraph
+    commit id: "A"
+    commit id: "B"
+    branch feature
+    checkout feature
+    commit id: "C"
+    commit id: "D"
+    checkout main
+    merge feature id: "pointer moves"
+```
+
+```shell
+git checkout main && git merge --ff-only feature
+```
+
+`C` and `D` keep their exact SHAs, author dates, committer dates and signatures.
+`main` and `feature` end up pointing at the identical commit. If `main` has moved
+on at all, git refuses rather than inventing anything — that refusal is the
+feature.
+
+> [!IMPORTANT]
+> **GitHub has no fast-forward button.** Not in the merge UI, not in `gh pr
+> merge`. A true fast-forward can only be done locally and pushed. Every GitHub
+> merge strategy creates new commits.
+
+## The three GitHub offers
+
+### Merge commit
+
+Keeps every commit and adds one more that joins the two lines.
+
+```{mermaid}
+gitGraph
+    commit id: "A"
+    branch feature
+    checkout feature
+    commit id: "C"
+    commit id: "D"
+    checkout main
+    commit id: "B"
+    merge feature id: "merge commit"
+```
+
+History is a truthful record of what happened in parallel, and it is a thicket
+to read. `git log --graph` becomes necessary rather than optional. Common on
+older repositories and on release-branch models.
+
+### Squash and merge
+
+Collapses the whole branch into one new commit on `main`.
+
+```{mermaid}
+gitGraph
+    commit id: "A"
+    commit id: "B"
+    commit id: "squashed PR"
+```
+
+One commit per pull request. The branch's individual commits are discarded —
+they survive only on the closed PR page. **This is the most common default at
+companies**, because it makes `main` a clean list of shipped changes and it
+means nobody has to care how messy a branch was mid-review.
+
+The consequence worth internalising: the **PR title and body become the commit
+message**. Writing a good PR description is not politeness, it is the permanent
+record.
+
+### Rebase and merge
+
+Replays each commit from the branch onto the tip of `main`, one at a time.
+
+```{mermaid}
+gitGraph
+    commit id: "A"
+    commit id: "B"
+    commit id: "C'"
+    commit id: "D'"
+```
+
+Linear like a fast-forward, and every commit survives individually. But `C'` and
+`D'` are **copies**: same content, new SHAs, new committer dates. The originals
+are left orphaned on your local branch.
+
+## Side by side
+
+| | `--ff-only` (local only) | Merge commit | Squash | Rebase |
+| --- | --- | --- | --- | --- |
+| New commits created | none | one | one | one per commit |
+| Original SHAs | preserved | preserved | discarded | **rewritten** |
+| Author date | preserved | preserved | new | preserved |
+| Committer date | preserved | preserved | new | **rewritten to merge time** |
+| GPG signatures | preserved | preserved | lost | broken or re-signed |
+| History shape | linear | branching | linear | linear |
+| Individual commits kept | yes | yes | **no** | yes |
+| Works when `main` moved on | **no** | yes | yes | yes |
+
+That last row is the whole reason GitHub omits fast-forward. On a shared
+repository `main` almost always has commits your branch does not, so the one
+operation that never works is a poor button.
+
+## What a rewrite does to your local branch
+
+After a rebase or squash merge, your local branch and `main` hold **identical
+content under different commits**. Git reports this as divergence:
+
+```shell
+$ git diff dev origin/main          # empty — content is the same
+$ git rev-list --count origin/main..dev   # 41
+$ git rev-list --count dev..origin/main   # 41
+```
+
+Forty-one commits "ahead" and forty-one "behind" with no actual difference. Each
+of your commits has a twin on `main` that git cannot recognise as the same
+thing.
+
+> [!WARNING]
+> **Never `git merge` to fix this.** Merging replays all your originals on top of
+> their own copies and duplicates the entire branch.
+
+**Allowed**
+
+```shell
+git checkout dev && git reset --hard origin/main
+```
+
+**Not allowed**
+
+```shell
+git checkout dev && git merge origin/main     # duplicates every commit
+```
+
+The cleaner habit avoids the problem entirely: **let the branch die at the
+merge.** Branch per change, delete it after, branch again from a fresh `main`.
+Divergence cannot happen to a branch that no longer exists.
+
+```shell
+git checkout main && git pull
+git checkout -b fix/some-thing
+# work, commit, push, open PR, merge in the browser
+git checkout main && git pull
+git branch -d fix/some-thing
+```
+
+Set **Automatically delete head branches** in repository settings and GitHub
+deletes the remote side for you.
+
+## Anything derived from a commit date
+
+A rewrite moves the **committer** date and leaves the **author** date alone.
+
+| Format | Meaning | Survives a rebase |
+| --- | --- | --- |
+| `%aI` | when the change was written | **yes** |
+| `%cI` | when the commit object was last created | no |
+
+Any script reading `git log -1 --format=%cI` will see every commit in a merged
+PR change timestamp at merge time. Use `%aI` unless you specifically want to
+know when it landed.
+
+## What I do here
+
+Repository settings restrict this to **rebase only** — merge commits and squash
+are switched off, so the wrong button cannot be clicked by accident.
+
+Rebase over squash because commits here are written to stand alone, and squash
+would flatten a deliberately separated set into one. Rebase over a local
+fast-forward because merging in the browser is what collaboration looks like,
+and the practice is worth more than exact SHAs on a personal repository.
+
+The accepted costs: SHAs are rewritten, the local branch needs `reset --hard`
+after each merge, and anything reading `%cI` churns once per merge.
+
+## Enforcing the choice
+
+Repository settings, so the decision is structural rather than remembered:
+
+- `Settings → General → Pull Requests` — uncheck **Allow merge commits** and
+  **Allow squash merging**, check **Automatically delete head branches**.
+- `Settings → Rules → Rulesets` on `main` — **Require a pull request before
+  merging** and **Require linear history**. This is what stops a habitual push
+  straight to `main`.
+
+```shell
+gh api -X PATCH repos/OWNER/REPO \
+  -F allow_merge_commit=false -F allow_squash_merge=false \
+  -F allow_rebase_merge=true  -F delete_branch_on_merge=true
+```
+
+***
+
+[Last modified: 2026-09-06]{.note-modified}

@@ -1,5 +1,6 @@
 ---
 title: Google Analytics
+description: "Event-based web analytics with GA4: installing it, and keeping your own visits out."
 icon: logos:google-analytics
 ---
 Google Analytics 4 (GA4) is an event-based web analytics product. A **property** holds the data, a **data stream** represents one site or app within it, and a **measurement ID** (`G-XXXXXXXXXX`) identifies that stream to the code on the page. Every interaction — including a pageview — is an event.

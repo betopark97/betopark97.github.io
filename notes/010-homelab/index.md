@@ -1,7 +1,7 @@
 ---
 title: Homelab
 icon: hdd-rack
-description: Design and manage a personal server environment to self-host services, experiment with architectures, and test new technologies.
+description: "A personal server for self-hosting services and trying out new technology: hardware, software and setup."
 ---
 ## Preface 
 

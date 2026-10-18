@@ -128,14 +128,15 @@ website:
         - text: "Data Engineering"
           href: notes/003-data-engineering/index.md
         - auto: "notes/003-data-engineering/001-data-architecture/"
-        - auto: "notes/003-data-engineering/001-data-modeling/"
-        - auto: "notes/003-data-engineering/002-snowflake/"
-        - auto: "notes/003-data-engineering/003-dlt/"
-        - auto: "notes/003-data-engineering/004-dbt/"
-        - auto: "notes/003-data-engineering/005-fastapi/"
-        - auto: "notes/003-data-engineering/006-ducklake/"
-        - auto: "notes/003-data-engineering/007-prefect/"
-        - auto: "notes/003-data-engineering/008-postgresql/"
+        - auto: "notes/003-data-engineering/002-data-modeling/"
+        - auto: "notes/003-data-engineering/003-snowflake/"
+        - auto: "notes/003-data-engineering/004-dlt/"
+        - auto: "notes/003-data-engineering/005-dbt/"
+        - auto: "notes/003-data-engineering/006-fastapi/"
+        - auto: "notes/003-data-engineering/007-ducklake/"
+        - auto: "notes/003-data-engineering/008-prefect/"
+        - auto: "notes/003-data-engineering/009-postgresql/"
+        - auto: "notes/003-data-engineering/010-dagster/"
     - id: notes-004-data-analysis
       title: "Data Analysis"
       tools:
@@ -146,6 +147,7 @@ website:
         - text: "Data Analysis"
           href: notes/004-data-analysis/index.md
         - auto: "notes/004-data-analysis/004-google-analytics/"
+        - auto: "notes/004-data-analysis/005-polars/"
     - id: notes-005-business-intelligence
       title: "Business Intelligence"
       tools:
@@ -160,6 +162,7 @@ website:
         - notes/005-business-intelligence/003-visualization.md
         - notes/005-business-intelligence/004-streamlit.md
         - auto: "notes/005-business-intelligence/005-frontend/"
+        - notes/005-business-intelligence/006-performance.md
     - id: notes-006-machine-learning
       title: "Machine Learning"
       tools:
@@ -190,6 +193,8 @@ website:
         - text: "Domain Knowledge"
           href: notes/008-domain-knowledge/index.md
         - auto: "notes/008-domain-knowledge/001-scm/"
+        - notes/008-domain-knowledge/002-accounting.md
+        - notes/008-domain-knowledge/003-ads.md
         - auto: "notes/008-domain-knowledge/004-networking/"
     - id: notes-009-devtools
       title: "DevTools"
