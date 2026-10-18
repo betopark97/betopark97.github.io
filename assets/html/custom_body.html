@@ -87,11 +87,15 @@
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }
