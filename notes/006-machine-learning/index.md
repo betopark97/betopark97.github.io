@@ -1,6 +1,6 @@
 ---
 title: Machine Learning
 icon: cpu
-description: Develop and train statistical models that allow systems to learn patterns and make predictions from data.
+description: "Training models that learn patterns from data, and tracking the experiments behind them."
 ---
 _Overview coming soon._

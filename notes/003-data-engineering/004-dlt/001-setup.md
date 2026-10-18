@@ -1,0 +1,18 @@
+---
+title: Setup
+---
+## Installation
+
+```shell
+uv add dlt
+```
+
+To have a way to visualize your dlt pipelines in marimo install the following packages. Let's add it to your dev packages with a `--dev` flag as it's helpful for development not production.
+
+```
+uv add --dev "dlt[hub]" marimo pyarrow ibis-framework numpy
+```
+
+***
+
+[Last modified: 2026-10-18]{.note-modified}

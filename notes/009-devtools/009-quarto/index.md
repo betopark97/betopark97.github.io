@@ -1,5 +1,6 @@
 ---
 title: Quarto
+description: "Publishing a website from markdown with Quarto: configuration, theming, navigation and filters."
 icon: simple-icons:quarto
 ---
 Quarto is a Pandoc-based publishing system. A project is a directory with a `_quarto.yml`; `quarto render` walks it, runs each input through Pandoc, and writes a site to an output directory.

@@ -1,6 +1,6 @@
 ---
 title: Data Engineering
 icon: diagram-3
-description: Build and optimize data pipeline workflows for data driven decision-making.
+description: "Building data platforms: architecture, modeling, and the tools that load, transform and orchestrate data."
 ---
 _Overview coming soon._

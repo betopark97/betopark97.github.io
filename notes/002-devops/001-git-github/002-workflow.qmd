@@ -72,24 +72,86 @@ These five steps are all there is. This is quite simple and works for a solo or 
 
 ## Choose a merge strategy
 
-There are three merge strategies that you can choose from: merge, rebase, and squash.
+GitHub offers merge commit, squash and rebase — and deliberately not
+fast-forward, which only exists locally. Which one you pick decides whether your
+commits survive as themselves, get copied, or get collapsed.
+
+I use **rebase**, enforced in repository settings. The reasoning, the trade-offs
+and how to recover the local branch afterwards are in
+[Merge Strategies](003-merge-strategies.qmd).
 
 ## Workflow Details
 
-let's add what's the whole process, something like doing a git status before anything to check if I've made a git commit WIP to reset if not just continue
+The loop, in the order it actually happens.
 
-sometimes if I have to switch branches quickly just do a git stash, do something, come back and do git stash pop
+### Before touching anything
 
-then work, git commit
+```shell
+git status
+```
 
-then open a PR: use a good PR template for other people to know what happened
+Uncommitted work from last time is the usual surprise. Either finish it and
+commit, or throw it away — do not start a new change on top of a dirty tree.
 
-assign someone to review my code
+Needing to switch branches with work in progress is what `stash` is for:
 
-merge the pr
+```shell
+git stash                 # park it
+git checkout other-branch
+git checkout -            # come back
+git stash pop             # take it back
+```
 
-make another feature branch and continue
+### Branch
+
+Off a fresh `main`, never off yesterday's branch.
+
+```shell
+git checkout main && git pull
+git checkout -b feature/short-description
+```
+
+Naming rules live in [Conventions](005-conventions.md).
+
+### Commit
+
+Small and often. One commit should be one reason, so that a reviewer can read
+them in order and so that a bad one can be reverted alone.
+
+### Pull Request
+
+```shell
+git push -u origin feature/short-description
+gh pr create
+```
+
+The description is the part people skip and the part that matters. A reviewer
+arrives knowing nothing, so it needs **what changed, why, and how it was
+verified**. On a squash-merge repository this text becomes the permanent commit
+message, so it outlives the PR page.
+
+Assign a reviewer. Review is a loop: comments, fixes, push again, repeat until
+approved. Pushing to the same branch updates the PR automatically — no new PR.
+
+### Merge
+
+Merge in the browser. Then bring the local side back and delete the branch:
+
+```shell
+git checkout main && git pull
+git branch -d feature/short-description
+```
+
+> [!WARNING]
+> After a rebase or squash merge the old branch has diverged from `main` even
+> though the content is identical. Delete it, or `reset --hard` it. Never merge
+> `main` back into it — see [Merge Strategies](003-merge-strategies.qmd).
+
+### Then start again
+
+New branch off `main` for the next change. The branch is disposable; `main` is
+the only long-lived thing.
 
 ***
 
-[Last modified: 2026-07-08]{.note-modified}
+[Last modified: 2026-09-06]{.note-modified}

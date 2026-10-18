@@ -94,6 +94,10 @@ If you see a message like the following, then you are good to go.
 Hi {username}! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
+> [!NOTE]
+> This authenticates **one** account. For a machine that needs a second
+> (work alongside personal), see [Multiple Accounts](006-multiple-accounts.md).
+
 ***
 
-[Last modified: 2026-07-06]{.note-modified}
+[Last modified: 2026-09-25]{.note-modified}
