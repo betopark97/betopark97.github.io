@@ -137,8 +137,19 @@ def index_issues(index: Path, top_level: bool) -> list[str]:
             "missing 'icon' (a bare Bootstrap name like `diagram-3`, "
             "or an Iconify id like `logos:dbt-icon`)"
         )
+    issues.extend(draft_issue(fm))
     issues.extend(check_dividers(index))
     return issues
+
+
+def draft_issue(fm: dict) -> list[str]:
+    """A `draft: true` note stays out of the mirror altogether. Quarto would
+    blank a draft's page, but the sidebar list and the prev/next pager are
+    generated from the mirror, so a mirrored draft is still linked to as an
+    empty page."""
+    if str(fm.get("draft", "")).lower() == "true":
+        return ["draft: true (stays off the site until published)"]
+    return []
 
 
 def leaf_issues(path: Path) -> list[str]:
@@ -146,8 +157,10 @@ def leaf_issues(path: Path) -> list[str]:
     issues: list[str] = []
     if not FILE_RE.match(path.name):
         issues.append("filename must be NNN-slug.md (3-digit number + lowercase kebab-case)")
-    if not read_frontmatter(path).get("title"):
+    fm = read_frontmatter(path)
+    if not fm.get("title"):
         issues.append("missing 'title'")
+    issues.extend(draft_issue(fm))
     issues.extend(check_dividers(path))
     return issues
 
