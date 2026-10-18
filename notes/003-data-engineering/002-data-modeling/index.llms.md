@@ -1,0 +1,9 @@
+# Data Modeling
+
+Modeling a warehouse for analytics, centred on Kimball’s facts and dimensions.
+
+This section will concentrate on data modeling for data warehouses (OLAP). To be honest, I also like working with RDBMS (OLTP), however, as a data engineer and not a DBA or software engineer, I don’t have much modeling to do there at work.
+
+There are a lot of different frameworks, but I am biased toward Kimball’s way of modeling. But, the other types of modeling will be covered for future purposes, meaning that there will be documentation on Inmon, OBT, and Data Vault (2.0) as well.
+
+Back to top

@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Starting a new repository: naming, layout, dev packages and pre-commit hooks.">
 
 <title>Project Init – Roberto Park</title>
 <style>
@@ -37,7 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
 <link href="../../../notes/002-devops/002-project-init/001-setup.html" rel="next">
-<link href="../../../notes/002-devops/001-git-github/004-conventions.html" rel="prev">
+<link href="../../../notes/002-devops/001-git-github/006-multiple-accounts.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -45,10 +46,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -248,14 +249,26 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/002-devops/001-git-github/003-ci-cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/002-devops/001-git-github/003-merge-strategies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Merge Strategies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/002-devops/001-git-github/004-ci-cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI/CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/002-devops/001-git-github/004-conventions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/002-devops/001-git-github/005-conventions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conventions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/002-devops/001-git-github/006-multiple-accounts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiple Accounts</span></a>
   </div>
 </li>
       </ul>
@@ -299,6 +312,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Project Init</h1>
 </div>
 
+<div>
+  <div class="description">
+    Starting a new repository: naming, layout, dev packages and pre-commit hooks.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -407,11 +425,15 @@ ul.task-list li input[type="checkbox"] {
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }
@@ -857,8 +879,8 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../notes/002-devops/001-git-github/004-conventions.html" class="pagination-link" aria-label="Conventions">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Conventions</span>
+      <a href="../../../notes/002-devops/001-git-github/006-multiple-accounts.html" class="pagination-link" aria-label="Multiple Accounts">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Multiple Accounts</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

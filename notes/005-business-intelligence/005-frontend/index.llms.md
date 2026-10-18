@@ -1,5 +1,7 @@
 # Frontend
 
+A map of the JavaScript ecosystem for someone coming from Python.
+
 As someone with zero frontend experience, the following is a note so that I get a grasp on the concepts. It feels like the frontend ecosystem and Javascript as a whole feels chaotic (compared to Python).
 
 ## The Core Stack

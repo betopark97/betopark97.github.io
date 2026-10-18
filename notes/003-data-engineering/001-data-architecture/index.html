@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="The rough shape of a data platform, sketched before building and refined by iterating.">
 
 <title>Data Architecture – Roberto Park</title>
 <style>
@@ -36,7 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../../">
-<link href="../../../notes/003-data-engineering/001-data-modeling/index.html" rel="next">
+<link href="../../../notes/003-data-engineering/002-data-modeling/index.html" rel="next">
 <link href="../../../notes/003-data-engineering/index.html" rel="prev">
 <link href="../../../assets/img/logos/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
@@ -45,10 +46,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -233,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/001-data-modeling/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/002-data-modeling/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Modeling</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -242,13 +243,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-modeling/001-intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/002-data-modeling/001-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/002-data-modeling/002-types-of-mart-tables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Types of Mart Tables</span></a>
   </div>
 </li>
@@ -256,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/002-snowflake/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/003-snowflake/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Snowflake</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -265,31 +266,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/001-rbac.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-snowflake/001-rbac.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">RBAC</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/002-authentication.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-snowflake/002-authentication.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Authentication</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/003-create-snippets.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-snowflake/003-create-snippets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Create Snippets</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/004-native-platform-services.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-snowflake/004-native-platform-services.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Native Platform Services</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/002-snowflake/005-ai-ml.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/003-snowflake/005-ai-ml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">AI &amp; ML</span></a>
   </div>
 </li>
@@ -297,7 +298,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/003-dlt/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/004-dlt/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">dlt</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -306,39 +307,45 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dlt/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/002-conventions.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dlt/002-conventions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conventions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dlt/003-normalization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Normalization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/004-sources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dlt/004-sources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Sources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/003-dlt/005-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/004-dlt/005-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/004-dlt/006-rest-apis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">REST APIs</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/004-dbt/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/005-dbt/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">dbt</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -347,85 +354,91 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/002-project-structure.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/002-project-structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Structure</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/003-naming.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/003-naming.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Naming</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/004-styling.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/004-styling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Styling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/005-layers.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/005-layers.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Layers</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/006-staging.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/006-staging.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Staging</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/007-intermediate.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/007-intermediate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intermediate</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/008-marts.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/008-marts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Marts</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/009-materializations.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/009-materializations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Materializations &amp; Build Time</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/010-tests.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/010-tests.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Tests</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/011-documentation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/011-documentation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Documentation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/012-workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/012-workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workflow</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/013-ci-cd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/013-node-selection.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Node Selection</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/005-dbt/014-ci-cd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">CI/CD</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/004-dbt/014-orchestration.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/005-dbt/015-orchestration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Orchestration</span></a>
   </div>
 </li>
@@ -433,7 +446,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/005-fastapi/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/006-fastapi/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FastAPI</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -442,13 +455,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/005-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/006-fastapi/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/005-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/006-fastapi/002-directory-structure.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Directory Structure</span></a>
   </div>
 </li>
@@ -456,7 +469,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/006-ducklake/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/007-ducklake/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">DuckLake</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -465,7 +478,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/006-ducklake/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/007-ducklake/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
@@ -473,13 +486,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/007-prefect/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/008-prefect/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefect</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../../notes/003-data-engineering/008-postgresql/index.html" class="sidebar-item-text sidebar-link">
+            <a href="../../../notes/003-data-engineering/009-postgresql/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PostgreSQL</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -488,12 +501,18 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../notes/003-data-engineering/008-postgresql/001-setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../notes/003-data-engineering/009-postgresql/001-setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../notes/003-data-engineering/010-dagster/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dagster</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -510,6 +529,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Data Architecture</h1>
 </div>
 
+<div>
+  <div class="description">
+    The rough shape of a data platform, sketched before building and refined by iterating.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -637,11 +661,15 @@ ul.task-list li input[type="checkbox"] {
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }
@@ -1092,7 +1120,7 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../notes/003-data-engineering/001-data-modeling/index.html" class="pagination-link" aria-label="Data Modeling">
+      <a href="../../../notes/003-data-engineering/002-data-modeling/index.html" class="pagination-link" aria-label="Data Modeling">
         <span class="nav-page-text">Data Modeling</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>

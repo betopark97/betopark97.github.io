@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -45,10 +80,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -255,6 +290,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Frontend</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/005-business-intelligence/006-performance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Performance</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -268,9 +309,17 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#installation" id="toc-installation" class="nav-link active" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#authentication-rbac" id="toc-authentication-rbac" class="nav-link" data-scroll-target="#authentication-rbac">Authentication (RBAC)</a></li>
-  <li><a href="#multi-pages" id="toc-multi-pages" class="nav-link" data-scroll-target="#multi-pages">Multi-pages</a></li>
+  <li><a href="#multi-pages" id="toc-multi-pages" class="nav-link" data-scroll-target="#multi-pages">Multi-pages</a>
+  <ul class="collapse">
+  <li><a href="#never-name-the-directory-pages" id="toc-never-name-the-directory-pages" class="nav-link" data-scroll-target="#never-name-the-directory-pages">Never name the directory <code>pages/</code></a></li>
+  </ul></li>
+  <li><a href="#st.stop-is-not-an-early-return" id="toc-st.stop-is-not-an-early-return" class="nav-link" data-scroll-target="#st.stop-is-not-an-early-return"><code>st.stop()</code> is not an early return</a></li>
   <li><a href="#filters-components" id="toc-filters-components" class="nav-link" data-scroll-target="#filters-components">Filters &amp; Components</a></li>
-  <li><a href="#optimizations" id="toc-optimizations" class="nav-link" data-scroll-target="#optimizations">Optimizations</a></li>
+  <li><a href="#optimizations" id="toc-optimizations" class="nav-link" data-scroll-target="#optimizations">Optimizations</a>
+  <ul class="collapse">
+  <li><a href="#do-not-copy-a-cached-frame-into-session_state" id="toc-do-not-copy-a-cached-frame-into-session_state" class="nav-link" data-scroll-target="#do-not-copy-a-cached-frame-into-session_state">Do not copy a cached frame into session_state</a></li>
+  <li><a href="#a-refresh-button-is-global-and-silent-for-everyone-else" id="toc-a-refresh-button-is-global-and-silent-for-everyone-else" class="nav-link" data-scroll-target="#a-refresh-button-is-global-and-silent-for-everyone-else">A refresh button is global, and silent for everyone else</a></li>
+  </ul></li>
   <li><a href="#conventions" id="toc-conventions" class="nav-link" data-scroll-target="#conventions">Conventions</a></li>
   </ul>
 </nav>
@@ -308,6 +357,56 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="multi-pages" class="level2">
 <h2 class="anchored" data-anchor-id="multi-pages">Multi-pages</h2>
+<p>There are two generations, and they do not coexist quietly.</p>
+<ul>
+<li><strong>v1 (2022)</strong> — convention based. Files in a <code>pages/</code> directory next to the entrypoint become the sidebar automatically. No code, and no way to filter the list.</li>
+<li><strong>v2 (1.36+)</strong> — <code>st.Page</code> + <code>st.navigation</code>. You declare the pages, so you can filter them by role. This is the one to use.</li>
+</ul>
+<section id="never-name-the-directory-pages" class="level3">
+<h3 class="anchored" data-anchor-id="never-name-the-directory-pages">Never name the directory <code>pages/</code></h3>
+<p>If a directory called <code>pages</code> sits next to the entrypoint, Streamlit decides the app is v1 — and it decides <strong>before your entrypoint runs</strong>:</p>
+<div class="term" data-title="python">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="co"># streamlit/runtime/scriptrunner/script_runner.py</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-label="2"></a><span class="cf">if</span> PagesManager.uses_pages_directory:   <span class="co"># True iff &lt;entrypoint dir&gt;/pages exists</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-label="3"></a>    _mpa_v1(<span class="va">self</span>._main_script_path)     <span class="co"># globs pages/*.py, runs the REQUESTED page</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-label="4"></a><span class="cf">else</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-label="5"></a>    <span class="bu">exec</span>(code, module.__dict__)         <span class="co"># your entrypoint</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>uses_pages_directory</code> is a <strong>class attribute computed once per process</strong> (<code>runtime/pages_manager.py</code>) and only cleared by <code>st.navigation</code> — which your entrypoint never reaches on that first run. So on the first script run of a fresh process, a deep link runs <code>pages/&lt;name&gt;.py</code> <strong>instead of</strong> the entrypoint.</p>
+<p>Everything the entrypoint does is skipped: auth gates, monkey-patches, the nav itself. If access control lives only in which pages you pass to <code>st.navigation</code>, that is an auth bypass on any cold process — and containers give you a cold process on every deploy.</p>
+<p>It self-heals once any run reaches <code>st.navigation</code>, which makes it maddening to reproduce. Two things hide it:</p>
+<ul>
+<li>A reload is not enough. The flag is per <strong>process</strong> — you must restart the server.</li>
+<li>The URL must be a deep link. Hitting <code>/</code> runs the entrypoint (it is the default page) and looks completely normal.</li>
+</ul>
+<p>Reproduce it in 20 seconds: drop a <code>pages/probe.py</code> that writes a marker, cold-start, open <code>/probe</code>. The marker renders with no login.</p>
+<p><strong>Fixes, in order of preference:</strong></p>
+<ol type="1">
+<li><strong>Name the directory something else</strong> — <code>dashboards/</code>, <code>views/</code>. <code>_mpa_v1</code> hardcodes the string <code>"pages"</code> in exactly two places, so any other name makes the legacy path unreachable. One rename, done.</li>
+<li>Move the entrypoint so <code>&lt;entrypoint dir&gt;/pages</code> does not exist (entrypoint at repo root, pages under the package).</li>
+<li>Keep <code>pages/</code> but put every page one level down in subdirectories — <code>_mpa_v1</code> globs <code>pages/*.py</code> non-recursively, so nesting keeps it empty. This is what a real production app I read does.</li>
+</ol>
+<p>Whatever you pick, <strong>also gate each page itself</strong>. A nav filter is not an access check — nothing stops a page being reached another way. One guard helper — login, domain, and per-page role check — as the first statement of every page, and a test that asserts every page calls it with its own filename.</p>
+<p><code>client.showSidebarNavigation = false</code> does <strong>not</strong> help. Despite what the config docstring says, <code>commands/navigation.py</code> applies it to any sidebar position, so it hides your real v2 nav too.</p>
+</section>
+</section>
+<section id="st.stop-is-not-an-early-return" class="level2">
+<h2 class="anchored" data-anchor-id="st.stop-is-not-an-early-return"><code>st.stop()</code> is not an early return</h2>
+<p>Every tab in a multi-tab page is rendered on every script run — the tab widget<br>
+only chooses what is <em>visible</em>. So a guard that bails out of one tab with<br>
+<code>st.stop()</code> halts the whole run and leaves every later tab blank.</p>
+<p>There is no early return out of a <code>with tab:</code> block either, since it is not a<br>
+function. The guard has to be an <code>if</code>/<code>else</code> around the tab body:</p>
+<div class="term" data-title="python">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a><span class="cf">with</span> tab:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-label="2"></a>    ...prepare data...</span>
+<span id="cb2-3"><a href="#cb2-3" aria-label="3"></a>    <span class="cf">if</span> frame.is_empty():</span>
+<span id="cb2-4"><a href="#cb2-4" aria-label="4"></a>        st.info(<span class="st">"..."</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-label="5"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-label="6"></a>        ...the rest of the tab...</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Verify with <code>git diff -w</code> — if the only real change is the guard, the rest of<br>
+the diff is the re-indentation and reads as noise.</p>
 </section>
 <section id="filters-components" class="level2">
 <h2 class="anchored" data-anchor-id="filters-components">Filters &amp; Components</h2>
@@ -340,6 +439,29 @@ Note
 <span class="citation" data-cites="st.fragment">@st.fragment</span> (parallel=True)<br>
 st.form<br>
 st.session_state + st.empty()</p>
+<section id="do-not-copy-a-cached-frame-into-session_state" class="level3">
+<h3 class="anchored" data-anchor-id="do-not-copy-a-cached-frame-into-session_state">Do not copy a cached frame into session_state</h3>
+<p>A pattern that looks like caching and is actually the opposite:</p>
+<div class="term" data-title="python">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="at">@st.cache_data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="kw">def</span> load(): ...</span>
+<span id="cb3-3"><a href="#cb3-3" aria-label="3"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-label="4"></a><span class="cf">if</span> <span class="st">"data"</span> <span class="kw">not</span> <span class="kw">in</span> st.session_state:          <span class="co"># DON'T</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-label="5"></a>    st.session_state.data <span class="op">=</span> load()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-label="6"></a>df <span class="op">=</span> st.session_state.data.copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>st.cache_data</code> is already a cache, and it is <strong>global</strong> (<code>scope="global"</code> by default): one copy shared by everyone. <code>session_state</code> is <strong>per session</strong>, so this makes a private full copy of the frame for every logged-in person, on top of the shared one. With a 3 GB frame and four people, that is 12 GB of duplicates.</p>
+<p>It also breaks refresh. <code>st.cache_data.clear()</code> cannot touch anyone else’s <code>session_state</code>, and <code>session_state</code> has no TTL — so other users stay pinned to old data indefinitely, with nothing on screen saying so.</p>
+<p>Just call the cached function. <code>cache_data</code> returns a fresh copy per call, so mutation safety is unchanged:</p>
+<div class="term" data-title="python">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a>df <span class="op">=</span> load()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="a-refresh-button-is-global-and-silent-for-everyone-else" class="level3">
+<h3 class="anchored" data-anchor-id="a-refresh-button-is-global-and-silent-for-everyone-else">A refresh button is global, and silent for everyone else</h3>
+<p><code>st.cache_data.clear()</code> wipes the cache for <strong>all</strong> users, not just the presser. But Streamlit never pushes to a session — other people see new data on their <em>next interaction</em>, not immediately. Worth knowing before you promise “refresh updates everyone”.</p>
+<p>Clear <code>cache_resource</code> too if a database connection is cached there; the same button then doubles as auth-token recovery. Do <strong>not</strong> clear <code>session_state</code> — that throws away the user’s filters.</p>
+</section>
 </section>
 <section id="conventions" class="level2">
 <h2 class="anchored" data-anchor-id="conventions">Conventions</h2>
@@ -349,7 +471,7 @@ st.session_state + st.empty()</p>
 <li></li>
 </ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-08-12</span></p>
+<p><span class="note-modified">Last modified: 2026-09-03</span></p>
 
 
 </section>
@@ -444,11 +566,15 @@ st.session_state + st.empty()</p>
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }

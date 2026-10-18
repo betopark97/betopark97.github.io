@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -80,10 +80,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -542,11 +542,15 @@ Note
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }

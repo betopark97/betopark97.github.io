@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.">
+<meta name="description" content="Context from outside engineering that the work depends on: supply chains, accounting, ads and networking.">
 
 <title>Domain Knowledge – Roberto Park</title>
 <style>
@@ -45,10 +45,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -252,8 +252,26 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Costs</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/008-domain-knowledge/001-scm/004-systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Systems</span></a>
+  </div>
+</li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/008-domain-knowledge/002-accounting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Accounting</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notes/008-domain-knowledge/003-ads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ads</span></a>
+  </div>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../notes/008-domain-knowledge/004-networking/index.html" class="sidebar-item-text sidebar-link">
@@ -289,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Deep understanding of a specific industry or business area to ensure technical solutions solve real-world problems.
+    Context from outside engineering that the work depends on: supply chains, accounting, ads and networking.
   </div>
 </div>
 
@@ -306,7 +324,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Overview coming soon.</p>
+<p>This section is to document understanding of specific industry or business areas. It’s documentation of the extra knowledge that I need to implement business logic to the data engineering that I do. Although, it will cover technical stuff like backend and security concepts when deemed fit to belong here other than in other sections of my notes. That’s why something like ‘data modeling’, which is also a domain knowledge with belong in the <strong>Data Engineering</strong> section.</p>
 
 
 
@@ -400,11 +418,15 @@ ul.task-list li input[type="checkbox"] {
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }

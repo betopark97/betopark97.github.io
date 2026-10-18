@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -45,10 +80,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-1f93b1f3468cdd240ccb6e3b8ba944f3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6288ef87881d3479a395bedf400db7e7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -343,8 +378,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#workspace-and-folder-configuration" id="toc-workspace-and-folder-configuration" class="nav-link active" data-scroll-target="#workspace-and-folder-configuration">Workspace and folder configuration</a>
+  <ul class="collapse">
+  <li><a href="#workspacefolder-is-resolved-by-two-different-parties" id="toc-workspacefolder-is-resolved-by-two-different-parties" class="nav-link" data-scroll-target="#workspacefolder-is-resolved-by-two-different-parties"><code>${workspaceFolder}</code> is resolved by two different parties</a></li>
+  <li><a href="#multi-root-resolves-one-value-per-window" id="toc-multi-root-resolves-one-value-per-window" class="nav-link" data-scroll-target="#multi-root-resolves-one-value-per-window">Multi-root resolves one value per window</a></li>
+  </ul></li>
+  <li><a href="#the-editor-runs-a-language-server-not-the-cli" id="toc-the-editor-runs-a-language-server-not-the-cli" class="nav-link" data-scroll-target="#the-editor-runs-a-language-server-not-the-cli">The editor runs a language server, not the CLI</a></li>
+  <li><a href="#finding-what-is-drawing-a-squiggle" id="toc-finding-what-is-drawing-a-squiggle" class="nav-link" data-scroll-target="#finding-what-is-drawing-a-squiggle">Finding what is drawing a squiggle</a></li>
+  <li><a href="#related" id="toc-related" class="nav-link" data-scroll-target="#related">Related</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -368,10 +416,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="workspace-and-folder-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="workspace-and-folder-configuration">Workspace and folder configuration</h2>
+<p>Precedence is <strong>workspace → folder → user</strong>. A <code>.code-workspace</code> carries its own<br>
+<code>"settings"</code> block, and it silently wins over user settings — including a stale<br>
+absolute path that no longer exists. When a setting refuses to take effect, read<br>
+the <code>.code-workspace</code> first.</p>
+<section id="workspacefolder-is-resolved-by-two-different-parties" class="level3">
+<h3 class="anchored" data-anchor-id="workspacefolder-is-resolved-by-two-different-parties"><code>${workspaceFolder}</code> is resolved by two different parties</h3>
+<ul>
+<li><strong>VS Code</strong> resolves it, but only in <em>workspace</em> settings. In user settings it<br>
+is passed through literally (<code>Could not resolve interpreter path '${workspaceFolder}/...'</code>). <code>python.defaultInterpreterPath</code> is one of these.</li>
+<li><strong>The extension</strong> resolves it in its own code, in which case it works in user<br>
+settings too — <code>ruff.path</code> for example.</li>
+</ul>
+<p>Nothing in the UI distinguishes them. Grep the bundle:</p>
+<div class="term" data-title="bash">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-label="1"></a><span class="fu">grep</span> <span class="at">-o</span> <span class="st">'workspaceFolder[^"]\{0,60\}'</span> ~/.vscode/extensions/<span class="op">&lt;</span>ext<span class="op">&gt;</span>/dist/<span class="pp">*</span>.js <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Its own <code>value.replace("${workspaceFolder}", ...)</code> means it works anywhere.</p>
+</section>
+<section id="multi-root-resolves-one-value-per-window" class="level3">
+<h3 class="anchored" data-anchor-id="multi-root-resolves-one-value-per-window">Multi-root resolves one value per window</h3>
+<p><code>${workspaceFolder}</code> becomes <strong><code>folders[0]</code></strong> — the first entry in the<br>
+<code>.code-workspace</code>, not the folder owning the file. Extensions often compound it<br>
+by querying the workspace rather than the folder:</p>
+<div class="term" data-title="js">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-label="1"></a>api<span class="op">.</span><span class="at">settings</span><span class="op">.</span><span class="fu">getExecutionDetails</span>(workspace<span class="op">.</span><span class="at">workspaceFile</span>)  <span class="co">// workspace-scoped</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Symptom: <strong>opening the folder directly works, opening it inside the multi-root<br>
+workspace fails.</strong> That asymmetry means per-folder <code>.vscode/settings.json</code> is<br>
+never consulted, so the fix is one shared tool env pinned in the<br>
+<code>.code-workspace</code>:</p>
+<div class="term" data-title="bash">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-label="1"></a><span class="ex">uv</span> venv ~/.venvs/<span class="op">&lt;</span>tool<span class="op">&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-label="2"></a><span class="ex">uv</span> pip install <span class="at">--python</span> ~/.venvs/<span class="op">&lt;</span>tool<span class="op">&gt;</span>/bin/python <span class="op">&lt;</span>tool<span class="op">&gt;</span>==<span class="op">&lt;</span>version<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Pin to the newest project in the window, and prefer this over borrowing a member<br>
+repo’s <code>.venv</code>, which breaks when that repo is rebuilt.</p>
+</section>
+</section>
+<section id="the-editor-runs-a-language-server-not-the-cli" class="level2">
+<h2 class="anchored" data-anchor-id="the-editor-runs-a-language-server-not-the-cli">The editor runs a language server, not the CLI</h2>
+<p><code>ruff check</code> and the ruff extension are different programs (<code>ruff server</code>), and<br>
+they resolve config independently. Anything <em>inferred</em> can differ — so state<br>
+tool config explicitly. A green CLI proves nothing about a squiggle.</p>
+<p>Point tools at the project’s own binary rather than <code>PATH</code>, but only with a<br>
+fallback — a hardcoded path that does not exist is worse than none:</p>
+<div class="term" data-title="jsonc">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource jsonc number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href="#cb4-1" aria-label="1"></a>"ruff.importStrategy": "fromEnvironment"</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="finding-what-is-drawing-a-squiggle" class="level2">
+<h2 class="anchored" data-anchor-id="finding-what-is-drawing-a-squiggle">Finding what is drawing a squiggle</h2>
+<ol type="1">
+<li><strong>Problems panel</strong> (<code>Cmd+Shift+M</code>) names the source extension. Hover does not,<br>
+if <code>editor.hover.enabled</code> is off.</li>
+<li><strong>What is actually installed</strong> — the folder list lies, old versions linger:<br>
+<code>extensions.json</code> (registered) vs <code>.obsolete</code> (pending delete). In both =<br>
+mid-update, not uninstalled.</li>
+<li><strong>Live language servers</strong> and their interpreter — catches a server on an old<br>
+Python where modern syntax is a parse error:<br>
+<code>ps aux | grep -i "language-server"</code>, then <code>lsof -a -p &lt;pid&gt; -d cwd -Fn</code>.</li>
+<li><strong>Logs</strong> in <code>~/Library/Application Support/Code/logs/&lt;session&gt;/window*/exthost/</code>.<br>
+Many are empty; absence of a log is not absence of the problem.</li>
+</ol>
+</section>
+<section id="related" class="level2">
+<h2 class="anchored" data-anchor-id="related">Related</h2>
+<ul>
+<li><a href="../../notes/001-terminal/003-uv.html">uv</a> for the venvs these settings point at</li>
+</ul>
 <hr>
-<p><span class="note-modified">Last modified: 2026-07-19</span></p>
+<p><span class="note-modified">Last modified: 2026-10-18</span></p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <!-- Cmd/Ctrl + Shift + F to open Quarto search -->
@@ -463,11 +583,15 @@ ul.task-list li input[type="checkbox"] {
         // terminated segment is also a substring of every child note's href,
         // so without this gate the folder icon would leak onto every file in
         // it. A leaf key (no trailing slash) is a single note's own icon and
-        // must land ONLY on a plain (non-section) row.
+        // must land ONLY on a plain (non-section) row. The one exception is a
+        // folder holding nothing but its index.md: Quarto draws it as a plain
+        // row linking to the folder itself, so its folder key applies there.
         var best = null;
         for (var seg in MAP) {
           var isFolderKey = seg.charAt(seg.length - 1) === '/';
-          if (isFolderKey !== isSection) continue;
+          var isOwnFolder = isFolderKey && !isSection &&
+            /\/(index\.html)?$/.test(href) && href.replace(/index\.html$/, '').slice(-seg.length) === seg;
+          if (isFolderKey !== isSection && !isOwnFolder) continue;
           if (href.indexOf(seg) !== -1 && (best === null || seg.length > best.length)) {
             best = seg;
           }

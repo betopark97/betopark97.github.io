@@ -4,6 +4,8 @@ PKM
 
 Obsidian
 
+“Why I stopped adopting other people’s PKM frameworks and built one a script can enforce.”
+
 Published
 
 2026-06-27 7 min read

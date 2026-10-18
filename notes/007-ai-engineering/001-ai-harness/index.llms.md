@@ -1,5 +1,7 @@
 # AI Harness
 
+Coding agents such as Claude Code, and the instruction, skill and hook files that shape them.
+
 > **NOTE:**
 >
 > The harnesses covered in this part are mainly semi-autonomous and widely used as coding assistants or CLI tools.

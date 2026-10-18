@@ -1,6 +1,6 @@
 # DevOps
 
-Automation and integration of development and operations to deliver faster and more reliably.
+Shipping code reliably: version control, project setup, cloud credentials and monitoring.
 
 This section will have technical notes covering the overall workflow of the DevOps lifecycle starting with local development setup and version control to CI/CD and automated deployment.
 

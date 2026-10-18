@@ -1,5 +1,7 @@
 # Data Architecture
 
+The rough shape of a data platform, sketched before building and refined by iterating.
+
 Before starting with any project it’s good to have a rough idea on how the architecture will look like for your data platform. However, it takes a lot of time to build up a stable data platform, hence the “rough idea,” and so you should iterate by building something, then testing, deploying to production, and finally optimize (mix up the order a bit if needed like optimizing before deploying, etc.).
 
 Some of the important building blocks to making a stable data platform is the good orchestration of the following:

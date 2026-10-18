@@ -2,422 +2,482 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://betopark97.github.io/projects/projects.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.077Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/portfolio.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/010-homelab/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/010-homelab/003-software-requirements.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/010-homelab/001-preface.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/008-directory-metadata.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/005-listings.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/003-theming.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/001-project-config.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/007-discord.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/005-todoist.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/003-dbeaver.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/001-kitty-terminal.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/008-domain-knowledge/004-networking/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/008-domain-knowledge/003-ads.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/002-scor-ds.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/007-ai-engineering/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/007-ai-engineering/001-ai-harness/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/006-machine-learning/001-mlflow.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/005-frontend/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/003-visualization.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/001-intro.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/008-postgresql/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/006-ducklake/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/005-fastapi/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/005-fastapi/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/014-orchestration.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/012-workflow.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/010-tests.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/008-marts.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/006-staging.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/004-styling.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/002-project-structure.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/004-sources.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/002-conventions.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/004-native-platform-services.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/002-authentication.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/001-data-modeling/002-types-of-mart-tables.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/001-data-architecture/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/003-observability-monitoring/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/002-project-init/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/004-conventions.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/005-herdr.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/002-homebrew.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/blog/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.020Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/001-rbac.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/004-chezmoi.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/002-workflow.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/007-diagrams.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/blog/posts/personal-knowledge-management.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/001-zsh.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/003-uv.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/001-terminal/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.021Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/003-ci-cd.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/002-project-init/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/002-devops/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/001-data-modeling/001-intro.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/001-data-modeling/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/003-create-snippets.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/002-snowflake/005-ai-ml.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.022Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/003-normalization.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/003-dlt/005-workflow.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/003-naming.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/005-layers.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/007-intermediate.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/009-materializations.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/011-documentation.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/013-ci-cd.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dbt/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.023Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/005-fastapi/002-directory-structure.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/006-ducklake/001-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/007-prefect/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/003-data-engineering/008-postgresql/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/004-data-analysis/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/002-ui-ux.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/004-streamlit.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/005-business-intelligence/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/006-machine-learning/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/007-ai-engineering/001-ai-harness/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.024Z</lastmod>
-  </url>
-  <url>
-    <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/001-definition.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/003-costs.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/001-definition.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/007-ai-engineering/001-ai-harness/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/006-machine-learning/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/005-frontend/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/003-visualization.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/001-intro.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/005-polars/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/004-google-analytics/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/004-google-analytics/002-excluding-your-own-traffic.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/009-postgresql/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/008-prefect/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/007-ducklake/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/006-fastapi/002-directory-structure.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/014-ci-cd.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/012-workflow.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/010-tests.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/008-marts.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/006-staging.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/004-styling.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/002-project-structure.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/005-workflow.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/003-normalization.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/005-ai-ml.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/003-create-snippets.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/002-data-modeling/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/002-data-modeling/001-intro.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/002-project-init/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/005-conventions.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/005-herdr.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/002-homebrew.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/007-diagrams.html</loc>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/003-merge-strategies.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/004-chezmoi.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/002-workflow.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/001-rbac.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/blog/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/blog/posts/personal-knowledge-management.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/001-zsh.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/003-uv.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/001-terminal/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/004-ci-cd.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/001-git-github/006-multiple-accounts.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/002-project-init/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.072Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/002-devops/003-observability-monitoring/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/001-data-architecture/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/002-data-modeling/002-types-of-mart-tables.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/002-authentication.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/004-native-platform-services.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/003-snowflake/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/002-conventions.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/004-sources.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/004-dlt/006-rest-apis.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/003-naming.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/005-layers.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/007-intermediate.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/009-materializations.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/011-documentation.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/013-node-selection.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/005-dbt/015-orchestration.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/006-fastapi/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/006-fastapi/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/007-ducklake/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/009-postgresql/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/003-data-engineering/010-dagster/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.074Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/004-google-analytics/001-installation.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/004-google-analytics/003-auditing-a-container.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/005-polars/001-porting-from-pandas.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/004-data-analysis/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/002-ui-ux.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/004-streamlit.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/005-business-intelligence/006-performance.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/006-machine-learning/001-mlflow.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/007-ai-engineering/001-ai-harness/001-setup.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/007-ai-engineering/index.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/002-scor-ds.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/008-domain-knowledge/001-scm/004-systems.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
+  </url>
+  <url>
+    <loc>https://betopark97.github.io/notes/008-domain-knowledge/002-accounting.html</loc>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/008-domain-knowledge/004-networking/001-http-to-https.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.075Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/008-domain-knowledge/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/002-vs-code.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/004-obsidian.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/006-raycast.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/008-marimo.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/002-format-and-dialect.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/004-navigation.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/006-lua-filters.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/009-quarto/009-publishing.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/009-devtools/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.025Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/010-homelab/002-hardware-requirements.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/010-homelab/004-setup.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/notes/index.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.076Z</lastmod>
   </url>
   <url>
     <loc>https://betopark97.github.io/projects/charon-analysis/final_deliverable.html</loc>
-    <lastmod>2026-08-31T11:35:59.026Z</lastmod>
+    <lastmod>2026-10-18T03:48:56.077Z</lastmod>
   </url>
 </urlset>

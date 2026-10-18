@@ -1,6 +1,6 @@
 # Data Engineering
 
-Build and optimize data pipeline workflows for data driven decision-making.
+Building data platforms: architecture, modeling, and the tools that load, transform and orchestrate data.
 
 *Overview coming soon.*
 

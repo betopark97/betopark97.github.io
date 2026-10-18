@@ -1,6 +1,6 @@
 # AI Engineering
 
-Artificial Intelligence for development and applications.
+Building with AI models, starting with the coding agents used every day.
 
 *Overview coming soon.*
 

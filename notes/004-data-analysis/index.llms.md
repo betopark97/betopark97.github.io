@@ -1,6 +1,6 @@
 # Data Analysis
 
-Exploration and interpretation of data to uncover actionable insights for strategic decision-making.
+Exploring and interpreting data to find insights a decision can rest on.
 
 *Overview coming soon.*
 
